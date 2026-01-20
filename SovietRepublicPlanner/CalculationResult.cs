@@ -16,6 +16,7 @@ class CalculationResult
     public List<BuildingRequirement> SupportBuildings { get; set; } = new List<BuildingRequirement>();
     public List<ResidentialInstance> ResidentialBuildings { get; set; } = new List<ResidentialInstance>();
     public List<AmenityInstance> AmenityBuildings = new List<AmenityInstance>();
+    public List<TransportationInstance> TransportationBuildings = new List<TransportationInstance>();
     public BuildingRequirement ChosenBuilding { get; set; }
     public int TotalBuildings { get; set; }
 
@@ -162,7 +163,8 @@ class CalculationResult
             double supportTotal = SupportBuildings.Sum(sc => sc.TotalPowerNeeded);
             double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.PowerMW * rb.Count);
             double amenTotal = AmenityBuildings.Sum(a => a.Building.PowerConsumptionMWh * a.Count);
-            return thisLevel + subChainTotal + supportTotal + residentialTotal + amenTotal;
+            double transTotal = TransportationBuildings.Sum(t => t.Building.PowerConsumptionMWh * t.Count);
+            return thisLevel + subChainTotal + supportTotal + residentialTotal + amenTotal + transTotal;
         }
     }
     public double TotalWaterNeeded
@@ -467,6 +469,14 @@ class CalculationResult
                 Console.WriteLine("├────────────────────────────────────────┤");
                 foreach (var ai in AmenityBuildings)
                     Console.WriteLine($"│ · {ai.Count} × {ai.Building.Name}");
+            }
+            if (TransportationBuildings.Count() > 0)
+            {
+                Console.WriteLine("├────────────────────────────────────────┤");
+                Console.WriteLine("│ Transportation Buildings:");
+                Console.WriteLine("├────────────────────────────────────────┤");
+                foreach (var ti in TransportationBuildings)
+                    Console.WriteLine($"│ · {ti.Count} × {ti.Building.Name}");
             }
             if (TotalPopulationNeeded > TotalHousingCapacity)
             {

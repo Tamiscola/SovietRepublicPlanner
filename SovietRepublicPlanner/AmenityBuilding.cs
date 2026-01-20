@@ -4,11 +4,11 @@
     Pub,
     Healthcare,
     Fireservice,
+    CityService,
     Culture,
     Sports,
     Education,
     CrimeJustice,
-    Religion,
     Fountain
 }
 

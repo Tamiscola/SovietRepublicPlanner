@@ -28,4 +28,11 @@
         public string BuildingName { get; set; }
         public int Count { get; set; }
     }
+    public List<SavedTransportationInstance> TransportationBuildings { get; set; }
+    public class SavedTransportationInstance
+    {
+        public string BuildingName { get; set; }
+        public int Count { get; set; }
+    }
+
 }

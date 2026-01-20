@@ -275,6 +275,11 @@ namespace SovietRepublicPlanner
                     BuildingName = ab.Building.Name,
                     Count = ab.Count
                 }).ToList(),
+                TransportationBuildings = plan.TransportationBuildings.Select(tb => new SavedPlan.SavedTransportationInstance
+                {
+                    BuildingName = tb.Building.Name,
+                    Count = tb.Count
+                }).ToList(),
             };
 
             return saved;
@@ -357,6 +362,18 @@ namespace SovietRepublicPlanner
                             amenityBuilding.Building = GameData.AllAmenityBuildings.FirstOrDefault(ab => ab.Name == savedbi.BuildingName);
                             amenityBuilding.Count = savedbi.Count;
                             result.AmenityBuildings.Add(amenityBuilding);
+                        }
+                    }
+
+                    // Reconstruct transportation buildings
+                    if (savedPlan.TransportationBuildings != null && savedPlan.TransportationBuildings.Count() > 0)
+                    {
+                        foreach (var savedbi in savedPlan.TransportationBuildings)
+                        {
+                            TransportationInstance transportationInstance = new TransportationInstance();
+                            transportationInstance.Building = GameData.TransportationBuildings.FirstOrDefault(ti => ti.Name == savedbi.BuildingName);
+                            transportationInstance.Count = savedbi.Count;
+                            result.TransportationBuildings.Add(transportationInstance);
                         }
                     }
 
@@ -797,8 +814,8 @@ namespace SovietRepublicPlanner
             // Command loop
             while (true)
             {
-                Console.Write("\nCommand (listplans/masterplan/switchplan/create/expand/support/cancel/back/dive/summary/housing/amenity/done): ");
-                List<string> commands = new List<string> { "listplans", "masterplan", "switchplan", "create", "expand", "support", "cancel", "back", "dive", "summary", "housing", "amenity", "done" };
+                Console.Write("\nCommand (listplans/masterplan/switchplan/create/expand/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
+                List<string> commands = new List<string> { "listplans", "masterplan", "switchplan", "create", "expand", "support", "cancel", "back", "dive", "summary", "housing", "amenity", "transportation", "done" };
                 string command = ReadLineWithCompletion(commands).ToLower().Trim(); if (command == "expand")
                 {
                     // Choose Resources or Utility to expand
@@ -1163,6 +1180,7 @@ namespace SovietRepublicPlanner
                     Dictionary<Resource, double> net = new Dictionary<Resource, double>();
                     Dictionary<ProductionBuilding, int> combinedSupBldgs = new Dictionary<ProductionBuilding, int>();
                     Dictionary<AmenityBuilding, int> combinedAmeBldgs = new Dictionary<AmenityBuilding, int>();
+                    Dictionary<TransportationBuilding, int> combinedTransBldgs = new Dictionary<TransportationBuilding, int>();
 
                     // Loop through allPlans and sum everything
                     foreach (var plan in allPlans)
@@ -1225,6 +1243,13 @@ namespace SovietRepublicPlanner
                         {
                             if (combinedAmeBldgs.ContainsKey(ai.Building)) combinedAmeBldgs[ai.Building] += ai.Count;
                             else combinedAmeBldgs.Add(ai.Building, ai.Count);
+                        }
+
+                        // Combine Transportation Buildings
+                        foreach (var ti in plan.TransportationBuildings)
+                        {
+                            if (combinedTransBldgs.ContainsKey(ti.Building)) combinedTransBldgs[ti.Building] += ti.Count;
+                            else combinedTransBldgs.Add(ti.Building, ti.Count);
                         }
                     }
 
@@ -1292,6 +1317,14 @@ namespace SovietRepublicPlanner
                         Console.WriteLine("│ Amenity Buildings:                     │");
                         Console.WriteLine("├────────────────────────────────────────┤");
                         foreach (var kv in combinedAmeBldgs)
+                            Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+                    }
+                    if (allPlans.Any(p => p.TransportationBuildings.Count > 0))
+                    {
+                        Console.WriteLine("├────────────────────────────────────────┤");
+                        Console.WriteLine("│ Transportation Buildings:              │");
+                        Console.WriteLine("├────────────────────────────────────────┤");
+                        foreach (var kv in combinedTransBldgs)
                             Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
                     }
                     Console.WriteLine("├────────────────────────────────────────┤");
@@ -1504,11 +1537,11 @@ namespace SovietRepublicPlanner
                     Console.WriteLine("[2] Pub");
                     Console.WriteLine("[3] Healthcare");
                     Console.WriteLine("[4] Fireservice");
-                    Console.WriteLine("[5] Culture");
-                    Console.WriteLine("[6] Sports");
-                    Console.WriteLine("[7] Education");
-                    Console.WriteLine("[8] Crime & Justice");
-                    Console.WriteLine("[9] Religion");
+                    Console.WriteLine("[5] CityService");
+                    Console.WriteLine("[6] Culture");
+                    Console.WriteLine("[7] Sports");
+                    Console.WriteLine("[8] Education");
+                    Console.WriteLine("[9] Crime & Justice");
                     Console.WriteLine("[10] Fountain");
                     Console.WriteLine("[0] Back");
                     Console.Write("\nYour Choice: ");
@@ -1525,11 +1558,11 @@ namespace SovietRepublicPlanner
                                 AmenityType.Pub,           // 2 (Pub)
                                 AmenityType.Healthcare,    // 3
                                 AmenityType.Fireservice,   // 4
+                                AmenityType.CityService,
                                 AmenityType.Culture,       // 5
                                 AmenityType.Sports,        // 6
                                 AmenityType.Education,     // 7
                                 AmenityType.CrimeJustice,  // 8
-                                AmenityType.Religion,      // 9
                                 AmenityType.Fountain       // 10
                         };
                         AmenityType selectedType = typeMap[amenChoice - 1];
@@ -1567,6 +1600,71 @@ namespace SovietRepublicPlanner
                     }
                     else { Console.Write("Invalid Input(Index)."); }
                     continue;
+                }
+                else if (command == "transportation")
+                {
+                    // Flat selection menu
+                    Console.WriteLine("Select Transportation Type:");
+                    Console.WriteLine("[1] Bus");
+                    Console.WriteLine("[2] Trolley");
+                    Console.WriteLine("[3] Tram");
+                    Console.WriteLine("[4] Depot");
+                    Console.WriteLine("[5] Station");
+                    Console.WriteLine("[6] Refueling");
+                    Console.WriteLine("[0] Back");
+                    Console.Write("\nYour Choice: ");
+                    int tranChoice;
+
+                    if (int.TryParse(Console.ReadLine(), out tranChoice) && tranChoice >= 0 && tranChoice <= 9)
+                    {
+                        if (tranChoice == 0) { continue; }
+
+                        // Map choice to enum
+                        TransportationType[] typeMap = new TransportationType[]
+                        {
+                            TransportationType.Bus,
+                            TransportationType.Trolley,
+                            TransportationType.Tram,
+                            TransportationType.Depot,
+                            TransportationType.Station,
+                            TransportationType.Refueling,
+                        };
+                        TransportationType selectedType = typeMap[tranChoice - 1];
+                        Console.WriteLine("┌─────────────────────────────────────────");
+                        Console.WriteLine($"│ {selectedType} Buildings:");
+                        Console.WriteLine("└─────────────────────────────────────────");
+
+                        // Filter buildings by type
+                        var buildingsOfType = GameData.TransportationBuildings.Where(b => b.Type == selectedType).ToList();
+
+                        // Display buildings
+                        for (int i = 0; i < buildingsOfType.Count; i++)
+                            Console.WriteLine($"[{i + 1}] {buildingsOfType[i].Name}");
+                        Console.Write("[0] Back\n: ");
+                        int buildChoice;
+
+                        // Choose Building
+                        if (int.TryParse(Console.ReadLine(), out buildChoice) && buildChoice >= 0 && buildChoice <= buildingsOfType.Count())
+                        {
+                            if (buildChoice == 0) { continue; }
+                            Console.Write("How many?: ");
+                            int count;
+
+                            // Decide amount
+                            if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
+                            {
+                                TransportationInstance transportationInstance = new TransportationInstance();
+                                transportationInstance.Building = buildingsOfType[buildChoice - 1];
+                                transportationInstance.Count = count;
+                                rootResult.TransportationBuildings.Add(transportationInstance);
+                            }
+                            else { Console.Write("Invalid Input."); }
+                        }
+                        else { Console.Write("Invalid Input."); }
+                    }
+                    else { Console.Write("Invalid Input(Index)."); }
+                    continue;
+
                 }
                 else if (command == "dive")
                 {
@@ -1675,8 +1773,8 @@ namespace SovietRepublicPlanner
                 {
                     int buildChoice;
                     int undoChoice;
-                    Console.Write("Which one to cancel? (press 9 to go back): [0]Utility, [1]SubChain, [2]Support Buildings, [3] Residential Buildings: ");
-                    if (int.TryParse(Console.ReadLine(), out buildChoice) && buildChoice >= 0 && buildChoice <= 3)
+                    Console.Write("Which one to cancel? (press 9 to go back): \n[0]Utility \n[1]SubChain \n[2]Support Buildings \n[3]Residential Buildings \n[4]Amenity Buildings \n[5]Transportation Buildings: ");
+                    if (int.TryParse(Console.ReadLine(), out buildChoice) && buildChoice >= 0 && buildChoice <= 5)
                     {
                         if (buildChoice == 0)
                         {
@@ -1782,6 +1880,48 @@ namespace SovietRepublicPlanner
                                 else { Console.WriteLine("Invalid input."); continue; }
                             }
                             else { Console.WriteLine("\nNo Residential Buildings to cancel!"); }
+                        }
+                        else if (buildChoice == 4)
+                        {
+                            if (rootResult.AmenityBuildings.Count() > 0)
+                            {
+                                Console.WriteLine("Which building do you want to cancel?: ");
+                                int i = 0;
+                                foreach (var ri in rootResult.AmenityBuildings)
+                                {
+                                    Console.WriteLine($"{i}: {ri.Building.Name}");
+                                    i++;
+                                }
+                                Console.Write("Choose the number to cancel: ");
+                                if (int.TryParse(Console.ReadLine(), out undoChoice) && undoChoice >= 0 && undoChoice <= rootResult.AmenityBuildings.Count())
+                                {
+                                    Console.WriteLine($"{rootResult.AmenityBuildings[undoChoice].Building.Name} has been canceled.");
+                                    rootResult.AmenityBuildings.RemoveAt(undoChoice);
+                                }
+                                else { Console.WriteLine("Invalid input."); continue; }
+                            }
+                            else { Console.WriteLine("\nNo Amenity Buildings to cancel!"); }
+                        }
+                        else if (buildChoice == 5)
+                        {
+                            if (rootResult.TransportationBuildings.Count() > 0)
+                            {
+                                Console.WriteLine("Which building do you want to cancel?: ");
+                                int i = 0;
+                                foreach (var ri in rootResult.TransportationBuildings)
+                                {
+                                    Console.WriteLine($"{i}: {ri.Building.Name}");
+                                    i++;
+                                }
+                                Console.Write("Choose the number to cancel: ");
+                                if (int.TryParse(Console.ReadLine(), out undoChoice) && undoChoice >= 0 && undoChoice <= rootResult.TransportationBuildings.Count())
+                                {
+                                    Console.WriteLine($"{rootResult.TransportationBuildings[undoChoice].Building.Name} has been canceled.");
+                                    rootResult.TransportationBuildings.RemoveAt(undoChoice);
+                                }
+                                else { Console.WriteLine("Invalid input."); continue; }
+                            }
+                            else { Console.WriteLine("\nNo Transportation Buildings to cancel!"); }
                         }
                     }
                     else continue;

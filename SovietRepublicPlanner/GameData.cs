@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 
 class GameData
 {
@@ -2263,7 +2265,7 @@ class GameData
         new AmenityBuilding
         {
             Name = "Technical services (2123 workdays, 15 parking)",
-            Type = AmenityType.Education,  // Or create new CityService type if you prefer
+            Type = AmenityType.CityService,  // Or create new CityService type if you prefer
             WorkersPerShift = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
@@ -2282,7 +2284,7 @@ class GameData
         new AmenityBuilding
         {
             Name = "Technical services (1382 workdays, 8 parking)",
-            Type = AmenityType.Education,
+            Type = AmenityType.CityService,
             WorkersPerShift = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
@@ -2301,7 +2303,7 @@ class GameData
         new AmenityBuilding
         {
             Name = "City accounting office",
-            Type = AmenityType.Education,
+            Type = AmenityType.CityService,
             WorkersPerShift = 25,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
@@ -2320,7 +2322,7 @@ class GameData
         new AmenityBuilding
         {
             Name = "Technical services (785 workdays, 5 parking)",
-            Type = AmenityType.Education,
+            Type = AmenityType.CityService,
             WorkersPerShift = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
@@ -3640,6 +3642,576 @@ class GameData
             RequiresResearch = "Secret Police",
             ConstructionMaterials = new Dictionary<string, double>()
             // No construction materials listed
+        }
+    };
+
+    // Transportation Buildings
+    public static List<TransportationBuilding> TransportationBuildings = new List<TransportationBuilding>()
+    {
+        // Bus Stops
+        new TransportationBuilding
+        {
+            Name = "Bus stop (simple)",
+            Type = TransportationType.Bus,
+            Workdays = 24,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 20,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 3.7 },
+                { GameData.AsphaltResource, 1.1 },
+                { GameData.BricksResource, 0.8 },
+                { GameData.SteelResource, 0.6 },
+                { GameData.GravelResource, 0.8 },
+                { GameData.BoardsResource, 0.4 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus stop (medium)",
+            Type = TransportationType.Bus,
+            Workdays = 72,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 40,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 7.4 },
+                { GameData.AsphaltResource, 2.2 },
+                { GameData.BricksResource, 1.6 },
+                { GameData.SteelResource, 1.3 },
+                { GameData.GravelResource, 1.5 },
+                { GameData.BoardsResource, 0.7 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus stop (advanced)",
+            Type = TransportationType.Bus,
+            Workdays = 147,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 14.8 },
+                { GameData.AsphaltResource, 4.4 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 2.5 },
+                { GameData.GravelResource, 3.1 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+
+        // Bus End Stations
+        new TransportationBuilding
+        {
+            Name = "Bus end station (2 parking)",
+            Type = TransportationType.Station,
+            Workdays = 229,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 2,
+            FuelStorageCapacity = 30, // tons
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 18.5 },
+                { GameData.AsphaltResource, 9.9 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 2.5 },
+                { GameData.GravelResource, 6.9 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus end station (5 parking)",
+            Type = TransportationType.Station,
+            Workdays = 396,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 5,
+            FuelStorageCapacity = 30,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 31.5 },
+                { GameData.AsphaltResource, 19.8 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 2.5 },
+                { GameData.GravelResource, 13.8 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus end station (8 parking)",
+            Type = TransportationType.Station,
+            Workdays = 562,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 8,
+            FuelStorageCapacity = 30,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 44.4 },
+                { GameData.AsphaltResource, 29.7 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 2.5 },
+                { GameData.GravelResource, 20.6 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus end station (15 parking)",
+            Type = TransportationType.Station,
+            Workdays = 977,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 15,
+            FuelStorageCapacity = 30,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 77.0 },
+                { GameData.AsphaltResource, 49.6 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 2.5 },
+                { GameData.GravelResource, 34.4 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+
+        // Trolleybus Stops
+        new TransportationBuilding
+        {
+            Name = "Trolleybus stop (simple)",
+            Type = TransportationType.Trolley,
+            Workdays = 30,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 20,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 3.7 },
+                { GameData.AsphaltResource, 1.1 },
+                { GameData.BricksResource, 0.8 },
+                { GameData.SteelResource, 1.2 },
+                { GameData.GravelResource, 0.8 },
+                { GameData.BoardsResource, 0.4 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Trolleybus stop (medium)",
+            Type = TransportationType.Trolley,
+            Workdays = 90,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 40,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 7.4 },
+                { GameData.AsphaltResource, 2.2 },
+                { GameData.BricksResource, 1.6 },
+                { GameData.SteelResource, 2.5 },
+                { GameData.GravelResource, 1.5 },
+                { GameData.BoardsResource, 0.7 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Trolleybus stop (advanced)",
+            Type = TransportationType.Trolley,
+            Workdays = 184,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 14.8 },
+                { GameData.AsphaltResource, 4.4 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 5.0 },
+                { GameData.GravelResource, 3.1 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+
+        // Trolleybus End Stations
+        new TransportationBuilding
+        {
+            Name = "Trolleybus end station (2 parking)",
+            Type = TransportationType.Station,
+            Workdays = 286,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 2,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 18.5 },
+                { GameData.AsphaltResource, 9.9 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 5.0 },
+                { GameData.GravelResource, 6.9 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Trolleybus end station (5 parking)",
+            Type = TransportationType.Station,
+            Workdays = 495,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 5,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 31.5 },
+                { GameData.AsphaltResource, 19.8 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 5.0 },
+                { GameData.GravelResource, 13.8 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Trolleybus end station (8 parking)",
+            Type = TransportationType.Station,
+            Workdays = 703,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 8,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 44.4 },
+                { GameData.AsphaltResource, 29.7 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 5.0 },
+                { GameData.GravelResource, 20.6 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Trolleybus end station (15 parking)",
+            Type = TransportationType.Station,
+            Workdays = 1221,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 15,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 77.0 },
+                { GameData.AsphaltResource, 49.6 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 5.0 },
+                { GameData.GravelResource, 34.4 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+
+        // Tram Platforms
+        new TransportationBuilding
+        {
+            Name = "Tram platform (simple)",
+            Type = TransportationType.Tram,
+            Workdays = 121,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 60,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 7.4 },
+                { GameData.AsphaltResource, 2.2 },
+                { GameData.BricksResource, 1.6 },
+                { GameData.SteelResource, 3.7 },
+                { GameData.GravelResource, 1.5 },
+                { GameData.BoardsResource, 0.7 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Tram platform (advanced)",
+            Type = TransportationType.Tram,
+            Workdays = 248,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 150,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 14.8 },
+                { GameData.AsphaltResource, 4.4 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 7.5 },
+                { GameData.GravelResource, 3.1 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+
+        // Tram End Stations
+        new TransportationBuilding
+        {
+            Name = "Tram end station (2 parking)",
+            Type = TransportationType.Station,
+            Workdays = 385,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 2,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 150,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 18.5 },
+                { GameData.AsphaltResource, 9.9 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 7.5 },
+                { GameData.GravelResource, 6.9 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Tram end station (5 parking)",
+            Type = TransportationType.Station,
+            Workdays = 666,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 5,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 150,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 31.5 },
+                { GameData.AsphaltResource, 19.8 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 7.5 },
+                { GameData.GravelResource, 13.8 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Tram end station (8 parking)",
+            Type = TransportationType.Station,
+            Workdays = 946,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 8,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 150,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 44.4 },
+                { GameData.AsphaltResource, 29.7 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 7.5 },
+                { GameData.GravelResource, 20.6 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Tram end station (15 parking)",
+            Type = TransportationType.Station,
+            Workdays = 1643,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 15,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 150,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 77.0 },
+                { GameData.AsphaltResource, 49.6 },
+                { GameData.BricksResource, 3.2 },
+                { GameData.SteelResource, 7.5 },
+                { GameData.GravelResource, 34.4 },
+                { GameData.BoardsResource, 1.5 }
+            }
+        },
+
+        // Gas Stations (Refueling)
+        new TransportationBuilding
+        {
+            Name = "Gas station (30t fuel, 2 stations)",
+            Type = TransportationType.Refueling,
+            Workdays = 98,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = 30,
+            PassengerCapacity = null,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 7.4 },
+                { GameData.AsphaltResource, 5.5 },
+                { GameData.BricksResource, 0 },
+                { GameData.SteelResource, 0.6 },
+                { GameData.GravelResource, 3.8 },
+                { GameData.BoardsResource, 0 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Gas station (60t fuel, 4 stations)",
+            Type = TransportationType.Refueling,
+            Workdays = 159,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = 60,
+            PassengerCapacity = null,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 14.8 },
+                { GameData.AsphaltResource, 11.0 },
+                { GameData.BricksResource, 0 },
+                { GameData.SteelResource, 1.3 },
+                { GameData.GravelResource, 7.6 },
+                { GameData.BoardsResource, 0 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Gas station (120t fuel, 8 stations)",
+            Type = TransportationType.Refueling,
+            Workdays = 281,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = 120,
+            PassengerCapacity = null,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 29.6 },
+                { GameData.AsphaltResource, 22.1 },
+                { GameData.BricksResource, 0 },
+                { GameData.SteelResource, 2.5 },
+                { GameData.GravelResource, 15.3 },
+                { GameData.BoardsResource, 0 }
+            }
+        },
+
+        // Power Transformers (Trafos)
+        new TransportationBuilding
+        {
+            Name = "Power transformer 1500V (small)",
+            Type = TransportationType.Refueling,
+            Workdays = 43,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = null,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 3.7 },
+                { GameData.AsphaltResource, 0 },
+                { GameData.BricksResource, 0 },
+                { GameData.SteelResource, 1.9 },
+                { GameData.GravelResource, 0 },
+                { GameData.BoardsResource, 0 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Power transformer 1500V (large)",
+            Type = TransportationType.Refueling,
+            Workdays = 73,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = null,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 7.4 },
+                { GameData.AsphaltResource, 0 },
+                { GameData.BricksResource, 0 },
+                { GameData.SteelResource, 3.7 },
+                { GameData.GravelResource, 0 },
+                { GameData.BoardsResource, 0 }
+            }
         }
     };
 
