@@ -34,23 +34,23 @@ public class AmenityBuilding
 
     // Optional properties
     public double? AttractionScore { get; set; }
-    public int Workdays { get; set; }
 
     // Storage (for grocery stores, prisons, etc.)
-    public Dictionary<string, double> WarehouseCapacity { get; set; }
-    public Dictionary<string, double> ColdStorageCapacity = new Dictionary<string, double>();  // NEW!
+    public Dictionary<Resource, double> WarehouseCapacity { get; set; }
+    public Dictionary<Resource, double> ColdStorageCapacity = new Dictionary<Resource, double>(); 
 
     // Vehicle & Parking (for police, fire, etc.)
     public int VehicleStations { get; set; }
-    public int ParkingSpots { get; set; } = 0;  // NEW!
+    public int ParkingSpots { get; set; } = 0;
 
     // Special properties
-    public double? QualityOfFlats { get; set; }  // NEW! (for prisons - housing prisoners)
-    public double FuelImport { get; set; } = 0;  // NEW! (oil tank for police vehicles)
-    public string RequiresResearch { get; set; }  // NEW! (e.g., "Secret Police")
+    public double? QualityOfFlats { get; set; }  //  (for prisons - housing prisoners)
+    public double FuelImport { get; set; } = 0;  //  (oil tank for police vehicles)
+    public string RequiresResearch { get; set; }  //  (e.g., "Secret Police")
 
     // Construction
-    public Dictionary<string, double> ConstructionMaterials { get; set; }
+    public int Workdays { get; set; }
+    public Dictionary<Resource, double> ConstructionMaterials = new Dictionary<Resource, double>();
 
     // Weather requirement (for beach cafe)
     public double? MinTemperature { get; set; }

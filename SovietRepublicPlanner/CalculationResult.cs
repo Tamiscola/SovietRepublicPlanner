@@ -118,6 +118,14 @@ class CalculationResult
             return CalculateTotalInternallySourced(new Dictionary<Resource, double>(), this);
         }
     }
+    public Dictionary<Resource, double> TotalConstructionMaterials 
+    {
+        get
+        {
+            Dictionary<Resource, double> result = new Dictionary<Resource, double>();
+            return CalculateTotalConstructionMaterials(result, this);
+        }
+    }
 
     // Resources - Citizen Consumption
     public Dictionary<Resource, double> TotalCitizenConsumption
@@ -524,6 +532,14 @@ class CalculationResult
                 if (kv.Key != GameData.CropsResource) { Console.WriteLine($"│ +{kv.Value,6:F2}t/day {kv.Key.Name,-20}"); }
                 else { Console.WriteLine($"│ +{kv.Value,6:F2}t/yr {kv.Key.Name,-20}"); }
             }
+            if (TotalConstructionMaterials.Count() > 0)
+            {
+                Console.WriteLine("├────────────────────────────────────────┤");
+                Console.WriteLine("│ Total Construction Materials:");
+                Console.WriteLine("├────────────────────────────────────────┤");
+                foreach (var kv in TotalConstructionMaterials)
+                    Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+            }
         }
     }
 
@@ -734,5 +750,59 @@ class CalculationResult
         {
             CollectInputWater(result, sc);
         }
+    }
+    public Dictionary<Resource, double> CalculateTotalConstructionMaterials(Dictionary<Resource, double> result, CalculationResult cr)
+    {
+        // Industrial Buildings
+        foreach (var kv in cr.ChosenBuilding.ConstructionMaterials)
+        {
+            if (result.ContainsKey(kv.Key)) result[kv.Key] += kv.Value;
+            else result.Add(kv.Key, kv.Value);
+        }
+
+        // Support Buildings
+        foreach (var kv in cr.SupportBuildings)
+        {
+            foreach (var kv2 in kv.ConstructionMaterials)
+            {
+                if (result.ContainsKey(kv2.Key)) result[kv2.Key] += kv2.Value;
+                else result.Add(kv2.Key, kv2.Value);
+            }
+        }
+
+        // Amenity Buildings
+        foreach (var kv in cr.AmenityBuildings)
+        {
+            foreach (var k in kv.Building.ConstructionMaterials.Keys)
+            {
+                if (result.ContainsKey(k)) result[k] += kv.Building.ConstructionMaterials[k] * kv.Count;
+                else result.Add(k, kv.Building.ConstructionMaterials[k] * kv.Count);
+            }
+        }
+
+        // Residential Buildings
+        foreach (var kv in cr.ResidentialBuildings)
+        {
+            foreach (var k in kv.Building.ConstructionMaterials.Keys)
+            {
+                if (result.ContainsKey(k)) result[k] += kv.Building.ConstructionMaterials[k] * kv.Count;
+                else result.Add(k, kv.Building.ConstructionMaterials[k] * kv.Count);
+            }
+        }
+
+        // Transportation Buildings
+        foreach (var kv in cr.TransportationBuildings)
+        {
+            foreach (var k in kv.Building.ConstructionMaterials.Keys)
+            {
+                if (result.ContainsKey(k)) result[k] += kv.Building.ConstructionMaterials[k] * kv.Count;
+                else result.Add(k, kv.Building.ConstructionMaterials[k] * kv.Count);
+            }
+        }
+
+        foreach (var sub in cr.SubChains)
+            CalculateTotalConstructionMaterials(result, sub);
+
+        return result;
     }
 }

@@ -25,6 +25,11 @@
     public bool IsSupportBuildings { get; set; } = false;
     public bool CanUseVehicles { get; set; } = false;
     public SupportCategory SupportCategory { get; set; } = SupportCategory.None;
+
+    // Construction
+    public int Workdays { get; set; }
+    public Dictionary<Resource, double> ConstructionMaterials = new Dictionary<Resource, double>();
+
 }
 public enum SupportCategory
 {

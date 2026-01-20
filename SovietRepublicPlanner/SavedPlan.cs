@@ -34,5 +34,10 @@
         public string BuildingName { get; set; }
         public int Count { get; set; }
     }
-
+    public List<SavedResourceInstance> ConstructionMaterials { get; set; }
+    public class SavedResourceInstance
+    {
+        public string Name { get; set; }
+        public double Amount { get; set; }
+    }
 }

@@ -26,6 +26,7 @@ class BuildingRequirement
     // Resource
     public Dictionary<Resource, double> RequiredResources => CalculateInputResources();
     public Dictionary<Resource, double> ExpectedOutput => CalculateExpectedOutput();
+    public Dictionary<Resource, double> ConstructionMaterials => CalculateConstructionMaterials();
 
     // Utilities
     public double TotalPowerNeeded => Count * Building.PowerConsumption;
@@ -88,6 +89,16 @@ class BuildingRequirement
             {
                 result.Add(Building.Outputs[i].Resource, Building.Outputs[i].Amount * Count);
             }
+        }
+        return result;
+    }
+    public Dictionary<Resource, double> CalculateConstructionMaterials()
+    {
+        Dictionary<Resource, double> result = new Dictionary<Resource, double>();
+        foreach (var kv in Building.ConstructionMaterials)
+        {
+            if (result.ContainsKey(kv.Key)) result[kv.Key] += kv.Value * Count;
+            else result.Add(kv.Key, kv.Value * Count);
         }
         return result;
     }

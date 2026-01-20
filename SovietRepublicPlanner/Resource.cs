@@ -1,4 +1,4 @@
-﻿class Resource
+﻿public class Resource
 {
     public Resource(string name, int processingLevel, bool isImportable, bool isUtility) 
     {

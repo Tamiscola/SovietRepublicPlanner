@@ -376,7 +376,7 @@ namespace SovietRepublicPlanner
                             result.TransportationBuildings.Add(transportationInstance);
                         }
                     }
-
+                    
                     result.ChosenBuilding = br;
                     result.Buildings.Add(br);
 
@@ -1181,6 +1181,7 @@ namespace SovietRepublicPlanner
                     Dictionary<ProductionBuilding, int> combinedSupBldgs = new Dictionary<ProductionBuilding, int>();
                     Dictionary<AmenityBuilding, int> combinedAmeBldgs = new Dictionary<AmenityBuilding, int>();
                     Dictionary<TransportationBuilding, int> combinedTransBldgs = new Dictionary<TransportationBuilding, int>();
+                    Dictionary<Resource, double> combinedConstructionMaterials = new Dictionary<Resource, double>();
 
                     // Loop through allPlans and sum everything
                     foreach (var plan in allPlans)
@@ -1250,6 +1251,13 @@ namespace SovietRepublicPlanner
                         {
                             if (combinedTransBldgs.ContainsKey(ti.Building)) combinedTransBldgs[ti.Building] += ti.Count;
                             else combinedTransBldgs.Add(ti.Building, ti.Count);
+                        }
+
+                        // Combine Construction Materials
+                        foreach (var kv in plan.TotalConstructionMaterials)
+                        {
+                            if (combinedConstructionMaterials.ContainsKey(kv.Key)) combinedConstructionMaterials[kv.Key] += kv.Value;
+                            else combinedConstructionMaterials.Add(kv.Key,kv.Value);
                         }
                     }
 
@@ -1341,6 +1349,14 @@ namespace SovietRepublicPlanner
                             if (kv.Key != GameData.PowerResource)
                                 Console.WriteLine($"│ {kv.Value:F2} t/day x {kv.Key.Name}");
                             else Console.WriteLine($"│ {kv.Value:F2} MWh/day x {kv.Key.Name}");
+                    if (allPlans.Any(p => p.TotalConstructionMaterials.Count() > 0))
+                    {
+                        Console.WriteLine("├────────────────────────────────────────┤");
+                        Console.WriteLine("│ Total Construction Materials:          │");       
+                        Console.WriteLine("├────────────────────────────────────────┤");
+                        foreach (var kv in combinedConstructionMaterials)
+                            Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+                    }
                     Console.WriteLine("└────────────────────────────────────────┘");
                     continue;
                 }

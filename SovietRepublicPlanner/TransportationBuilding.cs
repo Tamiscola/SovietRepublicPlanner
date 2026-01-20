@@ -14,7 +14,7 @@ class TransportationBuilding
     public TransportationType Type;  // enum: Bus, Trolley, Tram, Depot, Station, Refueling, Maintenance
 
     // Construction
-    public int Workdays;
+    public int Workdays { get; set; }
     public Dictionary<Resource, double> ConstructionMaterials = new Dictionary<Resource, double>();
 
     // Utilities (same as other buildings)
