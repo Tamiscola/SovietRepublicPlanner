@@ -77,7 +77,8 @@ class GameData
     public static Resource AsphaltResource = new Resource("Asphalt", 0, false, false) {};
     public static Resource PrefabPanelsResource = new Resource("Prefab Panels", 0, false, false) { RequiresSolidHandling = true };
     public static Resource BoardsResource = new Resource("Boards", 1, false, false) { RequiresSolidHandling = true };
-    public static Resource MechanicalComponentsResource = new Resource("Mechanical Components", 3, false, false) { RequiresGeneralDistribution = true };
+    public static Resource MechanicComponentsResource = new Resource("Mechanical Components", 3, false, false) { RequiresGeneralDistribution = true };
+    public static Resource ElectroComponentsResource = new Resource("Electro Components Resource", 4, false, false) { RequiresGeneralDistribution = true }; 
 
     // Utility resources (dual nature: input + service)
     public static Resource PowerResource = new Resource("Power", 1, true, true) { RequiresElectricalInfrastructure = true };
@@ -347,7 +348,7 @@ class GameData
     };
         result.Outputs = new List<ResourceAmount>
     {
-        new ResourceAmount(MechanicalComponentsResource, 15, TimePeriod.Day)
+        new ResourceAmount(MechanicComponentsResource, 15, TimePeriod.Day)
     };
         result.WorkersPerShift = 150;
         result.PowerConsumption = 8.1; // 8.1 MWh/day
@@ -2055,95 +2056,1657 @@ class GameData
     // Small Residential Buildings
     public static List<ResidentialBuilding> SmallResidentialBuildings = new List<ResidentialBuilding>
     {
-        // (Power: 3.0 MWh/day ÷ 60 hours = 0.05 MW)
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (29w, 1.31m³/d, 84%)", WorkerCapacity = 29, PowerMW = 3.0, WaterPerDay = 1.31, HeatTankM3 = 2.03, Quality = 84 },
-        new ResidentialBuilding { Name = "Low-quality rural flats (20w, 0.9m³/d, 55%)", WorkerCapacity = 20, PowerMW = 3.0, WaterPerDay = 0.90, HeatTankM3 = 1.40, Quality = 55 },
-        new ResidentialBuilding { Name = "Flats - prefab (42w, 1.89m³/d, 83%)", WorkerCapacity = 42, PowerMW = 3.0, WaterPerDay = 1.89, HeatTankM3 = 2.94, Quality = 83 },
-        new ResidentialBuilding { Name = "Flats - prefab (43w, 1.94m³/d, 83%)", WorkerCapacity = 43, PowerMW = 3.0, WaterPerDay = 1.94, HeatTankM3 = 3.00, Quality = 83 },
-        new ResidentialBuilding { Name = "Low-quality rural flats (30w, 1.35m³/d, 63%)", WorkerCapacity = 30, PowerMW = 3.0, WaterPerDay = 1.35, HeatTankM3 = 2.10, Quality = 63 },
-        new ResidentialBuilding { Name = "Low-quality rural flats (20w, 0.9m³/d, 55%) #2", WorkerCapacity = 20, PowerMW = 3.0, WaterPerDay = 0.90, HeatTankM3 = 1.40, Quality = 55 },
-        new ResidentialBuilding { Name = "Flats - prefab (48w, 2.16m³/d, 82%)", WorkerCapacity = 48, PowerMW = 3.0, WaterPerDay = 2.16, HeatTankM3 = 3.00, Quality = 82 },
-        new ResidentialBuilding { Name = "Flats - prefab (42w, 1.89m³/d, 83%) #2", WorkerCapacity = 42, PowerMW = 3.0, WaterPerDay = 1.89, HeatTankM3 = 2.94, Quality = 83 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (43w, 1.94m³/d, 80%)", WorkerCapacity = 43, PowerMW = 3.0, WaterPerDay = 1.94, HeatTankM3 = 3.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (29w, 1.31m³/d, 80%)", WorkerCapacity = 29, PowerMW = 3.0, WaterPerDay = 1.31, HeatTankM3 = 2.03, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (40w, 1.8m³/d, 84%)", WorkerCapacity = 40, PowerMW = 3.0, WaterPerDay = 1.80, HeatTankM3 = 2.80, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (40w, 1.8m³/d, 84%) #2", WorkerCapacity = 40, PowerMW = 3.0, WaterPerDay = 1.80, HeatTankM3 = 2.80, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (27w, 1.22m³/d, 91%)", WorkerCapacity = 27, PowerMW = 3.0, WaterPerDay = 1.22, HeatTankM3 = 1.89, Quality = 91 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (48w, 2.16m³/d, 84%)", WorkerCapacity = 48, PowerMW = 3.0, WaterPerDay = 2.16, HeatTankM3 = 3.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (30w, 1.35m³/d, 84%)", WorkerCapacity = 30, PowerMW = 3.0, WaterPerDay = 1.35, HeatTankM3 = 2.10, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - brick (20w, 0.9m³/d, 85%)", WorkerCapacity = 20, PowerMW = 3.0, WaterPerDay = 0.90, HeatTankM3 = 1.40, Quality = 85 },
-        new ResidentialBuilding { Name = "Flats - brick (10w, 0.45m³/d, 89%)", WorkerCapacity = 10, PowerMW = 3.0, WaterPerDay = 0.45, HeatTankM3 = 0.70, Quality = 89 },
-        new ResidentialBuilding { Name = "Flats - brick (30w, 1.35m³/d, 77%)", WorkerCapacity = 30, PowerMW = 3.0, WaterPerDay = 1.35, HeatTankM3 = 2.10, Quality = 77 },
-        new ResidentialBuilding { Name = "Flats - brick (30w, 1.35m³/d, 80%)", WorkerCapacity = 30, PowerMW = 3.0, WaterPerDay = 1.35, HeatTankM3 = 2.10, Quality = 80 },
+        new ResidentialBuilding {
+            Name = "Flats - brick (48w, 2.16m³/d, 80%)",
+            WorkerCapacity = 48,
+            PowerMW = 3.0,
+            WaterPerDay = 2.16,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 500,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 9.8},
+                {GravelResource, 7.6},
+                {BricksResource, 33},
+                {BoardsResource, 11},
+                {SteelResource, 4.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (36w, 1.62m³/d, 85%)",
+            WorkerCapacity = 36,
+            PowerMW = 3.0,
+            WaterPerDay = 1.62,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 535,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 11},
+                {GravelResource, 8.7},
+                {BricksResource, 34},
+                {BoardsResource, 11},
+                {SteelResource, 4.3},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (10w, 0.45m³/d, 85%)",
+            WorkerCapacity = 10,
+            PowerMW = 3.0,
+            WaterPerDay = 0.45,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 158,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.2},
+                {GravelResource, 2.5},
+                {BricksResource, 10},
+                {BoardsResource, 3.5},
+                {SteelResource, 1.3},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (18w, 0.81m³/d, 80%)",
+            WorkerCapacity = 18,
+            PowerMW = 3.0,
+            WaterPerDay = 0.81,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 235,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 5.0},
+                {GravelResource, 3.9},
+                {BricksResource, 15},
+                {BoardsResource, 5.1},
+                {SteelResource, 1.9},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (20w, 0.90m³/d, 85%)",
+            WorkerCapacity = 20,
+            PowerMW = 3.0,
+            WaterPerDay = 0.90,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 305,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 7.1},
+                {GravelResource, 5.5},
+                {BricksResource, 19},
+                {BoardsResource, 6.4},
+                {SteelResource, 2.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (48w, 2.16m³/d, 80%)",
+            WorkerCapacity = 48,
+            PowerMW = 3.0,
+            WaterPerDay = 2.16,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 478,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 7.9},
+                {GravelResource, 6.1},
+                {BricksResource, 33},
+                {BoardsResource, 11},
+                {SteelResource, 4.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Low-quality rural flats (20w, 0.90m³/d, 60%)",
+            WorkerCapacity = 20,
+            PowerMW = 3.0,
+            WaterPerDay = 0.90,
+            HeatTankM3 = 0,
+            Quality = 60,
+            Workdays = 106,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 2.6},
+                {GravelResource, 2.0},
+                {BricksResource, 6.6},
+                {BoardsResource, 2.2},
+                {SteelResource, 0.82},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (32w, 1.44m³/d, 80%)",
+            WorkerCapacity = 32,
+            PowerMW = 3.0,
+            WaterPerDay = 1.44,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 324,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 6.9},
+                {GravelResource, 5.3},
+                {BricksResource, 21},
+                {BoardsResource, 7.0},
+                {SteelResource, 2.6},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (40w, 1.80m³/d, 85%)",
+            WorkerCapacity = 40,
+            PowerMW = 3.0,
+            WaterPerDay = 1.80,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 341,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 11},
+                {GravelResource, 9.0},
+                {AsphaltResource, 7.2},
+                {PrefabPanelsResource, 31},
+                {SteelResource, 3.2},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (29w, 1.31m³/d, 80%)",
+            WorkerCapacity = 29,
+            PowerMW = 3.0,
+            WaterPerDay = 1.31,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 246,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 42},
+                {GravelResource, 4.0},
+                {BricksResource, 0.040},
+                {BoardsResource, 5.2},
+                {PrefabPanelsResource, 12},
+                {SteelResource, 0.40},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Low-quality rural flats (30w, 1.35m³/d, 63%)",
+            WorkerCapacity = 30,
+            PowerMW = 3.0,
+            WaterPerDay = 1.35,
+            HeatTankM3 = 0,
+            Quality = 63,
+            Workdays = 227,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 7.2},
+                {GravelResource, 5.6},
+                {AsphaltResource, 4.5},
+                {BricksResource, 11},
+                {BoardsResource, 4.6},
+                {SteelResource, 1.9},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (42w, 1.89m³/d, 83%)",
+            WorkerCapacity = 42,
+            PowerMW = 3.0,
+            WaterPerDay = 1.89,
+            HeatTankM3 = 0,
+            Quality = 83,
+            Workdays = 364,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 11},
+                {GravelResource, 8.8},
+                {AsphaltResource, 7.0},
+                {PrefabPanelsResource, 29},
+                {SteelResource, 6.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (48w, 2.16m³/d, 82%)",
+            WorkerCapacity = 48,
+            PowerMW = 3.0,
+            WaterPerDay = 2.16,
+            HeatTankM3 = 0,
+            Quality = 82,
+            Workdays = 320,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 9.2},
+                {GravelResource, 7.1},
+                {AsphaltResource, 5.7},
+                {PrefabPanelsResource, 25},
+                {SteelResource, 7.0},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Low-quality rural flats (20w, 0.90m³/d, 55%)",
+            WorkerCapacity = 20,
+            PowerMW = 3.0,
+            WaterPerDay = 0.90,
+            HeatTankM3 = 0,
+            Quality = 55,
+            Workdays = 129,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 5.4},
+                {GravelResource, 4.1},
+                {AsphaltResource, 3.3},
+                {BricksResource, 5.8},
+                {BoardsResource, 1.9},
+                {SteelResource, 0.72},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (43w, 1.94m³/d, 80%)",
+            WorkerCapacity = 43,
+            PowerMW = 3.0,
+            WaterPerDay = 1.94,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 424,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 54},
+                {GravelResource, 5.0},
+                {BricksResource, 0.10},
+                {BoardsResource, 11},
+                {PrefabPanelsResource, 25},
+                {SteelResource, 1.0},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Low-quality rural flats (20w, 0.90m³/d, 55%)",
+            WorkerCapacity = 20,
+            PowerMW = 3.0,
+            WaterPerDay = 0.90,
+            HeatTankM3 = 0,
+            Quality = 55,
+            Workdays = 137,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 5.5},
+                {GravelResource, 4.2},
+                {AsphaltResource, 3.4},
+                {BricksResource, 6.3},
+                {BoardsResource, 2.1},
+                {SteelResource, 0.79},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (29w, 1.31m³/d, 84%)",
+            WorkerCapacity = 29,
+            PowerMW = 3.0,
+            WaterPerDay = 1.31,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 262,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 2.0},
+                {GravelResource, 1.5},
+                {AsphaltResource, 1.2},
+                {BricksResource, 0.23},
+                {BoardsResource, 11},
+                {PrefabPanelsResource, 20},
+                {SteelResource, 2.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (48w, 2.16m³/d, 84%)",
+            WorkerCapacity = 48,
+            PowerMW = 3.0,
+            WaterPerDay = 2.16,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 376,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 2.7},
+                {GravelResource, 2.1},
+                {AsphaltResource, 1.7},
+                {BricksResource, 0.31},
+                {BoardsResource, 18},
+                {PrefabPanelsResource, 27},
+                {SteelResource, 2.8},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (43w, 1.94m³/d, 83%)",
+            WorkerCapacity = 43,
+            PowerMW = 3.0,
+            WaterPerDay = 1.94,
+            HeatTankM3 = 0,
+            Quality = 83,
+            Workdays = 374,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 10},
+                {GravelResource, 7.8},
+                {AsphaltResource, 6.2},
+                {PrefabPanelsResource, 32},
+                {SteelResource, 7.2},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (42w, 1.89m³/d, 83%)",
+            WorkerCapacity = 42,
+            PowerMW = 3.0,
+            WaterPerDay = 1.89,
+            HeatTankM3 = 0,
+            Quality = 83,
+            Workdays = 404,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 13},
+                {GravelResource, 10},
+                {AsphaltResource, 8.4},
+                {PrefabPanelsResource, 31},
+                {SteelResource, 6.9},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (40w, 1.80m³/d, 84%)",
+            WorkerCapacity = 40,
+            PowerMW = 3.0,
+            WaterPerDay = 1.80,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 336,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 2.7},
+                {GravelResource, 2.1},
+                {AsphaltResource, 1.6},
+                {BricksResource, 0.31},
+                {BoardsResource, 16},
+                {PrefabPanelsResource, 24},
+                {SteelResource, 2.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (30w, 1.35m³/d, 84%)",
+            WorkerCapacity = 30,
+            PowerMW = 3.0,
+            WaterPerDay = 1.35,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 266,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 2.0},
+                {GravelResource, 1.5},
+                {AsphaltResource, 1.2},
+                {BricksResource, 0.23},
+                {BoardsResource, 12},
+                {PrefabPanelsResource, 20},
+                {SteelResource, 2.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (20w, 0.90m³/d, 85%)",
+            WorkerCapacity = 20,
+            PowerMW = 3.0,
+            WaterPerDay = 0.90,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 322,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 8.2},
+                {GravelResource, 6.3},
+                {AsphaltResource, 5.0},
+                {BricksResource, 15},
+                {BoardsResource, 8.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (40w, 1.80m³/d, 84%)",
+            WorkerCapacity = 40,
+            PowerMW = 3.0,
+            WaterPerDay = 1.80,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 413,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 4.3},
+                {GravelResource, 3.3},
+                {AsphaltResource, 2.6},
+                {BricksResource, 0.42},
+                {BoardsResource, 18},
+                {PrefabPanelsResource, 30},
+                {SteelResource, 3.0},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (10w, 0.45m³/d, 89%)",
+            WorkerCapacity = 10,
+            PowerMW = 3.0,
+            WaterPerDay = 0.45,
+            HeatTankM3 = 0,
+            Quality = 89,
+            Workdays = 191,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.6},
+                {GravelResource, 2.8},
+                {AsphaltResource, 2.2},
+                {BricksResource, 10},
+                {BoardsResource, 4.9},
+                {SteelResource, 2.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (27w, 1.22m³/d, 91%)",
+            WorkerCapacity = 27,
+            PowerMW = 3.0,
+            WaterPerDay = 1.22,
+            HeatTankM3 = 0,
+            Quality = 91,
+            Workdays = 271,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 9.4},
+                {GravelResource, 7.2},
+                {AsphaltResource, 5.8},
+                {PrefabPanelsResource, 25},
+                {SteelResource, 2.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (30w, 1.35m³/d, 77%)",
+            WorkerCapacity = 30,
+            PowerMW = 3.0,
+            WaterPerDay = 1.35,
+            HeatTankM3 = 0,
+            Quality = 77,
+            Workdays = 302,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 7.7},
+                {GravelResource, 5.9},
+                {AsphaltResource, 4.7},
+                {BricksResource, 14},
+                {BoardsResource, 7.6},
+                {SteelResource, 3.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (30w, 1.35m³/d, 80%)",
+            WorkerCapacity = 30,
+            PowerMW = 3.0,
+            WaterPerDay = 1.35,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 326,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 5.8},
+                {GravelResource, 4.5},
+                {AsphaltResource, 3.6},
+                {BricksResource, 19},
+                {BoardsResource, 8.5},
+                {SteelResource, 3.7},
+            }
+        },
     };
 
     // Medium Residential Buildings
     public static List<ResidentialBuilding> MediumResidentialBuildings = new List<ResidentialBuilding>
     {
-        new ResidentialBuilding { Name = "Flats - prefab (65w, 2.93m³/d, 87%)", WorkerCapacity = 65, PowerMW = 3.9 , WaterPerDay = 2.93, HeatTankM3 = 4.00, Quality = 87 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%)", WorkerCapacity = 85, PowerMW = 5.1 , WaterPerDay = 3.83, HeatTankM3 = 5.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (58w, 2.61m³/d, 80%)", WorkerCapacity = 58, PowerMW = 3.5 , WaterPerDay = 2.61, HeatTankM3 = 4.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (80w, 3.60m³/d, 87%)", WorkerCapacity = 80, PowerMW = 4.8 , WaterPerDay = 3.60, HeatTankM3 = 5.00, Quality = 87 },
-        new ResidentialBuilding { Name = "Flats - prefab (80w, 3.60m³/d, 70%)", WorkerCapacity = 80, PowerMW = 4.8 , WaterPerDay = 3.60, HeatTankM3 = 5.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (118w, 5.31m³/d, 70%)", WorkerCapacity = 118, PowerMW = 7.1 , WaterPerDay = 5.31, HeatTankM3 = 8.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (62w, 2.79m³/d, 86%)", WorkerCapacity = 62, PowerMW = 3.7 , WaterPerDay = 2.79, HeatTankM3 = 4.00, Quality = 86 },
-        new ResidentialBuilding { Name = "Flats - prefab (82w, 3.69m³/d, 87%)", WorkerCapacity = 82, PowerMW = 4.9 , WaterPerDay = 3.69, HeatTankM3 = 5.00, Quality = 87 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%)", WorkerCapacity = 85, PowerMW = 5.1 , WaterPerDay = 3.83, HeatTankM3 = 5.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 86%)", WorkerCapacity = 63, PowerMW = 3.8 , WaterPerDay = 2.84, HeatTankM3 = 4.00, Quality = 86 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (96w, 4.32m³/d, 84%)", WorkerCapacity = 96, PowerMW = 5.8 , WaterPerDay = 4.32, HeatTankM3 = 6.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (74w, 3.33m³/d, 84%)", WorkerCapacity = 74, PowerMW = 4.4 , WaterPerDay = 3.33, HeatTankM3 = 5.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 84%)", WorkerCapacity = 63, PowerMW = 3.8 , WaterPerDay = 2.84, HeatTankM3 = 4.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (52w, 2.34m³/d, 84%)", WorkerCapacity = 52, PowerMW = 3.1 , WaterPerDay = 2.34, HeatTankM3 = 3.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (55w, 2.48m³/d, 70%)", WorkerCapacity = 55, PowerMW = 3.3 , WaterPerDay = 2.48, HeatTankM3 = 3.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (74w, 3.33m³/d, 80%)", WorkerCapacity = 74, PowerMW = 4.4 , WaterPerDay = 3.33, HeatTankM3 = 5.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (64w, 2.88m³/d, 84%)", WorkerCapacity = 64, PowerMW = 3.8 , WaterPerDay = 2.88, HeatTankM3 = 4.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (108w, 4.86m³/d, 84%)", WorkerCapacity = 108, PowerMW = 6.5 , WaterPerDay = 4.86, HeatTankM3 = 7.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - brick (50w, 2.25m³/d, 70%)", WorkerCapacity = 50, PowerMW = 3.0 , WaterPerDay = 2.25, HeatTankM3 = 3.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (67w, 3.02m³/d, 84%)", WorkerCapacity = 67, PowerMW = 4.0 , WaterPerDay = 3.02, HeatTankM3 = 4.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 464) (115w, 5.18m³/d, 60%)", WorkerCapacity = 115, PowerMW = 6.9 , WaterPerDay = 5.18, HeatTankM3 = 8.00, Quality = 60 },
-        new ResidentialBuilding { Name = "Flats - brick (110w, 4.95m³/d, 87%)", WorkerCapacity = 110, PowerMW = 6.6 , WaterPerDay = 4.95, HeatTankM3 = 7.00, Quality = 87 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (81w, 3.65m³/d, 84%)", WorkerCapacity = 81, PowerMW = 4.9 , WaterPerDay = 3.65, HeatTankM3 = 5.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (55w, 2.48m³/d, 84%)", WorkerCapacity = 55, PowerMW = 3.3 , WaterPerDay = 2.48, HeatTankM3 = 3.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (87w, 3.92m³/d, 94%)", WorkerCapacity = 87, PowerMW = 5.2 , WaterPerDay = 3.92, HeatTankM3 = 6.00, Quality = 94 },
-        new ResidentialBuilding { Name = "Flats - prefab (105w, 4.73m³/d, 91%)", WorkerCapacity = 105, PowerMW = 6.3 , WaterPerDay = 4.73, HeatTankM3 = 7.00, Quality = 91 },
+        new ResidentialBuilding {
+            Name = "Flats - brick (90w, 4.05m³/d, 80%)",
+            WorkerCapacity = 90,
+            PowerMW = 5.4,
+            WaterPerDay = 4.05,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 845,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 16},
+                {GravelResource, 12},
+                {BricksResource, 56},
+                {BoardsResource, 18},
+                {SteelResource, 7.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (60w, 2.70m³/d, 80%)",
+            WorkerCapacity = 60,
+            PowerMW = 3.6,
+            WaterPerDay = 2.70,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 613,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 11},
+                {GravelResource, 8.5},
+                {BricksResource, 41},
+                {BoardsResource, 13},
+                {SteelResource, 5.2},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (115w, 5.18m³/d, 80%) [large-dup]",
+            WorkerCapacity = 115,
+            PowerMW = 6.9,
+            WaterPerDay = 5.18,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1069,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 22},
+                {GravelResource, 17},
+                {BricksResource, 68},
+                {BoardsResource, 22},
+                {SteelResource, 8.8},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (56w, 2.52m³/d, 85%)",
+            WorkerCapacity = 56,
+            PowerMW = 3.4,
+            WaterPerDay = 2.52,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 769,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 14},
+                {GravelResource, 11},
+                {BricksResource, 51},
+                {BoardsResource, 17},
+                {SteelResource, 6.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (65w, 2.93m³/d, 80%)",
+            WorkerCapacity = 65,
+            PowerMW = 3.9,
+            WaterPerDay = 2.93,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 714,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 16},
+                {GravelResource, 12},
+                {BricksResource, 45},
+                {BoardsResource, 15},
+                {SteelResource, 5.7},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (72w, 3.24m³/d, 80%)",
+            WorkerCapacity = 72,
+            PowerMW = 4.3,
+            WaterPerDay = 3.24,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 695,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 14},
+                {GravelResource, 11},
+                {BricksResource, 45},
+                {BoardsResource, 15},
+                {SteelResource, 5.6},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (50w, 2.25m³/d, 85%)",
+            WorkerCapacity = 50,
+            PowerMW = 3.0,
+            WaterPerDay = 2.25,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 673,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 13},
+                {GravelResource, 10},
+                {AsphaltResource, 8.1},
+                {BricksResource, 44},
+                {BoardsResource, 14},
+                {SteelResource, 5.6},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (50w, 2.25m³/d, 85%) [dup]",
+            WorkerCapacity = 50,
+            PowerMW = 3.0,
+            WaterPerDay = 2.25,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 713,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 17},
+                {GravelResource, 13},
+                {BricksResource, 44},
+                {BoardsResource, 14},
+                {SteelResource, 5.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (65w, 2.93m³/d, 80%) [dup]",
+            WorkerCapacity = 65,
+            PowerMW = 3.9,
+            WaterPerDay = 2.93,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 728,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 17},
+                {GravelResource, 13},
+                {BricksResource, 45},
+                {BoardsResource, 15},
+                {SteelResource, 5.7},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (60w, 2.70m³/d, 80%) [dup]",
+            WorkerCapacity = 60,
+            PowerMW = 3.6,
+            WaterPerDay = 2.70,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 691,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 15},
+                {GravelResource, 11},
+                {BricksResource, 44},
+                {BoardsResource, 14},
+                {SteelResource, 5.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (118w, 5.31m³/d, 70%)",
+            WorkerCapacity = 118,
+            PowerMW = 7.1,
+            WaterPerDay = 5.31,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 635,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 13},
+                {GravelResource, 10},
+                {AsphaltResource, 8.4},
+                {BricksResource, 28},
+                {BoardsResource, 14},
+                {PrefabPanelsResource, 75},
+                {SteelResource, 7.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (55w, 2.48m³/d, 80%) [dup]",
+            WorkerCapacity = 55,
+            PowerMW = 3.3,
+            WaterPerDay = 2.48,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 569,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 16},
+                {GravelResource, 12},
+                {BricksResource, 32},
+                {BoardsResource, 10},
+                {SteelResource, 4.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (90w, 4.05m³/d, 80%) [dup]",
+            WorkerCapacity = 90,
+            PowerMW = 5.4,
+            WaterPerDay = 4.05,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 942,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 22},
+                {GravelResource, 17},
+                {BricksResource, 58},
+                {BoardsResource, 19},
+                {SteelResource, 7.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (80w, 3.60m³/d, 85%)",
+            WorkerCapacity = 80,
+            PowerMW = 4.8,
+            WaterPerDay = 3.60,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 862,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 16},
+                {GravelResource, 12},
+                {BricksResource, 57},
+                {BoardsResource, 19},
+                {SteelResource, 7.2},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (75w, 3.38m³/d, 80%)",
+            WorkerCapacity = 75,
+            PowerMW = 4.5,
+            WaterPerDay = 3.38,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 862,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 18},
+                {GravelResource, 14},
+                {BricksResource, 55},
+                {BoardsResource, 18},
+                {SteelResource, 7.0},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (62w, 2.79m³/d, 86%)",
+            WorkerCapacity = 62,
+            PowerMW = 3.7,
+            WaterPerDay = 2.79,
+            HeatTankM3 = 0,
+            Quality = 86,
+            Workdays = 469,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 14},
+                {GravelResource, 10},
+                {AsphaltResource, 8.8},
+                {PrefabPanelsResource, 39},
+                {SteelResource, 8.0},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 86%)",
+            WorkerCapacity = 63,
+            PowerMW = 3.8,
+            WaterPerDay = 2.84,
+            HeatTankM3 = 0,
+            Quality = 86,
+            Workdays = 535,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.3},
+                {GravelResource, 2.5},
+                {AsphaltResource, 2.0},
+                {BricksResource, 0.37},
+                {BoardsResource, 24},
+                {PrefabPanelsResource, 39},
+                {SteelResource, 4.6},
+                {MechanicComponentsResource, 0.14},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (68w, 3.06m³/d, 85%)",
+            WorkerCapacity = 68,
+            PowerMW = 4.1,
+            WaterPerDay = 3.06,
+            HeatTankM3 = 0,
+            Quality = 85,
+            Workdays = 569,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 16},
+                {GravelResource, 12},
+                {AsphaltResource, 9.9},
+                {PrefabPanelsResource, 58},
+                {SteelResource, 5.9},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (72w, 3.24m³/d, 75%)",
+            WorkerCapacity = 72,
+            PowerMW = 4.3,
+            WaterPerDay = 3.24,
+            HeatTankM3 = 0,
+            Quality = 75,
+            Workdays = 515,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 14},
+                {GravelResource, 11},
+                {AsphaltResource, 9.2},
+                {PrefabPanelsResource, 52},
+                {SteelResource, 5.3},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (82w, 3.69m³/d, 87%)",
+            WorkerCapacity = 82,
+            PowerMW = 4.9,
+            WaterPerDay = 3.69,
+            HeatTankM3 = 0,
+            Quality = 87,
+            Workdays = 642,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 21},
+                {GravelResource, 16},
+                {AsphaltResource, 13},
+                {SteelResource, 12},
+                {PrefabPanelsResource, 47},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (80w, 3.60m³/d, 87%)",
+            WorkerCapacity = 80,
+            PowerMW = 4.8,
+            WaterPerDay = 3.60,
+            HeatTankM3 = 0,
+            Quality = 87,
+            Workdays = 617,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 21},
+                {GravelResource, 16},
+                {AsphaltResource, 13},
+                {SteelResource, 10},
+                {PrefabPanelsResource, 47},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%)",
+            WorkerCapacity = 85,
+            PowerMW = 5.1,
+            WaterPerDay = 3.83,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 603,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 77},
+                {GravelResource, 7.1},
+                {BricksResource, 0.10},
+                {BoardsResource, 15},
+                {PrefabPanelsResource, 35},
+                {SteelResource, 1.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (65w, 2.93m³/d, 87%)",
+            WorkerCapacity = 65,
+            PowerMW = 3.9,
+            WaterPerDay = 2.93,
+            HeatTankM3 = 0,
+            Quality = 87,
+            Workdays = 529,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 17},
+                {GravelResource, 13},
+                {AsphaltResource, 10},
+                {SteelResource, 10},
+                {PrefabPanelsResource, 39},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (58w, 2.61m³/d, 80%)",
+            WorkerCapacity = 58,
+            PowerMW = 3.5,
+            WaterPerDay = 2.61,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 361,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 62},
+                {GravelResource, 5.8},
+                {BricksResource, 0.068},
+                {BoardsResource, 7.8},
+                {PrefabPanelsResource, 17},
+                {SteelResource, 0.58},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (108w, 4.86m³/d, 84%)",
+            WorkerCapacity = 108,
+            PowerMW = 6.5,
+            WaterPerDay = 4.86,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 909,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 6.8},
+                {GravelResource, 5.2},
+                {AsphaltResource, 4.2},
+                {BricksResource, 0.77},
+                {BoardsResource, 43},
+                {PrefabPanelsResource, 61},
+                {SteelResource, 7.6},
+                {MechanicComponentsResource, 0.29},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (81w, 3.65m³/d, 84%)",
+            WorkerCapacity = 81,
+            PowerMW = 4.9,
+            WaterPerDay = 3.65,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 676,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 6.9},
+                {GravelResource, 5.3},
+                {AsphaltResource, 4.2},
+                {BricksResource, 0.80},
+                {BoardsResource, 31},
+                {PrefabPanelsResource, 48},
+                {SteelResource, 4.8},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (80w, 3.60m³/d, 70%)",
+            WorkerCapacity = 80,
+            PowerMW = 4.8,
+            WaterPerDay = 3.60,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 464,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 9.7},
+                {GravelResource, 7.5},
+                {AsphaltResource, 6.0},
+                {BricksResource, 20},
+                {BoardsResource, 10},
+                {PrefabPanelsResource, 74},
+                {SteelResource, 5.5},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (55w, 2.48m³/d, 70%)",
+            WorkerCapacity = 55,
+            PowerMW = 3.3,
+            WaterPerDay = 2.48,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 329,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 6.5},
+                {GravelResource, 5.0},
+                {AsphaltResource, 4.0},
+                {BricksResource, 15},
+                {BoardsResource, 7.5},
+                {PrefabPanelsResource, 54},
+                {SteelResource, 3.9},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (74w, 3.33m³/d, 80%)",
+            WorkerCapacity = 74,
+            PowerMW = 4.4,
+            WaterPerDay = 3.33,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 483,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 42},
+                {GravelResource, 3.8},
+                {BricksResource, 0.13},
+                {BoardsResource, 14},
+                {PrefabPanelsResource, 33},
+                {SteelResource, 1.4},
+                {ElectroComponentsResource, 0.038},
+                {MechanicComponentsResource, 0.063},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (67w, 3.02m³/d, 84%)",
+            WorkerCapacity = 67,
+            PowerMW = 4.0,
+            WaterPerDay = 3.02,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 557,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.5},
+                {GravelResource, 2.7},
+                {AsphaltResource, 2.1},
+                {BricksResource, 0.63},
+                {BoardsResource, 26},
+                {PrefabPanelsResource, 39},
+                {SteelResource, 4.7},
+                {MechanicComponentsResource, 0.15},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%) [dup]",
+            WorkerCapacity = 85,
+            PowerMW = 5.1,
+            WaterPerDay = 3.83,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 556,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 49},
+                {GravelResource, 4.2},
+                {BricksResource, 0.13},
+                {BoardsResource, 16},
+                {PrefabPanelsResource, 37},
+                {SteelResource, 1.6},
+                {ElectroComponentsResource, 0.042},
+                {MechanicComponentsResource, 0.063},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (74w, 3.33m³/d, 84%)",
+            WorkerCapacity = 74,
+            PowerMW = 4.4,
+            WaterPerDay = 3.33,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 589,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 5.8},
+                {GravelResource, 4.4},
+                {AsphaltResource, 3.6},
+                {BricksResource, 0.67},
+                {BoardsResource, 21},
+                {PrefabPanelsResource, 42},
+                {SteelResource, 4.2},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (50w, 2.25m³/d, 70%)",
+            WorkerCapacity = 50,
+            PowerMW = 3.0,
+            WaterPerDay = 2.25,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 432,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 8.0},
+                {GravelResource, 6.2},
+                {AsphaltResource, 4.9},
+                {BricksResource, 25},
+                {BoardsResource, 11},
+                {SteelResource, 4.8},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 464) (115w, 5.18m³/d, 60%)",
+            WorkerCapacity = 115,
+            PowerMW = 6.9,
+            WaterPerDay = 5.18,
+            HeatTankM3 = 0,
+            Quality = 60,
+            Workdays = 510,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 19},
+                {GravelResource, 15},
+                {AsphaltResource, 12},
+                {PrefabPanelsResource, 43},
+                {SteelResource, 4.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (52w, 2.34m³/d, 84%)",
+            WorkerCapacity = 52,
+            PowerMW = 3.1,
+            WaterPerDay = 2.34,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 430,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.9},
+                {GravelResource, 3.0},
+                {AsphaltResource, 2.4},
+                {BricksResource, 0.45},
+                {BoardsResource, 20},
+                {PrefabPanelsResource, 31},
+                {SteelResource, 3.1},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (110w, 4.95m³/d, 87%)",
+            WorkerCapacity = 110,
+            PowerMW = 6.6,
+            WaterPerDay = 4.95,
+            HeatTankM3 = 0,
+            Quality = 87,
+            Workdays = 1200,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 28},
+                {GravelResource, 22},
+                {AsphaltResource, 17},
+                {BricksResource, 60},
+                {BoardsResource, 29},
+                {SteelResource, 13},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (96w, 4.32m³/d, 84%)",
+            WorkerCapacity = 96,
+            PowerMW = 5.8,
+            WaterPerDay = 4.32,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 769,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.6},
+                {GravelResource, 2.8},
+                {AsphaltResource, 2.2},
+                {BricksResource, 0.50},
+                {BoardsResource, 35},
+                {PrefabPanelsResource, 59},
+                {SteelResource, 6.8},
+                {MechanicComponentsResource, 0.20},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 84%) [dup]",
+            WorkerCapacity = 63,
+            PowerMW = 3.8,
+            WaterPerDay = 2.84,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 532,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.3},
+                {GravelResource, 2.5},
+                {AsphaltResource, 2.0},
+                {BricksResource, 0.37},
+                {BoardsResource, 24},
+                {PrefabPanelsResource, 39},
+                {SteelResource, 4.6},
+                {MechanicComponentsResource, 0.14},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (87w, 3.92m³/d, 94%)",
+            WorkerCapacity = 87,
+            PowerMW = 5.2,
+            WaterPerDay = 3.92,
+            HeatTankM3 = 0,
+            Quality = 94,
+            Workdays = 658,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 13},
+                {GravelResource, 10},
+                {AsphaltResource, 8.5},
+                {PrefabPanelsResource, 76},
+                {SteelResource, 7.7},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (105w, 4.73m³/d, 91%)",
+            WorkerCapacity = 105,
+            PowerMW = 6.3,
+            WaterPerDay = 4.73,
+            HeatTankM3 = 0,
+            Quality = 91,
+            Workdays = 799,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 21},
+                {GravelResource, 16},
+                {AsphaltResource, 13},
+                {PrefabPanelsResource, 84},
+                {SteelResource, 8.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (64w, 2.88m³/d, 84%)",
+            WorkerCapacity = 64,
+            PowerMW = 3.8,
+            WaterPerDay = 2.88,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 504,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 2.9},
+                {GravelResource, 2.2},
+                {AsphaltResource, 1.8},
+                {BricksResource, 0.32},
+                {BoardsResource, 24},
+                {PrefabPanelsResource, 36},
+                {SteelResource, 4.3},
+                {MechanicComponentsResource, 0.14},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (55w, 2.48m³/d, 84%)",
+            WorkerCapacity = 55,
+            PowerMW = 3.3,
+            WaterPerDay = 2.48,
+            HeatTankM3 = 0,
+            Quality = 84,
+            Workdays = 470,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 3.9},
+                {GravelResource, 3.0},
+                {AsphaltResource, 2.4},
+                {BricksResource, 0.45},
+                {BoardsResource, 22},
+                {PrefabPanelsResource, 34},
+                {SteelResource, 3.5},
+            }
+        },
     };
 
     // Large Residential Buildings
     public static List<ResidentialBuilding> LargeResidentialBuildings = new List<ResidentialBuilding>
     {
-        new ResidentialBuilding { Name = "Flats - prefab (145w, 6.53m³/d, 72%)", WorkerCapacity = 145, PowerMW = 8.7 , WaterPerDay = 6.53, HeatTankM3 = 10.00, Quality = 72 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (147w, 6.62m³/d, 80%)", WorkerCapacity = 147, PowerMW = 8.8 , WaterPerDay = 6.62, HeatTankM3 = 10.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (245w, 11.03m³/d, 80%)", WorkerCapacity = 245, PowerMW = 14.0 , WaterPerDay = 11.03, HeatTankM3 = 17.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (165w, 7.43m³/d, 78%)", WorkerCapacity = 165, PowerMW = 9.9 , WaterPerDay = 7.43, HeatTankM3 = 11.00, Quality = 78 },
-        new ResidentialBuilding { Name = "Flats - prefab (180w, 8.10m³/d, 75%)", WorkerCapacity = 180, PowerMW = 10.0 , WaterPerDay = 8.10, HeatTankM3 = 12.00, Quality = 75 },
-        new ResidentialBuilding { Name = "Flats - prefab (160w, 7.20m³/d, 76%)", WorkerCapacity = 160, PowerMW = 9.6 , WaterPerDay = 7.20, HeatTankM3 = 11.00, Quality = 76 },
-        new ResidentialBuilding { Name = "Flats - prefab (210w, 9.45m³/d, 70%)", WorkerCapacity = 210, PowerMW = 12.0 , WaterPerDay = 9.45, HeatTankM3 = 14.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (120w, 5.40m³/d, 86%)", WorkerCapacity = 120, PowerMW = 7.2 , WaterPerDay = 5.40, HeatTankM3 = 8.00, Quality = 86 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (126w, 5.67m³/d, 87%)", WorkerCapacity = 126, PowerMW = 7.6 , WaterPerDay = 5.67, HeatTankM3 = 8.00, Quality = 87 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (270w, 12.15m³/d, 84%)", WorkerCapacity = 270, PowerMW = 16.0 , WaterPerDay = 12.15, HeatTankM3 = 18.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (144w, 6.48m³/d, 84%)", WorkerCapacity = 144, PowerMW = 8.6 , WaterPerDay = 6.48, HeatTankM3 = 10.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (198w, 8.91m³/d, 84%)", WorkerCapacity = 198, PowerMW = 11.0 , WaterPerDay = 8.91, HeatTankM3 = 13.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (140w, 6.30m³/d, 70%)", WorkerCapacity = 140, PowerMW = 8.4 , WaterPerDay = 6.30, HeatTankM3 = 9.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (167w, 7.52m³/d, 70%)", WorkerCapacity = 167, PowerMW = 10.0 , WaterPerDay = 7.52, HeatTankM3 = 11.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (287w, 12.92m³/d, 80%)", WorkerCapacity = 287, PowerMW = 17.0 , WaterPerDay = 12.92, HeatTankM3 = 20.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (160w, 7.20m³/d, 70%) #2", WorkerCapacity = 160, PowerMW = 9.6 , WaterPerDay = 7.20, HeatTankM3 = 11.00, Quality = 70 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (126w, 5.67m³/d, 84%)", WorkerCapacity = 126, PowerMW = 7.6 , WaterPerDay = 5.67, HeatTankM3 = 8.00, Quality = 84 },
-        new ResidentialBuilding { Name = "Flats - prefab (220w, 9.90m³/d, 85%)", WorkerCapacity = 220, PowerMW = 13.0 , WaterPerDay = 9.90, HeatTankM3 = 15.00, Quality = 85 },
-        new ResidentialBuilding { Name = "Flats - prefab (145w, 6.53m³/d, 96%)", WorkerCapacity = 145, PowerMW = 8.7 , WaterPerDay = 6.53, HeatTankM3 = 10.00, Quality = 96 },
-        new ResidentialBuilding { Name = "Flats - prefab (180w, 8.10m³/d, 85%)", WorkerCapacity = 180, PowerMW = 10.0 , WaterPerDay = 8.10, HeatTankM3 = 12.00, Quality = 85 },
-        new ResidentialBuilding { Name = "Flats - prefab (1Lg-600A) (210w, 9.45m³/d, 80%) #2", WorkerCapacity = 210, PowerMW = 12.0 , WaterPerDay = 9.45, HeatTankM3 = 14.00, Quality = 80 },
-        new ResidentialBuilding { Name = "Flats - prefab (157w, 7.07m³/d, 93%)", WorkerCapacity = 157, PowerMW = 9.4 , WaterPerDay = 7.07, HeatTankM3 = 10.00, Quality = 93 },
-        new ResidentialBuilding { Name = "Flats - prefab (type 75) (252w, 11.34m³/d, 87%)", WorkerCapacity = 252, PowerMW = 15.0 , WaterPerDay = 11.34, HeatTankM3 = 17.00, Quality = 87 },
-        new ResidentialBuilding { Name = "Flats - brick (157w, 7.07m³/d, 68%)", WorkerCapacity = 157, PowerMW = 9.4 , WaterPerDay = 7.07, HeatTankM3 = 10.00, Quality = 68,
+        new ResidentialBuilding {
+            Name = "Flats - brick (200w, 9.00m³/d, 75%)",
+            WorkerCapacity = 200,
+            PowerMW = 12,
+            WaterPerDay = 9.00,
+            HeatTankM3 = 0, // Not shown in screenshot
+            Quality = 75,
+            Workdays = 1908,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 34},
+                {GravelResource, 26},
+                {BricksResource, 128},
+                {BoardsResource, 42},
+                {SteelResource, 16},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (150w, 6.75m³/d, 75%)",
+            WorkerCapacity = 150,
+            PowerMW = 9,
+            WaterPerDay = 6.75,
+            HeatTankM3 = 0,
+            Quality = 75,
+            Workdays = 1481,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 26},
+                {GravelResource, 20},
+                {BricksResource, 100},
+                {BoardsResource, 33},
+                {SteelResource, 12},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (157w, 7.07m³/d, 68%)",
+            WorkerCapacity = 157,
+            PowerMW = 9.4,
+            WaterPerDay = 7.07,
+            HeatTankM3 = 10.00,
+            Quality = 68,
             Workdays = 1382,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
-                {ConcreteResource, 27 },
-                {GravelResource, 20 },
-                {AsphaltResource, 16 },
-                {BricksResource, 80 },
-                {BoardsResource, 34 },
-                {SteelResource, 14 },
+                {ConcreteResource, 27},
+                {GravelResource, 20},
+                {AsphaltResource, 16},
+                {BricksResource, 80},
+                {BoardsResource, 34},
+                {SteelResource, 14},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (145w, 6.53m³/d, 80%)",
+            WorkerCapacity = 145,
+            PowerMW = 8.7,
+            WaterPerDay = 6.53,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1600,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 39},
+                {GravelResource, 30},
+                {BricksResource, 98},
+                {BoardsResource, 32},
+                {SteelResource, 12},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (125w, 5.63m³/d, 80%)",
+            WorkerCapacity = 125,
+            PowerMW = 7.5,
+            WaterPerDay = 5.63,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1257,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 26},
+                {GravelResource, 20},
+                {BricksResource, 81},
+                {BoardsResource, 27},
+                {SteelResource, 10},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (120w, 5.40m³/d, 80%)",
+            WorkerCapacity = 120,
+            PowerMW = 7.2,
+            WaterPerDay = 5.40,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1077,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 21},
+                {GravelResource, 16},
+                {BricksResource, 71},
+                {BoardsResource, 23},
+                {SteelResource, 8.9},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (125w, 5.63m³/d, 80%) [v2]", // Added v2 to distinguish from previous 125w
+            WorkerCapacity = 125,
+            PowerMW = 7.5,
+            WaterPerDay = 5.63,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1233,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 19},
+                {GravelResource, 14},
+                {BricksResource, 86},
+                {BoardsResource, 28},
+                {SteelResource, 10},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Dnipro Flats (593w, 26.69m³/d, 90%)",
+            WorkerCapacity = 593,
+            PowerMW = 35,
+            WaterPerDay = 26.69,
+            HeatTankM3 = 0,
+            Quality = 90,
+            Workdays = 4323,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 490},
+                {GravelResource, 23},
+                {AsphaltResource, 18},
+                {PrefabPanelsResource, 179}, // Note: This uses Prefab panels!
+                {SteelResource, 185},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (145w, 6.53m³/d, 72%)",
+            WorkerCapacity = 145,
+            PowerMW = 8.7,
+            WaterPerDay = 6.53,
+            HeatTankM3 = 0,
+            Quality = 72,
+            Workdays = 723,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 10},
+                {GravelResource, 8.4},
+                {AsphaltResource, 6.7},
+                {PrefabPanelsResource, 74},
+                {SteelResource, 17},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (150w, 6.75m³/d, 80%)",
+            WorkerCapacity = 150,
+            PowerMW = 9,
+            WaterPerDay = 6.75,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1307,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 23},
+                {GravelResource, 17},
+                {AsphaltResource, 14},
+                {BricksResource, 89},
+                {BoardsResource, 29},
+                {SteelResource, 11},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - brick (210w, 9.45m³/d, 80%)",
+            WorkerCapacity = 210,
+            PowerMW = 12,
+            WaterPerDay = 9.45,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 2005,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 39},
+                {GravelResource, 30},
+                {BricksResource, 133},
+                {BoardsResource, 44},
+                {SteelResource, 16},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (160w, 7.20m³/d, 76%)",
+            WorkerCapacity = 160,
+            PowerMW = 9.6,
+            WaterPerDay = 7.20,
+            HeatTankM3 = 0,
+            Quality = 76,
+            Workdays = 877,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 17},
+                {GravelResource, 13},
+                {AsphaltResource, 10},
+                {PrefabPanelsResource, 88},
+                {SteelResource, 17},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (120w, 5.40m³/d, 86%)",
+            WorkerCapacity = 120,
+            PowerMW = 7.2,
+            WaterPerDay = 5.40,
+            HeatTankM3 = 0,
+            Quality = 86,
+            Workdays = 901,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 30},
+                {GravelResource, 23},
+                {AsphaltResource, 18},
+                {PrefabPanelsResource, 72},
+                {SteelResource, 14},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (165w, 7.43m³/d, 78%)",
+            WorkerCapacity = 165,
+            PowerMW = 9.9,
+            WaterPerDay = 7.43,
+            HeatTankM3 = 0,
+            Quality = 78,
+            Workdays = 895,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 15},
+                {GravelResource, 12},
+                {AsphaltResource, 9.7},
+                {PrefabPanelsResource, 89},
+                {SteelResource, 20},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (210w, 9.45m³/d, 70%)",
+            WorkerCapacity = 210,
+            PowerMW = 12,
+            WaterPerDay = 9.45,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 1110,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 17},
+                {GravelResource, 13},
+                {BricksResource, 56},
+                {BoardsResource, 25},
+                {PrefabPanelsResource, 20},
+                {SteelResource, 12},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (180w, 8.10m³/d, 75%)",
+            WorkerCapacity = 180,
+            PowerMW = 10,
+            WaterPerDay = 8.10,
+            HeatTankM3 = 0,
+            Quality = 75,
+            Workdays = 962,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 21},
+                {GravelResource, 16},
+                {AsphaltResource, 13},
+                {PrefabPanelsResource, 85},
+                {SteelResource, 22},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (160w, 7.20m³/d, 70%)",
+            WorkerCapacity = 160,
+            PowerMW = 9.6,
+            WaterPerDay = 7.20,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 921,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 20},
+                {GravelResource, 15},
+                {AsphaltResource, 12},
+                {BricksResource, 39},
+                {BoardsResource, 20},
+                {PrefabPanelsResource, 14},
+                {SteelResource, 10},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (287w, 12.92m³/d, 80%)",
+            WorkerCapacity = 287,
+            PowerMW = 17,
+            WaterPerDay = 12.92,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 2029,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 178},
+                {GravelResource, 15},
+                {BricksResource, 0.47},
+                {BoardsResource, 61},
+                {PrefabPanelsResource, 138},
+                {ElectroComponentsResource, 0.23}, // New resource type!
+                {MechanicComponentsResource, 0.35}, // New resource type!
+                {SteelResource, 5.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (140w, 6.30m³/d, 70%)",
+            WorkerCapacity = 140,
+            PowerMW = 8.4,
+            WaterPerDay = 6.30,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 719,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 10},
+                {GravelResource, 8.3},
+                {AsphaltResource, 6.7},
+                {BricksResource, 37},
+                {BoardsResource, 16},
+                {PrefabPanelsResource, 13},
+                {SteelResource, 8.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (147w, 6.62m³/d, 80%)",
+            WorkerCapacity = 147,
+            PowerMW = 8.8,
+            WaterPerDay = 6.62,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1059,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 66},
+                {GravelResource, 5.4},
+                {BricksResource, 0.30},
+                {BoardsResource, 34},
+                {PrefabPanelsResource, 78},
+                {ElectroComponentsResource, 0.10},
+                {MechanicComponentsResource, 0.15},
+                {SteelResource, 3.4},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (245w, 11.03m³/d, 80%)",
+            WorkerCapacity = 245,
+            PowerMW = 14,
+            WaterPerDay = 11.03,
+            HeatTankM3 = 0,
+            Quality = 80,
+            Workdays = 1650,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 145},
+                {GravelResource, 12},
+                {BricksResource, 0.35},
+                {BoardsResource, 50},
+                {PrefabPanelsResource, 112},
+                {ElectroComponentsResource, 0.22},
+                {MechanicComponentsResource, 0.33},
+                {SteelResource, 4.6},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (167w, 7.52m³/d, 70%)",
+            WorkerCapacity = 167,
+            PowerMW = 10,
+            WaterPerDay = 7.52,
+            HeatTankM3 = 0,
+            Quality = 70,
+            Workdays = 914,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 14},
+                {GravelResource, 11},
+                {AsphaltResource, 8.8},
+                {BricksResource, 47},
+                {BoardsResource, 20},
+                {PrefabPanelsResource, 16},
+                {SteelResource, 10},
             }
         },
     };
@@ -4267,7 +5830,7 @@ class GameData
         WoodResource, BoardsResource,
         GravelResource,
         QuarriedStoneResource,
-        SteelResource, MechanicalComponentsResource,
+        SteelResource, MechanicComponentsResource,
         IronResource,
         IronOreResource,
         RawBauxiteResource,
