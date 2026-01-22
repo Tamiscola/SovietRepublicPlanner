@@ -1355,7 +1355,7 @@ namespace SovietRepublicPlanner
                         Console.WriteLine("│ Total Construction Materials:          │");       
                         Console.WriteLine("├────────────────────────────────────────┤");
                         foreach (var kv in combinedConstructionMaterials)
-                            Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+                            Console.WriteLine($"│ · {kv.Value:F2} × {kv.Key.Name}");
                     }
                     Console.WriteLine("└────────────────────────────────────────┘");
                     continue;

@@ -41,5 +41,6 @@ public enum SupportCategory
     PowerHandling,
     HeatHandling,
     SewageHandling,
-    GeneralDistribution // Always available
+    GeneralDistribution, // Always available
+    DryBulkHandling,
 }
