@@ -3134,6 +3134,549 @@ class GameData
         return result;
     }
 
+    // Support Buildings - Cargo Load & Unload
+    public static ProductionBuilding RoadCargoStation1 { get; } = CreateRoadCargoStation1();
+    public static ProductionBuilding CreateRoadCargoStation1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Road Cargo Station (2 stations)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 147;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 15 },
+        {GravelResource, 3.2 },
+        {AsphaltResource, 2.5 },
+        {SteelResource, 6.9 }
+    };
+        return result;
+    }
+    public static ProductionBuilding RoadCargoStation2 { get; } = CreateRoadCargoStation2();
+    public static ProductionBuilding CreateRoadCargoStation2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Road Cargo Station (4 stations Alt1)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 281;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 13 },
+        {GravelResource, 10 },
+        {AsphaltResource, 8.3 },
+        {SteelResource, 11 }
+    };
+        return result;
+    }
+    public static ProductionBuilding RoadCargoStation3 { get; } = CreateRoadCargoStation3();
+    public static ProductionBuilding CreateRoadCargoStation3()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Road Cargo Station (4 stations Alt2)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 237;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 26 },
+        {GravelResource, 6.3 },
+        {AsphaltResource, 5.1 },
+        {SteelResource, 9.5 }
+    };
+        return result;
+    }
+    public static ProductionBuilding RoadCargoStation4 { get; } = CreateRoadCargoStation4();
+    public static ProductionBuilding CreateRoadCargoStation4()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Road Cargo Station (6 stations)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 296;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 30 },
+        {GravelResource, 9.5 },
+        {AsphaltResource, 7.6 },
+        {SteelResource, 10 }
+    };
+        return result;
+    }
+    public static ProductionBuilding RoadCargoStation5 { get; } = CreateRoadCargoStation5();
+    public static ProductionBuilding CreateRoadCargoStation5()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Road Cargo Station (4 stations Alt3)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 414;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 19 },
+        {GravelResource, 15 },
+        {AsphaltResource, 12 },
+        {SteelResource, 16 }
+    };
+        return result;
+    }
+    public static ProductionBuilding RoadCargoStation6 { get; } = CreateRoadCargoStation6();
+    public static ProductionBuilding CreateRoadCargoStation6()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Road Cargo Station (2 stations Small)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 127;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 4.5 },
+        {GravelResource, 3.5 },
+        {AsphaltResource, 2.8 },
+        {SteelResource, 6.7 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoTrainStation1 { get; } = CreateCargoTrainStation1();
+    public static ProductionBuilding CreateCargoTrainStation1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Train Station (54m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 172;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 20 },
+        {GravelResource, 8.1 },
+        {SteelResource, 2.9 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoTrainStation2 { get; } = CreateCargoTrainStation2();
+    public static ProductionBuilding CreateCargoTrainStation2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Train Station (91m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 638;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 83 },
+        {GravelResource, 24 },
+        {SteelResource, 15 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoTrainStation3 { get; } = CreateCargoTrainStation3();
+    public static ProductionBuilding CreateCargoTrainStation3()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Train Station (156m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1010;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 113 },
+        {GravelResource, 48 },
+        {SteelResource, 16 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoTrainStation4 { get; } = CreateCargoTrainStation4();
+    public static ProductionBuilding CreateCargoTrainStation4()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Train Station (180m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 68.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1534;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 155 },
+        {GravelResource, 91 },
+        {SteelResource, 8.5 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoTrainStation5 { get; } = CreateCargoTrainStation5();
+    public static ProductionBuilding CreateCargoTrainStation5()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Train Station (83m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 558;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 63 },
+        {GravelResource, 26 },
+        {SteelResource, 9.1 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoTrainStation6 { get; } = CreateCargoTrainStation6();
+    public static ProductionBuilding CreateCargoTrainStation6()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Train Station (196m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 234.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2190;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 208 },
+        {GravelResource, 127 },
+        {BricksResource, 7.2 },
+        {BoardsResource, 2.4 },
+        {SteelResource, 10 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoTrainStation7 { get; } = CreateCargoTrainStation7();
+    public static ProductionBuilding CreateCargoTrainStation7()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Train Station (208m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 312.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2872;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 261 },
+        {GravelResource, 163 },
+        {BricksResource, 16 },
+        {BoardsResource, 5.5 },
+        {SteelResource, 13 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoHarborSmall1 { get; } = CreateCargoHarborSmall1();
+    public static ProductionBuilding CreateCargoHarborSmall1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Harbor (Small 79m Alt1)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 24.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1101;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 183 },
+        {GravelResource, 28 },
+        {AsphaltResource, 22 },
+        {SteelResource, 33 },
+        {MechanicComponentsResource, 0.080 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoHarborSmall2 { get; } = CreateCargoHarborSmall2();
+    public static ProductionBuilding CreateCargoHarborSmall2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Harbor (Small 156m Alt2)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 60.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2133;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 267 },
+        {GravelResource, 57 },
+        {AsphaltResource, 45 },
+        {SteelResource, 57 },
+        {MechanicComponentsResource, 2.9 }
+    };
+        return result;
+    }
+    public static ProductionBuilding HarborContainersVehicles { get; } = CreateHarborContainersVehicles();
+    public static ProductionBuilding CreateHarborContainersVehicles()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Harbor for Containers and Vehicles (239m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 162.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 9979;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 1131 },
+        {GravelResource, 143 },
+        {AsphaltResource, 114 },
+        {SteelResource, 339 },
+        {MechanicComponentsResource, 26 }
+    };
+        return result;
+    }
+    public static ProductionBuilding CargoHarborMedium { get; } = CreateCargoHarborMedium();
+    public static ProductionBuilding CreateCargoHarborMedium()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Cargo Harbor (Medium 239m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 82.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 6131;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 791 },
+        {GravelResource, 190 },
+        {AsphaltResource, 152 },
+        {SteelResource, 151 },
+        {MechanicComponentsResource, 5.9 }
+    };
+        return result;
+    }
+    public static ProductionBuilding HeliportCargoPlatform1 { get; } = CreateHeliportCargoPlatform1();
+    public static ProductionBuilding CreateHeliportCargoPlatform1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Heliport Cargo Platform (1 Station)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.1;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 242;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 21 },
+        {GravelResource, 16 },
+        {AsphaltResource, 12 }
+    };
+        return result;
+    }
+    public static ProductionBuilding HeliportCargoPlatform3 { get; } = CreateHeliportCargoPlatform3();
+    public static ProductionBuilding CreateHeliportCargoPlatform3()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Heliport Cargo Platform (3 Stations)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.1;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 790;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 68 },
+        {GravelResource, 52 },
+        {AsphaltResource, 42 }
+    };
+        return result;
+    }
+    public static ProductionBuilding AirportCargoTerminal { get; } = CreateAirportCargoTerminal();
+    public static ProductionBuilding CreateAirportCargoTerminal()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Airport Cargo Terminal";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.1;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1286;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 49 },
+        {GravelResource, 38 },
+        {AsphaltResource, 30 },
+        {BricksResource, 28 },
+        {BoardsResource, 9.5 },
+        {SteelResource, 37 }
+    };
+        return result;
+    }
+
     // Support Buildings - Utility
     public static ProductionBuilding WaterLoadingUnloadingStation { get; } = CreateWaterLoadingUnloadingStation();
     public static ProductionBuilding CreateWaterLoadingUnloadingStation()
@@ -3534,15 +4077,15 @@ class GameData
     }
 
     // Distribution Office (consumes power + fuel)
-    public static ProductionBuilding SmallDistributionOffice { get; } = CreateSmallDistributionOffice();
-    public static ProductionBuilding CreateSmallDistributionOffice()
+    public static ProductionBuilding SmallDistributionOffice1 { get; } = CreateSmallDistributionOffice1();
+    public static ProductionBuilding CreateSmallDistributionOffice1()
     {
         ProductionBuilding result = new ProductionBuilding();
-        result.Name = "Small Distribution Office";
+        result.Name = "Small Distribution Office (Alt1)";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>() { };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;  // MWh/day
+        result.PowerConsumption = 3.0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -3550,8 +4093,35 @@ class GameData
         result.EnvironmentPollution = 0;
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 875;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 28 },
+        {GravelResource, 22 },
+        {AsphaltResource, 17 },
+        {BricksResource, 46 },
+        {BoardsResource, 15 },
+        {SteelResource, 5.8 }
+    };
+        return result;
+    }
+    public static ProductionBuilding SmallDistributionOffice2 { get; } = CreateSmallDistributionOffice2();
+    public static ProductionBuilding CreateSmallDistributionOffice2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Small Distribution Office (Alt2)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
         result.Workdays = 721;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -3565,8 +4135,153 @@ class GameData
     };
         return result;
     }
+    public static ProductionBuilding MediumDistributionOffice1 { get; } = CreateMediumDistributionOffice1();
+    public static ProductionBuilding CreateMediumDistributionOffice1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Medium Distribution Office (Alt1)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1798;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 78 },
+        {GravelResource, 60 },
+        {AsphaltResource, 48 },
+        {BricksResource, 76 },
+        {BoardsResource, 25 },
+        {SteelResource, 9.6 }
+    };
+        return result;
+    }
+    public static ProductionBuilding MediumDistributionOffice2 { get; } = CreateMediumDistributionOffice2();
+    public static ProductionBuilding CreateMediumDistributionOffice2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Medium Distribution Office (Alt2)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1724;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 40 },
+        {GravelResource, 31 },
+        {AsphaltResource, 25 },
+        {BricksResource, 82 },
+        {BoardsResource, 27 },
+        {SteelResource, 31 }
+    };
+        return result;
+    }
+    public static ProductionBuilding HorseDistributionOffice { get; } = CreateHorseDistributionOffice();
+    public static ProductionBuilding CreateHorseDistributionOffice()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Horse Distribution Office";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 468;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 11 },
+        {GravelResource, 9.2 },
+        {BricksResource, 21 },
+        {BoardsResource, 11 },
+        {SteelResource, 5.4 }
+    };
+        return result;
+    }
+    public static ProductionBuilding TrainDistributionOffice1 { get; } = CreateTrainDistributionOffice1();
+    public static ProductionBuilding CreateTrainDistributionOffice1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Train Distribution Office (Alt1)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 6.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2791;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 81 },
+        {GravelResource, 62 },
+        {AsphaltResource, 49 },
+        {BricksResource, 159 },
+        {BoardsResource, 53 },
+        {SteelResource, 19 }
+    };
+        return result;
+    }
+    public static ProductionBuilding TrainDistributionOffice2 { get; } = CreateTrainDistributionOffice2();
+    public static ProductionBuilding CreateTrainDistributionOffice2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Train Distribution Office (Alt2)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 3430;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 93 },
+        {GravelResource, 71 },
+        {AsphaltResource, 57 },
+        {BricksResource, 120 },
+        {BoardsResource, 40 },
+        {MechanicComponentsResource, 2.9 },
+        {SteelResource, 78 }
+    };
+        return result;
+    }
 
-    // Warehouse
+    // Support Buildings - Warehouse
     public static ProductionBuilding Warehouse { get; } = CreateWarehouse();
     public static ProductionBuilding CreateWarehouse()
     {
@@ -3596,6 +4311,685 @@ class GameData
             {BricksResource, 44 },
             {BoardsResource, 28 }
         };
+        return result;
+    }
+    public static ProductionBuilding WarehouseSmall { get; } = CreateWarehouseSmall();
+    public static ProductionBuilding CreateWarehouseSmall()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Small)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 291;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 6.8 },
+        {GravelResource, 5.2 },
+        {AsphaltResource, 4.2 },
+        {BricksResource, 18 },
+        {BoardsResource, 6.1 },
+        {SteelResource, 2.3 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseMedium1 { get; } = CreateWarehouseMedium1();
+    public static ProductionBuilding CreateWarehouseMedium1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Medium)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1044;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 47 },
+        {GravelResource, 36 },
+        {AsphaltResource, 29 },
+        {BricksResource, 42 },
+        {BoardsResource, 14 },
+        {SteelResource, 5.3 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseMedium2Railway { get; } = CreateWarehouseMedium2Railway();
+    public static ProductionBuilding CreateWarehouseMedium2Railway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Medium - Railway 87m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1157;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 57 },
+        {GravelResource, 44 },
+        {AsphaltResource, 35 },
+        {BricksResource, 42 },
+        {BoardsResource, 14 },
+        {SteelResource, 5.3 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseLarge1Railway { get; } = CreateWarehouseLarge1Railway();
+    public static ProductionBuilding CreateWarehouseLarge1Railway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Large - Railway 104m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1493;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 55 },
+        {GravelResource, 43 },
+        {AsphaltResource, 34 },
+        {BricksResource, 58 },
+        {BoardsResource, 29 },
+        {SteelResource, 13 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseLarge2Railway { get; } = CreateWarehouseLarge2Railway();
+    public static ProductionBuilding CreateWarehouseLarge2Railway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Large Alt - Railway 104m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1337;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 42 },
+        {GravelResource, 32 },
+        {AsphaltResource, 26 },
+        {BricksResource, 58 },
+        {BoardsResource, 29 },
+        {SteelResource, 13 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageSmall { get; } = CreateGrainStorageSmall();
+    public static ProductionBuilding CreateGrainStorageSmall()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (Small)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2855;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 40 },
+        {GravelResource, 31 },
+        {AsphaltResource, 24 },
+        {BricksResource, 204 },
+        {BoardsResource, 68 },
+        {SteelResource, 25 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageLargeRailway { get; } = CreateGrainStorageLargeRailway();
+    public static ProductionBuilding CreateGrainStorageLargeRailway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (Large - Railway 117m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 4961;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 91 },
+        {GravelResource, 70 },
+        {AsphaltResource, 56 },
+        {BricksResource, 335 },
+        {BoardsResource, 111 },
+        {SteelResource, 41 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseMedium3Railway { get; } = CreateWarehouseMedium3Railway();
+    public static ProductionBuilding CreateWarehouseMedium3Railway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Medium - Railway 41m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 576;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 29 },
+        {GravelResource, 22 },
+        {AsphaltResource, 18 },
+        {BricksResource, 20 },
+        {BoardsResource, 6.7 },
+        {SteelResource, 2.5 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseMedium4 { get; } = CreateWarehouseMedium4();
+    public static ProductionBuilding CreateWarehouseMedium4()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Medium Alt)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 516;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 24 },
+        {GravelResource, 18 },
+        {AsphaltResource, 14 },
+        {BricksResource, 20 },
+        {BoardsResource, 6.7 },
+        {SteelResource, 2.5 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageMediumRailway { get; } = CreateGrainStorageMediumRailway();
+    public static ProductionBuilding CreateGrainStorageMediumRailway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (Medium - Railway 65m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2969;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 50 },
+        {GravelResource, 38 },
+        {AsphaltResource, 30 },
+        {BricksResource, 204 },
+        {BoardsResource, 68 },
+        {SteelResource, 25 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageLarge1Railway { get; } = CreateGrainStorageLarge1Railway();
+    public static ProductionBuilding CreateGrainStorageLarge1Railway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (Large - Railway 73m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2378;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 37 },
+        {GravelResource, 39 },
+        {AsphaltResource, 31 },
+        {SteelResource, 97 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageLarge2 { get; } = CreateGrainStorageLarge2();
+    public static ProductionBuilding CreateGrainStorageLarge2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (Large)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 4753;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 73 },
+        {GravelResource, 56 },
+        {AsphaltResource, 45 },
+        {BricksResource, 335 },
+        {BoardsResource, 111 },
+        {SteelResource, 41 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageXLRailway1 { get; } = CreateGrainStorageXLRailway1();
+    public static ProductionBuilding CreateGrainStorageXLRailway1()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (XL - Railway 114m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 4030;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 62 },
+        {GravelResource, 76 },
+        {AsphaltResource, 61 },
+        {SteelResource, 155 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageXXLRailway { get; } = CreateGrainStorageXXLRailway();
+    public static ProductionBuilding CreateGrainStorageXXLRailway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (XXL - Railway 156m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 5229;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 79 },
+        {GravelResource, 104 },
+        {AsphaltResource, 83 },
+        {SteelResource, 198 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageXXXLRailway { get; } = CreateGrainStorageXXXLRailway();
+    public static ProductionBuilding CreateGrainStorageXXXLRailway()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (XXXL - Railway 191m)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 6582;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 102 },
+        {GravelResource, 127 },
+        {AsphaltResource, 101 },
+        {SteelResource, 251 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseXS { get; } = CreateWarehouseXS();
+    public static ProductionBuilding CreateWarehouseXS()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (XS)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 295;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 11 },
+        {GravelResource, 8.5 },
+        {AsphaltResource, 6.8 },
+        {BricksResource, 14 },
+        {BoardsResource, 4.8 },
+        {SteelResource, 1.8 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseXS2 { get; } = CreateWarehouseXS2();
+    public static ProductionBuilding CreateWarehouseXS2()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (XS) 2";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 295;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 11 },
+        {GravelResource, 8.5 },
+        {AsphaltResource, 6.8 },
+        {BricksResource, 14 },
+        {BoardsResource, 4.8 },
+        {SteelResource, 1.8 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseMedium6 { get; } = CreateWarehouseMedium6();
+    public static ProductionBuilding CreateWarehouseMedium6()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Medium Alt3)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 953;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 42 },
+        {GravelResource, 32 },
+        {AsphaltResource, 26 },
+        {BricksResource, 39 },
+        {BoardsResource, 13 },
+        {SteelResource, 5.0 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseLarge3 { get; } = CreateWarehouseLarge3();
+    public static ProductionBuilding CreateWarehouseLarge3()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Large Alt2)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 1465;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 67 },
+        {GravelResource, 51 },
+        {AsphaltResource, 41 },
+        {BricksResource, 58 },
+        {BoardsResource, 19 },
+        {SteelResource, 7.4 }
+    };
+        return result;
+    }
+    public static ProductionBuilding WarehouseLarge4 { get; } = CreateWarehouseLarge4();
+    public static ProductionBuilding CreateWarehouseLarge4()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Warehouse (Large Alt3)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2102;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 107 },
+        {GravelResource, 82 },
+        {BricksResource, 73 },
+        {BoardsResource, 24 },
+        {SteelResource, 9.2 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageLarge3 { get; } = CreateGrainStorageLarge3();
+    public static ProductionBuilding CreateGrainStorageLarge3()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (Large Alt2)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 2195;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 35 },
+        {GravelResource, 26 },
+        {AsphaltResource, 21 },
+        {SteelResource, 97 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageLarge4 { get; } = CreateGrainStorageLarge4();
+    public static ProductionBuilding CreateGrainStorageLarge4()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (Large Alt3)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 3734;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 59 },
+        {GravelResource, 56 },
+        {AsphaltResource, 45 },
+        {SteelResource, 155 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageXL { get; } = CreateGrainStorageXL();
+    public static ProductionBuilding CreateGrainStorageXL()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (XL)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 4768;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 75 },
+        {GravelResource, 74 },
+        {AsphaltResource, 59 },
+        {SteelResource, 198 }
+    };
+        return result;
+    }
+    public static ProductionBuilding GrainStorageXXL { get; } = CreateGrainStorageXXL();
+    public static ProductionBuilding CreateGrainStorageXXL()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Grain Storage (XXL)";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 3.0;
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.Workdays = 6007;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+    {
+        {ConcreteResource, 97 },
+        {GravelResource, 88 },
+        {AsphaltResource, 71 },
+        {SteelResource, 251 }
+    };
         return result;
     }
 
@@ -7431,14 +8825,19 @@ class GameData
         BigSewageTreatment,
         LiquidPumpingStation, OilLoadingUnloading, BigOilStorage, UndergroundPumpingStation, MediumOilStorage, SmallOilStorage,
         ConveyorEngineTransfer, ConveyorOverpass,
-        SmallDistributionOffice, Warehouse,
+        SmallDistributionOffice1,HorseDistributionOffice, MediumDistributionOffice1, MediumDistributionOffice2, SmallDistributionOffice2,
+        TrainDistributionOffice1, TrainDistributionOffice2,
+        Warehouse,WarehouseLarge1Railway, WarehouseLarge2Railway, WarehouseLarge3, WarehouseLarge4, WarehouseMedium1,
+        WarehouseMedium2Railway, WarehouseMedium3Railway, WarehouseMedium4, WarehouseMedium6, WarehouseSmall, WarehouseXS, WarehouseXS2,
+        GrainStorageLarge1Railway, GrainStorageLarge2, GrainStorageLarge3, GrainStorageLarge4, GrainStorageLargeRailway, GrainStorageMediumRailway, GrainStorageSmall,
+        GrainStorageXL, GrainStorageXLRailway1, GrainStorageXXL, GrainStorageXXLRailway, GrainStorageXXXLRailway,
         WaterLoadingUnloadingStation, BigWaterPumpingStation, SmallWaterPumpingStation,
         LargeCementPlant,
         MediumCementPlant,
         ConcretePlant,
         BrickFactory,
         AsphaltPlant,
-        PrefabPanelsFactory,
+        LargePrefabPanelsFactory, SmallPrefabPanelsFactory,
         HeatExchanger, HeatingPlant, HeatPumpingStation, SmallHeatExchanger, SmallHeatingPlant, SmallHeatPumpingStation,
         AggregateStorage1000, AggregateStorage1950, AggregateStorage2000, AggregateStorage2500, AggregateStorage5000, AggregateStorage870,
         TrainAggregateLoading123m, TrainAggregateLoading123mLarge, TrainAggregateLoading23m, TrainAggregateLoading32m, TrainAggregateLoading98m, TruckAggregateLoadingBig, TruckAggregateLoadingSmall, TrainAggregateLoading100m,
