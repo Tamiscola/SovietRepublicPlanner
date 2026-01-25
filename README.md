@@ -16,6 +16,11 @@ A command-line tool to help you plan optimal production chains, resource allocat
 ✅ **Efficiency Analysis** - Identify bottlenecks in your industrial systems  
 ✅ **Free & Open Source** - MIT licensed, forever free to use
 
+<img width="700" height="900" alt="image" src="https://github.com/user-attachments/assets/31057b47-3dbd-4bb3-8dc6-700e40d9c970" />
+<img width="640" height="360" alt="image" src="https://github.com/user-attachments/assets/92bcb315-6922-400b-a1c1-30642fd5bc32" />
+<img width="640" height="360" alt="image" src="https://github.com/user-attachments/assets/faa93730-6791-49c9-9b17-f4c84c7da0a0" />
+
+
 🚧 **GUI Version Coming Soon** - Currently console-based, graphical interface in development
 
 ---
