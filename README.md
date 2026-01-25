@@ -41,7 +41,7 @@ A command-line tool to help you plan optimal production chains, resource allocat
 git clone https://github.com/Tamiscola/SovietRepublicPlanner.git
 
 # Navigate to directory
-cd WRSR-Calculator
+cd SovietRepublicPlanner
 
 # Build and run
 dotnet build
