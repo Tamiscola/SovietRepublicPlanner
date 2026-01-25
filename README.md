@@ -33,7 +33,7 @@ A command-line tool to help you plan optimal production chains, resource allocat
 
 ```bash
 # Clone the repository
-git clone https://github.com/YourUsername/WRSR-Calculator.git
+git clone https://github.com/Tamiscola/SovietRepublicPlanner.git
 
 # Navigate to directory
 cd WRSR-Calculator
