@@ -20,6 +20,7 @@ public class AmenityBuilding
     // Worker & Visitor info
     public int WorkersPerShift { get; set; }
     public int MaxVisitors { get; set; }
+    public int CitizenCapacity { get; set; }
 
     // Utilities
     public double PowerConsumptionMWh { get; set; }

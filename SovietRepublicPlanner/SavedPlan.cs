@@ -3,7 +3,7 @@
     public string ResourceName { get; set; }
     public string BuildingName { get; set; }
     public double Amount { get; set; }
-    public double Loyalty { get; set; }
+    public double Productivity { get; set; }
     public int ChosenBuildingIndex { get; set; }
     public bool IsBuildingBasedPlan { get; set; } = false;
     public int BuildingCount { get; set; }                 // For building-based plans

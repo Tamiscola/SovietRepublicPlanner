@@ -9,7 +9,7 @@ class CalculationResult
     public double TargetAmount { get; set; }
 
     // Settings
-    public double WorkerLoyalty { get; set; } = 50;
+    public double WorkersProductivity { get; set; } = 100.0;
 
     // Buildings
     public List<BuildingRequirement> Buildings { get; set; } = new List<BuildingRequirement>();
@@ -29,7 +29,10 @@ class CalculationResult
             int thisLevel = ChosenBuilding.TotalWorkers;
             int subChainTotal = SubChains.Sum(sc => sc.TotalWorkers);
             int supportTotal = SupportBuildings.Sum(sc => sc.TotalWorkers);
-            int amenTotal = AmenityBuildings.Sum(a => a.Building.WorkersPerShift * 3 * a.Count);
+            int amenTotal = (int)Math.Ceiling(
+                AmenityBuildings.Sum(a => a.Building.WorkersPerShift * 3 * a.Count)
+                / CalculationSettings.ProductivityMultiplier
+            );
             return thisLevel + subChainTotal + supportTotal + amenTotal;
         }
     }

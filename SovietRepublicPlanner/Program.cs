@@ -249,7 +249,7 @@ namespace SovietRepublicPlanner
                 ResourceName = plan.TargetResource.Name,
                 BuildingName = plan.ChosenBuilding?.Building.Name,
                 Amount = plan.TargetAmount,
-                Loyalty = plan.WorkerLoyalty,
+                Productivity = plan.WorkersProductivity,
                 ChosenBuildingIndex = chosenIndex,
                 IsBuildingBasedPlan = (plan.TargetAmount == 0),
                 BuildingCount = plan.ChosenBuilding?.Count ?? 0,
@@ -292,7 +292,7 @@ namespace SovietRepublicPlanner
             {
                 // Reconstruct building-based plan
                 result = new CalculationResult();
-                result.WorkerLoyalty = savedPlan.Loyalty;
+                result.WorkersProductivity = savedPlan.Productivity;
                 result.TargetAmount = 0;
 
                 var building = GameData.AllBuildings
@@ -308,7 +308,7 @@ namespace SovietRepublicPlanner
 
                     BuildingRequirement br = new BuildingRequirement(building);
                     br.Count = savedPlan.BuildingCount;
-                    br.WorkerLoyalty = savedPlan.Loyalty;
+                    br.WorkersProductivity = savedPlan.Productivity;
 
                     // Reconstruct BuildingInstances with qualities
                     if (savedPlan.BuildingQualities != null && savedPlan.BuildingQualities.Count > 0)
@@ -390,7 +390,7 @@ namespace SovietRepublicPlanner
                 result = new CalculationResult();
                 result.TargetResource = GameData.AllResources.FirstOrDefault(r => r.Name == savedPlan.ResourceName);
                 result.TargetAmount = savedPlan.Amount;
-                result.WorkerLoyalty = savedPlan.Loyalty;
+                result.WorkersProductivity = savedPlan.Productivity;
 
                 // Find the saved building by name
                 var building = GameData.AllBuildings.FirstOrDefault(b => b.Name == savedPlan.BuildingName);
@@ -405,7 +405,7 @@ namespace SovietRepublicPlanner
 
                     BuildingRequirement br = new BuildingRequirement(building);
                     br.Count = savedPlan.BuildingCount;
-                    br.WorkerLoyalty = savedPlan.Loyalty;
+                    br.WorkersProductivity = savedPlan.Productivity;
 
                     // Reconstruct BuildingInstances with qualities
                     if (savedPlan.BuildingQualities != null && savedPlan.BuildingQualities.Count > 0)
@@ -438,17 +438,17 @@ namespace SovietRepublicPlanner
         static void CreateNewPlan()
         {
             CalculationResult result = new CalculationResult();
-            double workerLoyalty = 50;
+            double workerProductivity = 100.0;
             int choiceIndex;
 
-            // Worker Loyalty Choice : User Interaction
+            // Worker Productivity Choice : User Interaction
             while (true)
             {
-                Console.Write("Type the loyalty of workers (0-100 default: 50 (100% productivity)\n: ");
-                if (double.TryParse(Console.ReadLine(), out workerLoyalty) && workerLoyalty >= 0 && workerLoyalty <= 100)
+                Console.Write("Type the Productivity of workers (30-150 default: 100 (100% productivity)\n: ");
+                if (double.TryParse(Console.ReadLine(), out workerProductivity) && workerProductivity >= 30 && workerProductivity <= 150)
                 {
-                    CalculationSettings.WorkerLoyalty = workerLoyalty;
-                    result.WorkerLoyalty = workerLoyalty;
+                    CalculationSettings.WorkersProductivity = workerProductivity;
+                    result.WorkersProductivity = workerProductivity;
                 }
                 else { Console.Write("Invalid input. "); continue; }
                 break;
@@ -621,16 +621,16 @@ namespace SovietRepublicPlanner
         }
         static void CreateBuildPlan()
         {
-            double workerLoyalty = 50;
+            double workerProductivity = 100;
             int choiceIndex;
             CalculationResult result = new CalculationResult();
 
-            // Worker Loyalty Choice : User Interaction
+            // Worker Productivity Choice : User Interaction
             while (true)
             {
-                Console.Write("Type the loyalty of workers (0-100 default: 50 (100% productivity)\n: ");
-                if (double.TryParse(Console.ReadLine(), out workerLoyalty) && workerLoyalty >= 0 && workerLoyalty <= 100)
-                    result.WorkerLoyalty = workerLoyalty;
+                Console.Write("Type the Productivity of workers (30-150 default: 100 (100% productivity)\n: ");
+                if (double.TryParse(Console.ReadLine(), out workerProductivity) && workerProductivity >= 30 && workerProductivity <= 150)
+                    result.WorkersProductivity = workerProductivity;
                 else { Console.Write("Invalid input. "); continue; }
                 break;
             }
@@ -804,7 +804,7 @@ namespace SovietRepublicPlanner
         }
         static void CommandLoop()
         {
-            double workerLoyalty = 50;
+            double workerProductivity = 100.0;
             int userInput;
             double inputAmount;
             string expandInput;

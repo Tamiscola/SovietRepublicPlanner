@@ -12,14 +12,13 @@ class BuildingRequirement
     public int Count { get; set; }
 
     // Workers
-    public double WorkerLoyalty { get; set; } = 50;
+    public double WorkersProductivity { get; set; } = 100.0;
     public int baseTotalWorkers => Count * Building.WorkersPerShift * 3;
     public int TotalWorkers 
     {  get
         {
-            if (Building.WorkersPerShift == 0) return 0;
-            double multiplier = CalculationSettings.AverageLoyaltyPercent(WorkerLoyalty);
-            return (int)Math.Ceiling(baseTotalWorkers / multiplier);
+            if (Building.WorkersPerShift == 0 || CalculationSettings.ProductivityMultiplier == 0) return 0;
+            return (int)Math.Ceiling(baseTotalWorkers / CalculationSettings.ProductivityMultiplier);
         }
     }
 
