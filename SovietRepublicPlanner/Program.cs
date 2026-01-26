@@ -26,21 +26,47 @@ namespace SovietRepublicPlanner
     ? allPlans[currentPlanIndex]
     : null;
         static Stack<CalculationResult> navigationStack = new Stack<CalculationResult>();
+        static string currentSaveFile = "plans.json";
+        static string plansDirectory = Path.Combine(Directory.GetCurrentDirectory(), "plans");
+        static string[] jsonFiles = Directory.Exists(plansDirectory)
+            ? Directory.GetFiles(plansDirectory, "*.json")
+            : new string[0];    // Empty array if folder doesn't exist
         static void Main(string[] args)
         {
+            // Check if there's 'plans' folder
+            if (!Directory.Exists(plansDirectory))
+                Directory.CreateDirectory(plansDirectory);
+
             // Load existing plans if they exist
-            if (File.Exists("plans.json"))
+            if (jsonFiles.Length > 0)
             {
-                Console.WriteLine("Found saved plans. Load? [y/n]:");
+                Console.Write("Found saved plans. Load? [y/n]: ");
                 if (Console.ReadKey().KeyChar == 'y')
                 {
-                    // Load plans from file
-                    allPlans = LoadPlans("plans.json");
+                    Console.WriteLine();
+                    // Display all files with indices
+                    for (int i = 0; i < jsonFiles.Length; i++)
+                        Console.WriteLine($"[{i}] {Path.GetFileName(jsonFiles[i])}");
+
+                    // Get user choice
+                    int loadChoice;
+                    while (true)
+                    {
+                        Console.Write("Choose file to load: ");
+                        if (int.TryParse(Console.ReadLine(), out loadChoice) &&  loadChoice >= 0 && loadChoice < jsonFiles.Length)
+                        {
+                            allPlans = LoadPlans(Path.Combine(plansDirectory, jsonFiles[loadChoice]));
+                            currentSaveFile = Path.GetFileName(jsonFiles[loadChoice]);
+                        } else { Console.WriteLine("Invalid input"); continue; }
+                        break;
+                    }
+
+                    // Display success message
                     if (allPlans.Count > 0)
                     {
                         currentPlanIndex = 0;
                         currentResult = allPlans[0];
-                        Console.WriteLine("\nLoaded plans. Type 'listplans' to view them.");
+                        Console.WriteLine($"\n'{currentSaveFile}' Loaded. Type 'listplans' to view them.");
                     }
                 }
             }
@@ -74,7 +100,23 @@ namespace SovietRepublicPlanner
                     if (Console.ReadKey().KeyChar == 'y')
                     {
                         Console.WriteLine($"Current directory: {Directory.GetCurrentDirectory()}");
-                        SavePlans(allPlans, "plans.json");
+                        Console.Write("Which method you wanna save?: [0] Save (overwrite) [1] Save as ...(new)\n> ");
+                        int saveChoice;
+                        if (int.TryParse(Console.ReadLine(), out saveChoice) && saveChoice >= 0 && saveChoice <= 1)
+                        {
+                            if (saveChoice == 0) SavePlans(allPlans, Path.Combine(plansDirectory, currentSaveFile));
+                            else if (saveChoice == 1) 
+                            {
+                                while (true)
+                                {
+                                    Console.Write($"Type the save file name: ");
+                                    currentSaveFile = Console.ReadLine();
+                                    if (!currentSaveFile.EndsWith(".json")) currentSaveFile += ".json";
+                                    break;
+                                }
+                                SavePlans(allPlans, Path.Combine(plansDirectory, currentSaveFile));
+                            }
+                        } else { Console.WriteLine("Invalid input."); continue; }
                         Console.WriteLine("\n✓ Plans saved!");
                     }
                     Console.WriteLine("\nGoodbye!");
@@ -1599,6 +1641,22 @@ namespace SovietRepublicPlanner
                         if (int.TryParse(Console.ReadLine(), out buildChoice) && buildChoice >= 0 && buildChoice <= buildingsOfType.Count())
                         {
                             if (buildChoice == 0) { continue; }
+                            if (selectedType == AmenityType.Education)
+                            {
+                                int kindergartenNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.KindergartenAgePercent / 100);
+                                int schoolNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.SchoolAgePercent / 100);
+                                var coverage = rootResult.GetAmenityCoverage();
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine($"Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}");
+                                Console.WriteLine($"School: {coverage.SchoolCapacity}/{schoolNeeded}");
+                                Console.ResetColor();
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine($"{rootResult.TotalPopulationNeeded} citizens need to be served.");
+                                Console.ResetColor();
+                            }
                             Console.Write("How many?: ");
                             int count;
 
@@ -1609,6 +1667,9 @@ namespace SovietRepublicPlanner
                                 amenityInstance.Building = buildingsOfType[buildChoice - 1];
                                 amenityInstance.Count = count;
                                 rootResult.AmenityBuildings.Add(amenityInstance);
+                                Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added!");
+                                Console.WriteLine($"Citizen Capacity: {buildingsOfType[buildChoice - 1].CitizenCapacity * count}");
+                                Console.WriteLine($"Needed Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
                             }
                             else { Console.Write("Invalid Input."); }
                         }

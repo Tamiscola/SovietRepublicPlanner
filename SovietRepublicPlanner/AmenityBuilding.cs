@@ -11,7 +11,14 @@
     CrimeJustice,
     Fountain
 }
-
+public enum EducationSubtype
+{
+    None,
+    Kindergarten,
+    School,
+    University,
+    UniversityDorm
+}
 public class AmenityBuilding
 {
     public string Name { get; set; }
@@ -20,7 +27,11 @@ public class AmenityBuilding
     // Worker & Visitor info
     public int WorkersPerShift { get; set; }
     public int MaxVisitors { get; set; }
-    public int CitizenCapacity { get; set; }
+    public int CitizenCapacity => Type == AmenityType.Education
+        ? MaxVisitors   // Education : MaxVisitors = CitizenCapacity
+        : (int)(MaxVisitors * CalculationSettings.AmenityCoverageMultiplier);
+    public int EffectiveWorkersPerShift => (int)Math.Ceiling(WorkersPerShift / CalculationSettings.ProductivityMultiplier);
+    public List<Resource> ProductsOffered { get; set; } = new List<Resource>();
 
     // Utilities
     public double PowerConsumptionMWh { get; set; }
@@ -35,6 +46,7 @@ public class AmenityBuilding
 
     // Optional properties
     public double? AttractionScore { get; set; }
+    public EducationSubtype EducationLevel { get; set; } = EducationSubtype.None;
 
     // Storage (for grocery stores, prisons, etc.)
     public Dictionary<Resource, double> WarehouseCapacity { get; set; }

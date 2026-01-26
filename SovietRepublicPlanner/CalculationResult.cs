@@ -29,10 +29,7 @@ class CalculationResult
             int thisLevel = ChosenBuilding.TotalWorkers;
             int subChainTotal = SubChains.Sum(sc => sc.TotalWorkers);
             int supportTotal = SupportBuildings.Sum(sc => sc.TotalWorkers);
-            int amenTotal = (int)Math.Ceiling(
-                AmenityBuildings.Sum(a => a.Building.WorkersPerShift * 3 * a.Count)
-                / CalculationSettings.ProductivityMultiplier
-            );
+            int amenTotal = AmenityBuildings.Sum(a => a.Building.EffectiveWorkersPerShift * 3 * a.Count);
             return thisLevel + subChainTotal + supportTotal + amenTotal;
         }
     }
@@ -48,10 +45,9 @@ class CalculationResult
         foreach (var type in Enum.GetValues(typeof(AmenityType)))
         {
             var buildings = AmenityBuildings.Where(a => a.Building.Type == (AmenityType)type);
-            int totalCapacity = buildings.Sum(a => a.Building.MaxVisitors * a.Count);
+            int totalCapacity = buildings.Sum(a => a.TotalCapacity);
             coverage[(AmenityType)type] = totalCapacity;
         }
-
         return coverage;
     }
 
@@ -389,6 +385,8 @@ class CalculationResult
     }
     public void DisplayTotalReceipt()
     {
+        var amenityCoverage = this.GetAmenCoverage();
+
         if (ChosenBuilding == null) { Console.WriteLine("There's no saved plan!"); }
         else
         {
@@ -400,6 +398,7 @@ class CalculationResult
             Console.WriteLine("│ Utilities Status:");
             Console.WriteLine("│                      Needed         Produced   Balance");
             Console.WriteLine($"│ Total Workers:      {TotalWorkers,8}");
+            Console.WriteLine($"│ Total Citizens:      {TotalPopulationNeeded,7}{TotalHousingCapacity,15}{TotalHousingCapacity - TotalPopulationNeeded,10}");
             // Power
             string powerProduced = TotalPowerProduced > 0 ? $"{TotalPowerProduced,10:F2}" : "         —";
             double powerBalance = TotalPowerProduced > 0
@@ -408,7 +407,7 @@ class CalculationResult
             string powerBalanceStr = TotalPowerProduced > 0
                 ? $"{(powerBalance >= 0 ? "+" : "")}{powerBalance:F2}"
                 : $"-{TotalPowerNeeded:F2}";
-            Console.WriteLine($"│ Power (MW): {TotalPowerNeeded,20:F2}{powerProduced}  {powerBalanceStr,9}");
+            Console.WriteLine($"│ Power (MW): {TotalPowerNeeded,16:F2}{powerProduced}  {powerBalanceStr,13}");
             // Water
             double waterInput = TotalUtilityNeeds.ContainsKey(GameData.WaterResource)
                 ? TotalUtilityNeeds[GameData.WaterResource] - TotalWaterNeeded
@@ -423,7 +422,7 @@ class CalculationResult
             string waterBalanceStr = TotalWaterProduced > 0
                 ? $"{(waterBalance >= 0 ? "+" : "")}{waterBalance:F2}"
                 : (TotalUtilityNeeds.ContainsKey(GameData.WaterResource)) ? $"-{TotalUtilityNeeds[GameData.WaterResource]:F2}" : "0.00";
-            Console.WriteLine($"│ Water (t/day): {waterLabel,17}{waterProduced}  {waterBalanceStr,9}");
+            Console.WriteLine($"│ Water (t/day): {waterLabel,13}{waterProduced}  {waterBalanceStr,13}");
             // Heat
             string heatProduced = TotalHeatProduced > 0 ? $"{TotalHeatProduced,10:F2}" : "         —";
             double heatBalance = TotalHeatProduced > 0
@@ -432,7 +431,7 @@ class CalculationResult
             string heatBalanceStr = TotalHeatProduced > 0
                 ? $"{(heatBalance >= 0 ? "+" : "")}{heatBalance:F2}"
                 : $"-{TotalHeatNeeded:F2}";
-            Console.WriteLine($"│ Heat (MW):        {TotalHeatNeeded,10:F2}{heatProduced}  {heatBalanceStr,9}");
+            Console.WriteLine($"│ Heat (MW):        {TotalHeatNeeded,10:F2}{heatProduced}  {heatBalanceStr,13}");
             // Sewage
             double sewageTreated = TotalUtilityNeeds.ContainsKey(GameData.WasteWaterResource)
                 ? (ExpandedUtilities.Any(eu => eu.Key == GameData.WasteWaterResource) ? ExpandedUtilities[GameData.WasteWaterResource].TotalSewageDisposalCapacity : 0)
@@ -444,9 +443,9 @@ class CalculationResult
             string sewageBalanceStr = TotalSewageProduced > 0
                 ? $"{(sewageBalance >= 0 ? "+" : "")}{sewageBalance:F2}"
                 : $"{TotalSewageProduced:F2}";
-            Console.WriteLine($"│ Sewage (t/day):   {sewageProduced}{sewageTreated,10}  {sewageBalanceStr,9}");
-            Console.WriteLine($"│ Garbage (t/day):  {TotalGarbageProduced,10:F2}        —  {TotalGarbageProduced,10:F2}");
-            Console.WriteLine($"│ Pollution:        {TotalEnvironmentPollution,10:F6}        —  {TotalEnvironmentPollution,10:F6}");
+            Console.WriteLine($"│ Sewage (t/day):   {sewageProduced}{sewageTreated,10}  {sewageBalanceStr,13}");
+            Console.WriteLine($"│ Garbage (t/day):  {TotalGarbageProduced,10:F2}        —  {TotalGarbageProduced,14:F2}");
+            Console.WriteLine($"│ Pollution:        {TotalEnvironmentPollution,10:F6}        —  {TotalEnvironmentPollution,14:F6}");
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ All Buildings in Chain:                │");
             Console.WriteLine("├────────────────────────────────────────┤");
@@ -471,15 +470,103 @@ class CalculationResult
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Residential Buildings:");
             Console.WriteLine("├────────────────────────────────────────┤");
+            if (TotalPopulationNeeded > TotalHousingCapacity)
+            {
+                int deficit = TotalPopulationNeeded - TotalHousingCapacity;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"WARNING: Housing deficit! Need {deficit} more housing capacity");
+                Console.WriteLine($"   (Total needed: {TotalPopulationNeeded}, Current: {TotalHousingCapacity})");
+                Console.ResetColor();
+            }
             foreach (var ri in ResidentialBuildings)
                 Console.WriteLine($"│ · {ri.Count} × {ri.Building.Name}");
-            if (AmenityBuildings.Count() > 0)
+            // In summary command - Amenity section
+            Console.WriteLine("├────────────────────────────────────────┤");
+            Console.WriteLine("│ Amenity Buildings:");
+            Console.WriteLine("├────────────────────────────────────────┤");
+
+            if (AmenityBuildings.Count == 0)
             {
-                Console.WriteLine("├────────────────────────────────────────┤");
-                Console.WriteLine("│ Amenity Buildings:");
-                Console.WriteLine("├────────────────────────────────────────┤");
-                foreach (var ai in AmenityBuildings)
-                    Console.WriteLine($"│ · {ai.Count} × {ai.Building.Name}");
+                Console.WriteLine("│ (none)");
+            }
+            else
+            {
+                // Group by AmenityType
+                var amenitiesByType = AmenityBuildings
+                    .GroupBy(a => a.Building.Type)
+                    .OrderBy(g => g.Key);
+
+                int totalCitizens = TotalPopulationNeeded;
+                var coverage = this.GetAmenityCoverage();
+
+                foreach (var typeGroup in amenitiesByType)
+                {
+                    Console.WriteLine($"│ [ {typeGroup.Key} ]");
+
+                    // Group buildings by name within this type
+                    var buildingGroups = typeGroup
+                        .GroupBy(a => a.Building.Name)
+                        .Select(g => new
+                        {
+                            Name = g.Key,
+                            TotalCount = g.Sum(a => a.Count),
+                            Building = g.First().Building
+                        });
+
+                    foreach (var building in buildingGroups)
+                    {
+                        Console.WriteLine($"│  · {building.TotalCount} × {building.Name}");
+                    }
+
+                    // Service capacity warning (for all types)
+                    int typeCapacity = coverage.ServiceCoverage[typeGroup.Key];
+                    int deficit = totalCitizens - typeCapacity;
+                    if (deficit > 0 && (typeGroup.Key == AmenityType.Shopping
+                                     || typeGroup.Key == AmenityType.Pub
+                                     || typeGroup.Key == AmenityType.Culture
+                                     || typeGroup.Key == AmenityType.Healthcare
+                                     || typeGroup.Key == AmenityType.Sports
+                                     || typeGroup.Key == AmenityType.Education
+                                     || typeGroup.Key == AmenityType.CrimeJustice))
+                    {
+                        if (typeGroup.Key == AmenityType.Education)
+                        {
+                            int kindergartenNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.KindergartenAgePercent / 100);
+                            int schoolNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.SchoolAgePercent / 100);
+                            int kindergartenDeficit = kindergartenNeeded - coverage.KindergartenCapacity;
+                            int schoolDeficit = schoolNeeded - coverage.SchoolCapacity;
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"│          Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}" +
+                                             (kindergartenDeficit > 0 ? $" ({kindergartenDeficit} underserved!)" : "  "));
+                            Console.WriteLine($"│          School: {coverage.SchoolCapacity}/{schoolNeeded}" +
+                                             (schoolDeficit > 0 ? $" ({schoolDeficit} underserved!)" : "  "));
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"│          {deficit} citizens underserved!");
+                            Console.ResetColor();
+                        }
+                    }
+
+                    // Product coverage warnings (ONLY for Shopping/Pub)
+                    if (typeGroup.Key == AmenityType.Shopping || typeGroup.Key == AmenityType.Pub)
+                    {
+                        var missingProducts = coverage.ProductCoverage
+                            .Where(kvp => kvp.Value == 0)  // Not served at all
+                            .Select(kvp => kvp.Key.Name);
+
+                        foreach (var product in missingProducts)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"│          {product} is not served!");
+                            Console.ResetColor();
+                        }
+                    }
+
+                    Console.WriteLine("│");
+                }
             }
             if (TransportationBuildings.Count() > 0)
             {
@@ -488,14 +575,6 @@ class CalculationResult
                 Console.WriteLine("├────────────────────────────────────────┤");
                 foreach (var ti in TransportationBuildings)
                     Console.WriteLine($"│ · {ti.Count} × {ti.Building.Name}");
-            }
-            if (TotalPopulationNeeded > TotalHousingCapacity)
-            {
-                int deficit = TotalPopulationNeeded - TotalHousingCapacity;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"WARNING: Populaiton deficit! Need {deficit} more housing capacity");
-                Console.WriteLine($"   (Total needed: {TotalPopulationNeeded}, Current: {TotalHousingCapacity})");
-                Console.ResetColor();
             }
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine($"│ Citizen Consumption ({TotalPopulationNeeded} pop):");
@@ -632,7 +711,6 @@ class CalculationResult
         }
         return result;
     }
-
     public Dictionary<Resource, double> CalculateTotalOutput(Dictionary<Resource, double> result, CalculationResult cr)
     {
         foreach (var kv in cr.ChosenBuilding.ExpectedOutput)
@@ -807,5 +885,65 @@ class CalculationResult
             CalculateTotalConstructionMaterials(result, sub);
 
         return result;
+    }
+    public class AmenityCoverage
+    {
+        public Dictionary<Resource, int> ProductCoverage { get; set; } = new Dictionary<Resource, int>();
+        public Dictionary<AmenityType, int> ServiceCoverage { get; set; } = new Dictionary<AmenityType, int>();
+        public int KindergartenCapacity { get; set; }
+        public int SchoolCapacity { get; set; }
+        public int UniversityCapacity { get; set; }
+    }
+    public AmenityCoverage GetAmenityCoverage()
+    {
+        var coverage = new AmenityCoverage();
+
+        // Initialize consumable products
+        var consumables = new[] { GameData.FoodResource, GameData.MeatResource,
+                              GameData.ClothesResource, GameData.AlcoholResource,
+                              GameData.ElectronicsResource };
+        foreach (var resource in consumables)
+            coverage.ProductCoverage[resource] = 0;
+
+        // Initialize service types
+        foreach (AmenityType type in Enum.GetValues(typeof(AmenityType)))
+            coverage.ServiceCoverage[type] = 0; 
+
+
+        // Calculate coverage
+        foreach (var amenity in AmenityBuildings)
+        {
+            // Product-based coverage (Shopping, Pub)
+            if (amenity.Building.ProductsOffered.Count > 0)
+            {
+                foreach (var product in amenity.Building.ProductsOffered)
+                {
+                    if (coverage.ProductCoverage.ContainsKey(product))
+                        coverage.ProductCoverage[product] += amenity.TotalCapacity;
+                }
+            }
+
+            // Service-based coverage (all amenity types)
+            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalCapacity;
+
+            // Education subtype tracking
+            if (amenity.Building.Type == AmenityType.Education)
+            {
+                switch (amenity.Building.EducationLevel)
+                {
+                    case EducationSubtype.Kindergarten:
+                        coverage.KindergartenCapacity += amenity.TotalCapacity;
+                        break;
+                    case EducationSubtype.School:
+                        coverage.SchoolCapacity += amenity.TotalCapacity;
+                        break;
+                    case EducationSubtype.University:
+                        coverage.UniversityCapacity += amenity.TotalCapacity;
+                        break;
+                    // UniversityDorm doesn't count - it's housing, not essential service
+                }
+            }
+        }
+        return coverage;
     }
 }
