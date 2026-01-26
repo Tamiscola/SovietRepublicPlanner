@@ -856,6 +856,15 @@ namespace SovietRepublicPlanner
             // Command loop
             while (true)
             {
+                // Check if no plans exist
+                if (allPlans.Count() == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\nNo plans exist. Returning to creation menu...");
+                    Console.ResetColor();
+                    break;  // Exit CommandLoop, returns to main menu
+                }
+
                 Console.Write("\nCommand (listplans/masterplan/switchplan/create/expand/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
                 List<string> commands = new List<string> { "listplans", "masterplan", "switchplan", "create", "expand", "support", "cancel", "back", "dive", "summary", "housing", "amenity", "transportation", "done" };
                 string command = ReadLineWithCompletion(commands).ToLower().Trim(); if (command == "expand")
@@ -1167,6 +1176,47 @@ namespace SovietRepublicPlanner
                             $"{(allPlans[i] == rootResult ? marker : null)}");
                     }
                     Console.WriteLine();
+                    Console.Write("[d] Delete a plan  [Enter] Return to commands\n> ");
+
+                    // Plan deletion
+                    if (Console.ReadKey().KeyChar == 'd')
+                    {
+                        Console.WriteLine();
+                        int delChoice;
+                        Console.Write($"Which plan to delete? [0-" + (allPlans.Count() - 1) + "]: ");
+                        if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < allPlans.Count())
+                        {
+                            // Confirm deletion
+                            Console.WriteLine($"Delete '{allPlans[delChoice].TargetResource.Name} ({allPlans[delChoice].TargetAmount}t/day)'? [y/n]");
+                            if (Console.ReadKey().KeyChar == 'y')
+                            {
+                                Console.WriteLine();
+                                allPlans.RemoveAt(delChoice);
+                                if (delChoice < currentPlanIndex) currentPlanIndex--;   // Deleted before active plan → shift index down
+                                else if (delChoice == currentPlanIndex)
+                                {
+                                    // Deleted the active plan → pick new active
+                                    if (allPlans.Count > 0)
+                                        currentPlanIndex = Math.Min(delChoice, allPlans.Count - 1);
+                                    else
+                                        currentPlanIndex = -1;  // No plans left
+                                }   // else: deleted after active plan, no change needed
+
+                                // Update currentResult
+                                if (currentPlanIndex >= 0 && allPlans.Count > 0) currentResult = allPlans[currentPlanIndex];
+                                else currentResult = null;
+
+                                // Display confirmation
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Plan deleted!");
+                                Console.ResetColor();
+                            }
+                            else continue;
+                        }
+                        else { Console.WriteLine("Invalid input"); continue; }
+                    }
+                    else { Console.WriteLine("invalid input."); continue; } // Return to commands
+
                     continue;
                 }
                 else if (command == "switchplan")
