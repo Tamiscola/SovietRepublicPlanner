@@ -29,8 +29,28 @@ class CalculationResult
             int thisLevel = ChosenBuilding.TotalWorkers;
             int subChainTotal = SubChains.Sum(sc => sc.TotalWorkers);
             int supportTotal = SupportBuildings.Sum(sc => sc.TotalWorkers);
-            int amenTotal = AmenityBuildings.Sum(a => a.Building.EffectiveWorkersPerShift * 3 * a.Count);
-            return thisLevel + subChainTotal + supportTotal + amenTotal;
+
+            // Calculate base population from production workers
+            int baseProductionWorkers = thisLevel + subChainTotal + supportTotal;
+            int baseCitizens = (int)(baseProductionWorkers * 1.82); // Citizens = workers × 1.82
+
+            // Add full-capacity amenity workers (non-percentage-based)
+            int fullCapacityAmenityWorkers = AmenityBuildings
+                .Where(a => !a.Building.UsesPercentageBasedDemand)
+                .Sum(a => a.Building.EffectiveWorkersPerShift * 3 * a.Count);
+
+            // Add percentage-based amenity workers
+            int percentageBasedWorkers = 0;
+            foreach (var amenity in AmenityBuildings.Where(a => a.Building.UsesPercentageBasedDemand))
+            {
+                percentageBasedWorkers += CalculateWorkersForPercentageAmenity(
+                    amenity.Building,
+                    baseProductionWorkers,
+                    baseCitizens
+                ) * amenity.Count;
+            }
+
+            return baseProductionWorkers + fullCapacityAmenityWorkers + percentageBasedWorkers;
         }
     }
     public double WorkerToPopulationRatio { get; set; } = 0.55;     // 55% are workers
@@ -980,5 +1000,35 @@ class CalculationResult
             }
         }
         return coverage;
+    }
+    // Helper method
+    private int CalculateWorkersForPercentageAmenity(AmenityBuilding building, int totalWorkers, int totalCitizens)
+    {
+        if (!building.UsesPercentageBasedDemand)
+        {
+            // Should not be called, but fallback
+            return building.EffectiveWorkersPerShift * 3;
+        }
+
+        // Determine population served based on building type
+        int populationServed = building.ServesPopulationType switch
+        {
+            PopulationType.Workers => totalWorkers,
+            PopulationType.Citizen => totalCitizens,
+            PopulationType.Children => (int)(totalCitizens * 0.165),  // 16.5% from your data
+            PopulationType.YoungAdults => (int)(totalCitizens * 0.065), // 6.5% from your data
+            _ => totalCitizens
+        };
+
+        // Calculate actual demand
+        double actualDemand = populationServed * building.PopulationPercentageServed;
+
+        // How many buildings needed to serve this demand?
+        double buildingsNeeded = actualDemand / (building.MaxVisitors > 0 ? building.MaxVisitors : 1);
+
+        // Workers needed = buildings needed × workers per building × 3 shifts
+        int workersPerBuilding = building.EffectiveWorkersPerShift * 3;
+
+        return (int)Math.Ceiling(buildingsNeeded * workersPerBuilding);
     }
 }

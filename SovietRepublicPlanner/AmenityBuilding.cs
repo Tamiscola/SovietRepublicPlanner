@@ -19,6 +19,13 @@ public enum EducationSubtype
     University,
     UniversityDorm
 }
+public enum PopulationType
+{
+    Workers,
+    Children,
+    YoungAdults,
+    Citizen
+}
 public class AmenityBuilding
 {
     public string Name { get; set; }
@@ -32,6 +39,13 @@ public class AmenityBuilding
         : (int)(MaxVisitors * CalculationSettings.AmenityCoverageMultiplier);
     public int EffectiveWorkersPerShift => (int)Math.Ceiling(WorkersPerShift / CalculationSettings.ProductivityMultiplier);
     public List<Resource> ProductsOffered { get; set; } = new List<Resource>();
+
+    // Percentage-based demand
+    public bool UsesPercentageBasedDemand { get; set; } = false;
+    public double PopulationPercentageServed { get; set; } = 1.0; // 1.0 = 100%
+
+    // Who does this building serve?
+    public PopulationType ServesPopulationType { get; set; } = PopulationType.Workers;
 
     // Utilities
     public double PowerConsumptionMWh { get; set; }

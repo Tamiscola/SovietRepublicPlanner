@@ -7348,6 +7348,14 @@ class GameData
             AttractionScore = null,
             Workdays = 2123,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 96},
+                {GravelResource, 74},
+                {AsphaltResource, 59},
+                {BricksResource, 67},
+                {BoardsResource, 22},
+                {SteelResource, 25},
+            }
             // 96t Concrete, 59t Asphalt, 67t Bricks, 25t Steel, 74t Gravel, 22t Boards
             // Parking: 15 spots, Oil tank: 30t Fuel, Stations: 2
         },
@@ -7367,6 +7375,14 @@ class GameData
             AttractionScore = null,
             Workdays = 1382,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 32},
+                {GravelResource, 24},
+                {AsphaltResource, 19},
+                {BricksResource, 67},
+                {BoardsResource, 22},
+                {SteelResource, 25},
+            }
             // 32t Concrete, 19t Asphalt, 67t Bricks, 25t Steel, 24t Gravel, 22t Boards
             // Parking: 8 spots, Oil tank: 30t Fuel, Stations: 2
         },
@@ -7386,6 +7402,14 @@ class GameData
             AttractionScore = null,
             Workdays = 1120,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 136},
+                {GravelResource, 23},
+                {AsphaltResource, 18},
+                {BricksResource, 24},
+                {BoardsResource, 8.3},
+                {SteelResource, 27},
+            }
             // 136t Concrete, 18t Asphalt, 24t Bricks, 27t Steel, 23t Gravel, 8.3t Boards
             // Stations: 2
         },
@@ -7405,6 +7429,14 @@ class GameData
             AttractionScore = null,
             Workdays = 785,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 23},
+                {GravelResource, 18},
+                {AsphaltResource, 14},
+                {BricksResource, 32},
+                {BoardsResource, 10},
+                {SteelResource, 13},
+            }
             // 23t Concrete, 14t Asphalt, 32t Bricks, 13t Steel, 18t Gravel, 10t Boards
             // Parking: 5 spots, Oil tank: 30t Fuel, Stations: 2
         }
@@ -7424,9 +7456,20 @@ class GameData
             GarbagePerWorker = 0.62,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 90,  // Max patients
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.08,
             AttractionScore = null,
             Workdays = 1002,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 54},
+                {GravelResource, 17},
+                {AsphaltResource, 14},
+                {BricksResource, 17},
+                {BoardsResource, 5.8},
+                {SteelResource, 43},
+            }
             // 54t Concrete, 14t Asphalt, 17t Bricks, 43t Steel, 17t Gravel, 5.8t Boards
             // Parking: 8 spots, Oil tank: 40t Fuel, Stations: 1
         },
@@ -7443,9 +7486,18 @@ class GameData
             GarbagePerWorker = 0.62,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 450,  // Max patients
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.08,
             AttractionScore = null,
             Workdays = 8828,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 787},
+                {GravelResource, 159},
+                {AsphaltResource, 127},
+                {SteelResource, 469},
+            }
             // 787t Concrete, 127t Asphalt, 469t Steel, 159t Gravel
             // Parking: 24 spots, Oil tank: 25t Fuel, Stations: 2, Helicopter stations: 2
         },
@@ -7462,9 +7514,20 @@ class GameData
             GarbagePerWorker = 0.62,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 15,  // Max patients
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.08,
             AttractionScore = null,
             Workdays = 365,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 10},
+                {GravelResource, 7.9},
+                {AsphaltResource, 6.3},
+                {BricksResource, 15},
+                {BoardsResource, 9.0},
+                {SteelResource, 4.3},
+            }
             // 10t Concrete, 6.3t Asphalt, 15t Bricks, 4.3t Steel, 7.9t Gravel, 9.0t Boards
             // Parking: 1 spot, Oil tank: 15t Fuel, Stations: 1
         },
@@ -7484,6 +7547,14 @@ class GameData
             AttractionScore = null,
             Workdays = 965,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 22},
+                {GravelResource, 17},
+                {AsphaltResource, 13},
+                {BricksResource, 52},
+                {BoardsResource, 17},
+                {SteelResource, 15},
+            }
             // 22t Concrete, 13t Asphalt, 52t Bricks, 15t Steel, 17t Gravel, 17t Boards
             // Parking: 4 spots, Oil tank: 40t Fuel, Stations: 1
         },
@@ -7503,6 +7574,14 @@ class GameData
             AttractionScore = null,
             Workdays = 2370,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 67},
+                {GravelResource, 51},
+                {AsphaltResource, 41},
+                {BricksResource, 99},
+                {BoardsResource, 58},
+                {SteelResource, 27},
+            }
             // 67t Concrete, 41t Asphalt, 99t Bricks, 27t Steel, 51t Gravel, 58t Boards
             // Parking: 8 spots, Oil tank: 60t Fuel, Stations: 1
         },
@@ -7522,6 +7601,14 @@ class GameData
             AttractionScore = null,
             Workdays = 469,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 8.4},
+                {GravelResource, 6.5},
+                {AsphaltResource, 5.2},
+                {BricksResource, 24},
+                {BoardsResource, 13},
+                {SteelResource, 6.0},
+            }
             // 8.4t Concrete, 5.2t Asphalt, 24t Bricks, 6.0t Steel, 6.5t Gravel, 13t Boards
             // Parking: 2 spots, Oil tank: 30t Fuel, Stations: 1
         }
@@ -7544,6 +7631,12 @@ class GameData
             AttractionScore = 0.8,
             Workdays = 728,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 145},
+                {GravelResource, 4.3},
+                {AsphaltResource, 3.5},
+                {SteelResource, 33},
+            }
             // 145t Concrete, 3.4t Asphalt, 33t Steel, 4.3t Gravel
         },
         new AmenityBuilding
@@ -7562,6 +7655,12 @@ class GameData
             AttractionScore = 3.8,
             Workdays = 2085,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 266},
+                {GravelResource, 10},
+                {AsphaltResource, 8.4},
+                {SteelResource, 126},
+            }
             // 266t Concrete, 8.4t Asphalt, 126t Steel, 10t Gravel
         },
         new AmenityBuilding
@@ -7580,6 +7679,12 @@ class GameData
             AttractionScore = null,  // Not shown on card
             Workdays = 1152,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 184},
+                {GravelResource, 34},
+                {AsphaltResource, 27},
+                {SteelResource, 31},
+            }
             // 184t Concrete, 27t Asphalt, 31t Steel, 34t Gravel
         },
         new AmenityBuilding
@@ -7598,6 +7703,12 @@ class GameData
             AttractionScore = 2.8,
             Workdays = 4944,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 433},
+                {GravelResource, 119},
+                {SteelResource, 133},
+                {PrefabPanelsResource, 202}
+            }
             // 433t Concrete, 133t Steel, 119t Gravel, 202t Prefab panels
         },
         new AmenityBuilding
@@ -7616,6 +7727,12 @@ class GameData
             AttractionScore = 2.4,
             Workdays = 1598,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 239},
+                {GravelResource, 30},
+                {AsphaltResource, 24},
+                {SteelResource, 6},
+            }
             // 239t Concrete, 24t Asphalt, 66t Steel, 30t Gravel
         },
         new AmenityBuilding
@@ -7634,6 +7751,12 @@ class GameData
             AttractionScore = 2.4,
             Workdays = 1848,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 282},
+                {GravelResource, 61},
+                {AsphaltResource, 49},
+                {SteelResource, 45},
+            }
             // 282t Concrete, 49t Asphalt, 45t Steel, 61t Gravel
         },
         new AmenityBuilding
@@ -7652,6 +7775,14 @@ class GameData
             AttractionScore = 3.2,
             Workdays = 836,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 23},
+                {GravelResource, 11},
+                {AsphaltResource, 9.3},
+                {SteelResource, 10},
+                {PrefabPanelsResource, 82},
+                {BoardsResource, 10},
+            }
             // 23t Concrete, 9.3t Asphalt, 10t Steel, 11t Gravel, 82t Prefab panels, 10t Boards
         },
         new AmenityBuilding
@@ -7670,6 +7801,13 @@ class GameData
             AttractionScore = null,  // Not shown on card
             Workdays = 381,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 12},
+                {GravelResource, 9.8},
+                {AsphaltResource, 7.9},
+                {SteelResource, 2.5},
+                {BoardsResource, 6.7},
+            }
             // 12t Concrete, 7.9t Asphalt, 20t Bricks, 2.5t Steel, 9.8t Gravel, 6.7t Boards
         },
         new AmenityBuilding
@@ -7688,6 +7826,11 @@ class GameData
             AttractionScore = null,  // Not shown on card
             Workdays = 437,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 46},
+                {GravelResource, 24},
+                {SteelResource, 3.1},
+            }
             // 46t Concrete, 3.1t Steel, 24t Gravel
             // Note: Requires weather temperature above 10°C
         }
@@ -7896,6 +8039,9 @@ class GameData
             GarbagePerWorker = 0.40,
             GarbagePerCustomer = 0.48,  // Per student
             MaxVisitors = 80,  // Max students
+            ServesPopulationType = PopulationType.YoungAdults,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
             Workdays = 1545,
@@ -7924,6 +8070,9 @@ class GameData
             GarbagePerWorker = 0.40,
             GarbagePerCustomer = 0.48,
             MaxVisitors = 420,  // Max students
+            ServesPopulationType = PopulationType.YoungAdults,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
             Workdays = 7065,
@@ -7952,6 +8101,9 @@ class GameData
             GarbagePerWorker = 0.40,
             GarbagePerCustomer = 0.48,
             MaxVisitors = 300,  // Max students
+            ServesPopulationType = PopulationType.YoungAdults,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
             Workdays = 7388,
@@ -7980,6 +8132,9 @@ class GameData
             GarbagePerWorker = 0.40,
             GarbagePerCustomer = 0.48,
             MaxVisitors = 60,  // Max students
+            ServesPopulationType = PopulationType.YoungAdults,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
             Workdays = 1971,
@@ -8007,6 +8162,9 @@ class GameData
             GarbagePerWorker = 0.40,
             GarbagePerCustomer = 0.48,
             MaxVisitors = 225,  // Max students
+            ServesPopulationType = PopulationType.YoungAdults,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
             Workdays = 5186,
@@ -8603,8 +8761,14 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 0,  // Not listed - requires Grand Monuments research
+            Workdays = 558,  // Not listed - requires Grand Monuments research
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 73},
+                {AsphaltResource, 19},
+                {SteelResource, 9.5},
+                {GravelResource, 24}
+            }
             // No construction materials listed
         },
 
@@ -8625,6 +8789,12 @@ class GameData
             AttractionScore = null,
             Workdays = 231,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 25},
+                {AsphaltResource, 10},
+                {SteelResource, 2.1},
+                {GravelResource, 12}
+            }
             // 25t Concrete, 10t Asphalt, 2.1t Steel, 12t Gravel
         },
 
@@ -8645,6 +8815,11 @@ class GameData
             AttractionScore = null,
             Workdays = 100,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 13},
+                {SteelResource, 1.7},
+                {GravelResource, 4.4}
+            }
             // 13t Concrete, 1.7t Steel, 4.4t Gravel
         },
 
@@ -8665,6 +8840,12 @@ class GameData
             AttractionScore = null,
             Workdays = 89,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 5.5},
+                {AsphaltResource, 3.4},
+                {SteelResource, 2.3},
+                {GravelResource, 4.2}
+            }
             // 5.5t Concrete, 3.4t Asphalt, 2.3t Steel, 4.2t Gravel
         },
 
@@ -8685,6 +8866,12 @@ class GameData
             AttractionScore = null,
             Workdays = 25,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 1.1},
+                {AsphaltResource, 0.66},
+                {SteelResource, 1.2},
+                {GravelResource, 0.83}
+            }
             // 1.1t Concrete, 0.66t Asphalt, 1.2t Steel, 0.83t Gravel
         },
 
@@ -8705,6 +8892,12 @@ class GameData
             AttractionScore = null,
             Workdays = 27,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 1.1},
+                {AsphaltResource, 0.67},
+                {SteelResource, 1.4},
+                {GravelResource, 0.83}
+            }
             // 1.1t Concrete, 0.67t Asphalt, 1.4t Steel, 0.83t Gravel
         },
 
@@ -8725,6 +8918,12 @@ class GameData
             AttractionScore = null,
             Workdays = 110,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 4.2},
+                {AsphaltResource, 2.6},
+                {SteelResource, 5.6},
+                {GravelResource, 3.2}
+            }
             // 4.2t Concrete, 2.6t Asphalt, 5.6t Steel, 3.2t Gravel
         },
 
@@ -8745,6 +8944,12 @@ class GameData
             AttractionScore = null,
             Workdays = 86,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 4.1},
+                {AsphaltResource, 2.5},
+                {SteelResource, 3.5},
+                {GravelResource, 3.2}
+            }
             // 4.1t Concrete, 2.5t Asphalt, 3.5t Steel, 3.2t Gravel
         },
 
@@ -8765,6 +8970,12 @@ class GameData
             AttractionScore = null,
             Workdays = 99,
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 4.1},
+                {AsphaltResource, 2.6},
+                {SteelResource, 4.6},
+                {GravelResource, 3.2}
+            }
             // 4.1t Concrete, 2.6t Asphalt, 4.6t Steel, 3.2t Gravel
         }
     };
@@ -8784,6 +8995,9 @@ class GameData
             GarbagePerWorker = 0.45,
             GarbagePerCustomer = 0,  // Visitors don't produce garbage in this context
             MaxVisitors = 210,
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.015,
             AttractionScore = null,
             Workdays = 6338,
             WarehouseCapacity = new Dictionary<Resource, double>()
@@ -8821,6 +9035,9 @@ class GameData
             GarbagePerWorker = 0.45,
             GarbagePerCustomer = 0,
             MaxVisitors = 60,
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.015,
             AttractionScore = null,
             Workdays = 1060,
             WarehouseCapacity = new Dictionary<Resource, double>()
@@ -8860,6 +9077,9 @@ class GameData
             GarbagePerWorker = 0.45,
             GarbagePerCustomer = 0,
             MaxVisitors = 30,  // Listed as separate icon
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.015,
             AttractionScore = null,
             Workdays = 3071,
             VehicleStations = 2,
@@ -8886,6 +9106,9 @@ class GameData
             GarbagePerWorker = 0.45,
             GarbagePerCustomer = 0,
             MaxVisitors = 10,  // Listed as separate icon
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.015,
             AttractionScore = null,
             Workdays = 702,
             VehicleStations = 1,
@@ -8913,6 +9136,9 @@ class GameData
             GarbagePerWorker = 0.45,
             GarbagePerCustomer = 0,
             MaxVisitors = 40,  // Listed as separate icon
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.015,
             AttractionScore = null,
             Workdays = 1048,
             VehicleStations = 1,
@@ -8940,6 +9166,9 @@ class GameData
             GarbagePerWorker = 0.45,
             GarbagePerCustomer = 0,
             MaxVisitors = 10,  // Listed as separate icon
+            ServesPopulationType = PopulationType.Citizen,
+            UsesPercentageBasedDemand = true,
+            PopulationPercentageServed = 0.015,
             AttractionScore = null,
             Workdays = 485,
             VehicleStations = 1,
