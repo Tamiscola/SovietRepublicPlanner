@@ -28,7 +28,7 @@ A command-line tool to help you plan optimal production chains, resource allocat
 ## Installation
 
 ### Option 1: Download Release (Recommended)
-1. Download the latest release from the [Releases page](https://github.com/Tamiscola/SovietRepublicPlanner/releases/tag/v1.0.0)
+1. Download the latest release from the [Releases page](https://github.com/Tamiscola/SovietRepublicPlanner/releases)
 2. Extract the zip file
 3. Run `WRSR-Calculator.exe` (Windows) or `./WRSR-Calculator` (Linux/Mac)
 
