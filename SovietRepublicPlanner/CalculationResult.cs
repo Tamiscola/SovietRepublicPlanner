@@ -611,8 +611,16 @@ class CalculationResult
             Console.WriteLine("│ Resource Residues:");
             foreach (var kv in TotalResidues)
             {
-                if (kv.Key != GameData.CropsResource) { Console.WriteLine($"│ +{kv.Value,6:F2}t/day {kv.Key.Name,-20}"); }
-                else { Console.WriteLine($"│ +{kv.Value,6:F2}t/yr {kv.Key.Name,-20}"); }
+                double displayResidue = kv.Value;
+
+                // If this is the target resource and we have a target, show excess only
+                if (kv.Key == this.TargetResource && this.TargetAmount > 0)
+                    displayResidue -= this.TargetAmount;
+
+                if (kv.Key != GameData.CropsResource)
+                    Console.WriteLine($"│ · {displayResidue,6:F2}t/day {kv.Key.Name,-20}");
+                else
+                    Console.WriteLine($"│ · {displayResidue,6:F2}t/yr {kv.Key.Name,-20}");
             }
             if (TotalConstructionMaterials.Count() > 0)
             {
@@ -620,7 +628,7 @@ class CalculationResult
                 Console.WriteLine("│ Total Construction Materials:");
                 Console.WriteLine("├────────────────────────────────────────┤");
                 foreach (var kv in TotalConstructionMaterials)
-                    Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+                    Console.WriteLine($"│ · {kv.Value:F2} × {kv.Key.Name}");
             }
         }
     }
@@ -659,10 +667,37 @@ class CalculationResult
         }
         else
         {
-            Console.WriteLine($"│ {indent}· {result.ChosenBuilding.Count} × {result.ChosenBuilding.Building.Name}");
+            // Display THIS level's building
+            if (result.ChosenBuilding != null)
+                Console.WriteLine($"│ {indent}· {result.ChosenBuilding.Count} × {result.ChosenBuilding.Building.Name}");
+
+            // Aggregate SubChains at the NEXT level
+            Dictionary<ProductionBuilding, int> subChainBuildings = new Dictionary<ProductionBuilding, int>();
+
             foreach (var subChain in result.SubChains)
             {
-                DisplayAllBuildings(subChain, depth + 1);
+                if (subChain.ChosenBuilding != null)
+                {
+                    var building = subChain.ChosenBuilding.Building;
+                    if (subChainBuildings.ContainsKey(building))
+                        subChainBuildings[building] += subChain.ChosenBuilding.Count;
+                    else
+                        subChainBuildings.Add(building, subChain.ChosenBuilding.Count);
+                }
+            }
+
+            // Display aggregated SubChain buildings
+            string subIndent = new string(' ', (depth + 1) * 2);
+            foreach (var kv in subChainBuildings)
+                Console.WriteLine($"│ {subIndent}· {kv.Value} × {kv.Key.Name}");
+
+            // Now recurse into SubChains' SubChains (depth + 2)
+            foreach (var subChain in result.SubChains)
+            {
+                foreach (var subSubChain in subChain.SubChains)
+                {
+                    DisplayAllBuildings(subSubChain, depth + 2);
+                }
             }
         }
     }
@@ -692,8 +727,8 @@ class CalculationResult
         {
             double residue = kv.Value;
             // Subtract target
-            if (kv.Key == this.TargetResource)
-                residue -= this.TargetAmount;
+            //if (kv.Key == this.TargetResource)
+            //    residue -= this.TargetAmount;
             // Subtract internal sourcing
             if (this.TotalInternallySourced.ContainsKey(kv.Key))
                 residue -= this.TotalInternallySourced[kv.Key];

@@ -579,9 +579,10 @@ namespace SovietRepublicPlanner
                     Console.WriteLine($"Garbage produced: {totalGarbage}");
                     Console.WriteLine($"Pollution emitted: {result.Buildings[i].TotalEnvironmentPollution}");
                 }
-                // Default Industries
-                else { DisplayOptions(result); }
             }
+            // Default Industries
+            if (result.TargetResource != GameData.CropsResource)
+                DisplayOptions(result); 
 
             // User chooses a BuildingRequirement (if there's more than one option)
             if (result.Buildings.Count > 1)
