@@ -14,6 +14,36 @@ class CalculationResult
     // Buildings
     public List<BuildingRequirement> Buildings { get; set; } = new List<BuildingRequirement>();
     public List<BuildingRequirement> SupportBuildings { get; set; } = new List<BuildingRequirement>();
+    public Dictionary<ProductionBuilding, int> AllSupportBuildings
+    {
+        get
+        {
+            Dictionary<ProductionBuilding, int> all = new Dictionary<ProductionBuilding, int>();
+
+            // Add this level's support buildings
+            foreach (var br in SupportBuildings)
+            {
+                if (all.ContainsKey(br.Building))
+                    all[br.Building] += br.Count;
+                else
+                    all.Add(br.Building, br.Count);
+            }
+
+            // Recursively add from SubChains
+            foreach (var sub in SubChains)
+            {
+                foreach (var kv in sub.AllSupportBuildings)
+                {
+                    if (all.ContainsKey(kv.Key))
+                        all[kv.Key] += kv.Value;
+                    else
+                        all.Add(kv.Key, kv.Value);
+                }
+            }
+
+            return all;
+        }
+    }
     public List<ResidentialInstance> ResidentialBuildings { get; set; } = new List<ResidentialInstance>();
     public List<AmenityInstance> AmenityBuildings = new List<AmenityInstance>();
     public List<TransportationInstance> TransportationBuildings = new List<TransportationInstance>();
@@ -473,17 +503,13 @@ class CalculationResult
             // Display all buildings recursively
             DisplayAllBuildings(this, 0);
 
-            if (SupportBuildings.Count() > 0)
+            var totalSupBldgs = AllSupportBuildings;
+
+            if (totalSupBldgs.Count > 0)
             {
-                Dictionary<ProductionBuilding, int> totalSupBldgs = new Dictionary<ProductionBuilding, int>();
                 Console.WriteLine("├────────────────────────────────────────┤");
                 Console.WriteLine("│ Support Infrastructures:               │");
                 Console.WriteLine("├────────────────────────────────────────┤");
-                foreach (var br in SupportBuildings)
-                {
-                    if (totalSupBldgs.ContainsKey(br.Building)) totalSupBldgs[br.Building] += br.Count;
-                    else totalSupBldgs.Add(br.Building, br.Count);
-                }
                 foreach (var kv in totalSupBldgs)
                     Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
             }

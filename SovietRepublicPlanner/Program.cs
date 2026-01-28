@@ -463,12 +463,74 @@ namespace SovietRepublicPlanner
                         }
                     }
 
+                    // Reconstruct support buildings
+                    if (savedPlan.SupportBuildings != null && savedPlan.SupportBuildings.Count > 0)
+                    {
+                        foreach (var savedbi in savedPlan.SupportBuildings)
+                        {
+                            var supportBuilding = GameData.AllSupportBuildings
+                                .FirstOrDefault(sb => sb.Name == savedbi.BuildingName);
+
+                            if (supportBuilding != null)
+                            {
+                                BuildingRequirement br2 = new BuildingRequirement(supportBuilding);
+                                br2.Count = savedbi.Count;
+                                result.SupportBuildings.Add(br2);
+                            }
+                        }
+                    }
+
+                    // Reconstruct residential buildings
+                    if (savedPlan.ResidentialBuildings != null && savedPlan.ResidentialBuildings.Count > 0)
+                    {
+                        foreach (var savedRes in savedPlan.ResidentialBuildings)
+                        {
+                            ResidentialBuilding resBldg = GameData.AllResidentialBuildings
+                                .FirstOrDefault(rb => rb.Name == savedRes.BuildingName);
+                            if (resBldg != null)
+                            {
+                                ResidentialInstance resInstance = new ResidentialInstance
+                                {
+                                    Building = resBldg,
+                                    Count = savedRes.Count
+                                };
+                                result.ResidentialBuildings.Add(resInstance);
+                            }
+                        }
+                    }
+
+                    // Reconstruct amenity buildings
+                    if (savedPlan.AmenityBuildings != null && savedPlan.AmenityBuildings.Count > 0)
+                    {
+                        foreach (var savedbi in savedPlan.AmenityBuildings)
+                        {
+                            AmenityInstance amenityBuilding = new AmenityInstance();
+                            amenityBuilding.Building = GameData.AllAmenityBuildings
+                                .FirstOrDefault(ab => ab.Name == savedbi.BuildingName);
+                            amenityBuilding.Count = savedbi.Count;
+                            result.AmenityBuildings.Add(amenityBuilding);
+                        }
+                    }
+
+                    // Reconstruct transportation buildings
+                    if (savedPlan.TransportationBuildings != null && savedPlan.TransportationBuildings.Count > 0)
+                    {
+                        foreach (var savedbi in savedPlan.TransportationBuildings)
+                        {
+                            TransportationInstance transportationInstance = new TransportationInstance();
+                            transportationInstance.Building = GameData.TransportationBuildings
+                                .FirstOrDefault(ti => ti.Name == savedbi.BuildingName);
+                            transportationInstance.Count = savedbi.Count;
+                            result.TransportationBuildings.Add(transportationInstance);
+                        }
+                    }
+
                     result.ChosenBuilding = br;
                     result.Buildings.Add(br);
                 }
             }
 
-            // ✅ RECURSIVE PART - restore all subchains
+            // restore all subchains
             foreach (var savedSubChain in savedPlan.SubChains)
             {
                 var subChain = ConvertFromSavedPlan(savedSubChain);  // Calls itself!
@@ -1326,10 +1388,10 @@ namespace SovietRepublicPlanner
                         }
 
                         // Combine Support Buildings
-                        foreach (var br in plan.SupportBuildings)
+                        foreach (var kv in plan.AllSupportBuildings)
                         {
-                            if (combinedSupBldgs.ContainsKey(br.Building)) combinedSupBldgs[br.Building] += br.Count;
-                            else combinedSupBldgs.Add(br.Building, br.Count);
+                            if (combinedSupBldgs.ContainsKey(kv.Key)) combinedSupBldgs[kv.Key] += kv.Value;
+                            else combinedSupBldgs.Add(kv.Key, kv.Value);
                         }
 
                         // Combine Amenity Buildings
@@ -1387,7 +1449,7 @@ namespace SovietRepublicPlanner
                     Console.WriteLine("├────────────────────────────────────────┤");
                     foreach (var plan in allPlans)
                         plan.DisplayAllBuildings(plan, 0);
-                    if (allPlans.Any(p => p.SupportBuildings.Count > 0))
+                    if (allPlans.Any(p => p.AllSupportBuildings.Count() > 0))
                     {
                         Console.WriteLine("├────────────────────────────────────────┤");
                         Console.WriteLine("│ Support Infrastructures:               │");
