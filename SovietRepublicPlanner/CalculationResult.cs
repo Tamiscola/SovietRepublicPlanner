@@ -792,6 +792,7 @@ class CalculationResult
         }
         return result;
     }
+    // Helper methods
     public Dictionary<Resource, double> CalculateTotalOutput(Dictionary<Resource, double> result, CalculationResult cr)
     {
         foreach (var kv in cr.ChosenBuilding.ExpectedOutput)
@@ -1027,7 +1028,6 @@ class CalculationResult
         }
         return coverage;
     }
-    // Helper method
     private int CalculateWorkersForPercentageAmenity(AmenityBuilding building, int totalWorkers, int totalCitizens)
     {
         if (!building.UsesPercentageBasedDemand)
@@ -1056,5 +1056,21 @@ class CalculationResult
         int workersPerBuilding = building.EffectiveWorkersPerShift * 3;
 
         return (int)Math.Ceiling(buildingsNeeded * workersPerBuilding);
+    }
+    public bool RemoveSupportBuilding(ProductionBuilding building)
+    {
+        // Remove ALL instances from this level
+        int removedCount = SupportBuildings.RemoveAll(br => br.Building == building);
+
+        // ALSO search all SubChains (don't stop early!)
+        bool foundInSubChain = false;
+        foreach (var subChain in SubChains)
+        {
+            if (subChain.RemoveSupportBuilding(building))
+                foundInSubChain = true;
+        }
+
+        // Return true if we found it at ANY level
+        return (removedCount > 0 || foundInSubChain);
     }
 }

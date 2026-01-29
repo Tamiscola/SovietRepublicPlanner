@@ -2059,27 +2059,32 @@ namespace SovietRepublicPlanner
                         }
                         else if (buildChoice == 2)
                         {
-                            if (currentResult.SupportBuildings.Count() > 0)
+                            if (currentResult.AllSupportBuildings.Count > 0)
                             {
-                                Dictionary<int, BuildingRequirement> supIndex = new Dictionary<int, BuildingRequirement>();
+                                Dictionary<int, ProductionBuilding> supIndex = new Dictionary<int, ProductionBuilding>();
                                 Console.WriteLine("Which Support Building do you want to cancel?:");
                                 int i = 0;
-                                foreach (var k in currentResult.SupportBuildings)
+                                foreach (var kv in currentResult.AllSupportBuildings)
                                 {
-                                    Console.WriteLine($"{i}: {k.Building.Name}");
-                                    supIndex.Add(i, k);
+                                    Console.WriteLine($"{i}: {kv.Key.Name} x {kv.Value}");
+                                    supIndex.Add(i, kv.Key);
                                     i++;
                                 }
                                 Console.Write("Choose the number to cancel: ");
-                                if (int.TryParse(Console.ReadLine(), out undoChoice) && undoChoice >= 0 && undoChoice <= currentResult.SupportBuildings.Count())
+                                if (int.TryParse(Console.ReadLine(), out undoChoice)
+                                    && undoChoice >= 0
+                                    && undoChoice < currentResult.AllSupportBuildings.Count)
                                 {
-                                    Console.WriteLine($"{currentResult.SupportBuildings[undoChoice].Building.Name} has been canceled.");
-                                    currentResult.SupportBuildings.RemoveAt(undoChoice);
+                                    var buildingToRemove = supIndex[undoChoice];
 
+                                    // Recursively search and remove
+                                    if (currentResult.RemoveSupportBuilding(buildingToRemove))
+                                        Console.WriteLine($"{buildingToRemove.Name} has been canceled.");
+                                    else Console.WriteLine("Error: Building not found in tree.");
                                 }
                                 else { Console.WriteLine("Invalid input."); continue; }
                             }
-                            else { Console.WriteLine("\nNo Support Buildings to cancel!"); }
+                            else Console.WriteLine("\nNo Support Buildings to cancel!");
                         }
                         else if (buildChoice == 3)
                         {
