@@ -1541,6 +1541,7 @@ namespace SovietRepublicPlanner
                     HashSet<Resource> allIOResources = new HashSet<Resource>();
                     List<ProductionBuilding> liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
                     List<ProductionBuilding> bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
+                    List<ProductionBuilding> dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
                     List<ProductionBuilding> solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
                     List<ProductionBuilding> generalInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
                     List<ProductionBuilding> waterInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
@@ -1562,6 +1563,8 @@ namespace SovietRepublicPlanner
                             liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
                         if (r.RequiresBulkHandling)
                             bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
+                        if (r.RequiresDryBulkHandling)
+                            dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
                         if (r.RequiresSolidHandling)
                             solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
@@ -1593,6 +1596,15 @@ namespace SovietRepublicPlanner
                         Console.WriteLine("\nRelated Support Buildings (Bulk):");
                         for (int i = 0; i < bulkHandlingInfra.Count(); i++)
                             Console.WriteLine($"[{i + 1}]: {bulkHandlingInfra[i].Name}");
+                        catIndex++;
+                    }
+                    if (dryBulkHandlingInfra.Count() > 0 && allIOResources.Any(r => r.RequiresDryBulkHandling))
+                    {
+                        categoryBuildings[catIndex] = dryBulkHandlingInfra;
+                        Console.WriteLine("\n────────────────────────────────────────────────────");
+                        Console.WriteLine("\nRelated Support Buildings (Dry-Bulk):");
+                        for (int i = 0; i < dryBulkHandlingInfra.Count(); i++)
+                            Console.WriteLine($"[{i + 1}]: {dryBulkHandlingInfra[i].Name}");
                         catIndex++;
                     }
                     if (solidHandlingInfra.Count() > 0 && allIOResources.Any(r => r.RequiresSolidHandling))
