@@ -88,6 +88,7 @@ class GameData
     // Utility resources (dual nature: input + service)
     public static Resource PowerResource = new Resource("Power", 1, true, true) { RequiresElectricalInfrastructure = true };
     public static Resource WaterResource = new Resource("Water", 1, true, true) { RequiresWaterInfrastructure = true };
+    public static Resource RawWaterResource = new Resource("RawWater", 0, true, false) { RequiresWaterInfrastructure = true };  // Not Utility Resource (exception)
     public static Resource IndustrialWaterResource = new Resource("Industrial Water", 1, true, true) { RequiresWaterInfrastructure = true };
     public static Resource WasteWaterResource = new Resource("Waste Water", 0, false, true) { RequiresSewageInfrastructure = true };
     public static Resource NuclearWasteResource = new Resource("Nuclear Waste", 0, false, true);
@@ -2031,7 +2032,7 @@ class GameData
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
     {
-        new ResourceAmount() { Resource = WaterResource, Amount = 70 }
+        new ResourceAmount() { Resource = RawWaterResource, Amount = 70 }
     };
         result.WorkersPerShift = 0;
         result.PowerConsumption = 2.1;
@@ -2066,7 +2067,7 @@ class GameData
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
     {
-        new ResourceAmount() { Resource = WaterResource, Amount = 215 }
+        new ResourceAmount() { Resource = RawWaterResource, Amount = 215 }
     };
         result.WorkersPerShift = 7;
         result.PowerConsumption = 5.7;
@@ -2101,7 +2102,7 @@ class GameData
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
     {
-        new ResourceAmount() { Resource = WaterResource, Amount = 150 }
+        new ResourceAmount() { Resource = RawWaterResource, Amount = 150 }
     };
         result.WorkersPerShift = 0;
         result.PowerConsumption = 0;
@@ -2133,7 +2134,8 @@ class GameData
         result.Inputs = new List<ResourceAmount>()
         {
             new ResourceAmount(PowerResource, 3.9, TimePeriod.Day),
-            new ResourceAmount(ChemicalsResource, 0.25, TimePeriod.Day)
+            new ResourceAmount(ChemicalsResource, 0.25, TimePeriod.Day),
+            new ResourceAmount(RawWaterResource, 133, TimePeriod.Day),
         };
         result.Outputs = new List<ResourceAmount>()
         {
@@ -2170,7 +2172,8 @@ class GameData
         result.Inputs = new List<ResourceAmount>()
         {
             new ResourceAmount(PowerResource, 7.6, TimePeriod.Day),
-            new ResourceAmount(ChemicalsResource, 0.47, TimePeriod.Day)
+            new ResourceAmount(ChemicalsResource, 0.47, TimePeriod.Day),
+            new ResourceAmount(RawWaterResource, 330, TimePeriod.Day),
         };
         result.Outputs = new List<ResourceAmount>()
         {
@@ -9891,7 +9894,7 @@ class GameData
         SolidFertilizerResource,
         LiquidFertilizerResource,
         PowerResource,
-        WaterResource,
+        WaterResource, RawWaterResource,
         HeatResource,
         WasteWaterResource,
         NuclearWasteResource,

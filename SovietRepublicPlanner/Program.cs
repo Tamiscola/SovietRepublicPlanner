@@ -952,6 +952,9 @@ namespace SovietRepublicPlanner
                         }
                     }
 
+                    // Option 3: Utility
+                    List<Resource> utilNeeds = currentResult.TotalUtilityNeeds.Keys.ToList();
+
                     // Display Options grouped
                     Console.WriteLine("Available resources to expand:");
                     if (productionInputs.Count() > 0)
@@ -965,6 +968,13 @@ namespace SovietRepublicPlanner
                         Console.WriteLine("\n[Citizen Consumption]");
                         foreach (var r in citizenNeeds)
                             Console.WriteLine($"  · {r.Name}");
+                    }
+                    if (utilNeeds.Count() > 0)
+                    {
+                        Console.WriteLine("\n[Utility]");
+                        foreach (var r in utilNeeds)
+                            if (r == GameData.WasteWaterResource) { Console.WriteLine($"  · Sewage"); }
+                            else Console.WriteLine($"  · {r.Name}");
                     }
 
                     bool isUtility = false;
