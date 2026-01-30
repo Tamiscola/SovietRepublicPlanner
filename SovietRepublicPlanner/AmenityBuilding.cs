@@ -57,6 +57,15 @@ public class AmenityBuilding
     // Waste
     public double GarbagePerWorker { get; set; }
     public double GarbagePerCustomer { get; set; }
+    public double GarbageProduction
+    {
+        get
+        {
+            double result = 0;
+            result = GarbagePerWorker * WorkersPerShift + GarbagePerCustomer * MaxVisitors;
+            return result;
+        }
+    }
 
     // Optional properties
     public double? AttractionScore { get; set; }

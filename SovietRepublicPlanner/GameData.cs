@@ -7116,8 +7116,8 @@ class GameData
             WaterConsumptionM3 = 0.90,
             HotWaterTankM3 = 22,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 405,
             AttractionScore = 1.5,
             ProductsOffered =
@@ -7145,8 +7145,8 @@ class GameData
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 10,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 180,
             AttractionScore = null,
             ProductsOffered =
@@ -7174,8 +7174,8 @@ class GameData
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 150,
             AttractionScore = null,
             ProductsOffered =
@@ -7203,8 +7203,8 @@ class GameData
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 150,
             AttractionScore = null,
             ProductsOffered =
@@ -7232,8 +7232,8 @@ class GameData
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
             AttractionScore = null,
             ProductsOffered =
@@ -7261,8 +7261,8 @@ class GameData
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
             AttractionScore = null,
             ProductsOffered =
@@ -7290,8 +7290,8 @@ class GameData
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0.56,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 10,
             AttractionScore = null,
             ProductsOffered =
@@ -7311,8 +7311,8 @@ class GameData
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.31,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00031,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 50,
             AttractionScore = 4.8,
             ProductsOffered =
@@ -7396,7 +7396,7 @@ class GameData
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 1.75,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
@@ -7453,7 +7453,7 @@ class GameData
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 8,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.62,
+            GarbagePerWorker = 0.00062,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 90,  // Max patients
             ServesPopulationType = PopulationType.Citizen,
@@ -7483,7 +7483,7 @@ class GameData
             WaterConsumptionM3 = 3.60,
             HotWaterTankM3 = 34,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.62,
+            GarbagePerWorker = 0.00062,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 450,  // Max patients
             ServesPopulationType = PopulationType.Citizen,
@@ -7511,7 +7511,7 @@ class GameData
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 1.44,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.62,
+            GarbagePerWorker = 0.00062,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 15,  // Max patients
             ServesPopulationType = PopulationType.Citizen,
@@ -7541,7 +7541,7 @@ class GameData
             WaterConsumptionM3 = 0.80,
             HotWaterTankM3 = 2.80,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
+            GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0,  // N/A for fire stations
             MaxVisitors = 0,  // N/A
             AttractionScore = null,
@@ -7568,7 +7568,7 @@ class GameData
             WaterConsumptionM3 = 1.00,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
+            GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
@@ -7595,7 +7595,7 @@ class GameData
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 0,  // Not shown on card
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
+            GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
@@ -7625,8 +7625,8 @@ class GameData
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 0.8,
             Workdays = 728,
@@ -7649,8 +7649,8 @@ class GameData
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 80,
             AttractionScore = 3.8,
             Workdays = 2085,
@@ -7673,8 +7673,8 @@ class GameData
             WaterConsumptionM3 = 0.12,
             HotWaterTankM3 = 7,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.50,
-            GarbagePerCustomer = 0.67,
+            GarbagePerWorker = 0.00050,
+            GarbagePerCustomer = 0.00067,
             MaxVisitors = 150,
             AttractionScore = null,  // Not shown on card
             Workdays = 1152,
@@ -7697,8 +7697,8 @@ class GameData
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 100,
             AttractionScore = 2.8,
             Workdays = 4944,
@@ -7721,8 +7721,8 @@ class GameData
             WaterConsumptionM3 = 0.16,
             HotWaterTankM3 = 2.52,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 40,
             AttractionScore = 2.4,
             Workdays = 1598,
@@ -7745,8 +7745,8 @@ class GameData
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.50,
-            GarbagePerCustomer = 0.67,
+            GarbagePerWorker = 0.00050,
+            GarbagePerCustomer = 0.00067,
             MaxVisitors = 100,
             AttractionScore = 2.4,
             Workdays = 1848,
@@ -7769,8 +7769,8 @@ class GameData
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 60,
             AttractionScore = 3.2,
             Workdays = 836,
@@ -7795,8 +7795,8 @@ class GameData
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 1.82,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.50,
-            GarbagePerCustomer = 0.67,
+            GarbagePerWorker = 0.00050,
+            GarbagePerCustomer = 0.00067,
             MaxVisitors = 30,
             AttractionScore = null,  // Not shown on card
             Workdays = 381,
@@ -7848,8 +7848,8 @@ class GameData
             WaterConsumptionM3 = 0.52,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.35,
-            GarbagePerCustomer = 0.60,  // Per student
+            GarbagePerWorker = 0.00035,
+            GarbagePerCustomer = 0.00060,  // Per student
             MaxVisitors = 156,  // Max students
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
@@ -7874,8 +7874,8 @@ class GameData
             WaterConsumptionM3 = 0.28,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.35,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00035,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 84,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
@@ -7901,8 +7901,8 @@ class GameData
             WaterConsumptionM3 = 1.80,
             HotWaterTankM3 = 32,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.35,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00035,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 540,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
@@ -7927,8 +7927,8 @@ class GameData
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 21,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.35,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00035,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 360,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
@@ -7955,8 +7955,8 @@ class GameData
             WaterConsumptionM3 = 0.54,
             HotWaterTankM3 = 15,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.62,  // Per child
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.00062,  // Per child
             MaxVisitors = 270,  // Max children
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
@@ -7981,8 +7981,8 @@ class GameData
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 10,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.62,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.00062,
             MaxVisitors = 180,
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
@@ -8007,8 +8007,8 @@ class GameData
             WaterConsumptionM3 = 0.24,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.62,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.00062,
             MaxVisitors = 120,
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
@@ -8036,8 +8036,8 @@ class GameData
             WaterConsumptionM3 = 1.60,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.40,
-            GarbagePerCustomer = 0.48,  // Per student
+            GarbagePerWorker = 0.00040,
+            GarbagePerCustomer = 0.00048,  // Per student
             MaxVisitors = 80,  // Max students
             ServesPopulationType = PopulationType.YoungAdults,
             UsesPercentageBasedDemand = true,
@@ -8067,8 +8067,8 @@ class GameData
             WaterConsumptionM3 = 2.80,
             HotWaterTankM3 = 30,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.40,
-            GarbagePerCustomer = 0.48,
+            GarbagePerWorker = 0.00040,
+            GarbagePerCustomer = 0.00048,
             MaxVisitors = 420,  // Max students
             ServesPopulationType = PopulationType.YoungAdults,
             UsesPercentageBasedDemand = true,
@@ -8098,8 +8098,8 @@ class GameData
             WaterConsumptionM3 = 2.00,
             HotWaterTankM3 = 21,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.40,
-            GarbagePerCustomer = 0.48,
+            GarbagePerWorker = 0.00040,
+            GarbagePerCustomer = 0.00048,
             MaxVisitors = 300,  // Max students
             ServesPopulationType = PopulationType.YoungAdults,
             UsesPercentageBasedDemand = true,
@@ -8129,8 +8129,8 @@ class GameData
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 7,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.40,
-            GarbagePerCustomer = 0.48,
+            GarbagePerWorker = 0.00040,
+            GarbagePerCustomer = 0.00048,
             MaxVisitors = 60,  // Max students
             ServesPopulationType = PopulationType.YoungAdults,
             UsesPercentageBasedDemand = true,
@@ -8159,8 +8159,8 @@ class GameData
             WaterConsumptionM3 = 3.00,
             HotWaterTankM3 = 21,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.40,
-            GarbagePerCustomer = 0.48,
+            GarbagePerWorker = 0.00040,
+            GarbagePerCustomer = 0.00048,
             MaxVisitors = 225,  // Max students
             ServesPopulationType = PopulationType.YoungAdults,
             UsesPercentageBasedDemand = true,
@@ -8250,8 +8250,8 @@ class GameData
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
             AttractionScore = 2.5,
             Workdays = 1919,
@@ -8276,8 +8276,8 @@ class GameData
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 10,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 175,
             AttractionScore = 2.0,
             Workdays = 3587,
@@ -8304,8 +8304,8 @@ class GameData
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 1.8,
             Workdays = 716,
@@ -8330,8 +8330,8 @@ class GameData
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 0,  // No hot water tank listed
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 105,
             AttractionScore = 2.0,
             Workdays = 518,
@@ -8357,8 +8357,8 @@ class GameData
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 0,  // No hot water tank listed
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.32,
-            GarbagePerCustomer = 0.30,
+            GarbagePerWorker = 0.00032,
+            GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 4.0,
             Workdays = 282,
@@ -8412,8 +8412,8 @@ class GameData
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 15,
             AttractionScore = null,
             Workdays = 35,
@@ -8459,8 +8459,8 @@ class GameData
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 48,
             AttractionScore = null,
             Workdays = 129,
@@ -8483,8 +8483,8 @@ class GameData
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 21,
             AttractionScore = null,
             Workdays = 52,
@@ -8509,8 +8509,8 @@ class GameData
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.20,
-            GarbagePerCustomer = 0.20,
+            GarbagePerWorker = 0.00020,
+            GarbagePerCustomer = 0.0002,
             MaxVisitors = 32,
             AttractionScore = null,
             Workdays = 132,
@@ -8559,8 +8559,8 @@ class GameData
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0.66,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.53,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00053,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 12,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
@@ -8590,8 +8590,8 @@ class GameData
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.53,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00053,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 60,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
@@ -8622,8 +8622,8 @@ class GameData
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.53,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00053,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 120,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
@@ -8656,8 +8656,8 @@ class GameData
             WaterConsumptionM3 = 0.16,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.53,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00053,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 56,
             AttractionScore = 3.6,
             ProductsOffered = {AlcoholResource},
@@ -8688,8 +8688,8 @@ class GameData
             WaterConsumptionM3 = 0.14,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.53,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00053,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 70,
             AttractionScore = 2.4,
             ProductsOffered = {AlcoholResource},
@@ -8721,8 +8721,8 @@ class GameData
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.53,
-            GarbagePerCustomer = 0.60,
+            GarbagePerWorker = 0.00053,
+            GarbagePerCustomer = 0.00060,
             MaxVisitors = 70,
             AttractionScore = 2.5,
             ProductsOffered = {AlcoholResource},
@@ -8992,7 +8992,7 @@ class GameData
             WaterConsumptionM3 = 10.85,
             HotWaterTankM3 = 15,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,  // Visitors don't produce garbage in this context
             MaxVisitors = 210,
             ServesPopulationType = PopulationType.Citizen,
@@ -9032,7 +9032,7 @@ class GameData
             WaterConsumptionM3 = 3.10,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 60,
             ServesPopulationType = PopulationType.Citizen,
@@ -9074,7 +9074,7 @@ class GameData
             WaterConsumptionM3 = 1.60,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 30,  // Listed as separate icon
             ServesPopulationType = PopulationType.Citizen,
@@ -9103,7 +9103,7 @@ class GameData
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 1.75,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 10,  // Listed as separate icon
             ServesPopulationType = PopulationType.Citizen,
@@ -9133,7 +9133,7 @@ class GameData
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 40,  // Listed as separate icon
             ServesPopulationType = PopulationType.Citizen,
@@ -9163,7 +9163,7 @@ class GameData
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 1.26,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 10,  // Listed as separate icon
             ServesPopulationType = PopulationType.Citizen,
@@ -9197,7 +9197,7 @@ class GameData
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 2.10,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,  // No visitors listed
             AttractionScore = null,
@@ -9226,7 +9226,7 @@ class GameData
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 1.26,
             HeatConsumptionMW = 0,
-            GarbagePerWorker = 0.45,
+            GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,  // No visitors listed
             AttractionScore = null,
@@ -9253,452 +9253,506 @@ class GameData
         // Bus Stops
         new TransportationBuilding
         {
-            Name = "Bus stop (simple)",
+            Name = "Bus stop",
             Type = TransportationType.Bus,
-            Workdays = 24,
+            Workdays = 18,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
-            PassengerCapacity = 20,
+            PassengerCapacity = 200,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 3.7 },
-                { GameData.AsphaltResource, 1.1 },
-                { GameData.BricksResource, 0.8 },
-                { GameData.SteelResource, 0.6 },
-                { GameData.GravelResource, 0.8 },
-                { GameData.BoardsResource, 0.4 }
+                { GameData.ConcreteResource, 1.0 },
+                { GameData.AsphaltResource, 0.64 },
+                { GameData.SteelResource, 0.60 }
+            }
+        },
+
+        // Bus Platforms
+        new TransportationBuilding
+        {
+            Name = "Bus platform (small)",
+            Type = TransportationType.Bus,
+            Workdays = 110,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 230,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 9.7 },
+                { GameData.AsphaltResource, 2.0 },
+                { GameData.GravelResource, 2.5 },
+                { GameData.SteelResource, 5.3 }
             }
         },
         new TransportationBuilding
         {
-            Name = "Bus stop (medium)",
+            Name = "Bus platform (500)",
             Type = TransportationType.Bus,
-            Workdays = 72,
+            Workdays = 280,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
-            PassengerCapacity = 40,
+            PassengerCapacity = 500,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 7.4 },
-                { GameData.AsphaltResource, 2.2 },
-                { GameData.BricksResource, 1.6 },
-                { GameData.SteelResource, 1.3 },
-                { GameData.GravelResource, 1.5 },
-                { GameData.BoardsResource, 0.7 }
+                { GameData.ConcreteResource, 20.0 },
+                { GameData.AsphaltResource, 4.7 },
+                { GameData.GravelResource, 5.9 },
+                { GameData.SteelResource, 14.0 }
             }
         },
         new TransportationBuilding
         {
-            Name = "Bus stop (advanced)",
+            Name = "Bus platform (400)",
             Type = TransportationType.Bus,
-            Workdays = 147,
+            Workdays = 365,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
-            PassengerCapacity = 100,
+            PassengerCapacity = 400,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 14.8 },
-                { GameData.AsphaltResource, 4.4 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 2.5 },
-                { GameData.GravelResource, 3.1 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 30.0 },
+                { GameData.AsphaltResource, 18.0 },
+                { GameData.GravelResource, 23.0 },
+                { GameData.SteelResource, 0.90 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus platform (600)",
+            Type = TransportationType.Bus,
+            Workdays = 519,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 600,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 44.0 },
+                { GameData.AsphaltResource, 27.0 },
+                { GameData.GravelResource, 33.0 },
+                { GameData.SteelResource, 1.0 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus platform (800)",
+            Type = TransportationType.Bus,
+            Workdays = 686,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 800,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 58.0 },
+                { GameData.AsphaltResource, 35.0 },
+                { GameData.GravelResource, 44.0 },
+                { GameData.SteelResource, 1.0 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus platform (1500)",
+            Type = TransportationType.Bus,
+            Workdays = 785,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 1500,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 24.0 },
+                { GameData.AsphaltResource, 14.0 },
+                { GameData.GravelResource, 18.0 },
+                { GameData.SteelResource, 5.4 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus platform (2000)",
+            Type = TransportationType.Bus,
+            Workdays = 926,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 2000,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 28.0 },
+                { GameData.AsphaltResource, 17.0 },
+                { GameData.GravelResource, 22.0 },
+                { GameData.SteelResource, 6.4 },
+                { GameData.BricksResource, 50.0 },
+                { GameData.BoardsResource, 16.0 }
+            }
+        },
+
+        // Labour Pickup Halls
+        new TransportationBuilding
+        {
+            Name = "Labour pickup hall (200 workers)",
+            Type = TransportationType.Bus,
+            Workdays = 682,
+            PowerConsumptionMWh = 6.0,
+            WattageKW = 100,
+            WaterConsumptionM3 = 4.0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 200,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 24.0 },
+                { GameData.AsphaltResource, 34.0 },
+                { GameData.GravelResource, 18.0 },
+                { GameData.SteelResource, 4.3 },
+                { GameData.BoardsResource, 11.0 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Labour pickup hall (300 workers)",
+            Type = TransportationType.Bus,
+            Workdays = 809,
+            PowerConsumptionMWh = 9.0,
+            WattageKW = 150,
+            WaterConsumptionM3 = 6.0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 300,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 36.0 },
+                { GameData.AsphaltResource, 22.0 },
+                { GameData.GravelResource, 27.0 },
+                { GameData.SteelResource, 7.1 },
+                { GameData.BricksResource, 23.0 },
+                { GameData.BoardsResource, 14.0 }
+            }
+        },
+
+        // Tram Stops
+        new TransportationBuilding
+        {
+            Name = "Tram stop (small)",
+            Type = TransportationType.Tram,
+            Workdays = 117,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 250,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 6.6 },
+                { GameData.AsphaltResource, 4.1 },
+                { GameData.GravelResource, 5.1 },
+                { GameData.SteelResource, 1.5 },
+                { GameData.ElectroComponentsResource, 0.31 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Tram stop (larger)",
+            Type = TransportationType.Tram,
+            Workdays = 170,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 400,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 13.0 },
+                { GameData.AsphaltResource, 8.1 },
+                { GameData.GravelResource, 10.0 },
+                { GameData.SteelResource, 0.65 },
+                { GameData.ElectroComponentsResource, 0.14 }
             }
         },
 
         // Bus End Stations
         new TransportationBuilding
         {
-            Name = "Bus end station (2 parking)",
+            Name = "Bus end station (3 parking)",
             Type = TransportationType.Station,
-            Workdays = 229,
+            Workdays = 33,
+            PowerConsumptionMWh = 3.0,
+            WattageKW = 50,
+            WaterConsumptionM3 = 0,
+            HeatConsumptionMW = 0,
+            ParkingSpots = 3,
+            FuelStorageCapacity = 35, // tons
+            PassengerCapacity = 100,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 0.72 },
+                { GameData.AsphaltResource, 0.44 },
+                { GameData.GravelResource, 0.55 },
+                { GameData.SteelResource, 0.26 },
+                { GameData.BricksResource, 2.1 },
+                { GameData.BoardsResource, 0.71 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Bus end station (small - 2 parking)",
+            Type = TransportationType.Station,
+            Workdays = 279,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 2,
-            FuelStorageCapacity = 30, // tons
+            FuelStorageCapacity = 35, // tons
             PassengerCapacity = 100,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 18.5 },
-                { GameData.AsphaltResource, 9.9 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 2.5 },
-                { GameData.GravelResource, 6.9 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 22.0 },
+                { GameData.AsphaltResource, 13.0 },
+                { GameData.GravelResource, 17.0 },
+                { GameData.SteelResource, 0.22 },
+                { GameData.BricksResource, 1.8 },
+                { GameData.BoardsResource, 0.59 }
             }
         },
         new TransportationBuilding
         {
-            Name = "Bus end station (5 parking)",
+            Name = "Bus end station (large - 4 parking)",
             Type = TransportationType.Station,
-            Workdays = 396,
+            Workdays = 373,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = 5,
-            FuelStorageCapacity = 30,
+            ParkingSpots = 4,
+            FuelStorageCapacity = 45, // tons
             PassengerCapacity = 100,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 31.5 },
-                { GameData.AsphaltResource, 19.8 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 2.5 },
-                { GameData.GravelResource, 13.8 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 30.0 },
+                { GameData.AsphaltResource, 18.0 },
+                { GameData.GravelResource, 23.0 },
+                { GameData.SteelResource, 0.22 },
+                { GameData.BricksResource, 1.8 },
+                { GameData.BoardsResource, 0.59 }
             }
         },
         new TransportationBuilding
         {
-            Name = "Bus end station (8 parking)",
+            Name = "Bus end station (large - 7 parking)",
             Type = TransportationType.Station,
-            Workdays = 562,
+            Workdays = 99,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = 8,
-            FuelStorageCapacity = 30,
+            ParkingSpots = 7,
+            FuelStorageCapacity = 35, // tons
             PassengerCapacity = 100,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 44.4 },
-                { GameData.AsphaltResource, 29.7 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 2.5 },
-                { GameData.GravelResource, 20.6 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 3.3 },
+                { GameData.AsphaltResource, 2.1 },
+                { GameData.GravelResource, 2.6 },
+                { GameData.SteelResource, 5.4 }
             }
         },
+        
+        // Trolleybus Stop 
         new TransportationBuilding
         {
-            Name = "Bus end station (15 parking)",
-            Type = TransportationType.Station,
-            Workdays = 977,
+            Name = "Trolleybus stop",
+            Type = TransportationType.Trolley,
+            Workdays = 42,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = 15,
-            FuelStorageCapacity = 30,
-            PassengerCapacity = 100,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 200,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 77.0 },
-                { GameData.AsphaltResource, 49.6 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 2.5 },
-                { GameData.GravelResource, 34.4 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 1.0 },
+                { GameData.AsphaltResource, 0.64 },
+                { GameData.GravelResource, 0.79 },
+                { GameData.SteelResource, 1.8 },
+                { GameData.ElectroComponentsResource, 0.13 }
             }
         },
 
-        // Trolleybus Stops
+        // Trolleybus Depots
         new TransportationBuilding
         {
-            Name = "Trolleybus stop (simple)",
-            Type = TransportationType.Trolley,
-            Workdays = 30,
-            PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 20,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 3.7 },
-                { GameData.AsphaltResource, 1.1 },
-                { GameData.BricksResource, 0.8 },
-                { GameData.SteelResource, 1.2 },
-                { GameData.GravelResource, 0.8 },
-                { GameData.BoardsResource, 0.4 }
-            }
-        },
-        new TransportationBuilding
-        {
-            Name = "Trolleybus stop (medium)",
-            Type = TransportationType.Trolley,
-            Workdays = 90,
-            PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 40,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 7.4 },
-                { GameData.AsphaltResource, 2.2 },
-                { GameData.BricksResource, 1.6 },
-                { GameData.SteelResource, 2.5 },
-                { GameData.GravelResource, 1.5 },
-                { GameData.BoardsResource, 0.7 }
-            }
-        },
-        new TransportationBuilding
-        {
-            Name = "Trolleybus stop (advanced)",
-            Type = TransportationType.Trolley,
-            Workdays = 184,
-            PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 100,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 14.8 },
-                { GameData.AsphaltResource, 4.4 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 5.0 },
-                { GameData.GravelResource, 3.1 },
-                { GameData.BoardsResource, 1.5 }
-            }
-        },
-
-        // Trolleybus End Stations
-        new TransportationBuilding
-        {
-            Name = "Trolleybus end station (2 parking)",
-            Type = TransportationType.Station,
-            Workdays = 286,
-            PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = 2,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 100,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 18.5 },
-                { GameData.AsphaltResource, 9.9 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 5.0 },
-                { GameData.GravelResource, 6.9 },
-                { GameData.BoardsResource, 1.5 }
-            }
-        },
-        new TransportationBuilding
-        {
-            Name = "Trolleybus end station (5 parking)",
-            Type = TransportationType.Station,
-            Workdays = 495,
+            Name = "Trolleybus depot (5 parking)",
+            Type = TransportationType.Depot,
+            Workdays = 448,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 5,
             FuelStorageCapacity = null,
-            PassengerCapacity = 100,
+            PassengerCapacity = null,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 31.5 },
-                { GameData.AsphaltResource, 19.8 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 5.0 },
-                { GameData.GravelResource, 13.8 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 13.0 },
+                { GameData.AsphaltResource, 8.3 },
+                { GameData.GravelResource, 10.0 },
+                { GameData.SteelResource, 3.1 },
+                { GameData.BricksResource, 25.0 },
+                { GameData.BoardsResource, 8.4 }
             }
         },
         new TransportationBuilding
         {
-            Name = "Trolleybus end station (8 parking)",
-            Type = TransportationType.Station,
-            Workdays = 703,
+            Name = "Trolleybus depot (8 parking)",
+            Type = TransportationType.Depot,
+            Workdays = 517,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 8,
             FuelStorageCapacity = null,
-            PassengerCapacity = 100,
+            PassengerCapacity = null,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 44.4 },
-                { GameData.AsphaltResource, 29.7 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 5.0 },
-                { GameData.GravelResource, 20.6 },
-                { GameData.BoardsResource, 1.5 }
-            }
-        },
-        new TransportationBuilding
-        {
-            Name = "Trolleybus end station (15 parking)",
-            Type = TransportationType.Station,
-            Workdays = 1221,
-            PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = 15,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 100,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 77.0 },
-                { GameData.AsphaltResource, 49.6 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 5.0 },
-                { GameData.GravelResource, 34.4 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 10.0 },
+                { GameData.AsphaltResource, 6.2 },
+                { GameData.GravelResource, 7.8 },
+                { GameData.SteelResource, 10.0 },
+                { GameData.BricksResource, 23.0 },
+                { GameData.BoardsResource, 7.7 },
+                { GameData.ElectroComponentsResource, 0.43 }
             }
         },
 
-        // Tram Platforms
+        // Trolleybus End Station
         new TransportationBuilding
         {
-            Name = "Tram platform (simple)",
-            Type = TransportationType.Tram,
-            Workdays = 121,
+            Name = "Trolleybus end station (7 parking)",
+            Type = TransportationType.Station,
+            Workdays = 143,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = null,
+            ParkingSpots = 7,
             FuelStorageCapacity = null,
-            PassengerCapacity = 60,
+            PassengerCapacity = 100,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 7.4 },
-                { GameData.AsphaltResource, 2.2 },
-                { GameData.BricksResource, 1.6 },
-                { GameData.SteelResource, 3.7 },
-                { GameData.GravelResource, 1.5 },
-                { GameData.BoardsResource, 0.7 }
-            }
-        },
-        new TransportationBuilding
-        {
-            Name = "Tram platform (advanced)",
-            Type = TransportationType.Tram,
-            Workdays = 248,
-            PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 150,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 14.8 },
-                { GameData.AsphaltResource, 4.4 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 7.5 },
-                { GameData.GravelResource, 3.1 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 1.1 },
+                { GameData.AsphaltResource, 0.66 },
+                { GameData.GravelResource, 0.83 },
+                { GameData.SteelResource, 5.5 },
+                { GameData.ElectroComponentsResource, 0.85 }
             }
         },
 
-        // Tram End Stations
+        // Tram End Station
         new TransportationBuilding
         {
-            Name = "Tram end station (2 parking)",
+            Name = "Tram end station (6 parking)",
             Type = TransportationType.Station,
-            Workdays = 385,
+            Workdays = 489,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = 2,
+            ParkingSpots = 6,
             FuelStorageCapacity = null,
             PassengerCapacity = 150,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 18.5 },
-                { GameData.AsphaltResource, 9.9 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 7.5 },
-                { GameData.GravelResource, 6.9 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 17.0 },
+                { GameData.AsphaltResource, 11.0 },
+                { GameData.GravelResource, 13.0 },
+                { GameData.SteelResource, 10.0 },
+                { GameData.ElectroComponentsResource, 2.1 }
             }
         },
+
+        // Tram Depots
         new TransportationBuilding
         {
-            Name = "Tram end station (5 parking)",
-            Type = TransportationType.Station,
-            Workdays = 666,
+            Name = "Tram depot (4 parking)",
+            Type = TransportationType.Depot,
+            Workdays = 918,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = 5,
+            ParkingSpots = 4,
             FuelStorageCapacity = null,
-            PassengerCapacity = 150,
+            PassengerCapacity = null,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 31.5 },
-                { GameData.AsphaltResource, 19.8 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 7.5 },
-                { GameData.GravelResource, 13.8 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 35.0 },
+                { GameData.AsphaltResource, 21.0 },
+                { GameData.GravelResource, 27.0 },
+                { GameData.SteelResource, 9.8 },
+                { GameData.BricksResource, 28.0 },
+                { GameData.BoardsResource, 9.4 },
+                { GameData.ElectroComponentsResource, 1.3 }
             }
         },
         new TransportationBuilding
         {
-            Name = "Tram end station (8 parking)",
-            Type = TransportationType.Station,
-            Workdays = 946,
+            Name = "Tram depot (8 parking)",
+            Type = TransportationType.Depot,
+            Workdays = 1815,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 8,
             FuelStorageCapacity = null,
-            PassengerCapacity = 150,
+            PassengerCapacity = null,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 44.4 },
-                { GameData.AsphaltResource, 29.7 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 7.5 },
-                { GameData.GravelResource, 20.6 },
-                { GameData.BoardsResource, 1.5 }
-            }
-        },
-        new TransportationBuilding
-        {
-            Name = "Tram end station (15 parking)",
-            Type = TransportationType.Station,
-            Workdays = 1643,
-            PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = 15,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 150,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 77.0 },
-                { GameData.AsphaltResource, 49.6 },
-                { GameData.BricksResource, 3.2 },
-                { GameData.SteelResource, 7.5 },
-                { GameData.GravelResource, 34.4 },
-                { GameData.BoardsResource, 1.5 }
+                { GameData.ConcreteResource, 71.0 },
+                { GameData.AsphaltResource, 43.0 },
+                { GameData.GravelResource, 54.0 },
+                { GameData.SteelResource, 15.0 },
+                { GameData.BricksResource, 67.0 },
+                { GameData.BoardsResource, 22.0 },
+                { GameData.ElectroComponentsResource, 1.5 }
             }
         },
 
@@ -9770,51 +9824,51 @@ class GameData
             }
         },
 
-        // Power Transformers (Trafos)
+        // Road Vehicles Depots
         new TransportationBuilding
         {
-            Name = "Power transformer 1500V (small)",
-            Type = TransportationType.Refueling,
-            Workdays = 43,
+            Name = "Road vehicles depot (6 parking)",
+            Type = TransportationType.Depot,
+            Workdays = 448,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = null,
+            ParkingSpots = 6,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 3.7 },
-                { GameData.AsphaltResource, 0 },
-                { GameData.BricksResource, 0 },
-                { GameData.SteelResource, 1.9 },
-                { GameData.GravelResource, 0 },
-                { GameData.BoardsResource, 0 }
+                { GameData.ConcreteResource, 13.0 },
+                { GameData.AsphaltResource, 8.3 },
+                { GameData.GravelResource, 10.0 },
+                { GameData.SteelResource, 3.1 },
+                { GameData.BricksResource, 25.0 },
+                { GameData.BoardsResource, 8.4 }
             }
         },
         new TransportationBuilding
         {
-            Name = "Power transformer 1500V (large)",
-            Type = TransportationType.Refueling,
-            Workdays = 73,
+            Name = "Road vehicles depot (13 parking)",
+            Type = TransportationType.Depot,
+            Workdays = 785,
             PowerConsumptionMWh = 3.0,
             WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
-            ParkingSpots = null,
+            ParkingSpots = 13,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
             ConstructionMaterials = new Dictionary<Resource, double>
             {
-                { GameData.ConcreteResource, 7.4 },
-                { GameData.AsphaltResource, 0 },
-                { GameData.BricksResource, 0 },
-                { GameData.SteelResource, 3.7 },
-                { GameData.GravelResource, 0 },
-                { GameData.BoardsResource, 0 }
+                { GameData.ConcreteResource, 26.0 },
+                { GameData.AsphaltResource, 16.0 },
+                { GameData.GravelResource, 20.0 },
+                { GameData.SteelResource, 6.2 },
+                { GameData.BricksResource, 41.0 },
+                { GameData.BoardsResource, 13.0 }
             }
-        }
+        } 
     };
 
     // All Buildings & Resources

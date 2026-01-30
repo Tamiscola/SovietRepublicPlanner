@@ -217,7 +217,7 @@ class CalculationResult
         {
             double thisLevel = (ChosenBuilding.BuildingInstances.Count() > 0 ? ChosenBuilding.BuildingInstances.Sum(bi => bi.Building.PowerConsumption) : ChosenBuilding.TotalPowerNeeded);
             double subChainTotal = SubChains.Sum(sc => sc.TotalPowerNeeded);
-            double supportTotal = SupportBuildings.Sum(sc => sc.TotalPowerNeeded);
+            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.PowerConsumption * kv.Value);
             double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.PowerMW * rb.Count);
             double amenTotal = AmenityBuildings.Sum(a => a.Building.PowerConsumptionMWh * a.Count);
             double transTotal = TransportationBuildings.Sum(t => t.Building.PowerConsumptionMWh * t.Count);
@@ -230,7 +230,7 @@ class CalculationResult
         {
             double thisLevel = ChosenBuilding.TotalWaterNeeded;
             double subChainTotal = SubChains.Sum(sc => sc.TotalWaterNeeded);
-            double supportTotal = SupportBuildings.Sum(sc => sc.TotalWaterNeeded);
+            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.WaterConsumption * kv.Value);
             double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.WaterPerDay * rb.Count);
             double amenTotal = AmenityBuildings.Sum(a => a.Building.WaterConsumptionM3 * a.Count);
             return thisLevel + subChainTotal + supportTotal + residentialTotal + amenTotal;
@@ -242,7 +242,7 @@ class CalculationResult
         {
             double thisLevel = ChosenBuilding.TotalSewageProduced;
             double subChainTotal = SubChains.Sum(sc => sc.TotalSewageProduced);
-            double supportTotal = SupportBuildings.Sum(sc => sc.TotalSewageProduced);
+            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.SewageProduction * kv.Value);
             double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.WaterPerDay * rb.Count);
             double amenTotal = AmenityBuildings.Sum(a => a.Building.WaterConsumptionM3 * a.Count);
             return thisLevel + subChainTotal + supportTotal + residentialTotal;
@@ -254,7 +254,7 @@ class CalculationResult
         {
             double thisLevel = ChosenBuilding.TotalHeatNeeded;
             double subChainTotal = SubChains.Sum(sc => sc.TotalHeatNeeded);
-            double supportTotal = SupportBuildings.Sum(sc => sc.TotalHeatNeeded);
+            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.HeatConsumption * kv.Value);
             double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.HeatTankM3 * rb.Count);
             double amenTotal = AmenityBuildings.Sum(a => a.Building.HotWaterTankM3 * a.Count);
             return thisLevel + subChainTotal + supportTotal + residentialTotal + amenTotal;
@@ -266,8 +266,9 @@ class CalculationResult
         {
             double thisLevel = ChosenBuilding.TotalGarbageProduced;
             double subChainTotal = SubChains.Sum(sc => sc.TotalGarbageProduced);
-            double supportTotal = SupportBuildings.Sum(sc => sc.TotalGarbageProduced);
-            return thisLevel + subChainTotal + supportTotal;
+            double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.GarbageProduction * rb.Count);
+            double amenTotal = AmenityBuildings.Sum(a => a.Building.GarbageProduction * a.Count);
+            return thisLevel + subChainTotal;
         }
     }
     public double TotalEnvironmentPollution
@@ -276,8 +277,7 @@ class CalculationResult
         {
             double thisLevel = ChosenBuilding.TotalEnvironmentPollution;
             double subChainTotal = SubChains.Sum(sc => sc.TotalEnvironmentPollution);
-            double supportTotal = SupportBuildings.Sum(sc => sc.TotalEnvironmentPollution);
-            return thisLevel + subChainTotal + supportTotal;
+            return thisLevel + subChainTotal;
         }
     }
     public Dictionary<Resource, double> TotalUtilityNeeds    // Aggregate total utility needs (input + consumption for water)
