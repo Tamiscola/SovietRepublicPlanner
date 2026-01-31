@@ -827,6 +827,12 @@ class CalculationResult
                         result.Add(GameData.WasteWaterResource, cr.ChosenBuilding);
                     else Console.WriteLine($"There's already existing utility building {cr.ChosenBuilding.Building.Name} for Waste water.");
                 }
+                else if (kv.Key == GameData.HeatResource)
+                {
+                    if (!result.ContainsKey(GameData.HeatResource))
+                        result.Add(GameData.HeatResource, cr.ChosenBuilding);
+                    else Console.WriteLine($"There's already existing utility building {cr.ChosenBuilding.Building.Name} for Heat.");
+                }
         }
         foreach (var sub in cr.SubChains)
             CalculateExpandedUtility(result, sub);

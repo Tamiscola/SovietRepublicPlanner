@@ -1022,7 +1022,8 @@ namespace SovietRepublicPlanner
                             {
                                 isUtility = true;
                                 utilityResource = GameData.WasteWaterResource;
-                                utilityAmount = currentResult.TotalSewageProduced;
+                                utilityAmount = currentResult.TotalWaterNeeded + (currentResult.ChosenBuilding.RequiredResources.ContainsKey(GameData.WaterResource)
+                                    ? currentResult.ChosenBuilding.RequiredResources[GameData.WaterResource] : 0);
                                 ExpandUtility(currentResult, utilityResource, utilityAmount);
                             }
                             if (trimmedName == "heat")
@@ -1339,6 +1340,7 @@ namespace SovietRepublicPlanner
                     utilityProduction.Add(GameData.PowerResource, 0);
                     utilityProduction.Add(GameData.WaterResource, 0);
                     utilityProduction.Add(GameData.HeatResource, 0);
+                    utilityProduction.Add(GameData.WasteWaterResource, 0);
                     Dictionary<Resource, double> combinedImports = new Dictionary<Resource, double>();
                     Dictionary<Resource, double> combinedResidues = new Dictionary<Resource, double>();
                     Dictionary<Resource, double> combinedCitizenConsumption = new Dictionary<Resource, double>();
@@ -1435,7 +1437,7 @@ namespace SovietRepublicPlanner
                     Console.WriteLine($"│ Citizens   :    {totalCitizen,6}      {totalHousingCapacity,6}  {totalHousingCapacity - totalCitizen,7}");
                     Console.WriteLine($"│ Power (MW) :    {totalPower,6:F2}    {utilityProduction[GameData.PowerResource],7:F2} {utilityProduction[GameData.PowerResource] - totalPower,8:F2}");
                     Console.WriteLine($"│ Water (m³) :    {totalWater,6:F2}    {utilityProduction[GameData.WaterResource],7:F2} {utilityProduction[GameData.WaterResource] - totalWater,8:F2}");
-                    Console.WriteLine($"│ Sewage (m³):    {totalWater,6:F2}    {utilityProduction[GameData.WaterResource],7:F2} {utilityProduction[GameData.WaterResource] - totalWater,8:F2}");
+                    Console.WriteLine($"│ Sewage (m³):    {totalWater,6:F2}    {utilityProduction[GameData.WasteWaterResource],7:F2} {utilityProduction[GameData.WasteWaterResource] - totalWater,8:F2}");
                     Console.WriteLine($"│ Heat (MW)  :    {totalHeat,6:F2}    {utilityProduction[GameData.HeatResource],7:F2} {utilityProduction[GameData.HeatResource] - totalHeat,8:F2}");
                     Console.WriteLine($"│ Garbage    :    {totalGarbage,6:F6} t/day              ");
                     Console.WriteLine($"│ Pollution  :    {totalPollution,6:F6} t/day            ");
