@@ -20,6 +20,7 @@
     public bool RequiresDryBulkHandling { get; set; } = false;
     public bool RequiresSolidHandling { get; set; } = false;
     public bool RequiresGeneralDistribution { get; set; } = false;
+    public bool RequiresRefrigeration { get; set; } = false;
     public bool RequiresElectricalInfrastructure { get; set; } = false;
     public bool RequiresWaterInfrastructure { get; set; } = false;
     public bool RequiresSewageInfrastructure { get; set; } = false;

@@ -34,9 +34,27 @@ public class AmenityBuilding
     // Worker & Visitor info
     public int WorkersPerShift { get; set; }
     public int MaxVisitors { get; set; }
-    public int CitizenCapacity => Type == AmenityType.Education
-        ? MaxVisitors   // Education : MaxVisitors = CitizenCapacity
-        : (int)(MaxVisitors * CalculationSettings.AmenityCoverageMultiplier);
+    public int CitizenCapacity => Type switch
+    {
+        AmenityType.Education => EducationLevel switch
+        {
+            EducationSubtype.Kindergarten => (int)(MaxVisitors * 15),
+            EducationSubtype.School => (int)(MaxVisitors * 20),
+            EducationSubtype.University => (int)(MaxVisitors * 20),
+            EducationSubtype.UniversityDorm => MaxVisitors,  // Direct housing
+            _ => MaxVisitors  // Fallback: no multiplier
+        },
+        AmenityType.Shopping => (int)(MaxVisitors * 15),
+        AmenityType.Pub => (int)(MaxVisitors * 100),
+        AmenityType.Healthcare => (int)(MaxVisitors * 100),
+        AmenityType.Culture => (int)(MaxVisitors * 80),
+        AmenityType.Sports => (int)(MaxVisitors * 80),
+        AmenityType.CrimeJustice => (int)(MaxVisitors * 100),
+        AmenityType.Fireservice => 0,
+        AmenityType.CityService => 0,
+        AmenityType.Fountain => 0,
+        _ => (int)(MaxVisitors * 30)  // Fallback
+    };
     public int EffectiveWorkersPerShift => (int)Math.Ceiling(WorkersPerShift / CalculationSettings.ProductivityMultiplier);
     public List<Resource> ProductsOffered { get; set; } = new List<Resource>();
 

@@ -1427,6 +1427,8 @@ namespace SovietRepublicPlanner
                             else combinedConstructionMaterials.Add(kv.Key,kv.Value);
                         }
                     }
+                    if (allPlans.Any(p => p.AllSupportBuildings.ContainsKey(GameData.SewageDischarge)))
+                        utilityProduction[GameData.WasteWaterResource] = totalWater;
 
                     // Display Status section
                     Console.WriteLine("├────────────────────────────────────────┤");
@@ -1466,8 +1468,20 @@ namespace SovietRepublicPlanner
                         Console.WriteLine("├────────────────────────────────────────┤");
                         Console.WriteLine("│ Support Infrastructures:               │");
                         Console.WriteLine("├────────────────────────────────────────┤");
-                        foreach (var kv in combinedSupBldgs)
-                            Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+
+                        var supportByCategory = combinedSupBldgs
+                            .GroupBy(kv => kv.Key.SupportCategory)
+                            .OrderBy(g => (int)g.Key);
+
+                        foreach (var supGroup in supportByCategory)
+                        {
+                            string categoryName = GetSupCategoryDisplayName(supGroup.Key);
+                            Console.WriteLine($"│ [ {categoryName} ]");
+
+                            foreach (var kv in supGroup.OrderBy(x => x.Key.Name))
+                                Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+                            Console.WriteLine("│");
+                        }
                     }
                     if (allPlans.Any(p => p.ResidentialBuildings.Count > 0))
                     {
@@ -1655,7 +1669,7 @@ namespace SovietRepublicPlanner
                             Console.WriteLine($"[{i + 1}]: {waterInfra[i].Name}");
                         catIndex++;
                     }
-                    if (sewageInfra.Count() > 0 && allIOResources.Any(r => r.RequiresSewageInfrastructure))
+                    if (sewageInfra.Count() > 0 && allIOResources.Any(r => r.RequiresWaterInfrastructure))
                     {
                         categoryBuildings[catIndex] = sewageInfra;
                         Console.WriteLine("\n────────────────────────────────────────────────────");
@@ -1768,21 +1782,100 @@ namespace SovietRepublicPlanner
                         // Map choice to enum
                         AmenityType[] typeMap = new AmenityType[]
                         {
-                                AmenityType.Shopping,      // 1
-                                AmenityType.Pub,           // 2 (Pub)
-                                AmenityType.Healthcare,    // 3
-                                AmenityType.Fireservice,   // 4
-                                AmenityType.CityService,
-                                AmenityType.Culture,       // 5
-                                AmenityType.Sports,        // 6
-                                AmenityType.Education,     // 7
-                                AmenityType.CrimeJustice,  // 8
-                                AmenityType.Fountain       // 10
+                            AmenityType.Shopping,      // 1
+                            AmenityType.Pub,           // 2
+                            AmenityType.Healthcare,    // 3
+                            AmenityType.Fireservice,   // 4
+                            AmenityType.CityService,   // 5
+                            AmenityType.Culture,       // 6
+                            AmenityType.Sports,        // 7
+                            AmenityType.Education,     // 8
+                            AmenityType.CrimeJustice,  // 9
+                            AmenityType.Fountain       // 10
                         };
                         AmenityType selectedType = typeMap[amenChoice - 1];
                         Console.WriteLine("┌─────────────────────────────────────────");
                         Console.WriteLine($"│ {selectedType} Buildings:");
                         Console.WriteLine("└─────────────────────────────────────────");
+
+                        // Get current coverage
+                        var coverage = rootResult.GetAmenityCoverage();
+                        int currentCapacity = coverage.ServiceCoverage[selectedType];
+
+                        // Calculate needed capacity
+                        var (neededCapacity, populationDesc, showCapacity) = CalculateCapacityNeeded(selectedType, rootResult);
+
+                        // Display capacity info
+                        if (showCapacity)
+                        {
+                            Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine($"Population: {populationDesc}");
+                            Console.ResetColor();
+
+                            // Special handling for Education
+                            if (selectedType == AmenityType.Education)
+                            {
+                                int kindergartenNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.KindergartenAgePercent / 100);
+                                int schoolNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.SchoolAgePercent / 100);
+
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine($"Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}");
+
+                                if (coverage.KindergartenCapacity < kindergartenNeeded)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine($"   Deficit: {kindergartenNeeded - coverage.KindergartenCapacity}");
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine($"   Surplus: {coverage.KindergartenCapacity - kindergartenNeeded}");
+                                }
+
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine($"School: {coverage.SchoolCapacity}/{schoolNeeded}");
+
+                                if (coverage.SchoolCapacity < schoolNeeded)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine($"   Deficit: {schoolNeeded - coverage.SchoolCapacity}");
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine($"   Surplus: {coverage.SchoolCapacity - schoolNeeded}");
+                                }
+
+                                Console.ResetColor();
+                            }
+                            else
+                            {
+                                // Standard capacity display
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine($"Current capacity: {currentCapacity}");
+                                Console.WriteLine($"Needed capacity: {neededCapacity}");
+
+                                int difference = currentCapacity - neededCapacity;
+                                if (difference < 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine($" Deficit: {-difference}");
+                                }
+                                else if (difference > 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine($" Surplus: {difference}");
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine(" Perfect match!");
+                                }
+                                Console.ResetColor();
+                            }
+                            Console.WriteLine();
+                        }
 
                         // Filter buildings by type
                         var buildingsOfType = GameData.AllAmenityBuildings.Where(b => b.Type == selectedType).ToList();
@@ -1801,7 +1894,6 @@ namespace SovietRepublicPlanner
                             {
                                 int kindergartenNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.KindergartenAgePercent / 100);
                                 int schoolNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.SchoolAgePercent / 100);
-                                var coverage = rootResult.GetAmenityCoverage();
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine($"Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}");
                                 Console.WriteLine($"School: {coverage.SchoolCapacity}/{schoolNeeded}");
@@ -2476,100 +2568,211 @@ namespace SovietRepublicPlanner
                 _ => type.ToString()
             };
         }
+        private static string GetSupCategoryDisplayName(SupportCategory type)
+        {
+            return type switch
+            {
+                SupportCategory.LiquidHandling => "Liquid",
+                SupportCategory.BulkHandling => "Bulk",
+                SupportCategory.DryBulkHandling => "Dry-Bulk",
+                SupportCategory.SolidHandling => "Solid",
+                SupportCategory.GeneralDistribution => "General",
+                SupportCategory.PowerHandling => "Power",
+                SupportCategory.HeatHandling => "Heat",
+                SupportCategory.WaterHandling => "Water",
+                SupportCategory.SewageHandling => "Sewage",
+                _ => type.ToString()
+            };
+        }
         private static void DisplayCategoryWarnings(AmenityType type, List<KeyValuePair<AmenityBuilding, int>> amenities, int totalWorkers, int totalCitizens)
         {
             switch (type)
             {
                 case AmenityType.Shopping:
-                case AmenityType.Pub:
-                    int shoppingCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 30);
-                    if (shoppingCapacity < totalWorkers)
+                    int shoppingCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 15); // ×15 ratio
+                    int shoppingNeeded = totalWorkers;
+
+                    if (shoppingCapacity < shoppingNeeded)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"│           {totalWorkers - shoppingCapacity} workers underserved!");
+                        Console.WriteLine($"│            {shoppingNeeded - shoppingCapacity} workers underserved!");
                         Console.ResetColor();
                     }
 
                     bool hasAlcohol = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.AlcoholResource));
-                    if (!hasAlcohol && type == AmenityType.Shopping)
+                    bool hasFood = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.FoodResource));
+                    bool hasClothes = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.ClothesResource));
+                    bool hasMeat = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.MeatResource));
+                    bool hasElectronics = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.ElectronicsResource));
+                    if (!hasAlcohol)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("│           Alcohol is not served!");
+                        Console.WriteLine("│            Alcohol is not served!");
+                        Console.ResetColor();
+                    }
+                    if (!hasFood)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("│            Food is not served!");
+                        Console.ResetColor();
+                    }
+                    if (!hasClothes)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("│            Clothes are not served!");
+                        Console.ResetColor();
+                    }
+                    if (!hasMeat)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("│            Meat is not served!");
+                        Console.ResetColor();
+                    }
+                    if (!hasElectronics)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("│            Electronics are not served!");
+                        Console.ResetColor();
+                    }
+
+                    break;
+
+                case AmenityType.Pub:
+                    int pubCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 100); // ×100 ratio
+                    int pubNeeded = totalCitizens;
+
+                    if (pubCapacity < pubNeeded)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"│            {pubNeeded - pubCapacity} citizens underserved!");
                         Console.ResetColor();
                     }
                     break;
 
                 case AmenityType.Healthcare:
-                    int healthcareNeeded = (int)(totalCitizens * 0.08); // 8% need healthcare
-                    int healthcareCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value);
+                    int healthcareCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 100); // ×100 ratio
+                    int healthcareNeeded = totalCitizens;
+
                     if (healthcareCapacity < healthcareNeeded)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGray;
-                        Console.WriteLine($"│          {healthcareNeeded - healthcareCapacity} patients uncovered (optional)");
+                        Console.WriteLine($"│           {healthcareNeeded - healthcareCapacity} citizens uncovered (optional)");
                         Console.ResetColor();
                     }
                     break;
 
                 case AmenityType.Culture:
-                    int cultureCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 30);
-                    if (cultureCapacity < totalWorkers)
+                    int cultureCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 80); // ×80 ratio
+                    int cultureNeeded = totalCitizens;
+
+                    if (cultureCapacity < cultureNeeded)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"│           {totalWorkers - cultureCapacity} workers underserved!");
+                        Console.WriteLine($"│            {cultureNeeded - cultureCapacity} citizens underserved!");
                         Console.ResetColor();
                     }
                     break;
 
                 case AmenityType.Sports:
-                    int sportsCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 30);
-                    if (sportsCapacity < totalWorkers)
+                    int sportsCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 80); // ×80 ratio
+                    int sportsNeeded = totalCitizens;
+
+                    if (sportsCapacity < sportsNeeded)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"│           {totalWorkers - sportsCapacity} workers underserved!");
+                        Console.WriteLine($"│            {sportsNeeded - sportsCapacity} citizens underserved!");
                         Console.ResetColor();
                     }
                     break;
 
                 case AmenityType.Education:
-                    // Separate kindergarten and school
-                    var kindergartens = amenities.Where(kv => kv.Key.Name.Contains("Kindergarten")).ToList();
-                    var schools = amenities.Where(kv => kv.Key.Name.Contains("School") && !kv.Key.Name.Contains("University")).ToList();
+                    // Filter by EducationSubtype instead of name matching
+                    var kindergartens = amenities.Where(kv => kv.Key.EducationLevel == EducationSubtype.Kindergarten).ToList();
+                    var schools = amenities.Where(kv => kv.Key.EducationLevel == EducationSubtype.School).ToList();
 
-                    int childrenCount = (int)(totalCitizens * 0.165); // 16.5% are children
-                    int kindergartenNeeded = (int)(childrenCount * 0.4); // 40% kindergarten age
-                    int schoolNeeded = (int)(childrenCount * 0.6); // 60% school age
+                    // Use CalculationSettings percentages
+                    int kindergartenNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.KindergartenAgePercent / 100);
+                    int schoolNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.SchoolAgePercent / 100);
 
-                    int kindergartenCapacity = kindergartens.Sum(kv => kv.Key.MaxVisitors * kv.Value);
-                    int schoolCapacity = schools.Sum(kv => kv.Key.MaxVisitors * kv.Value);
+                    // Education buildings: MaxVisitors × 12 for kindergarten, × 20 for school
+                    int kindergartenCapacity = kindergartens.Sum(kv => kv.Key.MaxVisitors * kv.Value * 12);
+                    int schoolCapacity = schools.Sum(kv => kv.Key.MaxVisitors * kv.Value * 20);
 
                     if (kindergartenCapacity < kindergartenNeeded)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"│           Kindergarten: {kindergartenCapacity}/{kindergartenNeeded} ({kindergartenNeeded - kindergartenCapacity} underserved!)");
+                        Console.WriteLine($"│            Kindergarten: {kindergartenCapacity}/{kindergartenNeeded} ({kindergartenNeeded - kindergartenCapacity} underserved!)");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"│            Kindergarten: {kindergartenCapacity}/{kindergartenNeeded}");
                         Console.ResetColor();
                     }
 
                     if (schoolCapacity < schoolNeeded)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"│           School: {schoolCapacity}/{schoolNeeded} ({schoolNeeded - schoolCapacity} underserved!)");
+                        Console.WriteLine($"│            School: {schoolCapacity}/{schoolNeeded} ({schoolNeeded - schoolCapacity} underserved!)");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"│            School: {schoolCapacity}/{schoolNeeded}");
                         Console.ResetColor();
                     }
                     break;
 
                 case AmenityType.CrimeJustice:
-                    // Optional - just info
+                    int crimeCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 50); // ×50 estimate
+                    int crimeNeeded = totalCitizens;
+
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("│          (Crime rate based - optional)");
+                    Console.WriteLine($"│           {crimeCapacity}/{crimeNeeded} citizens covered (crime rate based - optional)");
                     Console.ResetColor();
                     break;
 
+                case AmenityType.Fountain:
                 case AmenityType.Fireservice:
                 case AmenityType.CityService:
-                case AmenityType.Fountain:
-                    // No warnings needed
+                    // No warnings needed - coverage-based, not capacity-based
                     break;
             }
+        }
+        // Returns (needed capacity, description of population)
+        private static (int capacity, string description, bool showCapacity) CalculateCapacityNeeded(
+    AmenityType type,
+    CalculationResult result)
+        {
+            int citizens = result.TotalPopulationNeeded;
+            int workers = result.TotalWorkers;
+
+            return type switch
+            {
+                AmenityType.Shopping =>
+                    ((int)Math.Ceiling((double)workers / 15), $"{workers} workers", true),
+                AmenityType.Pub =>
+                    ((int)Math.Ceiling((double)citizens / 100), $"{citizens} citizens", true),
+                AmenityType.Culture =>
+                    ((int)Math.Ceiling((double)citizens / 80), $"{citizens} citizens", true),
+                AmenityType.Sports =>
+                    ((int)Math.Ceiling((double)citizens / 80), $"{citizens} citizens", true),
+                AmenityType.Healthcare =>
+                    ((int)Math.Ceiling((double)citizens / 100), $"{citizens} citizens (optional)", true),
+                AmenityType.Education =>
+                    (0, "See breakdown below", true),
+                AmenityType.CrimeJustice =>
+                    ((int)Math.Ceiling((double)citizens / 50), $"{citizens} citizens (estimate)", true),
+                AmenityType.Fireservice =>
+                    (0, "Coverage-based (not capacity)", false),
+                AmenityType.CityService =>
+                    (0, "Utility service (not capacity)", false),
+                AmenityType.Fountain =>
+                    ((int)Math.Ceiling((double)citizens / 200), $"{citizens} citizens (low priority)", true),
+                _ => (0, "Unknown", false)
+            };
         }
     }
 }

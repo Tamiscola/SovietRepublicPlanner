@@ -36,11 +36,12 @@ public enum SupportCategory
     None,
     LiquidHandling,
     BulkHandling,
+    DryBulkHandling,
     SolidHandling,
-    WaterHandling,
+    GeneralDistribution, // Always available
+    Refrigeration,
     PowerHandling,
+    WaterHandling,
     HeatHandling,
     SewageHandling,
-    GeneralDistribution, // Always available
-    DryBulkHandling,
 }

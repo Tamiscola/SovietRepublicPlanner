@@ -486,6 +486,7 @@ class CalculationResult
             double sewageTreated = TotalUtilityNeeds.ContainsKey(GameData.WasteWaterResource)
                 ? (ExpandedUtilities.Any(eu => eu.Key == GameData.WasteWaterResource) ? ExpandedUtilities[GameData.WasteWaterResource].TotalSewageDisposalCapacity : 0)
                 : 0;
+            if (SupportBuildings.Any(sb => sb.Building == GameData.SewageDischarge)) sewageTreated = TotalWaterProduced;
             string sewageProduced = TotalSewageProduced > 0 ? $"{TotalSewageProduced,10:F2}" : "         —";
             double sewageBalance = TotalSewageProduced > 0
                 ? sewageTreated - TotalSewageProduced

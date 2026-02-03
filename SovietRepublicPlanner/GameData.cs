@@ -31,7 +31,7 @@ class GameData
     };
     public static Resource MeatResource = new Resource("Meat", 1, true, false)
     {
-        RequiresGeneralDistribution = true,
+        RequiresRefrigeration = true,
         IsConsumable = true,
         PerCapitalConsumption = 0.000076
     };
@@ -2289,7 +2289,7 @@ class GameData
     };
         result.Outputs = new List<ResourceAmount>()
     {
-        new ResourceAmount(HeatResource, 42, TimePeriod.Day),
+        new ResourceAmount(HeatResource, 450, TimePeriod.Day),
     };
         result.WorkersPerShift = 7;
         result.PowerConsumption = 27;
@@ -2325,7 +2325,7 @@ class GameData
     };
         result.Outputs = new List<ResourceAmount>()
     {
-        new ResourceAmount(HeatResource, 210, TimePeriod.Day),
+        new ResourceAmount(HeatResource, 1050, TimePeriod.Day),
     };
         result.WorkersPerShift = 30;
         result.PowerConsumption = 63;
