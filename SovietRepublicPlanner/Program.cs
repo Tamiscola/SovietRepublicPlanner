@@ -791,9 +791,7 @@ namespace SovietRepublicPlanner
                         Console.WriteLine();
 
                         if (vehicleChoice == 'y')
-                        {
-                            result.ChosenBuilding.Building.WorkersPerShift = 0;  // Override to vehicles
-                        }
+                            result.ChosenBuilding.UseVehicles = true;  // Override to vehicles
                         // else keep the default 100 workers
                     }
                 }
@@ -1197,13 +1195,46 @@ namespace SovietRepublicPlanner
                             while (true)
                             {
                                 if (!int.TryParse(Console.ReadLine(), out choiceIndex))
-                                {
                                     Console.WriteLine("Invalid input. Choose the Option plan(number).");
-                                }
                                 else
                                 {
                                     choiceIndex--;
                                     expandedResult.ChosenBuilding = expandedResult.Buildings[choiceIndex];
+
+                                    // Check if building can use vehicles
+                                    if (expandedResult.ChosenBuilding.Building.CanUseVehicles)
+                                    {
+                                        // Ask user: vehicles or workers?
+                                        Console.WriteLine();
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("This building can be operated by vehicles or workers:");
+                                        Console.ResetColor();
+                                        Console.WriteLine("[1] Use vehicles");
+                                        Console.WriteLine("[2] Use workers");
+                                        Console.Write("Your choice: ");
+
+                                        // Get user input and set the flag
+                                        int userChoice;
+                                        if (int.TryParse(Console.ReadLine(), out userChoice) && userChoice >= 1 && userChoice <= 2)
+                                        {
+                                            if (userChoice == 1)
+                                            {
+                                                expandedResult.ChosenBuilding.UseVehicles = true;
+                                                Console.WriteLine("Vehicles chosen.");
+                                            }
+                                            else
+                                            {
+                                                expandedResult.ChosenBuilding.UseVehicles = false;
+                                                Console.WriteLine("Workers chosen.");
+                                            }
+                                            break;  // Exit the loop after valid choice
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Invalid input. Choose 1 or 2:");
+                                            continue;  // Ask again
+                                        }
+                                    }
                                     break;
                                 }
                             }
@@ -1224,6 +1255,32 @@ namespace SovietRepublicPlanner
                                 else if (addInput == 'y')
                                 {
                                     expandedResult.ChosenBuilding = expandedResult.Buildings[choiceIndex];
+
+                                    // Check if building can use vehicles
+                                    if (expandedResult.ChosenBuilding.Building.CanUseVehicles)
+                                    {
+                                        // Ask user: vehicles or workers?
+                                        Console.WriteLine();
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("This building can be operated by vehicles or workers:");
+                                        Console.ResetColor();
+                                        Console.WriteLine("[1] Use vehicles");
+                                        Console.WriteLine("[2] Use workers");
+                                        Console.Write("Your choice: ");
+
+                                        // Get user input and set the flag
+                                        int userChoice;
+                                        if (int.TryParse(Console.ReadLine(), out userChoice) && userChoice >= 1 && userChoice <= 2)
+                                        {
+                                            if (userChoice == 1)
+                                            {
+                                                expandedResult.ChosenBuilding.Building.WorkersPerShift = 0;
+                                                Console.WriteLine("Vehicles choosed.");
+                                            }
+                                            else { break; Console.WriteLine("Workers choosed."); }
+                                        }
+                                        else { continue; }
+                                    }
                                     break;
                                 }
                                 else if (addInput == 'n') { break; }
