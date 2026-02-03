@@ -1358,7 +1358,7 @@ class GameData
         result.EnvironmentPollution = 6.90;
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
-        result.SupportCategory = SupportCategory.GeneralDistribution;
+        result.SupportCategory = SupportCategory.Refrigeration;
         result.Workdays = 1446;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
