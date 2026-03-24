@@ -4093,7 +4093,66 @@ class GameData
     };
         return result;
     }
-
+    public static ProductionBuilding DryBulkConveyorEngineTransfer { get; } = CreateDryBulkConveyorEngineTransfer();
+    public static ProductionBuilding CreateDryBulkConveyorEngineTransfer()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Dry-Bulk Conveyor Engine Transfer";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 6.0;  // MWh/day
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.IsUtilityBuilding = false;
+        result.IsSupportBuildings = true;
+        result.SupportCategory = SupportCategory.DryBulkHandling;
+        result.Workdays = 286;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+        {
+            {ConcreteResource, 1.7 },
+            {GravelResource, 1.3 },
+            {AsphaltResource, 1.1 },
+            {SteelResource, 9.4 },
+            {MechanicComponentsResource, 2.0}
+        };
+        return result;
+    }
+    public static ProductionBuilding DryBulkConveyorOverpass { get; } = CreateDryBulkConveyorOverpass();
+    public static ProductionBuilding CreateDryBulkConveyorOverpass()
+    {
+        ProductionBuilding result = new ProductionBuilding();
+        result.Name = "Dry-Bulk Conveyor Overpass";
+        result.Inputs = new List<ResourceAmount>() { };
+        result.Outputs = new List<ResourceAmount>() { };
+        result.WorkersPerShift = 0;
+        result.PowerConsumption = 6.0;  // MWh/day
+        result.WaterConsumption = 0;
+        result.HeatConsumption = 0;
+        result.SewageProduction = 0;
+        result.GarbagePerWorker = 0;
+        result.EnvironmentPollution = 0;
+        result.IsSeasonDependent = false;
+        result.SeasonalMultiplier = 0;
+        result.IsUtilityBuilding = false;
+        result.IsSupportBuildings = true;
+        result.SupportCategory = SupportCategory.DryBulkHandling;
+        result.Workdays = 928;
+        result.ConstructionMaterials = new Dictionary<Resource, double>()
+        {
+            {ConcreteResource, 7.3 },
+            {GravelResource, 5.6 },
+            {AsphaltResource, 4.5 },
+            {SteelResource, 29 },
+            {MechanicComponentsResource, 6.2 }
+        };
+        return result;
+    }
 
     // Support Buildings - Utility
     public static ProductionBuilding WaterLoadingUnloadingStation { get; } = CreateWaterLoadingUnloadingStation();
@@ -9943,7 +10002,7 @@ class GameData
         OpenStorageMedium, OpenStorageSmall250, OpenStorageSmall330,
         CargoHarborMedium, CargoHarborSmall1, CargoHarborSmall2, CargoTrainStation1, CargoTrainStation2, CargoTrainStation3, CargoTrainStation4,CargoTrainStation5, CargoTrainStation6, CargoTrainStation7,
         AirportCargoTerminal, HeliportCargoPlatform1, HeliportCargoPlatform3, RoadCargoStation1, RoadCargoStation2, RoadCargoStation3, RoadCargoStation4, RoadCargoStation5, RoadCargoStation6,
-        DryBulkStorage1000,DryBulkStorage1150,DryBulkStorage150,DryBulkStorage2300,DryBulkStorage2615,DryBulkStorage300,CementSilo500,CementSilo500Alt,
+        DryBulkStorage1000,DryBulkStorage1150,DryBulkStorage150,DryBulkStorage2300,DryBulkStorage2615,DryBulkStorage300,CementSilo500,CementSilo500Alt, DryBulkConveyorEngineTransfer, DryBulkConveyorOverpass,
         SewageDischarge,SewageLoadingUnloadingStation,SewagePump10m,SewagePump15m,SewagePump5m,SewageTank,
     };
     public static List<ProductionBuilding> AllSupportBuildings
