@@ -8,7 +8,7 @@ public class MicroDistrict
 {
     public string Name { get; set; }
     public List<ResidentialInstance> ResidentialBuildings { get; set; } = new List<ResidentialInstance>();
-    public int Population
+    public int TotalHousingCapacity
     {
         get
         {
@@ -25,5 +25,5 @@ public class MicroDistrict
     public double SewageDisposalCapacity { get; set; } = 0;  // ㎥/day
     public double HeatConsumption { get; set; }         // Gcal/day
     public double GarbagePerWorker { get; set; }        // Garbage production per worker
-    public double GarbageProduction => Population * GarbagePerWorker;  // tons/day
+    public double GarbageProduction => TotalHousingCapacity * GarbagePerWorker;  // tons/day
 }
