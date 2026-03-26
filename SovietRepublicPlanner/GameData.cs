@@ -86,7 +86,7 @@ class GameData
     public static Resource AluminumResource = new Resource("Aluminum", 4, true, false) { RequiresSolidHandling = true }; 
 
     // Utility resources (dual nature: input + service)
-    public static Resource PowerResource = new Resource("Power", 1, true, true) { RequiresElectricalInfrastructure = true };
+    public static Resource PowerResource = new Resource("Power", 1, true, true) { RequiresPowerInfrastructure = true };
     public static Resource WaterResource = new Resource("Water", 1, true, true) { RequiresWaterInfrastructure = true };
     public static Resource RawWaterResource = new Resource("RawWater", 0, true, false) { RequiresWaterInfrastructure = true };  // Not Utility Resource (exception)
     public static Resource IndustrialWaterResource = new Resource("Industrial Water", 1, true, true) { RequiresWaterInfrastructure = true };

@@ -21,7 +21,7 @@
     public bool RequiresSolidHandling { get; set; } = false;
     public bool RequiresGeneralDistribution { get; set; } = false;
     public bool RequiresRefrigeration { get; set; } = false;
-    public bool RequiresElectricalInfrastructure { get; set; } = false;
+    public bool RequiresPowerInfrastructure { get; set; } = false;
     public bool RequiresWaterInfrastructure { get; set; } = false;
     public bool RequiresSewageInfrastructure { get; set; } = false;
     public bool RequiresHeatInfrastructure { get; set; } = false;

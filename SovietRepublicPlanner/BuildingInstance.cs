@@ -1,4 +1,4 @@
-﻿class BuildingInstance
+﻿public class BuildingInstance
 {
     public ProductionBuilding Building { get; set; }
     public double ResourceAbundanceMultiplier { get; set; } = 1.0;  // quality %

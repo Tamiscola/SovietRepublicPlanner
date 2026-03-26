@@ -1,5 +1,5 @@
 ﻿// Calculation Result for one type of building that produces the target resource
-class BuildingRequirement
+public class BuildingRequirement
 {
     public BuildingRequirement(ProductionBuilding productionBuilding)
     {

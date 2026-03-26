@@ -1,1 +1,1 @@
-﻿enum TimePeriod { Day, Week, Month, Year }
+﻿public enum TimePeriod { Day, Week, Month, Year }

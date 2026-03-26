@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-partial class CalculationResult
+public partial class CalculationResult
 {
     public List<AmenityInstance> AmenityBuildings = new List<AmenityInstance>();
 

@@ -1,4 +1,4 @@
-﻿class ProductionBuilding
+﻿public class ProductionBuilding
 {
     public ProductionBuilding() { }
     public string Name { get; set; }

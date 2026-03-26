@@ -7,7 +7,7 @@
     Station,
     Refueling,
 }
-class TransportationBuilding
+public class TransportationBuilding
 {
     // Identification
     public string Name;

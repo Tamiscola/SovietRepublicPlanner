@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-
-partial class CalculationResult
+public partial class CalculationResult
 {
     // Target
     public Resource TargetResource { get; set; }

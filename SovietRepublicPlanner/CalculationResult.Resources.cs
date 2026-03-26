@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-partial class CalculationResult
+public partial class CalculationResult
 {
     // Resources
     public HashSet<Resource> ExpandedResources

@@ -1,5 +1,5 @@
 ﻿// Resource Amount in Recipes
-struct ResourceAmount
+public struct ResourceAmount
 {
     public ResourceAmount(Resource resource, double amount, TimePeriod period)
     {
