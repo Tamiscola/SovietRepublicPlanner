@@ -1,4 +1,4 @@
-﻿public class SavedPlan
+﻿public class SavedIndustryPlan
 {
     public string ResourceName { get; set; }
     public string BuildingName { get; set; }
@@ -9,7 +9,7 @@
     public int BuildingCount { get; set; }                 // For building-based plans
     public List<double> BuildingQualities { get; set; }     // For mines/quarries
     public bool UsesVehicles { get; set; } = false;
-    public List<SavedPlan> SubChains { get; set; } = new List<SavedPlan>();
+    public List<SavedIndustryPlan> SubChains { get; set; } = new List<SavedIndustryPlan>();
     public List<SavedBuildingInstance> SupportBuildings { get; set; }
     public class SavedBuildingInstance
     {
@@ -40,7 +40,7 @@
         public string Name { get; set; }
         public double Amount { get; set; }
     }
-    public static SavedPlan ConvertToSavedPlan(CalculationResult plan)
+    public static SavedIndustryPlan ConvertToSavedPlan(CalculationResult plan)
     {
         // Find chosen building index
         int chosenIndex = -1;
@@ -49,7 +49,7 @@
             chosenIndex = plan.Buildings.IndexOf(plan.ChosenBuilding);
         }
 
-        var saved = new SavedPlan
+        var saved = new SavedIndustryPlan
         {
             ResourceName = plan.TargetResource.Name,
             BuildingName = plan.ChosenBuilding?.Building.Name,
@@ -65,22 +65,22 @@
             SubChains = plan.SubChains
                 .Select(sc => ConvertToSavedPlan(sc))  // Calls itself!
                 .ToList(),
-            SupportBuildings = plan.SupportBuildings.Select(br => new SavedPlan.SavedBuildingInstance
+            SupportBuildings = plan.SupportBuildings.Select(br => new SavedIndustryPlan.SavedBuildingInstance
             {
                 BuildingName = br.Building.Name,
                 Count = br.Count
             }).ToList(),
-            ResidentialBuildings = plan.ResidentialBuildings.Select(rb => new SavedPlan.SavedResidentialInstance
+            ResidentialBuildings = plan.ResidentialBuildings.Select(rb => new SavedIndustryPlan.SavedResidentialInstance
             {
                 BuildingName = rb.Building.Name,
                 Count = rb.Count
             }).ToList(),
-            AmenityBuildings = plan.AmenityBuildings.Select(ab => new SavedPlan.SavedAmenityInstance
+            AmenityBuildings = plan.AmenityBuildings.Select(ab => new SavedIndustryPlan.SavedAmenityInstance
             {
                 BuildingName = ab.Building.Name,
                 Count = ab.Count
             }).ToList(),
-            TransportationBuildings = plan.TransportationBuildings.Select(tb => new SavedPlan.SavedTransportationInstance
+            TransportationBuildings = plan.TransportationBuildings.Select(tb => new SavedIndustryPlan.SavedTransportationInstance
             {
                 BuildingName = tb.Building.Name,
                 Count = tb.Count
@@ -89,7 +89,7 @@
 
         return saved;
     }
-    public static CalculationResult ConvertFromSavedPlan(SavedPlan savedPlan)
+    public static CalculationResult ConvertFromSavedPlan(SavedIndustryPlan savedPlan)
     {
         CalculationResult result;
 

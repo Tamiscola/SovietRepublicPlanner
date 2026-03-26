@@ -244,9 +244,9 @@ namespace SovietRepublicPlanner
         {
             try
             {
-                var saveFile = new SaveFile
+                var saveFile = new SavedFile
                 {
-                    Plans = plans.Select(p => SavedPlan.ConvertToSavedPlan(p)).ToList()
+                    Plans = plans.Select(p => SavedIndustryPlan.ConvertToSavedPlan(p)).ToList()
                 };
 
                 var options = new JsonSerializerOptions { WriteIndented = true };
@@ -264,9 +264,9 @@ namespace SovietRepublicPlanner
             try
             {
                 string jsonString = File.ReadAllText(filename);
-                var saveFile = JsonSerializer.Deserialize<SaveFile>(jsonString);
+                var saveFile = JsonSerializer.Deserialize<SavedFile>(jsonString);
                 var plans = saveFile.Plans
-                    .Select(sp => SavedPlan.ConvertFromSavedPlan(sp))
+                    .Select(sp => SavedIndustryPlan.ConvertFromSavedPlan(sp))
                     .ToList();
                 Console.WriteLine($"✓ Loaded {plans.Count} plan(s) from {filename}\n");
                 return plans;

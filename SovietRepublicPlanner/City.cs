@@ -241,8 +241,8 @@ public partial class City
         var saved = new SavedCity
         {
             Name = city.Name,
-            plans = city.plans
-                .Select(p => SavedPlan.ConvertToSavedPlan(p))
+            IndustryPlans = city.plans
+                .Select(p => SavedIndustryPlan.ConvertToSavedPlan(p))
                 .ToList(),
         };
         return saved;
@@ -251,8 +251,8 @@ public partial class City
     {
         City c = new City();
         c.Name = sc.Name;
-        c.plans = sc.plans
-            .Select(p => SavedPlan.ConvertFromSavedPlan(p))
+        c.plans = sc.IndustryPlans
+            .Select(p => SavedIndustryPlan.ConvertFromSavedPlan(p))
             .ToList();
         return c;
     }
