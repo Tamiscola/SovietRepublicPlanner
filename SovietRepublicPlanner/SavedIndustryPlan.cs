@@ -16,18 +16,6 @@
         public string BuildingName { get; set; }
         public int Count { get; set; }
     }
-    public List<SavedResidentialInstance> ResidentialBuildings { get; set; }
-    public class SavedResidentialInstance
-    {
-        public string BuildingName { get; set; }
-        public int Count { get; set; }
-    }
-    public List<SavedAmenityInstance> AmenityBuildings { get; set; }
-    public class SavedAmenityInstance
-    {
-        public string BuildingName { get; set; }
-        public int Count { get; set; }
-    }
     public List<SavedTransportationInstance> TransportationBuildings { get; set; }
     public class SavedTransportationInstance
     {
@@ -69,16 +57,6 @@
             {
                 BuildingName = br.Building.Name,
                 Count = br.Count
-            }).ToList(),
-            ResidentialBuildings = plan.ResidentialBuildings.Select(rb => new SavedIndustryPlan.SavedResidentialInstance
-            {
-                BuildingName = rb.Building.Name,
-                Count = rb.Count
-            }).ToList(),
-            AmenityBuildings = plan.AmenityBuildings.Select(ab => new SavedIndustryPlan.SavedAmenityInstance
-            {
-                BuildingName = ab.Building.Name,
-                Count = ab.Count
             }).ToList(),
             TransportationBuildings = plan.TransportationBuildings.Select(tb => new SavedIndustryPlan.SavedTransportationInstance
             {

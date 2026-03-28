@@ -1,4 +1,4 @@
-﻿class ResidentialBuilding
+﻿public class ResidentialBuilding
 {
     public string Name { get; set; }
     public int WorkerCapacity { get; set; }

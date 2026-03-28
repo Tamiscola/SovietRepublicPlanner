@@ -10031,4 +10031,6 @@ class GameData
         .Concat(SmallResidentialBuildings)
         .Concat(MediumResidentialBuildings)
         .Concat(LargeResidentialBuildings).ToList();
+    public static List<TransportationBuilding> AllTransportationBuildings { get; } = new List<TransportationBuilding>()
+        .Concat(TransportationBuildings).ToList();
 }
