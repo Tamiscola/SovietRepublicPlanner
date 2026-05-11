@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-public partial class CalculationResult
+public partial class IndustryPlan
 {
     // Target
     public Resource TargetResource { get; set; }
@@ -11,8 +11,16 @@ public partial class CalculationResult
     public double WorkersProductivity { get; set; } = 100.0;
 
     // Buildings
+    
+    // Buildings(candidates) that produce the target resource:
+    // User selects an option from this list.
     public List<BuildingRequirement> Buildings { get; set; } = new List<BuildingRequirement>();
-    public List<BuildingRequirement> SupportBuildings { get; set; } = new List<BuildingRequirement>();
+
+    // Selected ProductionBuilding
+    public BuildingRequirement ChosenBuilding { get; set; }     
+
+    // Infrastructures for ProductionBuildings
+    // User selects an option from this list.
     public Dictionary<ProductionBuilding, int> AllSupportBuildings
     {
         get
@@ -43,9 +51,12 @@ public partial class CalculationResult
             return all;
         }
     }
-    public List<ResidentialInstance> ResidentialBuildings { get; set; } = new List<ResidentialInstance>();
+
+    // Selected SupportBuildings
+    public List<BuildingRequirement> SupportBuildings { get; set; } = new List<BuildingRequirement>();     
+
+    // Selected TransportationBuildings and their amount
     public List<TransportationInstance> TransportationBuildings = new List<TransportationInstance>();
-    public BuildingRequirement ChosenBuilding { get; set; }
     public int TotalBuildings { get; set; }
 
     // Helper methods

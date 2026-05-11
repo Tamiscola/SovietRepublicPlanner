@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class CalculationResult
+public partial class IndustryPlan
 {
     // Workers
     public int BaseWorkers => ChosenBuilding.baseTotalWorkers;

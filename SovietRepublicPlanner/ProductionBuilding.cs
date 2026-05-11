@@ -1,13 +1,11 @@
-﻿public class ProductionBuilding
+﻿public class ProductionBuilding : Building
 {
     public ProductionBuilding() { }
-    public string Name { get; set; }
     public List<ResourceAmount> Inputs { get; set; } = new List<ResourceAmount>();
     public List<ResourceAmount> Outputs { get; set; } = new List<ResourceAmount>();
     public int WorkersPerShift { get; set; }
 
     // Utilities
-    public double PowerConsumption { get; set; }        // MW
     public double WaterConsumption { get; set; }        // ㎥/day
     public double SewageProduction { get; set; }        // ㎥/day
     public double SewageDisposalCapacity { get; set; } = 0;  // ㎥/day
@@ -22,26 +20,6 @@
     public double SeasonalMultiplier { get; set; }      // For current season/average
     public bool IsQualityDependent { get; set; }
     public bool IsUtilityBuilding { get; set; } = false;
-    public bool IsSupportBuildings { get; set; } = false;
     public bool CanUseVehicles { get; set; } = false;
     public SupportCategory SupportCategory { get; set; } = SupportCategory.None;
-
-    // Construction
-    public int Workdays { get; set; }
-    public Dictionary<Resource, double> ConstructionMaterials = new Dictionary<Resource, double>();
-
-}
-public enum SupportCategory
-{
-    None,
-    LiquidHandling,
-    BulkHandling,
-    DryBulkHandling,
-    SolidHandling,
-    GeneralDistribution, // Always available
-    Refrigeration,
-    PowerHandling,
-    WaterHandling,
-    HeatHandling,
-    SewageHandling,
 }

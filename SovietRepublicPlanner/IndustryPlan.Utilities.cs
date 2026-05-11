@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class CalculationResult
+public partial class IndustryPlan
 {
     // Utilities - Requirement
     public double TotalPowerNeeded
@@ -163,7 +163,7 @@ public partial class CalculationResult
         }
     }
 
-    public Dictionary<Resource, BuildingRequirement> CalculateExpandedUtility(Dictionary<Resource, BuildingRequirement> result, CalculationResult cr)
+    public Dictionary<Resource, BuildingRequirement> CalculateExpandedUtility(Dictionary<Resource, BuildingRequirement> result, IndustryPlan cr)
     {
         if (cr.ChosenBuilding.Building.IsUtilityBuilding && cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key.IsUtility))
         {
@@ -197,7 +197,7 @@ public partial class CalculationResult
             CalculateExpandedUtility(result, sub);
         return result;
     }
-    public double CalculateTotalPowerProduced(double d, CalculationResult cr)
+    public double CalculateTotalPowerProduced(double d, IndustryPlan cr)
     {
         if (cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key == GameData.PowerResource))
             d += cr.ChosenBuilding.ExpectedOutput[GameData.PowerResource];
@@ -205,7 +205,7 @@ public partial class CalculationResult
             d = CalculateTotalPowerProduced(d, sub);
         return d;
     }
-    public double CalculateTotalWaterProduced(double d, CalculationResult cr)
+    public double CalculateTotalWaterProduced(double d, IndustryPlan cr)
     {
         if (cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key == GameData.WaterResource))
             d += cr.ChosenBuilding.ExpectedOutput[GameData.WaterResource];
@@ -213,7 +213,7 @@ public partial class CalculationResult
             d = CalculateTotalWaterProduced(d, sub);
         return d;
     }
-    public double CalculateTotalHeatProduced(double d, CalculationResult cr)
+    public double CalculateTotalHeatProduced(double d, IndustryPlan cr)
     {
         if (cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key == GameData.HeatResource))
             d += cr.ChosenBuilding.ExpectedOutput[GameData.HeatResource];
@@ -221,7 +221,7 @@ public partial class CalculationResult
             d = CalculateTotalHeatProduced(d, sub);
         return d;
     }
-    private void CollectInputWater(Dictionary<Resource, double> result, CalculationResult cr)
+    private void CollectInputWater(Dictionary<Resource, double> result, IndustryPlan cr)
     {
         // Add this level's input water
         foreach (var kv in cr.ChosenBuilding.RequiredResources)

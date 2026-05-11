@@ -9,7 +9,8 @@ using System.Xml.Serialization;
 public partial class City
 {
     public string Name { get; set; }
-    public List<CalculationResult> plans = new List<CalculationResult>();
+    public List<IndustryPlan> plans = new List<IndustryPlan>();
+    public List<MicroDistrict> microDistricts = new List<MicroDistrict>();
 
     // Initialize totals
     public int totalWorkers

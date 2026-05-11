@@ -13,19 +13,19 @@ namespace SovietRepublicPlanner
 {
     internal class Program
     {
-        static List<CalculationResult> allPlans = new List<CalculationResult>();
+        static List<IndustryPlan> allPlans = new List<IndustryPlan>();
         // Navigation pointer: Points to the current position in the active plan's tree
         // Used for commands that navigate/modify existing plans (expand, dive, back, cancel)
         // - At root level: currentResult == rootResult (the plan itself)
         // - When diving: currentResult points to a SubChain within the plan
         // - When expanding: operations are performed on currentResult's level
         // DO NOT use this when creating NEW plans - create a local CalculationResult instead
-        static CalculationResult currentResult;
+        static IndustryPlan currentResult;
         static int currentPlanIndex = -1;
-        static CalculationResult rootResult => (currentPlanIndex >= 0 && currentPlanIndex < allPlans.Count)
+        static IndustryPlan rootResult => (currentPlanIndex >= 0 && currentPlanIndex < allPlans.Count)
     ? allPlans[currentPlanIndex]
     : null;
-        static Stack<CalculationResult> navigationStack = new Stack<CalculationResult>();
+        static Stack<IndustryPlan> navigationStack = new Stack<IndustryPlan>();
         static string currentSaveFile = "plans.json";
         static string plansDirectory = Path.Combine(Directory.GetCurrentDirectory(), "plans");
         static string[] jsonFiles = Directory.Exists(plansDirectory)
@@ -127,7 +127,7 @@ namespace SovietRepublicPlanner
             return;
         }
         // Helper method
-        static void ExpandUtility(CalculationResult result, Resource utility, double totalNeeded)
+        static void ExpandUtility(IndustryPlan result, Resource utility, double totalNeeded)
         {
             Console.WriteLine($"\n{utility.Name}: {totalNeeded:F2} needed");
 
@@ -136,7 +136,7 @@ namespace SovietRepublicPlanner
             if (utilityBuildings.Count() == 0) { Console.WriteLine($"No buildings found that produce {utility.Name}!"); return; }
 
             // Show options and get user choice
-            CalculationResult expandedResult = new CalculationResult();
+            IndustryPlan expandedResult = new IndustryPlan();
             expandedResult.TargetResource = utility;
             expandedResult.TargetAmount = totalNeeded;
             int choiceIndex;
@@ -215,7 +215,7 @@ namespace SovietRepublicPlanner
             result.SubChains.Add(expandedResult);
             Console.WriteLine($"{utility.Name} has been expanded!");
         }
-        static void DisplayOptions(CalculationResult result)
+        static void DisplayOptions(IndustryPlan result)
         {
             for (int i = 0; i < result.Buildings.Count(); i++)
             {
@@ -240,7 +240,7 @@ namespace SovietRepublicPlanner
                 Console.WriteLine($"Pollution emitted: {result.Buildings[i].TotalEnvironmentPollution:F6}");
             }
         }
-        static void SavePlans(List<CalculationResult> plans, string filename)
+        static void SavePlans(List<IndustryPlan> plans, string filename)
         {
             try
             {
@@ -259,7 +259,7 @@ namespace SovietRepublicPlanner
                 Console.WriteLine($"\n✗ Error saving plans: {ex.Message}");
             }
         }
-        static List<CalculationResult> LoadPlans(string filename)
+        static List<IndustryPlan> LoadPlans(string filename)
         {
             try
             {
@@ -274,12 +274,12 @@ namespace SovietRepublicPlanner
             catch (Exception ex)
             {
                 Console.WriteLine($"✗ Error loading plans: {ex.Message}\n");
-                return new List<CalculationResult>();
+                return new List<IndustryPlan>();
             }
         }
         static void CreateNewPlan()
         {
-            CalculationResult result = new CalculationResult();
+            IndustryPlan result = new IndustryPlan();
             double workerProductivity = 100.0;
             int choiceIndex;
 
@@ -466,7 +466,7 @@ namespace SovietRepublicPlanner
         {
             double workerProductivity = 100;
             int choiceIndex;
-            CalculationResult result = new CalculationResult();
+            IndustryPlan result = new IndustryPlan();
 
             // Worker Productivity Choice : User Interaction
             while (true)
@@ -479,7 +479,7 @@ namespace SovietRepublicPlanner
             }
 
             // Building Choice : User Interaction
-            List<ProductionBuilding> allBuildings = GameData.AllBuildings;
+            List<ProductionBuilding> allBuildings = GameData.AllProductionBuildings;
             List<ProductionBuilding> allExtractions = allBuildings.Where(b => b.IsQualityDependent).ToList();
             List<ProductionBuilding> allProcessing = allBuildings.Where(b => !b.IsQualityDependent && !b.IsSeasonDependent && !b.IsSupportBuildings && !b.IsUtilityBuilding).ToList();
             List<ProductionBuilding> selectedCategory = new List<ProductionBuilding>();
@@ -854,7 +854,7 @@ namespace SovietRepublicPlanner
                     // Calculate expansion
                     for (int j = 0; j < resourcesToExpand.Count(); j++)
                     {
-                        CalculationResult expandedResult = new CalculationResult();
+                        IndustryPlan expandedResult = new IndustryPlan();
                         expandedResult.TargetResource = resourcesToExpand[j];
                         // Use total imports if available (represents all unfulfilled demand)
                         if (rootResult.TotalImports.ContainsKey(resourcesToExpand[j]))
@@ -1521,7 +1521,7 @@ namespace SovietRepublicPlanner
                         Console.WriteLine($"│ {selectedType} Buildings:");
                         Console.WriteLine("└─────────────────────────────────────────");
 
-                        // Filter buildings by type
+                        // Filter buildings by type from GameData.cs
                         var buildingsOfType = GameData.TransportationBuildings.Where(b => b.Type == selectedType).ToList();
 
                         // Display buildings
@@ -1687,7 +1687,7 @@ namespace SovietRepublicPlanner
                                         : "Unknown building";
 
                                     // Find and remove the SubChain that produces this utility
-                                    CalculationResult subChainToRemove = currentResult.SubChains
+                                    IndustryPlan subChainToRemove = currentResult.SubChains
                                         .FirstOrDefault(sc => sc.TargetResource == utilityToCancel);
 
                                     if (subChainToRemove != null)
@@ -1716,7 +1716,7 @@ namespace SovietRepublicPlanner
                                 if (int.TryParse(Console.ReadLine(), out undoChoice) &&
                                     undoChoice >= 0 && undoChoice < currentResult.SubChains.Count)
                                 {
-                                    CalculationResult subchainToCancel = currentResult.SubChains[undoChoice];
+                                    IndustryPlan subchainToCancel = currentResult.SubChains[undoChoice];
                                     currentResult.SubChains.Remove(subchainToCancel);
                                 }
                                 else { Console.WriteLine("Invalid input."); continue; }
@@ -2306,7 +2306,7 @@ namespace SovietRepublicPlanner
         // Returns (needed capacity, description of population)
         private static (int capacity, string description, bool showCapacity) CalculateCapacityNeeded(
     AmenityType type,
-    CalculationResult result)
+    IndustryPlan result)
         {
             int citizens = result.TotalPopulationNeeded;
             int workers = result.TotalWorkers;

@@ -113,7 +113,7 @@ class GameData
             new ResourceAmount(FoodResource, 20.0, TimePeriod.Day),
         };
         result.WorkersPerShift = 170;
-        result.PowerConsumption = 7.6;
+        result.PowerConsumptionMWh = 7.6;
         result.WaterConsumption = 3.4;
         result.HeatConsumption = 0;
         result.SewageProduction = 11.9;     // Resource + daily water consumption
@@ -123,7 +123,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2426;
+        result.WorkDays = 2426;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 46 },
@@ -152,7 +152,7 @@ class GameData
             new ResourceAmount(AlcoholResource, 6.0, TimePeriod.Day),
         };
         result.WorkersPerShift = 100;
-        result.PowerConsumption = 13.0;
+        result.PowerConsumptionMWh = 13.0;
         result.WaterConsumption = 2.0;
         result.HeatConsumption = 0;
         result.SewageProduction = 13.0 + result.WaterConsumption;     // Resource + daily water consumption
@@ -162,7 +162,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1542;
+        result.WorkDays = 1542;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 25 },
@@ -189,7 +189,7 @@ class GameData
             new ResourceAmount(ClothesResource, 1.2, TimePeriod.Day)
         };
         result.WorkersPerShift = 80;
-        result.PowerConsumption = 3.6;
+        result.PowerConsumptionMWh = 3.6;
         result.WaterConsumption = 1.60;
         result.HeatConsumption = 0;
         result.SewageProduction = 1.60;
@@ -199,7 +199,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1728;
+        result.WorkDays = 1728;
         result.ConstructionMaterials = new Dictionary<Resource, double>() 
         {
             {ConcreteResource, 224 },
@@ -229,7 +229,7 @@ class GameData
             new ResourceAmount(FabricResource, 5.0, TimePeriod.Day),
         };
         result.WorkersPerShift = 100;
-        result.PowerConsumption = 19;
+        result.PowerConsumptionMWh = 19;
         result.WaterConsumption = 2.0;      // building water consumption (drinkable)
         result.HeatConsumption = 0;
         result.SewageProduction = 13.0;     // Resource + daily water consumption
@@ -239,7 +239,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1715;
+        result.WorkDays = 1715;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 62 },
@@ -268,7 +268,7 @@ class GameData
         new ResourceAmount(BitumenResource, 75, TimePeriod.Day)
     };
         result.WorkersPerShift = 500;
-        result.PowerConsumption = 36.0;
+        result.PowerConsumptionMWh = 36.0;
         result.WaterConsumption = 10.00;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -277,7 +277,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.LiquidHandling;
-        result.Workdays = 11076;
+        result.WorkDays = 11076;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 219 },
@@ -308,7 +308,7 @@ class GameData
             new ResourceAmount(ChemicalsResource, 0.81, TimePeriod.Day)
         };
         result.WorkersPerShift = 60;
-        result.PowerConsumption = 25;
+        result.PowerConsumptionMWh = 25;
         result.WaterConsumption = 1.2;
         result.HeatConsumption = 0;
         result.SewageProduction = 11.2;       // Resource + daily water consumption
@@ -318,7 +318,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2260;
+        result.WorkDays = 2260;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 62 },
@@ -351,7 +351,7 @@ class GameData
             new ResourceAmount(ChemicalsResource, 2.7, TimePeriod.Day)
         };
         result.WorkersPerShift = 200;
-        result.PowerConsumption = 60;
+        result.PowerConsumptionMWh = 60;
         result.WaterConsumption = 4;
         result.HeatConsumption = 0;
         result.SewageProduction = result.WaterConsumption + 34;       // Resource + daily water consumption
@@ -361,7 +361,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 6842;
+        result.WorkDays = 6842;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 144 },
@@ -393,7 +393,7 @@ class GameData
             new ResourceAmount(ChemicalsResource, 9.4, TimePeriod.Day)
         };
         result.WorkersPerShift = 700;
-        result.PowerConsumption = 197;
+        result.PowerConsumptionMWh = 197;
         result.WaterConsumption = 14;
         result.HeatConsumption = 0;
         result.SewageProduction = 133;       // Resource + daily water consumption
@@ -403,7 +403,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 23681;
+        result.WorkDays = 23681;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 2473 },
@@ -433,7 +433,7 @@ class GameData
         new ResourceAmount(PlasticsResource, 6.6, TimePeriod.Day)
     };
         result.WorkersPerShift = 60;
-        result.PowerConsumption = 20;
+        result.PowerConsumptionMWh = 20;
         result.WaterConsumption = 1.20;
         result.HeatConsumption = 0;
         result.SewageProduction = 1.20;
@@ -443,7 +443,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1395;
+        result.WorkDays = 1395;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 29 },
@@ -472,7 +472,7 @@ class GameData
         new ResourceAmount(SolidFertilizerResource, 25, TimePeriod.Day)
     };
         result.WorkersPerShift = 25;
-        result.PowerConsumption = 3.0; // 3.0 MWh/day
+        result.PowerConsumptionMWh = 3.0; // 3.0 MWh/day
         result.WaterConsumption = 0.5;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.5;
@@ -483,7 +483,7 @@ class GameData
         result.IsQualityDependent = false;
         result.CanUseVehicles = false;
         result.SupportCategory = SupportCategory.None;
-        result.Workdays = 532;
+        result.WorkDays = 532;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 15 },
@@ -509,7 +509,7 @@ class GameData
         new ResourceAmount(LiquidFertilizerResource, 17, TimePeriod.Day)
     };
         result.WorkersPerShift = 25;
-        result.PowerConsumption = 9.8; // 9.8 MWh/day
+        result.PowerConsumptionMWh = 9.8; // 9.8 MWh/day
         result.WaterConsumption = 15.0; // 15m³/day
         result.HeatConsumption = 0;
         result.SewageProduction = 15.0; // 15m³/day
@@ -520,7 +520,7 @@ class GameData
         result.IsQualityDependent = false;
         result.CanUseVehicles = false;
         result.SupportCategory = SupportCategory.LiquidHandling;
-        result.Workdays = 947;
+        result.WorkDays = 947;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 16 },
@@ -546,7 +546,7 @@ class GameData
         new ResourceAmount(MechanicComponentsResource, 15, TimePeriod.Day)
     };
         result.WorkersPerShift = 150;
-        result.PowerConsumption = 8.1; // 8.1 MWh/day
+        result.PowerConsumptionMWh = 8.1; // 8.1 MWh/day
         result.WaterConsumption = 3.0;
         result.HeatConsumption = 0;
         result.SewageProduction = 3.0;
@@ -557,7 +557,7 @@ class GameData
         result.IsQualityDependent = false;
         result.CanUseVehicles = false;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 5122;
+        result.WorkDays = 5122;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 375 },
@@ -587,7 +587,7 @@ class GameData
             new ResourceAmount(SteelResource, 9.4, TimePeriod.Day)
         };
         result.WorkersPerShift = 500;
-        result.PowerConsumption = 48;
+        result.PowerConsumptionMWh = 48;
         result.WaterConsumption = 10;
         result.HeatConsumption = 0;
         result.SewageProduction = 10;       // Resource + daily water consumption
@@ -597,7 +597,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 9553;
+        result.WorkDays = 9553;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 484 },
@@ -626,7 +626,7 @@ class GameData
             new ResourceAmount(IronResource, 105, TimePeriod.Day)
         };
         result.WorkersPerShift = 15;
-        result.PowerConsumption = 17;
+        result.PowerConsumptionMWh = 17;
         result.WaterConsumption = 0.3;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.3;       // Resource + daily water consumption
@@ -636,7 +636,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 4122;
+        result.WorkDays = 4122;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 360 },
@@ -663,7 +663,7 @@ class GameData
             new ResourceAmount(CoalResource, 120, TimePeriod.Day)
         };
         result.WorkersPerShift = 15;
-        result.PowerConsumption = 15;
+        result.PowerConsumptionMWh = 15;
         result.WaterConsumption = 0.3;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.3;       // Resource + daily water consumption
@@ -673,7 +673,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 4122;
+        result.WorkDays = 4122;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 360 },
@@ -696,7 +696,7 @@ class GameData
             new ResourceAmount(CoalOreResource, 4.2 * 220, TimePeriod.Day)
         };
         result.WorkersPerShift = 220;
-        result.PowerConsumption = 9.2;
+        result.PowerConsumptionMWh = 9.2;
         result.WaterConsumption = 4.4;
         result.HeatConsumption = 0;
         result.SewageProduction = 4.4;       // Resource + daily water consumption
@@ -708,7 +708,7 @@ class GameData
         result.IsQualityDependent = true;
         result.CanUseVehicles = true;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 3878;
+        result.WorkDays = 3878;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 249 },
@@ -732,7 +732,7 @@ class GameData
             new ResourceAmount(WoodResource, 63, TimePeriod.Day),
         };
         result.WorkersPerShift = 10;
-        result.PowerConsumption = 7.2;
+        result.PowerConsumptionMWh = 7.2;
         result.WaterConsumption = 0.2;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.2;       // Resource + daily water consumption
@@ -743,7 +743,7 @@ class GameData
         result.IsQualityDependent = true;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 217;
+        result.WorkDays = 217;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 8.5 },
@@ -769,7 +769,7 @@ class GameData
         new ResourceAmount(BoardsResource, 140, TimePeriod.Day)
     };
         result.WorkersPerShift = 20;
-        result.PowerConsumption = 6.7; // 6.7 MWh/day
+        result.PowerConsumptionMWh = 6.7; // 6.7 MWh/day
         result.WaterConsumption = 0.4;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.4;
@@ -780,7 +780,7 @@ class GameData
         result.IsQualityDependent = false;
         result.CanUseVehicles = false;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 922;
+        result.WorkDays = 922;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 26 },
@@ -808,7 +808,7 @@ class GameData
             new ResourceAmount(GravelResource, 27, TimePeriod.Day)
         };
         result.WorkersPerShift = 5;
-        result.PowerConsumption = 9.2;
+        result.PowerConsumptionMWh = 9.2;
         result.WaterConsumption = 0.1;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.1;       // Resource + daily water consumption
@@ -818,7 +818,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 373;
+        result.WorkDays = 373;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 2.8 },
@@ -845,7 +845,7 @@ class GameData
             new ResourceAmount(GravelResource, 82, TimePeriod.Day)
         };
         result.WorkersPerShift = 15;
-        result.PowerConsumption = 24;
+        result.PowerConsumptionMWh = 24;
         result.WaterConsumption = 0.3;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.1;       // Resource + daily water consumption
@@ -855,7 +855,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 1193;
+        result.WorkDays = 1193;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 109 },
@@ -878,7 +878,7 @@ class GameData
             new ResourceAmount(QuarriedStoneResource, 3.5 * 100, TimePeriod.Day)
         };
         result.WorkersPerShift = 100;
-        result.PowerConsumption = 23;
+        result.PowerConsumptionMWh = 23;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;       // Resource + daily water consumption
@@ -890,7 +890,7 @@ class GameData
         result.IsQualityDependent = true;
         result.CanUseVehicles = true;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 397;
+        result.WorkDays = 397;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 9.9 },
@@ -914,7 +914,7 @@ class GameData
             new ResourceAmount(QuarriedStoneResource, 3.5 * 40, TimePeriod.Day)
         };
         result.WorkersPerShift = 40;
-        result.PowerConsumption = 9.8;
+        result.PowerConsumptionMWh = 9.8;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;            // Resource + daily water consumption
@@ -926,7 +926,7 @@ class GameData
         result.IsQualityDependent = true;
         result.CanUseVehicles = true;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 79;
+        result.WorkDays = 79;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 1.3 },
@@ -953,7 +953,7 @@ class GameData
             new ResourceAmount(OilResource, 7, TimePeriod.Day)
         };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.9;
+        result.PowerConsumptionMWh = 6.9;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;       // Resource + daily water consumption
@@ -962,7 +962,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsQualityDependent = true;
         result.SupportCategory = SupportCategory.LiquidHandling;
-        result.Workdays = 224;
+        result.WorkDays = 224;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 3.9 },
@@ -985,7 +985,7 @@ class GameData
             new ResourceAmount(RawBauxiteResource, 0.5 * 45, TimePeriod.Day)
         };
         result.WorkersPerShift = 45;
-        result.PowerConsumption = 4.3;
+        result.PowerConsumptionMWh = 4.3;
         result.WaterConsumption = 0.9;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.9;       // Resource + daily water consumption
@@ -997,7 +997,7 @@ class GameData
         result.IsQualityDependent = true;
         result.CanUseVehicles = true;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 335;
+        result.WorkDays = 335;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 6.9 },
@@ -1022,7 +1022,7 @@ class GameData
         new ResourceAmount(BauxiteResource, 75, TimePeriod.Day)
     };
         result.WorkersPerShift = 25;
-        result.PowerConsumption = 3.0;
+        result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 0.50;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1031,7 +1031,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.None;
-        result.Workdays = 1354;
+        result.WorkDays = 1354;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 27 },
@@ -1057,7 +1057,7 @@ class GameData
         new ResourceAmount(AluminumResource, 30, TimePeriod.Day)
     };
         result.WorkersPerShift = 350;
-        result.PowerConsumption = 151.0;
+        result.PowerConsumptionMWh = 151.0;
         result.WaterConsumption = 7.0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1066,7 +1066,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.None;
-        result.Workdays = 18802;
+        result.WorkDays = 18802;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 603 },
@@ -1094,7 +1094,7 @@ class GameData
         new ResourceAmount(AluminumOxideResource, 33, TimePeriod.Day)
     };
         result.WorkersPerShift = 370;
-        result.PowerConsumption = 17.0;
+        result.PowerConsumptionMWh = 17.0;
         result.WaterConsumption = 7.40;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1103,7 +1103,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.None;
-        result.Workdays = 16393;
+        result.WorkDays = 16393;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 507 },
@@ -1214,7 +1214,7 @@ class GameData
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>() { };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;
+        result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1223,7 +1223,7 @@ class GameData
         result.IsSeasonDependent = true;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 643;
+        result.WorkDays = 643;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 13 },
@@ -1245,7 +1245,7 @@ class GameData
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>() { };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;
+        result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1254,7 +1254,7 @@ class GameData
         result.IsSeasonDependent = true;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1140;
+        result.WorkDays = 1140;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 37 },
@@ -1276,7 +1276,7 @@ class GameData
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>() { };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;
+        result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1285,7 +1285,7 @@ class GameData
         result.IsSeasonDependent = true;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2575;
+        result.WorkDays = 2575;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 117 },
@@ -1314,7 +1314,7 @@ class GameData
         new ResourceAmount() { Resource = LivestockResource, Amount = 10 }
     };
         result.WorkersPerShift = 50;
-        result.PowerConsumption = 3.0;
+        result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 2.30;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1323,7 +1323,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1993;
+        result.WorkDays = 1993;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 39 },
@@ -1350,7 +1350,7 @@ class GameData
         new ResourceAmount() { Resource = MeatResource, Amount = 60 }
     };
         result.WorkersPerShift = 50;
-        result.PowerConsumption = 3.4;
+        result.PowerConsumptionMWh = 3.4;
         result.WaterConsumption = 1.56;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1359,7 +1359,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.Refrigeration;
-        result.Workdays = 1446;
+        result.WorkDays = 1446;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 34 },
@@ -1390,7 +1390,7 @@ class GameData
         new ResourceAmount() { Resource = PrefabPanelsResource, Amount = 71 }
     };
         result.WorkersPerShift = 65;
-        result.PowerConsumption = 8.0;
+        result.PowerConsumptionMWh = 8.0;
         result.WaterConsumption = 1.30;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1399,7 +1399,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 2917;
+        result.WorkDays = 2917;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 207 },
@@ -1428,7 +1428,7 @@ class GameData
         new ResourceAmount() { Resource = PrefabPanelsResource, Amount = 55 }
     };
         result.WorkersPerShift = 50;
-        result.PowerConsumption = 6.0;
+        result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 1.00;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1437,7 +1437,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 3129;
+        result.WorkDays = 3129;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 118 },
@@ -1467,7 +1467,7 @@ class GameData
         new ResourceAmount(CementResource, 108, TimePeriod.Day),
     };
         result.WorkersPerShift = 40;
-        result.PowerConsumption = 6.3;
+        result.PowerConsumptionMWh = 6.3;
         result.WaterConsumption = 0.80;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.80;
@@ -1477,7 +1477,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 9051;
+        result.WorkDays = 9051;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 1137 },
@@ -1505,7 +1505,7 @@ class GameData
         new ResourceAmount(CementResource, 81, TimePeriod.Day),
     };
         result.WorkersPerShift = 30;
-        result.PowerConsumption = 6.0;
+        result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0.69;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.69;
@@ -1515,7 +1515,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 5475;
+        result.WorkDays = 5475;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 738 },
@@ -1545,7 +1545,7 @@ class GameData
         new ResourceAmount(ConcreteResource, 175, TimePeriod.Day),
     };
         result.WorkersPerShift = 5;
-        result.PowerConsumption = 15;
+        result.PowerConsumptionMWh = 15;
         result.WaterConsumption = 0.10;      // building water consumption
         result.HeatConsumption = 0;
         result.SewageProduction = 85.10;     // Input water + building consumption
@@ -1555,7 +1555,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 1436;
+        result.WorkDays = 1436;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 24 },
@@ -1585,7 +1585,7 @@ class GameData
         new ResourceAmount(BricksResource, 51, TimePeriod.Day),
     };
         result.WorkersPerShift = 75;
-        result.PowerConsumption = 3.0;
+        result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 1.50;
         result.HeatConsumption = 0;
         result.SewageProduction = 1.50;
@@ -1595,7 +1595,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 2723;
+        result.WorkDays = 2723;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 49 },
@@ -1625,7 +1625,7 @@ class GameData
         new ResourceAmount(AsphaltResource, 145, TimePeriod.Day),
     };
         result.WorkersPerShift = 5;
-        result.PowerConsumption = 18;
+        result.PowerConsumptionMWh = 18;
         result.WaterConsumption = 0.10;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.10;
@@ -1634,7 +1634,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 1439;
+        result.WorkDays = 1439;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 25 },
@@ -1662,7 +1662,7 @@ class GameData
         new ResourceAmount() { Resource = PowerResource, Amount = 600 } // 600 MW * 24 hours = 14400 MWh/day
     };
         result.WorkersPerShift = 10;
-        result.PowerConsumption = 0.30;
+        result.PowerConsumptionMWh = 0.30;
         result.WaterConsumption = 0.20;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1672,7 +1672,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 4920;
+        result.WorkDays = 4920;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 137 },
@@ -1701,7 +1701,7 @@ class GameData
             new ResourceAmount(PowerResource, 1400, TimePeriod.Day),
         };
         result.WorkersPerShift = 20;
-        result.PowerConsumption = 0.6;
+        result.PowerConsumptionMWh = 0.6;
         result.WaterConsumption = 0.4;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.4;       // Resource + daily water consumption
@@ -1711,7 +1711,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
-        result.Workdays = 7631;
+        result.WorkDays = 7631;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 871 },
@@ -1739,7 +1739,7 @@ class GameData
             new ResourceAmount(PowerResource, 1050, TimePeriod.Day),
         };
         result.WorkersPerShift = 15;
-        result.PowerConsumption = 3.4;
+        result.PowerConsumptionMWh = 3.4;
         result.WaterConsumption = 0.3;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.3;       // Resource + daily water consumption
@@ -1749,7 +1749,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
-        result.Workdays = 6328;
+        result.WorkDays = 6328;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 865 },
@@ -1777,7 +1777,7 @@ class GameData
             new ResourceAmount(NuclearWasteResource, 0.020, TimePeriod.Day)
         };
         result.WorkersPerShift = 60;
-        result.PowerConsumption = 7.8;
+        result.PowerConsumptionMWh = 7.8;
         result.WaterConsumption = 1.2;
         result.HeatConsumption = 0;
         result.SewageProduction = 1.2;       // Resource + daily water consumption
@@ -1786,7 +1786,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
-        result.Workdays = 12561;
+        result.WorkDays = 12561;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 235 },
@@ -1817,7 +1817,7 @@ class GameData
         new ResourceAmount() { Resource = NuclearWasteResource, Amount = 0.010 }
     };
         result.WorkersPerShift = 40;
-        result.PowerConsumption = 7.8;
+        result.PowerConsumptionMWh = 7.8;
         result.WaterConsumption = 1.20;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1827,7 +1827,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
         result.IsUtilityBuilding = true;
-        result.Workdays = 10548;
+        result.WorkDays = 10548;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 459 },
@@ -1858,7 +1858,7 @@ class GameData
             new ResourceAmount(NuclearWasteResource, 0.040, TimePeriod.Day)
         };
         result.WorkersPerShift = 120;
-        result.PowerConsumption = 9.6;
+        result.PowerConsumptionMWh = 9.6;
         result.WaterConsumption = 2.4;
         result.HeatConsumption = 0;
         result.SewageProduction = 2.4;       // Resource + daily water consumption
@@ -1867,7 +1867,7 @@ class GameData
         result.IsSeasonDependent = false;
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
-        result.Workdays = 20418;
+        result.WorkDays = 20418;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 367 },
@@ -1898,7 +1898,7 @@ class GameData
         new ResourceAmount() { Resource = NuclearWasteResource, Amount = 0.023 }
     };
         result.WorkersPerShift = 45;
-        result.PowerConsumption = 8.0;
+        result.PowerConsumptionMWh = 8.0;
         result.WaterConsumption = 1.36;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1908,7 +1908,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 13499;
+        result.WorkDays = 13499;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 318 },
@@ -1934,7 +1934,7 @@ class GameData
         new ResourceAmount() { Resource = PowerResource, Amount = 15} // 15 MW * 24 hours = 360 MWh/day
     };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
+        result.PowerConsumptionMWh = 0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1944,7 +1944,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 239;
+        result.WorkDays = 239;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 1.3 },
@@ -1968,7 +1968,7 @@ class GameData
         new ResourceAmount() { Resource = PowerResource, Amount = 35} // 35 MW * 24 hours = 840 MWh/day
     };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
+        result.PowerConsumptionMWh = 0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -1978,7 +1978,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 689;
+        result.WorkDays = 689;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 3.2 },
@@ -2002,7 +2002,7 @@ class GameData
         new ResourceAmount() { Resource = PowerResource, Amount = 560 } 
     };
         result.WorkersPerShift = 8;
-        result.PowerConsumption = 0.24;
+        result.PowerConsumptionMWh = 0.24;
         result.WaterConsumption = 0.16;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -2012,7 +2012,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 8413;
+        result.WorkDays = 8413;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 153 },
@@ -2035,7 +2035,7 @@ class GameData
         new ResourceAmount() { Resource = RawWaterResource, Amount = 70 }
     };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 2.1;
+        result.PowerConsumptionMWh = 2.1;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -2045,7 +2045,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.WaterHandling;
-        result.Workdays = 393;
+        result.WorkDays = 393;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 3.6 },
@@ -2070,7 +2070,7 @@ class GameData
         new ResourceAmount() { Resource = RawWaterResource, Amount = 215 }
     };
         result.WorkersPerShift = 7;
-        result.PowerConsumption = 5.7;
+        result.PowerConsumptionMWh = 5.7;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -2080,7 +2080,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.WaterHandling;
-        result.Workdays = 744;
+        result.WorkDays = 744;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 7.5 },
@@ -2105,7 +2105,7 @@ class GameData
         new ResourceAmount() { Resource = RawWaterResource, Amount = 150 }
     };
         result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
+        result.PowerConsumptionMWh = 0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -2115,7 +2115,7 @@ class GameData
         result.SeasonalMultiplier = 0;
         result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.WaterHandling;
-        result.Workdays = 22;
+        result.WorkDays = 22;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 4.1 },
@@ -2142,7 +2142,7 @@ class GameData
             new ResourceAmount(WaterResource, 120, TimePeriod.Day),
         };
         result.WorkersPerShift = 5;
-        result.PowerConsumption = 10;
+        result.PowerConsumptionMWh = 10;
         result.WaterConsumption = 0.1;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.1 + 13;       // Resource + daily water consumption
@@ -2180,7 +2180,7 @@ class GameData
             new ResourceAmount(WaterResource, 300, TimePeriod.Day),
         };
         result.WorkersPerShift = 10;
-        result.PowerConsumption = 13;
+        result.PowerConsumptionMWh = 13;
         result.WaterConsumption = 0.2;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.2 + 30;       // Resource + daily water consumption
@@ -2217,7 +2217,7 @@ class GameData
             new ResourceAmount(WasteWaterResource, 80, TimePeriod.Day)
         };
         result.WorkersPerShift = 10;
-        result.PowerConsumption = 11;
+        result.PowerConsumptionMWh = 11;
         result.WaterConsumption = 0.2;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.2;       // daily water consumption
@@ -2255,7 +2255,7 @@ class GameData
             new ResourceAmount(WasteWaterResource, 220, TimePeriod.Day)
         };
         result.WorkersPerShift = 20;
-        result.PowerConsumption = 15;
+        result.PowerConsumptionMWh = 15;
         result.WaterConsumption = 0.4;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.4;       // daily water consumption
@@ -2292,7 +2292,7 @@ class GameData
         new ResourceAmount(HeatResource, 450, TimePeriod.Day),
     };
         result.WorkersPerShift = 7;
-        result.PowerConsumption = 27;
+        result.PowerConsumptionMWh = 27;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
         result.SewageProduction = 0;
@@ -2328,7 +2328,7 @@ class GameData
         new ResourceAmount(HeatResource, 1050, TimePeriod.Day),
     };
         result.WorkersPerShift = 30;
-        result.PowerConsumption = 63;
+        result.PowerConsumptionMWh = 63;
         result.WaterConsumption = 0.60;
         result.HeatConsumption = 0;
         result.SewageProduction = 0.60;
@@ -2352,24 +2352,12 @@ class GameData
     }
 
     // Support Buildings
-    public static ProductionBuilding LiquidPumpingStation { get; } = CreateLiquidPumpingStation();
-    public static ProductionBuilding CreateLiquidPumpingStation()
+    public static SupportBuilding LiquidPumpingStation { get; } = CreateLiquidPumpingStation();
+    public static SupportBuilding CreateLiquidPumpingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Liquid Pumping Station";
-        result.Inputs = new List<ResourceAmount>() {};
-        result.Outputs = new List<ResourceAmount>() {};
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 9.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 9.0;  // MWh/day
         result.SupportCategory = SupportCategory.LiquidHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -2381,24 +2369,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding OilLoadingUnloading { get; } = CreateOilLoadingUnloading();
-    public static ProductionBuilding CreateOilLoadingUnloading()
+    public static SupportBuilding OilLoadingUnloading { get; } = CreateOilLoadingUnloading();
+    public static SupportBuilding CreateOilLoadingUnloading()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Oil Loading Unloading Station";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 14.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 14.0;  // MWh/day
         result.SupportCategory = SupportCategory.LiquidHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -2410,24 +2386,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding BigOilStorage { get; } = CreateBigOilStorage();
-    public static ProductionBuilding CreateBigOilStorage()
+    public static SupportBuilding BigOilStorage { get; } = CreateBigOilStorage();
+    public static SupportBuilding CreateBigOilStorage()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Big Oil Storage";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;  // MWh/day
         result.SupportCategory = SupportCategory.LiquidHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -2439,26 +2403,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding MediumOilStorage { get; } = CreateMediumOilStorage();
-    public static ProductionBuilding CreateMediumOilStorage()
+    public static SupportBuilding MediumOilStorage { get; } = CreateMediumOilStorage();
+    public static SupportBuilding CreateMediumOilStorage()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Medium Oil Storage";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;  // MWh/day
         result.SupportCategory = SupportCategory.LiquidHandling;
-        result.Workdays = 184;
+        result.WorkDays = 184;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 6.6 },
@@ -2469,26 +2421,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding SmallOilStorage { get; } = CreateSmallOilStorage();
-    public static ProductionBuilding CreateSmallOilStorage()
+    public static SupportBuilding SmallOilStorage { get; } = CreateSmallOilStorage();
+    public static SupportBuilding CreateSmallOilStorage()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Small Oil Storage";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;  // MWh/day
         result.SupportCategory = SupportCategory.LiquidHandling;
-        result.Workdays = 51;
+        result.WorkDays = 51;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 1.5 },
@@ -2499,24 +2439,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding UndergroundPumpingStation { get; } = CreateUndergroundPumpingStation();
-    public static ProductionBuilding CreateUndergroundPumpingStation()
+    public static SupportBuilding UndergroundPumpingStation { get; } = CreateUndergroundPumpingStation();
+    public static SupportBuilding CreateUndergroundPumpingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Underground Pumping Station";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 9.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 9.0;  // MWh/day
         result.SupportCategory = SupportCategory.LiquidHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -2528,26 +2456,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding ConveyorEngineTransfer { get; } = CreateConveyorEngineTransfer();
-    public static ProductionBuilding CreateConveyorEngineTransfer()
+    public static SupportBuilding ConveyorEngineTransfer { get; } = CreateConveyorEngineTransfer();
+    public static SupportBuilding CreateConveyorEngineTransfer()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Conveyor Engine Transfer";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 6.0;  // MWh/day
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 194;
+        result.WorkDays = 194;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 2.7 },
@@ -2558,26 +2474,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding ConveyorOverpass { get; } = CreateConveyorOverpass();
-    public static ProductionBuilding CreateConveyorOverpass()
+    public static SupportBuilding ConveyorOverpass { get; } = CreateConveyorOverpass();
+    public static SupportBuilding CreateConveyorOverpass()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Conveyor Overpass";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 6.0;  // MWh/day
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 429;
+        result.WorkDays = 429;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 8.6 },
@@ -2588,25 +2492,15 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding LivestockHall { get; } = CreateLivestockHall();
-    public static ProductionBuilding CreateLivestockHall()
+    public static SupportBuilding LivestockHall { get; } = CreateLivestockHall();
+    public static SupportBuilding CreateLivestockHall()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Livestock Hall";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
+        result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 11.10;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 487;
+        result.WorkDays = 487;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 11 },
@@ -2618,25 +2512,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HighVoltageSwitch { get; } = CreateHighVoltageSwitch();
-    public static ProductionBuilding CreateHighVoltageSwitch()
+    public static SupportBuilding HighVoltageSwitch { get; } = CreateHighVoltageSwitch();
+    public static SupportBuilding CreateHighVoltageSwitch()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "High-Voltage Switch";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 100;
+        result.WorkDays = 100;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 4.3 },
@@ -2647,25 +2530,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HighVoltageSwitch6x { get; } = CreateHighVoltageSwitch6x();
-    public static ProductionBuilding CreateHighVoltageSwitch6x()
+    public static SupportBuilding HighVoltageSwitch6x { get; } = CreateHighVoltageSwitch6x();
+    public static SupportBuilding CreateHighVoltageSwitch6x()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "High-Voltage Switch 6x";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 144;
+        result.WorkDays = 144;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 6.3 },
@@ -2676,25 +2548,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HighVoltageSwitchPriority { get; } = CreateHighVoltageSwitchPriority();
-    public static ProductionBuilding CreateHighVoltageSwitchPriority()
+    public static SupportBuilding HighVoltageSwitchPriority { get; } = CreateHighVoltageSwitchPriority();
+    public static SupportBuilding CreateHighVoltageSwitchPriority()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "High-Voltage Switch Priority";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 198;
+        result.WorkDays = 198;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 6.3 },
@@ -2705,25 +2566,15 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding ZaporozieVeza { get; } = CreateZaporozieVeza();
-    public static ProductionBuilding CreateZaporozieVeza()
+    public static SupportBuilding ZaporozieVeza { get; } = CreateZaporozieVeza();
+    public static SupportBuilding CreateZaporozieVeza()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Zaporozie Veza";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
+        result.PowerConsumptionMWh = 3.0;
         result.EnvironmentPollution = 12.00;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 4564;
+        result.WorkDays = 4564;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 436 },
@@ -2734,25 +2585,15 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CoolingTower { get; } = CreateCoolingTower();
-    public static ProductionBuilding CreateCoolingTower()
+    public static SupportBuilding CoolingTower { get; } = CreateCoolingTower();
+    public static SupportBuilding CreateCoolingTower()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cooling Tower";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
+        result.PowerConsumptionMWh = 3.0;
         result.EnvironmentPollution = 12.00;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.Workdays = 5320;
+        result.WorkDays = 5320;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 506 },
@@ -2765,27 +2606,14 @@ class GameData
     }
 
     // Support Buildings - Aggregate Storage Buildings
-    public static ProductionBuilding AggregateStorage870 { get; } = CreateAggregateStorage870();
-    public static ProductionBuilding CreateAggregateStorage870()
+    public static SupportBuilding AggregateStorage870 { get; } = CreateAggregateStorage870();
+    public static SupportBuilding CreateAggregateStorage870()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Aggregate Storage (870t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0; // 3.0 MWh/day from screenshot
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0; // 3.0 MWh/day from screenshot
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 344;
+        result.WorkDays = 344;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 8.8 },
@@ -2796,27 +2624,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding AggregateStorage1000 { get; } = CreateAggregateStorage1000();
-    public static ProductionBuilding CreateAggregateStorage1000()
+    public static SupportBuilding AggregateStorage1000 { get; } = CreateAggregateStorage1000();
+    public static SupportBuilding CreateAggregateStorage1000()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Aggregate Storage (1000t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 440;
+        result.WorkDays = 440;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 61 },
@@ -2827,27 +2642,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding AggregateStorage1950 { get; } = CreateAggregateStorage1950();
-    public static ProductionBuilding CreateAggregateStorage1950()
+    public static SupportBuilding AggregateStorage1950 { get; } = CreateAggregateStorage1950();
+    public static SupportBuilding CreateAggregateStorage1950()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Aggregate Storage (1950t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 672;
+        result.WorkDays = 672;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 16 },
@@ -2858,27 +2660,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding AggregateStorage2000 { get; } = CreateAggregateStorage2000();
-    public static ProductionBuilding CreateAggregateStorage2000()
+    public static SupportBuilding AggregateStorage2000 { get; } = CreateAggregateStorage2000();
+    public static SupportBuilding CreateAggregateStorage2000()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Aggregate Storage (2000t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 784;
+        result.WorkDays = 784;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 104 },
@@ -2889,27 +2678,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding AggregateStorage2500 { get; } = CreateAggregateStorage2500();
-    public static ProductionBuilding CreateAggregateStorage2500()
+    public static SupportBuilding AggregateStorage2500 { get; } = CreateAggregateStorage2500();
+    public static SupportBuilding CreateAggregateStorage2500()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Aggregate Storage (2500t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 1111;
+        result.WorkDays = 1111;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 133 },
@@ -2920,27 +2696,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding AggregateStorage5000 { get; } = CreateAggregateStorage5000();
-    public static ProductionBuilding CreateAggregateStorage5000()
+    public static SupportBuilding AggregateStorage5000 { get; } = CreateAggregateStorage5000();
+    public static SupportBuilding CreateAggregateStorage5000()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Aggregate Storage (5000t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 1994;
+        result.WorkDays = 1994;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 239 },
@@ -2951,27 +2714,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TrainAggregateLoading123m { get; } = CreateTrainAggregateLoading123m();
-    public static ProductionBuilding CreateTrainAggregateLoading123m()
+    public static SupportBuilding TrainAggregateLoading123m { get; } = CreateTrainAggregateLoading123m();
+    public static SupportBuilding CreateTrainAggregateLoading123m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Aggregate Loading (123m)";
-        result.Inputs = new List<ResourceAmount>();  // No inputs - it's a loading station
-        result.Outputs = new List<ResourceAmount>();  // No outputs - it's infrastructure
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 211.0; // 211 MWh/day converted to MW
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 211.0; // 211 MWh/day converted to MW
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 2822;
+        result.WorkDays = 2822;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 310 },
@@ -2982,27 +2732,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TrainAggregateLoading123mLarge { get; } = CreateTrainAggregateLoading123mLarge();
-    public static ProductionBuilding CreateTrainAggregateLoading123mLarge()
+    public static SupportBuilding TrainAggregateLoading123mLarge { get; } = CreateTrainAggregateLoading123mLarge();
+    public static SupportBuilding CreateTrainAggregateLoading123mLarge()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Aggregate Loading (123m - Large) ";
-        result.Inputs = new List<ResourceAmount>();  // No inputs - it's a loading station
-        result.Outputs = new List<ResourceAmount>();  // No outputs - it's infrastructure
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 211.0; // 211 MWh/day converted to MW
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 211.0; // 211 MWh/day converted to MW
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 3295;
+        result.WorkDays = 3295;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 351 },
@@ -3013,27 +2750,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TrainAggregateLoading100m { get; } = CreateTrainAggregateLoading100m();
-    public static ProductionBuilding CreateTrainAggregateLoading100m()
+    public static SupportBuilding TrainAggregateLoading100m { get; } = CreateTrainAggregateLoading100m();
+    public static SupportBuilding CreateTrainAggregateLoading100m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Aggregate Loading (100m)";
-        result.Inputs = new List<ResourceAmount>();  // No inputs - it's a loading station
-        result.Outputs = new List<ResourceAmount>();  // No outputs - it's infrastructure
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 74.0; // 211 MWh/day converted to MW
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 74.0; // 211 MWh/day converted to MW
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 2340;
+        result.WorkDays = 2340;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 258 },
@@ -3044,27 +2768,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TrainAggregateLoading32m { get; } = CreateTrainAggregateLoading32m();
-    public static ProductionBuilding CreateTrainAggregateLoading32m()
+    public static SupportBuilding TrainAggregateLoading32m { get; } = CreateTrainAggregateLoading32m();
+    public static SupportBuilding CreateTrainAggregateLoading32m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Aggregate Loading (32m)";
-        result.Inputs = new List<ResourceAmount>();  // No inputs - it's a loading station
-        result.Outputs = new List<ResourceAmount>();  // No outputs - it's infrastructure
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 38; // 211 MWh/day converted to MW
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 38; // 211 MWh/day converted to MW
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 1141;
+        result.WorkDays = 1141;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 12 },
@@ -3075,27 +2786,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TrainAggregateLoading23m { get; } = CreateTrainAggregateLoading23m();
-    public static ProductionBuilding CreateTrainAggregateLoading23m()
+    public static SupportBuilding TrainAggregateLoading23m { get; } = CreateTrainAggregateLoading23m();
+    public static SupportBuilding CreateTrainAggregateLoading23m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Aggregate Loading (23m)";
-        result.Inputs = new List<ResourceAmount>();  // No inputs - it's a loading station
-        result.Outputs = new List<ResourceAmount>();  // No outputs - it's infrastructure
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 5.7; // 211 MWh/day converted to MW
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 5.7; // 211 MWh/day converted to MW
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 608;
+        result.WorkDays = 608;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 9.5 },
@@ -3108,27 +2806,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TrainAggregateLoading98m { get; } = CreateTrainAggregateLoading98m();
-    public static ProductionBuilding CreateTrainAggregateLoading98m()
+    public static SupportBuilding TrainAggregateLoading98m { get; } = CreateTrainAggregateLoading98m();
+    public static SupportBuilding CreateTrainAggregateLoading98m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Aggregate Loading (98m)";
-        result.Inputs = new List<ResourceAmount>();  // No inputs - it's a loading station
-        result.Outputs = new List<ResourceAmount>();  // No outputs - it's infrastructure
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 74; 
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 74; 
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 1120;
+        result.WorkDays = 1120;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 16 },
@@ -3141,27 +2826,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TruckAggregateLoadingSmall { get; } = CreateTruckAggregateLoadingSmall();
-    public static ProductionBuilding CreateTruckAggregateLoadingSmall()
+    public static SupportBuilding TruckAggregateLoadingSmall { get; } = CreateTruckAggregateLoadingSmall();
+    public static SupportBuilding CreateTruckAggregateLoadingSmall()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Truck Aggregate Loading (Small)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 23.0; // 23 MWh/day → MW
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 23.0; // 23 MWh/day → MW
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 281;
+        result.WorkDays = 281;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 3.3 },
@@ -3174,27 +2846,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding TruckAggregateLoadingBig { get; } = CreateTruckAggregateLoadingBig();
-    public static ProductionBuilding CreateTruckAggregateLoadingBig()
+    public static SupportBuilding TruckAggregateLoadingBig { get; } = CreateTruckAggregateLoadingBig();
+    public static SupportBuilding CreateTruckAggregateLoadingBig()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Truck Aggregate Loading (Big)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;  // Automated
-        result.PowerConsumption = 23.0; // 23 MWh/day → MW
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 23.0; // 23 MWh/day → MW
         result.SupportCategory = SupportCategory.BulkHandling;
-        result.Workdays = 92;
+        result.WorkDays = 92;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 1.5 },
@@ -3207,27 +2866,14 @@ class GameData
     }
 
     // Support Buildings - Open Storage Buildings
-    public static ProductionBuilding OpenStorageSmall250 { get; } = CreateOpenStorageSmall250();
-    public static ProductionBuilding CreateOpenStorageSmall250()
+    public static SupportBuilding OpenStorageSmall250 { get; } = CreateOpenStorageSmall250();
+    public static SupportBuilding CreateOpenStorageSmall250()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Open Storage (Small 250t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 0; // No power listed in screenshot
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 0; // No power listed in screenshot
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 166;
+        result.WorkDays = 166;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 14 },
@@ -3236,27 +2882,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding OpenStorageSmall330 { get; } = CreateOpenStorageSmall330();
-    public static ProductionBuilding CreateOpenStorageSmall330()
+    public static SupportBuilding OpenStorageSmall330 { get; } = CreateOpenStorageSmall330();
+    public static SupportBuilding CreateOpenStorageSmall330()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Open Storage (Small 330t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 20.0; // 20 MWh/day from screenshot
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 20.0; // 20 MWh/day from screenshot
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 460;
+        result.WorkDays = 460;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 14 },
@@ -3267,27 +2900,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding OpenStorageMedium { get; } = CreateOpenStorageMedium();
-    public static ProductionBuilding CreateOpenStorageMedium()
+    public static SupportBuilding OpenStorageMedium { get; } = CreateOpenStorageMedium();
+    public static SupportBuilding CreateOpenStorageMedium()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Open Storage (Medium 1170t)";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>();
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 26.0; // 26 MWh/day from screenshot
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsQualityDependent = false;
-        result.CanUseVehicles = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 26.0; // 26 MWh/day from screenshot
         result.SupportCategory = SupportCategory.SolidHandling;
-        result.Workdays = 563;
+        result.WorkDays = 563;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 14 },
@@ -3300,25 +2920,14 @@ class GameData
     }
 
     // Support Buildings - Cargo Load & Unload
-    public static ProductionBuilding RoadCargoStation1 { get; } = CreateRoadCargoStation1();
-    public static ProductionBuilding CreateRoadCargoStation1()
+    public static SupportBuilding RoadCargoStation1 { get; } = CreateRoadCargoStation1();
+    public static SupportBuilding CreateRoadCargoStation1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Road Cargo Station (2 stations)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 147;
+        result.WorkDays = 147;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 15 },
@@ -3328,25 +2937,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding RoadCargoStation2 { get; } = CreateRoadCargoStation2();
-    public static ProductionBuilding CreateRoadCargoStation2()
+    public static SupportBuilding RoadCargoStation2 { get; } = CreateRoadCargoStation2();
+    public static SupportBuilding CreateRoadCargoStation2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Road Cargo Station (4 stations Alt1)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 281;
+        result.WorkDays = 281;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 13 },
@@ -3356,25 +2954,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding RoadCargoStation3 { get; } = CreateRoadCargoStation3();
-    public static ProductionBuilding CreateRoadCargoStation3()
+    public static SupportBuilding RoadCargoStation3 { get; } = CreateRoadCargoStation3();
+    public static SupportBuilding CreateRoadCargoStation3()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Road Cargo Station (4 stations Alt2)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 237;
+        result.WorkDays = 237;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 26 },
@@ -3384,25 +2971,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding RoadCargoStation4 { get; } = CreateRoadCargoStation4();
-    public static ProductionBuilding CreateRoadCargoStation4()
+    public static SupportBuilding RoadCargoStation4 { get; } = CreateRoadCargoStation4();
+    public static SupportBuilding CreateRoadCargoStation4()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Road Cargo Station (6 stations)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 296;
+        result.WorkDays = 296;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 30 },
@@ -3412,25 +2988,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding RoadCargoStation5 { get; } = CreateRoadCargoStation5();
-    public static ProductionBuilding CreateRoadCargoStation5()
+    public static SupportBuilding RoadCargoStation5 { get; } = CreateRoadCargoStation5();
+    public static SupportBuilding CreateRoadCargoStation5()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Road Cargo Station (4 stations Alt3)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 414;
+        result.WorkDays = 414;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 19 },
@@ -3440,25 +3005,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding RoadCargoStation6 { get; } = CreateRoadCargoStation6();
-    public static ProductionBuilding CreateRoadCargoStation6()
+    public static SupportBuilding RoadCargoStation6 { get; } = CreateRoadCargoStation6();
+    public static SupportBuilding CreateRoadCargoStation6()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Road Cargo Station (2 stations Small)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 127;
+        result.WorkDays = 127;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 4.5 },
@@ -3468,25 +3022,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoTrainStation1 { get; } = CreateCargoTrainStation1();
-    public static ProductionBuilding CreateCargoTrainStation1()
+    public static SupportBuilding CargoTrainStation1 { get; } = CreateCargoTrainStation1();
+    public static SupportBuilding CreateCargoTrainStation1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Train Station (54m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 172;
+        result.WorkDays = 172;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 20 },
@@ -3495,25 +3038,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoTrainStation2 { get; } = CreateCargoTrainStation2();
-    public static ProductionBuilding CreateCargoTrainStation2()
+    public static SupportBuilding CargoTrainStation2 { get; } = CreateCargoTrainStation2();
+    public static SupportBuilding CreateCargoTrainStation2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Train Station (91m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 638;
+        result.WorkDays = 638;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 83 },
@@ -3522,25 +3054,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoTrainStation3 { get; } = CreateCargoTrainStation3();
-    public static ProductionBuilding CreateCargoTrainStation3()
+    public static SupportBuilding CargoTrainStation3 { get; } = CreateCargoTrainStation3();
+    public static SupportBuilding CreateCargoTrainStation3()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Train Station (156m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1010;
+        result.WorkDays = 1010;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 113 },
@@ -3549,25 +3070,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoTrainStation4 { get; } = CreateCargoTrainStation4();
-    public static ProductionBuilding CreateCargoTrainStation4()
+    public static SupportBuilding CargoTrainStation4 { get; } = CreateCargoTrainStation4();
+    public static SupportBuilding CreateCargoTrainStation4()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Train Station (180m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 68.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 68.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1534;
+        result.WorkDays = 1534;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 155 },
@@ -3576,25 +3086,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoTrainStation5 { get; } = CreateCargoTrainStation5();
-    public static ProductionBuilding CreateCargoTrainStation5()
+    public static SupportBuilding CargoTrainStation5 { get; } = CreateCargoTrainStation5();
+    public static SupportBuilding CreateCargoTrainStation5()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Train Station (83m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 558;
+        result.WorkDays = 558;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 63 },
@@ -3603,25 +3102,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoTrainStation6 { get; } = CreateCargoTrainStation6();
-    public static ProductionBuilding CreateCargoTrainStation6()
+    public static SupportBuilding CargoTrainStation6 { get; } = CreateCargoTrainStation6();
+    public static SupportBuilding CreateCargoTrainStation6()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Train Station (196m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 234.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 234.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2190;
+        result.WorkDays = 2190;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 208 },
@@ -3632,25 +3120,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoTrainStation7 { get; } = CreateCargoTrainStation7();
-    public static ProductionBuilding CreateCargoTrainStation7()
+    public static SupportBuilding CargoTrainStation7 { get; } = CreateCargoTrainStation7();
+    public static SupportBuilding CreateCargoTrainStation7()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Train Station (208m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 312.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 312.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2872;
+        result.WorkDays = 2872;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 261 },
@@ -3661,25 +3138,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoHarborSmall1 { get; } = CreateCargoHarborSmall1();
-    public static ProductionBuilding CreateCargoHarborSmall1()
+    public static SupportBuilding CargoHarborSmall1 { get; } = CreateCargoHarborSmall1();
+    public static SupportBuilding CreateCargoHarborSmall1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Harbor (Small 79m Alt1)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 24.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 24.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1101;
+        result.WorkDays = 1101;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 183 },
@@ -3690,25 +3156,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoHarborSmall2 { get; } = CreateCargoHarborSmall2();
-    public static ProductionBuilding CreateCargoHarborSmall2()
+    public static SupportBuilding CargoHarborSmall2 { get; } = CreateCargoHarborSmall2();
+    public static SupportBuilding CreateCargoHarborSmall2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Harbor (Small 156m Alt2)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 60.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 60.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2133;
+        result.WorkDays = 2133;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 267 },
@@ -3719,25 +3174,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HarborContainersVehicles { get; } = CreateHarborContainersVehicles();
-    public static ProductionBuilding CreateHarborContainersVehicles()
+    public static SupportBuilding HarborContainersVehicles { get; } = CreateHarborContainersVehicles();
+    public static SupportBuilding CreateHarborContainersVehicles()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Harbor for Containers and Vehicles (239m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 162.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 162.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 9979;
+        result.WorkDays = 9979;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 1131 },
@@ -3748,25 +3192,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CargoHarborMedium { get; } = CreateCargoHarborMedium();
-    public static ProductionBuilding CreateCargoHarborMedium()
+    public static SupportBuilding CargoHarborMedium { get; } = CreateCargoHarborMedium();
+    public static SupportBuilding CreateCargoHarborMedium()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cargo Harbor (Medium 239m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 82.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 82.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 6131;
+        result.WorkDays = 6131;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 791 },
@@ -3777,25 +3210,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HeliportCargoPlatform1 { get; } = CreateHeliportCargoPlatform1();
-    public static ProductionBuilding CreateHeliportCargoPlatform1()
+    public static SupportBuilding HeliportCargoPlatform1 { get; } = CreateHeliportCargoPlatform1();
+    public static SupportBuilding CreateHeliportCargoPlatform1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Heliport Cargo Platform (1 Station)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.1;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.1;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 242;
+        result.WorkDays = 242;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 21 },
@@ -3804,25 +3226,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HeliportCargoPlatform3 { get; } = CreateHeliportCargoPlatform3();
-    public static ProductionBuilding CreateHeliportCargoPlatform3()
+    public static SupportBuilding HeliportCargoPlatform3 { get; } = CreateHeliportCargoPlatform3();
+    public static SupportBuilding CreateHeliportCargoPlatform3()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Heliport Cargo Platform (3 Stations)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.1;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.1;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 790;
+        result.WorkDays = 790;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 68 },
@@ -3831,25 +3242,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding AirportCargoTerminal { get; } = CreateAirportCargoTerminal();
-    public static ProductionBuilding CreateAirportCargoTerminal()
+    public static SupportBuilding AirportCargoTerminal { get; } = CreateAirportCargoTerminal();
+    public static SupportBuilding CreateAirportCargoTerminal()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Airport Cargo Terminal";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.1;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.1;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1286;
+        result.WorkDays = 1286;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 49 },
@@ -3863,25 +3263,14 @@ class GameData
     }
 
     // Support Buildings - Dry Balk Storages
-    public static ProductionBuilding DryBulkStorage150 { get; } = CreateDryBulkStorage150();
-    public static ProductionBuilding CreateDryBulkStorage150()
+    public static SupportBuilding DryBulkStorage150 { get; } = CreateDryBulkStorage150();
+    public static SupportBuilding CreateDryBulkStorage150()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry Bulk Storage (150t)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 164;
+        result.WorkDays = 164;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 2.7 },
@@ -3891,25 +3280,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding DryBulkStorage300 { get; } = CreateDryBulkStorage300();
-    public static ProductionBuilding CreateDryBulkStorage300()
+    public static SupportBuilding DryBulkStorage300 { get; } = CreateDryBulkStorage300();
+    public static SupportBuilding CreateDryBulkStorage300()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry Bulk Storage (300t)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 321;
+        result.WorkDays = 321;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 6.8 },
@@ -3919,25 +3297,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding DryBulkStorage1000 { get; } = CreateDryBulkStorage1000();
-    public static ProductionBuilding CreateDryBulkStorage1000()
+    public static SupportBuilding DryBulkStorage1000 { get; } = CreateDryBulkStorage1000();
+    public static SupportBuilding CreateDryBulkStorage1000()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry Bulk Storage (1000t)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 19.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 19.0;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 1099;
+        result.WorkDays = 1099;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 186 },
@@ -3948,25 +3315,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding DryBulkStorage1150 { get; } = CreateDryBulkStorage1150();
-    public static ProductionBuilding CreateDryBulkStorage1150()
+    public static SupportBuilding DryBulkStorage1150 { get; } = CreateDryBulkStorage1150();
+    public static SupportBuilding CreateDryBulkStorage1150()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry Bulk Storage (1150t)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 9.6;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 9.6;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 1301;
+        result.WorkDays = 1301;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 238 },
@@ -3975,25 +3331,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding DryBulkStorage2300 { get; } = CreateDryBulkStorage2300();
-    public static ProductionBuilding CreateDryBulkStorage2300()
+    public static SupportBuilding DryBulkStorage2300 { get; } = CreateDryBulkStorage2300();
+    public static SupportBuilding CreateDryBulkStorage2300()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry Bulk Storage (2300t)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 19.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 19.0;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 2369;
+        result.WorkDays = 2369;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 376 },
@@ -4004,25 +3349,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding DryBulkStorage2615 { get; } = CreateDryBulkStorage2615();
-    public static ProductionBuilding CreateDryBulkStorage2615()
+    public static SupportBuilding DryBulkStorage2615 { get; } = CreateDryBulkStorage2615();
+    public static SupportBuilding CreateDryBulkStorage2615()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry Bulk Storage (2615t, 76m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 57.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 57.0;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 2615;
+        result.WorkDays = 2615;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 422 },
@@ -4033,25 +3367,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CementSilo500 { get; } = CreateCementSilo500();
-    public static ProductionBuilding CreateCementSilo500()
+    public static SupportBuilding CementSilo500 { get; } = CreateCementSilo500();
+    public static SupportBuilding CreateCementSilo500()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cement Silo (500t, 36m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 23.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 23.0;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 977;
+        result.WorkDays = 977;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 19 },
@@ -4063,25 +3386,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding CementSilo500Alt { get; } = CreateCementSilo500Alt();
-    public static ProductionBuilding CreateCementSilo500Alt()
+    public static SupportBuilding CementSilo500Alt { get; } = CreateCementSilo500Alt();
+    public static SupportBuilding CreateCementSilo500Alt()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cement Silo (500t, Alt)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 15.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 15.0;
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 885;
+        result.WorkDays = 885;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 111 },
@@ -4093,26 +3405,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding DryBulkConveyorEngineTransfer { get; } = CreateDryBulkConveyorEngineTransfer();
-    public static ProductionBuilding CreateDryBulkConveyorEngineTransfer()
+    public static SupportBuilding DryBulkConveyorEngineTransfer { get; } = CreateDryBulkConveyorEngineTransfer();
+    public static SupportBuilding CreateDryBulkConveyorEngineTransfer()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry-Bulk Conveyor Engine Transfer";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 6.0;  // MWh/day
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 286;
+        result.WorkDays = 286;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 1.7 },
@@ -4123,26 +3423,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding DryBulkConveyorOverpass { get; } = CreateDryBulkConveyorOverpass();
-    public static ProductionBuilding CreateDryBulkConveyorOverpass()
+    public static SupportBuilding DryBulkConveyorOverpass { get; } = CreateDryBulkConveyorOverpass();
+    public static SupportBuilding CreateDryBulkConveyorOverpass()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Dry-Bulk Conveyor Overpass";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 6.0;  // MWh/day
         result.SupportCategory = SupportCategory.DryBulkHandling;
-        result.Workdays = 928;
+        result.WorkDays = 928;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 7.3 },
@@ -4155,24 +3443,12 @@ class GameData
     }
 
     // Support Buildings - Utility
-    public static ProductionBuilding WaterLoadingUnloadingStation { get; } = CreateWaterLoadingUnloadingStation();
-    public static ProductionBuilding CreateWaterLoadingUnloadingStation()
+    public static SupportBuilding WaterLoadingUnloadingStation { get; } = CreateWaterLoadingUnloadingStation();
+    public static SupportBuilding CreateWaterLoadingUnloadingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Water LoadingUnloading Station";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 7.5;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 7.5;  // MWh/day
         result.SupportCategory = SupportCategory.WaterHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -4185,24 +3461,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding BigWaterPumpingStation { get; } = CreateBigWaterPumpingStation();
-    public static ProductionBuilding CreateBigWaterPumpingStation()
+    public static SupportBuilding BigWaterPumpingStation { get; } = CreateBigWaterPumpingStation();
+    public static SupportBuilding CreateBigWaterPumpingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Big Water Pumping Station";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 74;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 74;  // MWh/day
         result.SupportCategory = SupportCategory.WaterHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -4216,24 +3480,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding SmallWaterPumpingStation { get; } = CreateSmallWaterPumpingStation();
-    public static ProductionBuilding CreateSmallWaterPumpingStation()
+    public static SupportBuilding SmallWaterPumpingStation { get; } = CreateSmallWaterPumpingStation();
+    public static SupportBuilding CreateSmallWaterPumpingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Small Water Pumping Station";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 39;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 39;  // MWh/day
         result.SupportCategory = SupportCategory.WaterHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -4247,25 +3499,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding SewageLoadingUnloadingStation { get; } = CreateSewageLoadingUnloadingStation();
-    public static ProductionBuilding CreateSewageLoadingUnloadingStation()
+    public static SupportBuilding SewageLoadingUnloadingStation { get; } = CreateSewageLoadingUnloadingStation();
+    public static SupportBuilding CreateSewageLoadingUnloadingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Sewage Loading/Unloading Station";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 7.5;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 7.5;
         result.SupportCategory = SupportCategory.SewageHandling;
-        result.Workdays = 373;
+        result.WorkDays = 373;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 8.6 },
@@ -4277,25 +3518,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding SewagePump5m { get; } = CreateSewagePump5m();
-    public static ProductionBuilding CreateSewagePump5m()
+    public static SupportBuilding SewagePump5m { get; } = CreateSewagePump5m();
+    public static SupportBuilding CreateSewagePump5m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Sewage Pump (5m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 6.0;
         result.SupportCategory = SupportCategory.SewageHandling;
-        result.Workdays = 23;
+        result.WorkDays = 23;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 0.16 },
@@ -4306,25 +3536,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding SewagePump10m { get; } = CreateSewagePump10m();
-    public static ProductionBuilding CreateSewagePump10m()
+    public static SupportBuilding SewagePump10m { get; } = CreateSewagePump10m();
+    public static SupportBuilding CreateSewagePump10m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Sewage Pump (10m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 9.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 9.0;
         result.SupportCategory = SupportCategory.SewageHandling;
-        result.Workdays = 35;
+        result.WorkDays = 35;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 0.16 },
@@ -4335,25 +3554,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding SewagePump15m { get; } = CreateSewagePump15m();
-    public static ProductionBuilding CreateSewagePump15m()
+    public static SupportBuilding SewagePump15m { get; } = CreateSewagePump15m();
+    public static SupportBuilding CreateSewagePump15m()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Sewage Pump (15m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 11;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 11;
         result.SupportCategory = SupportCategory.SewageHandling;
-        result.Workdays = 52;
+        result.WorkDays = 52;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 0.17 },
@@ -4364,25 +3572,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding SewageTank { get; } = CreateSewageTank();
-    public static ProductionBuilding CreateSewageTank()
+    public static SupportBuilding SewageTank { get; } = CreateSewageTank();
+    public static SupportBuilding CreateSewageTank()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Sewage Tank";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 0;
         result.SupportCategory = SupportCategory.SewageHandling;
-        result.Workdays = 24;
+        result.WorkDays = 24;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 1.1 },
@@ -4395,25 +3592,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding SewageDischarge { get; } = CreateSewageDischarge();
-    public static ProductionBuilding CreateSewageDischarge()
+    public static SupportBuilding SewageDischarge { get; } = CreateSewageDischarge();
+    public static SupportBuilding CreateSewageDischarge()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Sewage Discharge";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 0;
         result.SupportCategory = SupportCategory.SewageHandling;
-        result.Workdays = 284;
+        result.WorkDays = 284;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 4.8 },
@@ -4426,26 +3612,12 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HeatExchanger { get; } = CreateHeatExchanger();
-    public static ProductionBuilding CreateHeatExchanger()
+    public static SupportBuilding HeatExchanger { get; } = CreateHeatExchanger();
+    public static SupportBuilding CreateHeatExchanger()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Heat Exchanger";
-        result.Inputs = new List<ResourceAmount>();  // No fuel input
-        result.Outputs = new List<ResourceAmount>()
-        {
-        };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 18;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 18;
         result.SupportCategory = SupportCategory.HeatHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -4459,26 +3631,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding SmallHeatExchanger { get; } = CreateSmallHeatExchanger();
-    public static ProductionBuilding CreateSmallHeatExchanger()
+    public static SupportBuilding SmallHeatExchanger { get; } = CreateSmallHeatExchanger();
+    public static SupportBuilding CreateSmallHeatExchanger()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Small Heat Exchanger";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>()
-        {
-        };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 6.0;
         result.SupportCategory = SupportCategory.HeatHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -4492,26 +3650,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding SmallHeatPumpingStation { get; } = CreateSmallHeatPumpingStation();
-    public static ProductionBuilding CreateSmallHeatPumpingStation()
+    public static SupportBuilding SmallHeatPumpingStation { get; } = CreateSmallHeatPumpingStation();
+    public static SupportBuilding CreateSmallHeatPumpingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Small Heat-Pumping Station";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>()
-        {
-        };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 11;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 11;
         result.SupportCategory = SupportCategory.HeatHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -4525,26 +3669,12 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding HeatPumpingStation { get; } = CreateHeatPumpingStation();
-    public static ProductionBuilding CreateHeatPumpingStation()
+    public static SupportBuilding HeatPumpingStation { get; } = CreateHeatPumpingStation();
+    public static SupportBuilding CreateHeatPumpingStation()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Heat-Pumping Station";
-        result.Inputs = new List<ResourceAmount>();
-        result.Outputs = new List<ResourceAmount>()
-        {
-        };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 24;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 24;
         result.SupportCategory = SupportCategory.HeatHandling;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -4560,25 +3690,14 @@ class GameData
     }
 
     // Distribution Office (consumes power + fuel)
-    public static ProductionBuilding SmallDistributionOffice1 { get; } = CreateSmallDistributionOffice1();
-    public static ProductionBuilding CreateSmallDistributionOffice1()
+    public static SupportBuilding SmallDistributionOffice1 { get; } = CreateSmallDistributionOffice1();
+    public static SupportBuilding CreateSmallDistributionOffice1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Small Distribution Office (Alt1)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 875;
+        result.WorkDays = 875;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 28 },
@@ -4590,25 +3709,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding SmallDistributionOffice2 { get; } = CreateSmallDistributionOffice2();
-    public static ProductionBuilding CreateSmallDistributionOffice2()
+    public static SupportBuilding SmallDistributionOffice2 { get; } = CreateSmallDistributionOffice2();
+    public static SupportBuilding CreateSmallDistributionOffice2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Small Distribution Office (Alt2)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 721;
+        result.WorkDays = 721;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 18 },
@@ -4620,25 +3728,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding MediumDistributionOffice1 { get; } = CreateMediumDistributionOffice1();
-    public static ProductionBuilding CreateMediumDistributionOffice1()
+    public static SupportBuilding MediumDistributionOffice1 { get; } = CreateMediumDistributionOffice1();
+    public static SupportBuilding CreateMediumDistributionOffice1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Medium Distribution Office (Alt1)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1798;
+        result.WorkDays = 1798;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 78 },
@@ -4650,25 +3747,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding MediumDistributionOffice2 { get; } = CreateMediumDistributionOffice2();
-    public static ProductionBuilding CreateMediumDistributionOffice2()
+    public static SupportBuilding MediumDistributionOffice2 { get; } = CreateMediumDistributionOffice2();
+    public static SupportBuilding CreateMediumDistributionOffice2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Medium Distribution Office (Alt2)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1724;
+        result.WorkDays = 1724;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 40 },
@@ -4680,25 +3766,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding HorseDistributionOffice { get; } = CreateHorseDistributionOffice();
-    public static ProductionBuilding CreateHorseDistributionOffice()
+    public static SupportBuilding HorseDistributionOffice { get; } = CreateHorseDistributionOffice();
+    public static SupportBuilding CreateHorseDistributionOffice()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Horse Distribution Office";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 468;
+        result.WorkDays = 468;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 11 },
@@ -4709,25 +3784,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding TrainDistributionOffice1 { get; } = CreateTrainDistributionOffice1();
-    public static ProductionBuilding CreateTrainDistributionOffice1()
+    public static SupportBuilding TrainDistributionOffice1 { get; } = CreateTrainDistributionOffice1();
+    public static SupportBuilding CreateTrainDistributionOffice1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Distribution Office (Alt1)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 6.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 6.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2791;
+        result.WorkDays = 2791;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 81 },
@@ -4739,25 +3803,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding TrainDistributionOffice2 { get; } = CreateTrainDistributionOffice2();
-    public static ProductionBuilding CreateTrainDistributionOffice2()
+    public static SupportBuilding TrainDistributionOffice2 { get; } = CreateTrainDistributionOffice2();
+    public static SupportBuilding CreateTrainDistributionOffice2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Train Distribution Office (Alt2)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 3430;
+        result.WorkDays = 3430;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 93 },
@@ -4772,26 +3825,14 @@ class GameData
     }
 
     // Support Buildings - Warehouse
-    public static ProductionBuilding Warehouse { get; } = CreateWarehouse();
-    public static ProductionBuilding CreateWarehouse()
+    public static SupportBuilding Warehouse { get; } = CreateWarehouse();
+    public static SupportBuilding CreateWarehouse()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;  // MWh/day
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = false;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;  // MWh/day
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 755;
+        result.WorkDays = 755;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 23 },
@@ -4803,25 +3844,14 @@ class GameData
         };
         return result;
     }
-    public static ProductionBuilding WarehouseSmall { get; } = CreateWarehouseSmall();
-    public static ProductionBuilding CreateWarehouseSmall()
+    public static SupportBuilding WarehouseSmall { get; } = CreateWarehouseSmall();
+    public static SupportBuilding CreateWarehouseSmall()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Small)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 291;
+        result.WorkDays = 291;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 6.8 },
@@ -4833,25 +3863,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseMedium1 { get; } = CreateWarehouseMedium1();
-    public static ProductionBuilding CreateWarehouseMedium1()
+    public static SupportBuilding WarehouseMedium1 { get; } = CreateWarehouseMedium1();
+    public static SupportBuilding CreateWarehouseMedium1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Medium)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1044;
+        result.WorkDays = 1044;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 47 },
@@ -4863,25 +3882,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseMedium2Railway { get; } = CreateWarehouseMedium2Railway();
-    public static ProductionBuilding CreateWarehouseMedium2Railway()
+    public static SupportBuilding WarehouseMedium2Railway { get; } = CreateWarehouseMedium2Railway();
+    public static SupportBuilding CreateWarehouseMedium2Railway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Medium - Railway 87m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1157;
+        result.WorkDays = 1157;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 57 },
@@ -4893,25 +3901,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseLarge1Railway { get; } = CreateWarehouseLarge1Railway();
-    public static ProductionBuilding CreateWarehouseLarge1Railway()
+    public static SupportBuilding WarehouseLarge1Railway { get; } = CreateWarehouseLarge1Railway();
+    public static SupportBuilding CreateWarehouseLarge1Railway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Large - Railway 104m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1493;
+        result.WorkDays = 1493;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 55 },
@@ -4923,25 +3920,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseLarge2Railway { get; } = CreateWarehouseLarge2Railway();
-    public static ProductionBuilding CreateWarehouseLarge2Railway()
+    public static SupportBuilding WarehouseLarge2Railway { get; } = CreateWarehouseLarge2Railway();
+    public static SupportBuilding CreateWarehouseLarge2Railway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Large Alt - Railway 104m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1337;
+        result.WorkDays = 1337;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 42 },
@@ -4953,25 +3939,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageSmall { get; } = CreateGrainStorageSmall();
-    public static ProductionBuilding CreateGrainStorageSmall()
+    public static SupportBuilding GrainStorageSmall { get; } = CreateGrainStorageSmall();
+    public static SupportBuilding CreateGrainStorageSmall()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (Small)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2855;
+        result.WorkDays = 2855;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 40 },
@@ -4983,25 +3958,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageLargeRailway { get; } = CreateGrainStorageLargeRailway();
-    public static ProductionBuilding CreateGrainStorageLargeRailway()
+    public static SupportBuilding GrainStorageLargeRailway { get; } = CreateGrainStorageLargeRailway();
+    public static SupportBuilding CreateGrainStorageLargeRailway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (Large - Railway 117m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 4961;
+        result.WorkDays = 4961;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 91 },
@@ -5013,25 +3977,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseMedium3Railway { get; } = CreateWarehouseMedium3Railway();
-    public static ProductionBuilding CreateWarehouseMedium3Railway()
+    public static SupportBuilding WarehouseMedium3Railway { get; } = CreateWarehouseMedium3Railway();
+    public static SupportBuilding CreateWarehouseMedium3Railway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Medium - Railway 41m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 576;
+        result.WorkDays = 576;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 29 },
@@ -5043,25 +3996,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseMedium4 { get; } = CreateWarehouseMedium4();
-    public static ProductionBuilding CreateWarehouseMedium4()
+    public static SupportBuilding WarehouseMedium4 { get; } = CreateWarehouseMedium4();
+    public static SupportBuilding CreateWarehouseMedium4()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Medium Alt)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 516;
+        result.WorkDays = 516;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 24 },
@@ -5073,25 +4015,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageMediumRailway { get; } = CreateGrainStorageMediumRailway();
-    public static ProductionBuilding CreateGrainStorageMediumRailway()
+    public static SupportBuilding GrainStorageMediumRailway { get; } = CreateGrainStorageMediumRailway();
+    public static SupportBuilding CreateGrainStorageMediumRailway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (Medium - Railway 65m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2969;
+        result.WorkDays = 2969;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 50 },
@@ -5103,25 +4034,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageLarge1Railway { get; } = CreateGrainStorageLarge1Railway();
-    public static ProductionBuilding CreateGrainStorageLarge1Railway()
+    public static SupportBuilding GrainStorageLarge1Railway { get; } = CreateGrainStorageLarge1Railway();
+    public static SupportBuilding CreateGrainStorageLarge1Railway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (Large - Railway 73m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2378;
+        result.WorkDays = 2378;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 37 },
@@ -5131,25 +4051,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageLarge2 { get; } = CreateGrainStorageLarge2();
-    public static ProductionBuilding CreateGrainStorageLarge2()
+    public static SupportBuilding GrainStorageLarge2 { get; } = CreateGrainStorageLarge2();
+    public static SupportBuilding CreateGrainStorageLarge2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (Large)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 4753;
+        result.WorkDays = 4753;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 73 },
@@ -5161,25 +4070,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageXLRailway1 { get; } = CreateGrainStorageXLRailway1();
-    public static ProductionBuilding CreateGrainStorageXLRailway1()
+    public static SupportBuilding GrainStorageXLRailway1 { get; } = CreateGrainStorageXLRailway1();
+    public static SupportBuilding CreateGrainStorageXLRailway1()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (XL - Railway 114m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 4030;
+        result.WorkDays = 4030;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 62 },
@@ -5189,25 +4087,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageXXLRailway { get; } = CreateGrainStorageXXLRailway();
-    public static ProductionBuilding CreateGrainStorageXXLRailway()
+    public static SupportBuilding GrainStorageXXLRailway { get; } = CreateGrainStorageXXLRailway();
+    public static SupportBuilding CreateGrainStorageXXLRailway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (XXL - Railway 156m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 5229;
+        result.WorkDays = 5229;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 79 },
@@ -5217,25 +4104,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageXXXLRailway { get; } = CreateGrainStorageXXXLRailway();
-    public static ProductionBuilding CreateGrainStorageXXXLRailway()
+    public static SupportBuilding GrainStorageXXXLRailway { get; } = CreateGrainStorageXXXLRailway();
+    public static SupportBuilding CreateGrainStorageXXXLRailway()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (XXXL - Railway 191m)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 6582;
+        result.WorkDays = 6582;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 102 },
@@ -5245,25 +4121,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseXS { get; } = CreateWarehouseXS();
-    public static ProductionBuilding CreateWarehouseXS()
+    public static SupportBuilding WarehouseXS { get; } = CreateWarehouseXS();
+    public static SupportBuilding CreateWarehouseXS()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (XS)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 295;
+        result.WorkDays = 295;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 11 },
@@ -5275,25 +4140,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseXS2 { get; } = CreateWarehouseXS2();
-    public static ProductionBuilding CreateWarehouseXS2()
+    public static SupportBuilding WarehouseXS2 { get; } = CreateWarehouseXS2();
+    public static SupportBuilding CreateWarehouseXS2()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (XS) 2";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 295;
+        result.WorkDays = 295;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 11 },
@@ -5305,25 +4159,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseMedium6 { get; } = CreateWarehouseMedium6();
-    public static ProductionBuilding CreateWarehouseMedium6()
+    public static SupportBuilding WarehouseMedium6 { get; } = CreateWarehouseMedium6();
+    public static SupportBuilding CreateWarehouseMedium6()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Medium Alt3)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 953;
+        result.WorkDays = 953;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 42 },
@@ -5335,25 +4178,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseLarge3 { get; } = CreateWarehouseLarge3();
-    public static ProductionBuilding CreateWarehouseLarge3()
+    public static SupportBuilding WarehouseLarge3 { get; } = CreateWarehouseLarge3();
+    public static SupportBuilding CreateWarehouseLarge3()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Large Alt2)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 1465;
+        result.WorkDays = 1465;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 67 },
@@ -5365,25 +4197,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding WarehouseLarge4 { get; } = CreateWarehouseLarge4();
-    public static ProductionBuilding CreateWarehouseLarge4()
+    public static SupportBuilding WarehouseLarge4 { get; } = CreateWarehouseLarge4();
+    public static SupportBuilding CreateWarehouseLarge4()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Warehouse (Large Alt3)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2102;
+        result.WorkDays = 2102;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 107 },
@@ -5394,25 +4215,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageLarge3 { get; } = CreateGrainStorageLarge3();
-    public static ProductionBuilding CreateGrainStorageLarge3()
+    public static SupportBuilding GrainStorageLarge3 { get; } = CreateGrainStorageLarge3();
+    public static SupportBuilding CreateGrainStorageLarge3()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (Large Alt2)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 2195;
+        result.WorkDays = 2195;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 35 },
@@ -5422,25 +4232,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageLarge4 { get; } = CreateGrainStorageLarge4();
-    public static ProductionBuilding CreateGrainStorageLarge4()
+    public static SupportBuilding GrainStorageLarge4 { get; } = CreateGrainStorageLarge4();
+    public static SupportBuilding CreateGrainStorageLarge4()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (Large Alt3)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 3734;
+        result.WorkDays = 3734;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 59 },
@@ -5450,25 +4249,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageXL { get; } = CreateGrainStorageXL();
-    public static ProductionBuilding CreateGrainStorageXL()
+    public static SupportBuilding GrainStorageXL { get; } = CreateGrainStorageXL();
+    public static SupportBuilding CreateGrainStorageXL()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (XL)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 4768;
+        result.WorkDays = 4768;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 75 },
@@ -5478,25 +4266,14 @@ class GameData
     };
         return result;
     }
-    public static ProductionBuilding GrainStorageXXL { get; } = CreateGrainStorageXXL();
-    public static ProductionBuilding CreateGrainStorageXXL()
+    public static SupportBuilding GrainStorageXXL { get; } = CreateGrainStorageXXL();
+    public static SupportBuilding CreateGrainStorageXXL()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Grain Storage (XXL)";
-        result.Inputs = new List<ResourceAmount>() { };
-        result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
-        result.PowerConsumption = 3.0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
-        result.GarbagePerWorker = 0;
-        result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsSupportBuildings = true;
+        result.PowerConsumptionMWh = 3.0;
         result.SupportCategory = SupportCategory.GeneralDistribution;
-        result.Workdays = 6007;
+        result.WorkDays = 6007;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 97 },
@@ -5513,11 +4290,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (48w, 2.16m³/d, 80%)",
             WorkerCapacity = 48,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 500,
+            WorkDays = 500,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 9.8},
@@ -5530,11 +4307,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (36w, 1.62m³/d, 85%)",
             WorkerCapacity = 36,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.62,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 535,
+            WorkDays = 535,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 11},
@@ -5547,11 +4324,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (10w, 0.45m³/d, 85%)",
             WorkerCapacity = 10,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.45,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 158,
+            WorkDays = 158,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.2},
@@ -5564,11 +4341,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (18w, 0.81m³/d, 80%)",
             WorkerCapacity = 18,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.81,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 235,
+            WorkDays = 235,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 5.0},
@@ -5581,11 +4358,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (20w, 0.90m³/d, 85%)",
             WorkerCapacity = 20,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 305,
+            WorkDays = 305,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 7.1},
@@ -5598,11 +4375,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (48w, 2.16m³/d, 80%)",
             WorkerCapacity = 48,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 478,
+            WorkDays = 478,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 7.9},
@@ -5615,11 +4392,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Low-quality rural flats (20w, 0.90m³/d, 60%)",
             WorkerCapacity = 20,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
             HeatTankM3 = 0,
             Quality = 60,
-            Workdays = 106,
+            WorkDays = 106,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 2.6},
@@ -5632,11 +4409,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (32w, 1.44m³/d, 80%)",
             WorkerCapacity = 32,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.44,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 324,
+            WorkDays = 324,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 6.9},
@@ -5649,11 +4426,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (40w, 1.80m³/d, 85%)",
             WorkerCapacity = 40,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.80,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 341,
+            WorkDays = 341,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 11},
@@ -5666,11 +4443,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (29w, 1.31m³/d, 80%)",
             WorkerCapacity = 29,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.31,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 246,
+            WorkDays = 246,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 42},
@@ -5684,11 +4461,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Low-quality rural flats (30w, 1.35m³/d, 63%)",
             WorkerCapacity = 30,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.35,
             HeatTankM3 = 0,
             Quality = 63,
-            Workdays = 227,
+            WorkDays = 227,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 7.2},
@@ -5702,11 +4479,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (42w, 1.89m³/d, 83%)",
             WorkerCapacity = 42,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.89,
             HeatTankM3 = 0,
             Quality = 83,
-            Workdays = 364,
+            WorkDays = 364,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 11},
@@ -5719,11 +4496,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (48w, 2.16m³/d, 82%)",
             WorkerCapacity = 48,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
             HeatTankM3 = 0,
             Quality = 82,
-            Workdays = 320,
+            WorkDays = 320,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 9.2},
@@ -5736,11 +4513,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Low-quality rural flats (20w, 0.90m³/d, 55%)",
             WorkerCapacity = 20,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
             HeatTankM3 = 0,
             Quality = 55,
-            Workdays = 129,
+            WorkDays = 129,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 5.4},
@@ -5754,11 +4531,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (43w, 1.94m³/d, 80%)",
             WorkerCapacity = 43,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.94,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 424,
+            WorkDays = 424,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 54},
@@ -5772,11 +4549,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Low-quality rural flats (20w, 0.90m³/d, 55%)",
             WorkerCapacity = 20,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
             HeatTankM3 = 0,
             Quality = 55,
-            Workdays = 137,
+            WorkDays = 137,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 5.5},
@@ -5790,11 +4567,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (29w, 1.31m³/d, 84%)",
             WorkerCapacity = 29,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.31,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 262,
+            WorkDays = 262,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 2.0},
@@ -5809,11 +4586,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (48w, 2.16m³/d, 84%)",
             WorkerCapacity = 48,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 376,
+            WorkDays = 376,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 2.7},
@@ -5828,11 +4605,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (43w, 1.94m³/d, 83%)",
             WorkerCapacity = 43,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.94,
             HeatTankM3 = 0,
             Quality = 83,
-            Workdays = 374,
+            WorkDays = 374,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 10},
@@ -5845,11 +4622,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (42w, 1.89m³/d, 83%)",
             WorkerCapacity = 42,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.89,
             HeatTankM3 = 0,
             Quality = 83,
-            Workdays = 404,
+            WorkDays = 404,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 13},
@@ -5862,11 +4639,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (40w, 1.80m³/d, 84%)",
             WorkerCapacity = 40,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.80,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 336,
+            WorkDays = 336,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 2.7},
@@ -5881,11 +4658,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (30w, 1.35m³/d, 84%)",
             WorkerCapacity = 30,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.35,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 266,
+            WorkDays = 266,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 2.0},
@@ -5900,11 +4677,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (20w, 0.90m³/d, 85%)",
             WorkerCapacity = 20,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 322,
+            WorkDays = 322,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 8.2},
@@ -5917,11 +4694,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (40w, 1.80m³/d, 84%)",
             WorkerCapacity = 40,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.80,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 413,
+            WorkDays = 413,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 4.3},
@@ -5936,11 +4713,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (10w, 0.45m³/d, 89%)",
             WorkerCapacity = 10,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.45,
             HeatTankM3 = 0,
             Quality = 89,
-            Workdays = 191,
+            WorkDays = 191,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.6},
@@ -5954,11 +4731,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (27w, 1.22m³/d, 91%)",
             WorkerCapacity = 27,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.22,
             HeatTankM3 = 0,
             Quality = 91,
-            Workdays = 271,
+            WorkDays = 271,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 9.4},
@@ -5971,11 +4748,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (30w, 1.35m³/d, 77%)",
             WorkerCapacity = 30,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.35,
             HeatTankM3 = 0,
             Quality = 77,
-            Workdays = 302,
+            WorkDays = 302,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 7.7},
@@ -5989,11 +4766,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (30w, 1.35m³/d, 80%)",
             WorkerCapacity = 30,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.35,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 326,
+            WorkDays = 326,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 5.8},
@@ -6012,11 +4789,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (90w, 4.05m³/d, 80%)",
             WorkerCapacity = 90,
-            PowerMW = 5.4,
+            PowerConsumptionMWh = 5.4,
             WaterPerDay = 4.05,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 845,
+            WorkDays = 845,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 16},
@@ -6029,11 +4806,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (60w, 2.70m³/d, 80%)",
             WorkerCapacity = 60,
-            PowerMW = 3.6,
+            PowerConsumptionMWh = 3.6,
             WaterPerDay = 2.70,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 613,
+            WorkDays = 613,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 11},
@@ -6046,11 +4823,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (115w, 5.18m³/d, 80%) [large-dup]",
             WorkerCapacity = 115,
-            PowerMW = 6.9,
+            PowerConsumptionMWh = 6.9,
             WaterPerDay = 5.18,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1069,
+            WorkDays = 1069,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 22},
@@ -6063,11 +4840,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (56w, 2.52m³/d, 85%)",
             WorkerCapacity = 56,
-            PowerMW = 3.4,
+            PowerConsumptionMWh = 3.4,
             WaterPerDay = 2.52,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 769,
+            WorkDays = 769,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 14},
@@ -6080,11 +4857,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (65w, 2.93m³/d, 80%)",
             WorkerCapacity = 65,
-            PowerMW = 3.9,
+            PowerConsumptionMWh = 3.9,
             WaterPerDay = 2.93,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 714,
+            WorkDays = 714,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 16},
@@ -6097,11 +4874,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (72w, 3.24m³/d, 80%)",
             WorkerCapacity = 72,
-            PowerMW = 4.3,
+            PowerConsumptionMWh = 4.3,
             WaterPerDay = 3.24,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 695,
+            WorkDays = 695,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 14},
@@ -6114,11 +4891,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (50w, 2.25m³/d, 85%)",
             WorkerCapacity = 50,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.25,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 673,
+            WorkDays = 673,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 13},
@@ -6132,11 +4909,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (50w, 2.25m³/d, 85%) [dup]",
             WorkerCapacity = 50,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.25,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 713,
+            WorkDays = 713,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 17},
@@ -6149,11 +4926,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (65w, 2.93m³/d, 80%) [dup]",
             WorkerCapacity = 65,
-            PowerMW = 3.9,
+            PowerConsumptionMWh = 3.9,
             WaterPerDay = 2.93,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 728,
+            WorkDays = 728,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 17},
@@ -6166,11 +4943,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (60w, 2.70m³/d, 80%) [dup]",
             WorkerCapacity = 60,
-            PowerMW = 3.6,
+            PowerConsumptionMWh = 3.6,
             WaterPerDay = 2.70,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 691,
+            WorkDays = 691,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 15},
@@ -6183,11 +4960,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (118w, 5.31m³/d, 70%)",
             WorkerCapacity = 118,
-            PowerMW = 7.1,
+            PowerConsumptionMWh = 7.1,
             WaterPerDay = 5.31,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 635,
+            WorkDays = 635,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 13},
@@ -6202,11 +4979,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (55w, 2.48m³/d, 80%) [dup]",
             WorkerCapacity = 55,
-            PowerMW = 3.3,
+            PowerConsumptionMWh = 3.3,
             WaterPerDay = 2.48,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 569,
+            WorkDays = 569,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 16},
@@ -6219,11 +4996,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (90w, 4.05m³/d, 80%) [dup]",
             WorkerCapacity = 90,
-            PowerMW = 5.4,
+            PowerConsumptionMWh = 5.4,
             WaterPerDay = 4.05,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 942,
+            WorkDays = 942,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 22},
@@ -6236,11 +5013,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (80w, 3.60m³/d, 85%)",
             WorkerCapacity = 80,
-            PowerMW = 4.8,
+            PowerConsumptionMWh = 4.8,
             WaterPerDay = 3.60,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 862,
+            WorkDays = 862,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 16},
@@ -6253,11 +5030,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (75w, 3.38m³/d, 80%)",
             WorkerCapacity = 75,
-            PowerMW = 4.5,
+            PowerConsumptionMWh = 4.5,
             WaterPerDay = 3.38,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 862,
+            WorkDays = 862,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 18},
@@ -6270,11 +5047,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (62w, 2.79m³/d, 86%)",
             WorkerCapacity = 62,
-            PowerMW = 3.7,
+            PowerConsumptionMWh = 3.7,
             WaterPerDay = 2.79,
             HeatTankM3 = 0,
             Quality = 86,
-            Workdays = 469,
+            WorkDays = 469,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 14},
@@ -6287,11 +5064,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 86%)",
             WorkerCapacity = 63,
-            PowerMW = 3.8,
+            PowerConsumptionMWh = 3.8,
             WaterPerDay = 2.84,
             HeatTankM3 = 0,
             Quality = 86,
-            Workdays = 535,
+            WorkDays = 535,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.3},
@@ -6307,11 +5084,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (68w, 3.06m³/d, 85%)",
             WorkerCapacity = 68,
-            PowerMW = 4.1,
+            PowerConsumptionMWh = 4.1,
             WaterPerDay = 3.06,
             HeatTankM3 = 0,
             Quality = 85,
-            Workdays = 569,
+            WorkDays = 569,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 16},
@@ -6324,11 +5101,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (72w, 3.24m³/d, 75%)",
             WorkerCapacity = 72,
-            PowerMW = 4.3,
+            PowerConsumptionMWh = 4.3,
             WaterPerDay = 3.24,
             HeatTankM3 = 0,
             Quality = 75,
-            Workdays = 515,
+            WorkDays = 515,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 14},
@@ -6341,11 +5118,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (82w, 3.69m³/d, 87%)",
             WorkerCapacity = 82,
-            PowerMW = 4.9,
+            PowerConsumptionMWh = 4.9,
             WaterPerDay = 3.69,
             HeatTankM3 = 0,
             Quality = 87,
-            Workdays = 642,
+            WorkDays = 642,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 21},
@@ -6358,11 +5135,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (80w, 3.60m³/d, 87%)",
             WorkerCapacity = 80,
-            PowerMW = 4.8,
+            PowerConsumptionMWh = 4.8,
             WaterPerDay = 3.60,
             HeatTankM3 = 0,
             Quality = 87,
-            Workdays = 617,
+            WorkDays = 617,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 21},
@@ -6375,11 +5152,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%)",
             WorkerCapacity = 85,
-            PowerMW = 5.1,
+            PowerConsumptionMWh = 5.1,
             WaterPerDay = 3.83,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 603,
+            WorkDays = 603,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 77},
@@ -6393,11 +5170,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (65w, 2.93m³/d, 87%)",
             WorkerCapacity = 65,
-            PowerMW = 3.9,
+            PowerConsumptionMWh = 3.9,
             WaterPerDay = 2.93,
             HeatTankM3 = 0,
             Quality = 87,
-            Workdays = 529,
+            WorkDays = 529,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 17},
@@ -6410,11 +5187,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (58w, 2.61m³/d, 80%)",
             WorkerCapacity = 58,
-            PowerMW = 3.5,
+            PowerConsumptionMWh = 3.5,
             WaterPerDay = 2.61,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 361,
+            WorkDays = 361,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 62},
@@ -6428,11 +5205,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (108w, 4.86m³/d, 84%)",
             WorkerCapacity = 108,
-            PowerMW = 6.5,
+            PowerConsumptionMWh = 6.5,
             WaterPerDay = 4.86,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 909,
+            WorkDays = 909,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 6.8},
@@ -6448,11 +5225,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (81w, 3.65m³/d, 84%)",
             WorkerCapacity = 81,
-            PowerMW = 4.9,
+            PowerConsumptionMWh = 4.9,
             WaterPerDay = 3.65,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 676,
+            WorkDays = 676,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 6.9},
@@ -6467,11 +5244,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (80w, 3.60m³/d, 70%)",
             WorkerCapacity = 80,
-            PowerMW = 4.8,
+            PowerConsumptionMWh = 4.8,
             WaterPerDay = 3.60,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 464,
+            WorkDays = 464,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 9.7},
@@ -6486,11 +5263,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (55w, 2.48m³/d, 70%)",
             WorkerCapacity = 55,
-            PowerMW = 3.3,
+            PowerConsumptionMWh = 3.3,
             WaterPerDay = 2.48,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 329,
+            WorkDays = 329,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 6.5},
@@ -6505,11 +5282,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (74w, 3.33m³/d, 80%)",
             WorkerCapacity = 74,
-            PowerMW = 4.4,
+            PowerConsumptionMWh = 4.4,
             WaterPerDay = 3.33,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 483,
+            WorkDays = 483,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 42},
@@ -6525,11 +5302,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (67w, 3.02m³/d, 84%)",
             WorkerCapacity = 67,
-            PowerMW = 4.0,
+            PowerConsumptionMWh = 4.0,
             WaterPerDay = 3.02,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 557,
+            WorkDays = 557,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.5},
@@ -6545,11 +5322,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%) [dup]",
             WorkerCapacity = 85,
-            PowerMW = 5.1,
+            PowerConsumptionMWh = 5.1,
             WaterPerDay = 3.83,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 556,
+            WorkDays = 556,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 49},
@@ -6565,11 +5342,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (74w, 3.33m³/d, 84%)",
             WorkerCapacity = 74,
-            PowerMW = 4.4,
+            PowerConsumptionMWh = 4.4,
             WaterPerDay = 3.33,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 589,
+            WorkDays = 589,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 5.8},
@@ -6584,11 +5361,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (50w, 2.25m³/d, 70%)",
             WorkerCapacity = 50,
-            PowerMW = 3.0,
+            PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.25,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 432,
+            WorkDays = 432,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 8.0},
@@ -6602,11 +5379,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 464) (115w, 5.18m³/d, 60%)",
             WorkerCapacity = 115,
-            PowerMW = 6.9,
+            PowerConsumptionMWh = 6.9,
             WaterPerDay = 5.18,
             HeatTankM3 = 0,
             Quality = 60,
-            Workdays = 510,
+            WorkDays = 510,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 19},
@@ -6619,11 +5396,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (52w, 2.34m³/d, 84%)",
             WorkerCapacity = 52,
-            PowerMW = 3.1,
+            PowerConsumptionMWh = 3.1,
             WaterPerDay = 2.34,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 430,
+            WorkDays = 430,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.9},
@@ -6638,11 +5415,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (110w, 4.95m³/d, 87%)",
             WorkerCapacity = 110,
-            PowerMW = 6.6,
+            PowerConsumptionMWh = 6.6,
             WaterPerDay = 4.95,
             HeatTankM3 = 0,
             Quality = 87,
-            Workdays = 1200,
+            WorkDays = 1200,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 28},
@@ -6656,11 +5433,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (96w, 4.32m³/d, 84%)",
             WorkerCapacity = 96,
-            PowerMW = 5.8,
+            PowerConsumptionMWh = 5.8,
             WaterPerDay = 4.32,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 769,
+            WorkDays = 769,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.6},
@@ -6676,11 +5453,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 84%) [dup]",
             WorkerCapacity = 63,
-            PowerMW = 3.8,
+            PowerConsumptionMWh = 3.8,
             WaterPerDay = 2.84,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 532,
+            WorkDays = 532,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.3},
@@ -6696,11 +5473,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (87w, 3.92m³/d, 94%)",
             WorkerCapacity = 87,
-            PowerMW = 5.2,
+            PowerConsumptionMWh = 5.2,
             WaterPerDay = 3.92,
             HeatTankM3 = 0,
             Quality = 94,
-            Workdays = 658,
+            WorkDays = 658,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 13},
@@ -6713,11 +5490,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (105w, 4.73m³/d, 91%)",
             WorkerCapacity = 105,
-            PowerMW = 6.3,
+            PowerConsumptionMWh = 6.3,
             WaterPerDay = 4.73,
             HeatTankM3 = 0,
             Quality = 91,
-            Workdays = 799,
+            WorkDays = 799,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 21},
@@ -6730,11 +5507,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (64w, 2.88m³/d, 84%)",
             WorkerCapacity = 64,
-            PowerMW = 3.8,
+            PowerConsumptionMWh = 3.8,
             WaterPerDay = 2.88,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 504,
+            WorkDays = 504,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 2.9},
@@ -6750,11 +5527,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (55w, 2.48m³/d, 84%)",
             WorkerCapacity = 55,
-            PowerMW = 3.3,
+            PowerConsumptionMWh = 3.3,
             WaterPerDay = 2.48,
             HeatTankM3 = 0,
             Quality = 84,
-            Workdays = 470,
+            WorkDays = 470,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.9},
@@ -6774,11 +5551,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (200w, 9.00m³/d, 75%)",
             WorkerCapacity = 200,
-            PowerMW = 12,
+            PowerConsumptionMWh = 12,
             WaterPerDay = 9.00,
             HeatTankM3 = 0, // Not shown in screenshot
             Quality = 75,
-            Workdays = 1908,
+            WorkDays = 1908,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 34},
@@ -6791,11 +5568,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (150w, 6.75m³/d, 75%)",
             WorkerCapacity = 150,
-            PowerMW = 9,
+            PowerConsumptionMWh = 9,
             WaterPerDay = 6.75,
             HeatTankM3 = 0,
             Quality = 75,
-            Workdays = 1481,
+            WorkDays = 1481,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 26},
@@ -6808,11 +5585,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (157w, 7.07m³/d, 68%)",
             WorkerCapacity = 157,
-            PowerMW = 9.4,
+            PowerConsumptionMWh = 9.4,
             WaterPerDay = 7.07,
             HeatTankM3 = 10.00,
             Quality = 68,
-            Workdays = 1382,
+            WorkDays = 1382,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 27},
@@ -6826,11 +5603,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (145w, 6.53m³/d, 80%)",
             WorkerCapacity = 145,
-            PowerMW = 8.7,
+            PowerConsumptionMWh = 8.7,
             WaterPerDay = 6.53,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1600,
+            WorkDays = 1600,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 39},
@@ -6843,11 +5620,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (125w, 5.63m³/d, 80%)",
             WorkerCapacity = 125,
-            PowerMW = 7.5,
+            PowerConsumptionMWh = 7.5,
             WaterPerDay = 5.63,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1257,
+            WorkDays = 1257,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 26},
@@ -6860,11 +5637,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (120w, 5.40m³/d, 80%)",
             WorkerCapacity = 120,
-            PowerMW = 7.2,
+            PowerConsumptionMWh = 7.2,
             WaterPerDay = 5.40,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1077,
+            WorkDays = 1077,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 21},
@@ -6877,11 +5654,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (125w, 5.63m³/d, 80%) [v2]", // Added v2 to distinguish from previous 125w
             WorkerCapacity = 125,
-            PowerMW = 7.5,
+            PowerConsumptionMWh = 7.5,
             WaterPerDay = 5.63,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1233,
+            WorkDays = 1233,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 19},
@@ -6894,11 +5671,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Dnipro Flats (593w, 26.69m³/d, 90%)",
             WorkerCapacity = 593,
-            PowerMW = 35,
+            PowerConsumptionMWh = 35,
             WaterPerDay = 26.69,
             HeatTankM3 = 0,
             Quality = 90,
-            Workdays = 4323,
+            WorkDays = 4323,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 490},
@@ -6911,11 +5688,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (145w, 6.53m³/d, 72%)",
             WorkerCapacity = 145,
-            PowerMW = 8.7,
+            PowerConsumptionMWh = 8.7,
             WaterPerDay = 6.53,
             HeatTankM3 = 0,
             Quality = 72,
-            Workdays = 723,
+            WorkDays = 723,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 10},
@@ -6928,11 +5705,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (150w, 6.75m³/d, 80%)",
             WorkerCapacity = 150,
-            PowerMW = 9,
+            PowerConsumptionMWh = 9,
             WaterPerDay = 6.75,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1307,
+            WorkDays = 1307,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 23},
@@ -6946,11 +5723,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - brick (210w, 9.45m³/d, 80%)",
             WorkerCapacity = 210,
-            PowerMW = 12,
+            PowerConsumptionMWh = 12,
             WaterPerDay = 9.45,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 2005,
+            WorkDays = 2005,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 39},
@@ -6963,11 +5740,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (160w, 7.20m³/d, 76%)",
             WorkerCapacity = 160,
-            PowerMW = 9.6,
+            PowerConsumptionMWh = 9.6,
             WaterPerDay = 7.20,
             HeatTankM3 = 0,
             Quality = 76,
-            Workdays = 877,
+            WorkDays = 877,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 17},
@@ -6980,11 +5757,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (120w, 5.40m³/d, 86%)",
             WorkerCapacity = 120,
-            PowerMW = 7.2,
+            PowerConsumptionMWh = 7.2,
             WaterPerDay = 5.40,
             HeatTankM3 = 0,
             Quality = 86,
-            Workdays = 901,
+            WorkDays = 901,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 30},
@@ -6997,11 +5774,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (165w, 7.43m³/d, 78%)",
             WorkerCapacity = 165,
-            PowerMW = 9.9,
+            PowerConsumptionMWh = 9.9,
             WaterPerDay = 7.43,
             HeatTankM3 = 0,
             Quality = 78,
-            Workdays = 895,
+            WorkDays = 895,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 15},
@@ -7014,11 +5791,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (210w, 9.45m³/d, 70%)",
             WorkerCapacity = 210,
-            PowerMW = 12,
+            PowerConsumptionMWh = 12,
             WaterPerDay = 9.45,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 1110,
+            WorkDays = 1110,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 17},
@@ -7032,11 +5809,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (180w, 8.10m³/d, 75%)",
             WorkerCapacity = 180,
-            PowerMW = 10,
+            PowerConsumptionMWh = 10,
             WaterPerDay = 8.10,
             HeatTankM3 = 0,
             Quality = 75,
-            Workdays = 962,
+            WorkDays = 962,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 21},
@@ -7049,11 +5826,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (160w, 7.20m³/d, 70%)",
             WorkerCapacity = 160,
-            PowerMW = 9.6,
+            PowerConsumptionMWh = 9.6,
             WaterPerDay = 7.20,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 921,
+            WorkDays = 921,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 20},
@@ -7068,11 +5845,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (287w, 12.92m³/d, 80%)",
             WorkerCapacity = 287,
-            PowerMW = 17,
+            PowerConsumptionMWh = 17,
             WaterPerDay = 12.92,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 2029,
+            WorkDays = 2029,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 178},
@@ -7088,11 +5865,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (140w, 6.30m³/d, 70%)",
             WorkerCapacity = 140,
-            PowerMW = 8.4,
+            PowerConsumptionMWh = 8.4,
             WaterPerDay = 6.30,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 719,
+            WorkDays = 719,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 10},
@@ -7107,11 +5884,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (147w, 6.62m³/d, 80%)",
             WorkerCapacity = 147,
-            PowerMW = 8.8,
+            PowerConsumptionMWh = 8.8,
             WaterPerDay = 6.62,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1059,
+            WorkDays = 1059,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 66},
@@ -7127,11 +5904,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (245w, 11.03m³/d, 80%)",
             WorkerCapacity = 245,
-            PowerMW = 14,
+            PowerConsumptionMWh = 14,
             WaterPerDay = 11.03,
             HeatTankM3 = 0,
             Quality = 80,
-            Workdays = 1650,
+            WorkDays = 1650,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 145},
@@ -7147,11 +5924,11 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (167w, 7.52m³/d, 70%)",
             WorkerCapacity = 167,
-            PowerMW = 10,
+            PowerConsumptionMWh = 10,
             WaterPerDay = 7.52,
             HeatTankM3 = 0,
             Quality = 70,
-            Workdays = 914,
+            WorkDays = 914,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 14},
@@ -7174,7 +5951,6 @@ class GameData
             Type = AmenityType.Shopping,
             WorkersPerShift = 45,
             PowerConsumptionMWh = 5.6,
-            WattageKW = 93,
             WaterConsumptionM3 = 0.90,
             HotWaterTankM3 = 22,
             HeatConsumptionMW = 0,
@@ -7186,7 +5962,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource  
             },
-            Workdays = 3117,
+            WorkDays = 3117,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 437},
@@ -7203,7 +5979,6 @@ class GameData
             Type = AmenityType.Shopping,
             WorkersPerShift = 30,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 10,
             HeatConsumptionMW = 0,
@@ -7215,7 +5990,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
-            Workdays = 929,
+            WorkDays = 929,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 31},
@@ -7228,11 +6003,10 @@ class GameData
         },
         new AmenityBuilding
         {
-            Name = "Small shopping center (150 visitors, 829 workdays)",
+            Name = "Small shopping center (150 visitors, 829 WorkDays)",
             Type = AmenityType.Shopping,
             WorkersPerShift = 25,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
@@ -7244,7 +6018,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
-            Workdays = 829,
+            WorkDays = 829,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 30},
@@ -7257,11 +6031,10 @@ class GameData
         },
         new AmenityBuilding
         {
-            Name = "Small shopping center (150 visitors, 579 workdays)",
+            Name = "Small shopping center (150 visitors, 579 WorkDays)",
             Type = AmenityType.Shopping,
             WorkersPerShift = 25,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
@@ -7273,7 +6046,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
-            Workdays = 579,
+            WorkDays = 579,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 67},
@@ -7290,7 +6063,6 @@ class GameData
             Type = AmenityType.Shopping,
             WorkersPerShift = 15,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
@@ -7302,7 +6074,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
-            Workdays = 189,  
+            WorkDays = 189,  
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {GravelResource, 6.6 },
@@ -7319,7 +6091,6 @@ class GameData
             Type = AmenityType.Shopping,
             WorkersPerShift = 15,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
@@ -7331,7 +6102,7 @@ class GameData
             {
               ClothesResource, ElectronicsResource
             },
-            Workdays = 320,
+            WorkDays = 320,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 11},
@@ -7348,7 +6119,6 @@ class GameData
             Type = AmenityType.Shopping,
             WorkersPerShift = 1,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0.56,
             HeatConsumptionMW = 0,
@@ -7360,7 +6130,7 @@ class GameData
             {
               FoodResource, MeatResource
             },
-            Workdays = 0,  // Buy with rubles only
+            WorkDays = 0,  // Buy with rubles only
             ConstructionMaterials = new Dictionary<Resource, double>()
         },
         new AmenityBuilding
@@ -7369,7 +6139,6 @@ class GameData
             Type = AmenityType.Shopping,
             WorkersPerShift = 25,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
@@ -7381,7 +6150,7 @@ class GameData
             {
               FoodResource, MeatResource
             },
-            Workdays = 2249,
+            WorkDays = 2249,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 48},
@@ -7396,11 +6165,10 @@ class GameData
     {
         new AmenityBuilding
         {
-            Name = "Technical services (2123 workdays, 15 parking)",
+            Name = "Technical services (2123 WorkDays, 15 parking)",
             Type = AmenityType.CityService,  // Or create new CityService type if you prefer
             WorkersPerShift = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not shown
             HotWaterTankM3 = 0,  // Not shown
             HeatConsumptionMW = 0,
@@ -7408,7 +6176,7 @@ class GameData
             GarbagePerCustomer = 0,  // N/A for city services
             MaxVisitors = 0,  // N/A for city services
             AttractionScore = null,
-            Workdays = 2123,
+            WorkDays = 2123,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 96},
@@ -7423,11 +6191,10 @@ class GameData
         },
         new AmenityBuilding
         {
-            Name = "Technical services (1382 workdays, 8 parking)",
+            Name = "Technical services (1382 WorkDays, 8 parking)",
             Type = AmenityType.CityService,
             WorkersPerShift = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not shown
             HotWaterTankM3 = 0,  // Not shown
             HeatConsumptionMW = 0,
@@ -7435,7 +6202,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 1382,
+            WorkDays = 1382,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 32},
@@ -7454,7 +6221,6 @@ class GameData
             Type = AmenityType.CityService,
             WorkersPerShift = 25,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 1.75,
             HeatConsumptionMW = 0,
@@ -7462,7 +6228,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 1120,
+            WorkDays = 1120,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 136},
@@ -7477,11 +6243,10 @@ class GameData
         },
         new AmenityBuilding
         {
-            Name = "Technical services (785 workdays, 5 parking)",
+            Name = "Technical services (785 WorkDays, 5 parking)",
             Type = AmenityType.CityService,
             WorkersPerShift = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not shown
             HotWaterTankM3 = 0,  // Not shown
             HeatConsumptionMW = 0,
@@ -7489,7 +6254,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 785,
+            WorkDays = 785,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 23},
@@ -7511,7 +6276,6 @@ class GameData
             Type = AmenityType.Healthcare,
             WorkersPerShift = 60,  // 30 workers + 30 nurses
             PowerConsumptionMWh = 5.9,
-            WattageKW = 98,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 8,
             HeatConsumptionMW = 0,
@@ -7522,7 +6286,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.08,
             AttractionScore = null,
-            Workdays = 1002,
+            WorkDays = 1002,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 54},
@@ -7541,7 +6305,6 @@ class GameData
             Type = AmenityType.Healthcare,
             WorkersPerShift = 180,  // 90 workers + 90 nurses
             PowerConsumptionMWh = 13,
-            WattageKW = 230,
             WaterConsumptionM3 = 3.60,
             HotWaterTankM3 = 34,
             HeatConsumptionMW = 0,
@@ -7552,7 +6315,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.08,
             AttractionScore = null,
-            Workdays = 8828,
+            WorkDays = 8828,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 787},
@@ -7569,7 +6332,6 @@ class GameData
             Type = AmenityType.Healthcare,
             WorkersPerShift = 10,  // 5 workers + 5 nurses
             PowerConsumptionMWh = 3.5,
-            WattageKW = 57,
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 1.44,
             HeatConsumptionMW = 0,
@@ -7580,7 +6342,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.08,
             AttractionScore = null,
-            Workdays = 365,
+            WorkDays = 365,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 10},
@@ -7599,7 +6361,6 @@ class GameData
             Type = AmenityType.Fireservice,  // Or add new Emergency type
             WorkersPerShift = 40,
             PowerConsumptionMWh = 4.2,
-            WattageKW = 70,
             WaterConsumptionM3 = 0.80,
             HotWaterTankM3 = 2.80,
             HeatConsumptionMW = 0,
@@ -7607,7 +6368,7 @@ class GameData
             GarbagePerCustomer = 0,  // N/A for fire stations
             MaxVisitors = 0,  // N/A
             AttractionScore = null,
-            Workdays = 965,
+            WorkDays = 965,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 22},
@@ -7626,7 +6387,6 @@ class GameData
             Type = AmenityType.Fireservice,
             WorkersPerShift = 50,
             PowerConsumptionMWh = 4.5,
-            WattageKW = 74,
             WaterConsumptionM3 = 1.00,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
@@ -7634,7 +6394,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 2370,
+            WorkDays = 2370,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 67},
@@ -7653,7 +6413,6 @@ class GameData
             Type = AmenityType.Fireservice,
             WorkersPerShift = 30,
             PowerConsumptionMWh = 3.9,
-            WattageKW = 65,
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 0,  // Not shown on card
             HeatConsumptionMW = 0,
@@ -7661,7 +6420,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 469,
+            WorkDays = 469,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 8.4},
@@ -7683,7 +6442,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 15,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
@@ -7691,7 +6449,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 0.8,
-            Workdays = 728,
+            WorkDays = 728,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 145},
@@ -7707,7 +6465,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 20,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
@@ -7715,7 +6472,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 80,
             AttractionScore = 3.8,
-            Workdays = 2085,
+            WorkDays = 2085,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 266},
@@ -7731,7 +6488,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 6,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.12,
             HotWaterTankM3 = 7,
             HeatConsumptionMW = 0,
@@ -7739,7 +6495,7 @@ class GameData
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 150,
             AttractionScore = null,  // Not shown on card
-            Workdays = 1152,
+            WorkDays = 1152,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 184},
@@ -7755,7 +6511,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 20,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
@@ -7763,7 +6518,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 100,
             AttractionScore = 2.8,
-            Workdays = 4944,
+            WorkDays = 4944,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 433},
@@ -7779,7 +6534,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 8,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.16,
             HotWaterTankM3 = 2.52,
             HeatConsumptionMW = 0,
@@ -7787,7 +6541,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 40,
             AttractionScore = 2.4,
-            Workdays = 1598,
+            WorkDays = 1598,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 239},
@@ -7803,7 +6557,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 20,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
@@ -7811,7 +6564,7 @@ class GameData
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 100,
             AttractionScore = 2.4,
-            Workdays = 1848,
+            WorkDays = 1848,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 282},
@@ -7827,7 +6580,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 15,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
@@ -7835,7 +6587,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 60,
             AttractionScore = 3.2,
-            Workdays = 836,
+            WorkDays = 836,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 23},
@@ -7853,7 +6605,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 5,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 1.82,
             HeatConsumptionMW = 0,
@@ -7861,7 +6612,7 @@ class GameData
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 30,
             AttractionScore = null,  // Not shown on card
-            Workdays = 381,
+            WorkDays = 381,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 12},
@@ -7878,7 +6629,6 @@ class GameData
             Type = AmenityType.Culture,
             WorkersPerShift = 5,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not shown on card
             HotWaterTankM3 = 0,  // Not shown on card
             HeatConsumptionMW = 0,
@@ -7886,7 +6636,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not shown on card
             MaxVisitors = 150,
             AttractionScore = null,  // Not shown on card
-            Workdays = 437,
+            WorkDays = 437,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 46},
@@ -7906,7 +6656,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 26,  // 13 + 13
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.52,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
@@ -7915,7 +6664,7 @@ class GameData
             MaxVisitors = 156,  // Max students
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
-            Workdays = 488,
+            WorkDays = 488,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 17},
@@ -7932,7 +6681,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 14,  // 7 + 7
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.28,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
@@ -7941,7 +6689,7 @@ class GameData
             MaxVisitors = 84,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
-            Workdays = 319,
+            WorkDays = 319,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 13},
@@ -7959,7 +6707,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 90,  // 45 + 45
             PowerConsumptionMWh = 9.2,
-            WattageKW = 153,
             WaterConsumptionM3 = 1.80,
             HotWaterTankM3 = 32,
             HeatConsumptionMW = 0,
@@ -7968,7 +6715,7 @@ class GameData
             MaxVisitors = 540,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
-            Workdays = 1980,
+            WorkDays = 1980,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 89},
@@ -7985,7 +6732,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 60,  // 30 + 30
             PowerConsumptionMWh = 6.1,
-            WattageKW = 102,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 21,
             HeatConsumptionMW = 0,
@@ -7994,7 +6740,7 @@ class GameData
             MaxVisitors = 360,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
-            Workdays = 973,
+            WorkDays = 973,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 34},
@@ -8013,7 +6759,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 27,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.54,
             HotWaterTankM3 = 15,
             HeatConsumptionMW = 0,
@@ -8022,7 +6767,7 @@ class GameData
             MaxVisitors = 270,  // Max children
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
-            Workdays = 915,
+            WorkDays = 915,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 49},
@@ -8039,7 +6784,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 18,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 10,
             HeatConsumptionMW = 0,
@@ -8048,7 +6792,7 @@ class GameData
             MaxVisitors = 180,
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
-            Workdays = 509,
+            WorkDays = 509,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 25},
@@ -8065,7 +6809,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 12,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.24,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
@@ -8074,7 +6817,7 @@ class GameData
             MaxVisitors = 120,
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
-            Workdays = 392,
+            WorkDays = 392,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 12},
@@ -8094,7 +6837,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 80,  // 40 + 40
             PowerConsumptionMWh = 3.4,
-            WattageKW = 56,
             WaterConsumptionM3 = 1.60,
             HotWaterTankM3 = 9,
             HeatConsumptionMW = 0,
@@ -8106,7 +6848,7 @@ class GameData
             PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
-            Workdays = 1545,
+            WorkDays = 1545,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 23},
@@ -8125,7 +6867,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 140,  // 70 + 70
             PowerConsumptionMWh = 9.2,
-            WattageKW = 154,
             WaterConsumptionM3 = 2.80,
             HotWaterTankM3 = 30,
             HeatConsumptionMW = 0,
@@ -8137,7 +6878,7 @@ class GameData
             PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
-            Workdays = 7065,
+            WorkDays = 7065,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 520},
@@ -8156,7 +6897,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 100,  // 50 + 50
             PowerConsumptionMWh = 6.6,
-            WattageKW = 110,
             WaterConsumptionM3 = 2.00,
             HotWaterTankM3 = 21,
             HeatConsumptionMW = 0,
@@ -8168,7 +6908,7 @@ class GameData
             PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
-            Workdays = 7388,
+            WorkDays = 7388,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 541},
@@ -8187,7 +6927,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 60,  // 30 + 30
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 7,
             HeatConsumptionMW = 0,
@@ -8199,7 +6938,7 @@ class GameData
             PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
-            Workdays = 1971,
+            WorkDays = 1971,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 44},
@@ -8217,7 +6956,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 150,  // 75 + 75
             PowerConsumptionMWh = 7.2,
-            WattageKW = 120,
             WaterConsumptionM3 = 3.00,
             HotWaterTankM3 = 21,
             HeatConsumptionMW = 0,
@@ -8229,7 +6967,7 @@ class GameData
             PopulationPercentageServed = 0.065,
             EducationLevel = EducationSubtype.University,
             AttractionScore = null,
-            Workdays = 5186,
+            WorkDays = 5186,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 469},
@@ -8250,7 +6988,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 0,  // No workers, it's a dorm
             PowerConsumptionMWh = 10,
-            WattageKW = 170,
             WaterConsumptionM3 = 3.83,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
@@ -8259,7 +6996,7 @@ class GameData
             MaxVisitors = 85,  // Passenger capacity (students living here)
             EducationLevel = EducationSubtype.UniversityDorm,
             AttractionScore = null,
-            Workdays = 1240,
+            WorkDays = 1240,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 24},
@@ -8277,7 +7014,6 @@ class GameData
             Type = AmenityType.Education,
             WorkersPerShift = 0,  // No workers
             PowerConsumptionMWh = 10,
-            WattageKW = 170,
             WaterConsumptionM3 = 3.83,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
@@ -8286,7 +7022,7 @@ class GameData
             MaxVisitors = 85,  // Passenger capacity
             EducationLevel = EducationSubtype.UniversityDorm,
             AttractionScore = null,
-            Workdays = 1127,
+            WorkDays = 1127,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 24},
@@ -8308,7 +7044,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 15,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
@@ -8316,7 +7051,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
             AttractionScore = 2.5,
-            Workdays = 1919,
+            WorkDays = 1919,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 130},
@@ -8334,7 +7069,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 25,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 10,
             HeatConsumptionMW = 0,
@@ -8342,7 +7076,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 175,
             AttractionScore = 2.0,
-            Workdays = 3587,
+            WorkDays = 3587,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 119},
@@ -8362,7 +7096,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 18,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
@@ -8370,7 +7103,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 1.8,
-            Workdays = 716,
+            WorkDays = 716,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 31},
@@ -8388,7 +7121,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 15,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 0,  // No hot water tank listed
             HeatConsumptionMW = 0,
@@ -8396,7 +7128,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 105,
             AttractionScore = 2.0,
-            Workdays = 518,
+            WorkDays = 518,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 53},
@@ -8415,7 +7147,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 5,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 0,  // No hot water tank listed
             HeatConsumptionMW = 0,
@@ -8423,7 +7154,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 4.0,
-            Workdays = 282,
+            WorkDays = 282,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 39},
@@ -8444,7 +7175,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 15,
             PowerConsumptionMWh = 3.2,
-            WattageKW = 0,  // Not listed
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8452,7 +7182,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not listed
             MaxVisitors = 450,
             AttractionScore = null,
-            Workdays = 2828,
+            WorkDays = 2828,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 323},
@@ -8470,7 +7200,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 3,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8478,7 +7207,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 15,
             AttractionScore = null,
-            Workdays = 35,
+            WorkDays = 35,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 3.1},
@@ -8494,7 +7223,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 1,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 0,  // Not listed
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8502,7 +7230,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not listed
             MaxVisitors = 5,
             AttractionScore = null,
-            Workdays = 55,
+            WorkDays = 55,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 4.8},
@@ -8517,7 +7245,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 6,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8525,7 +7252,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 48,
             AttractionScore = null,
-            Workdays = 129,
+            WorkDays = 129,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 11},
@@ -8541,7 +7268,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 3,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8549,7 +7275,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 21,
             AttractionScore = null,
-            Workdays = 52,
+            WorkDays = 52,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 4.6},
@@ -8567,7 +7293,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 4,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8575,7 +7300,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 32,
             AttractionScore = null,
-            Workdays = 132,
+            WorkDays = 132,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 11},
@@ -8590,7 +7315,6 @@ class GameData
             Type = AmenityType.Sports,
             WorkersPerShift = 1,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8598,7 +7322,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not listed
             MaxVisitors = 22,
             AttractionScore = null,
-            Workdays = 70,
+            WorkDays = 70,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 6.1},
@@ -8617,7 +7341,6 @@ class GameData
             Type = AmenityType.Pub,
             WorkersPerShift = 1,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0.66,
             HeatConsumptionMW = 0,
@@ -8626,7 +7349,7 @@ class GameData
             MaxVisitors = 12,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
-            Workdays = 26,
+            WorkDays = 26,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { AlcoholResource, 2.0 }
@@ -8648,7 +7371,6 @@ class GameData
             Type = AmenityType.Pub,
             WorkersPerShift = 5,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
@@ -8657,7 +7379,7 @@ class GameData
             MaxVisitors = 60,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
-            Workdays = 149,
+            WorkDays = 149,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { AlcoholResource, 7.5 }
@@ -8680,7 +7402,6 @@ class GameData
             Type = AmenityType.Pub,
             WorkersPerShift = 10,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 6,
             HeatConsumptionMW = 0,
@@ -8689,7 +7410,7 @@ class GameData
             MaxVisitors = 120,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
-            Workdays = 993,
+            WorkDays = 993,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { AlcoholResource, 15.0 }
@@ -8714,7 +7435,6 @@ class GameData
             Type = AmenityType.Pub,
             WorkersPerShift = 8,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.16,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
@@ -8723,7 +7443,7 @@ class GameData
             MaxVisitors = 56,
             AttractionScore = 3.6,
             ProductsOffered = {AlcoholResource},
-            Workdays = 1294,
+            WorkDays = 1294,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { AlcoholResource, 7.5 }
@@ -8746,7 +7466,6 @@ class GameData
             Type = AmenityType.Pub,
             WorkersPerShift = 7,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.14,
             HotWaterTankM3 = 3,
             HeatConsumptionMW = 0,
@@ -8755,7 +7474,7 @@ class GameData
             MaxVisitors = 70,
             AttractionScore = 2.4,
             ProductsOffered = {AlcoholResource},
-            Workdays = 170,
+            WorkDays = 170,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { AlcoholResource, 2.0 }
@@ -8779,7 +7498,6 @@ class GameData
             Type = AmenityType.Pub,
             WorkersPerShift = 10,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
@@ -8788,7 +7506,7 @@ class GameData
             MaxVisitors = 70,
             AttractionScore = 2.5,
             ProductsOffered = {AlcoholResource},
-            Workdays = 712,
+            WorkDays = 712,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { AlcoholResource, 7.5 }
@@ -8815,7 +7533,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,  // Cosmetic, no workers
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.06,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8823,7 +7540,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 558,  // Not listed - requires Grand Monuments research
+            WorkDays = 558,  // Not listed - requires Grand Monuments research
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 73},
@@ -8841,7 +7558,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.03,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8849,7 +7565,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 231,
+            WorkDays = 231,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 25},
@@ -8867,7 +7583,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8875,7 +7590,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 100,
+            WorkDays = 100,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 13},
@@ -8892,7 +7607,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 3.6,
-            WattageKW = 60,
             WaterConsumptionM3 = 0.09,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8900,7 +7614,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 89,
+            WorkDays = 89,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 5.5},
@@ -8918,7 +7632,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.04,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8926,7 +7639,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 25,
+            WorkDays = 25,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 1.1},
@@ -8944,7 +7657,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.01,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8952,7 +7664,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 27,
+            WorkDays = 27,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 1.1},
@@ -8970,7 +7682,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.04,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -8978,7 +7689,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 110,
+            WorkDays = 110,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 4.2},
@@ -8996,7 +7707,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 4.6,
-            WattageKW = 76,
             WaterConsumptionM3 = 0.13,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -9004,7 +7714,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 86,
+            WorkDays = 86,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 4.1},
@@ -9022,7 +7732,6 @@ class GameData
             Type = AmenityType.Fountain,
             WorkersPerShift = 0,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.03,
             HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
@@ -9030,7 +7739,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
             AttractionScore = null,
-            Workdays = 99,
+            WorkDays = 99,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
                 {ConcreteResource, 4.1},
@@ -9050,7 +7759,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 70,
             PowerConsumptionMWh = 4.0,
-            WattageKW = 66,
             WaterConsumptionM3 = 10.85,
             HotWaterTankM3 = 15,
             HeatConsumptionMW = 0,
@@ -9061,7 +7769,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.015,
             AttractionScore = null,
-            Workdays = 6338,
+            WorkDays = 6338,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { FoodResource, 15.0 },
@@ -9090,7 +7798,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 20,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 3.10,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
@@ -9101,7 +7808,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.015,
             AttractionScore = null,
-            Workdays = 1060,
+            WorkDays = 1060,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
                 { FoodResource, 12.0 },
@@ -9132,7 +7839,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 50,  // Max workers
             PowerConsumptionMWh = 4.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 1.60,
             HotWaterTankM3 = 5,
             HeatConsumptionMW = 0,
@@ -9143,7 +7849,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.015,
             AttractionScore = null,
-            Workdays = 3071,
+            WorkDays = 3071,
             VehicleStations = 2,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -9161,7 +7867,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 15,  // Max workers
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 1.75,
             HeatConsumptionMW = 0,
@@ -9172,7 +7877,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.015,
             AttractionScore = null,
-            Workdays = 702,
+            WorkDays = 702,
             VehicleStations = 1,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -9191,7 +7896,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 20,  // Max workers
             PowerConsumptionMWh = 4.8,
-            WattageKW = 80,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 4,
             HeatConsumptionMW = 0,
@@ -9202,7 +7906,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.015,
             AttractionScore = null,
-            Workdays = 1048,
+            WorkDays = 1048,
             VehicleStations = 1,
             ParkingSpots = 8,
             FuelImport = 40.0,  // Oil tank import
@@ -9221,7 +7925,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 8,  // Max workers
             PowerConsumptionMWh = 3.5,
-            WattageKW = 58,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 1.26,
             HeatConsumptionMW = 0,
@@ -9232,7 +7935,7 @@ class GameData
             UsesPercentageBasedDemand = true,
             PopulationPercentageServed = 0.015,
             AttractionScore = null,
-            Workdays = 485,
+            WorkDays = 485,
             VehicleStations = 1,
             ParkingSpots = 4,
             FuelImport = 15.0,  // Oil tank import
@@ -9255,7 +7958,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 30,
             PowerConsumptionMWh = 4.8,
-            WattageKW = 65,
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 2.10,
             HeatConsumptionMW = 0,
@@ -9263,7 +7965,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,  // No visitors listed
             AttractionScore = null,
-            Workdays = 2625,  
+            WorkDays = 2625,  
             VehicleStations = 1,
             ParkingSpots = 8,
             FuelImport = 40.0,  // Oil tank import
@@ -9284,7 +7986,6 @@ class GameData
             Type = AmenityType.CrimeJustice,
             WorkersPerShift = 18,
             PowerConsumptionMWh = 3.5,
-            WattageKW = 58,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 1.26,
             HeatConsumptionMW = 0,
@@ -9292,7 +7993,7 @@ class GameData
             GarbagePerCustomer = 0,
             MaxVisitors = 0,  // No visitors listed
             AttractionScore = null,
-            Workdays = 807,
+            WorkDays = 807,
             VehicleStations = 1,
             ParkingSpots = 4,
             FuelImport = 25.0,  // Oil tank import
@@ -9317,9 +8018,8 @@ class GameData
         {
             Name = "Bus stop",
             Type = TransportationType.Bus,
-            Workdays = 18,
+            WorkDays = 18,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9338,9 +8038,8 @@ class GameData
         {
             Name = "Bus platform (small)",
             Type = TransportationType.Bus,
-            Workdays = 110,
+            WorkDays = 110,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9358,9 +8057,8 @@ class GameData
         {
             Name = "Bus platform (500)",
             Type = TransportationType.Bus,
-            Workdays = 280,
+            WorkDays = 280,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9378,9 +8076,8 @@ class GameData
         {
             Name = "Bus platform (400)",
             Type = TransportationType.Bus,
-            Workdays = 365,
+            WorkDays = 365,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9398,9 +8095,8 @@ class GameData
         {
             Name = "Bus platform (600)",
             Type = TransportationType.Bus,
-            Workdays = 519,
+            WorkDays = 519,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9418,9 +8114,8 @@ class GameData
         {
             Name = "Bus platform (800)",
             Type = TransportationType.Bus,
-            Workdays = 686,
+            WorkDays = 686,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9438,9 +8133,8 @@ class GameData
         {
             Name = "Bus platform (1500)",
             Type = TransportationType.Bus,
-            Workdays = 785,
+            WorkDays = 785,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9458,9 +8152,8 @@ class GameData
         {
             Name = "Bus platform (2000)",
             Type = TransportationType.Bus,
-            Workdays = 926,
+            WorkDays = 926,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9482,9 +8175,8 @@ class GameData
         {
             Name = "Labour pickup hall (200 workers)",
             Type = TransportationType.Bus,
-            Workdays = 682,
+            WorkDays = 682,
             PowerConsumptionMWh = 6.0,
-            WattageKW = 100,
             WaterConsumptionM3 = 4.0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9503,9 +8195,8 @@ class GameData
         {
             Name = "Labour pickup hall (300 workers)",
             Type = TransportationType.Bus,
-            Workdays = 809,
+            WorkDays = 809,
             PowerConsumptionMWh = 9.0,
-            WattageKW = 150,
             WaterConsumptionM3 = 6.0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9527,9 +8218,8 @@ class GameData
         {
             Name = "Tram stop (small)",
             Type = TransportationType.Tram,
-            Workdays = 117,
+            WorkDays = 117,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9548,9 +8238,8 @@ class GameData
         {
             Name = "Tram stop (larger)",
             Type = TransportationType.Tram,
-            Workdays = 170,
+            WorkDays = 170,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9571,9 +8260,8 @@ class GameData
         {
             Name = "Bus end station (3 parking)",
             Type = TransportationType.Station,
-            Workdays = 33,
+            WorkDays = 33,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 3,
@@ -9593,9 +8281,8 @@ class GameData
         {
             Name = "Bus end station (small - 2 parking)",
             Type = TransportationType.Station,
-            Workdays = 279,
+            WorkDays = 279,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 2,
@@ -9615,9 +8302,8 @@ class GameData
         {
             Name = "Bus end station (large - 4 parking)",
             Type = TransportationType.Station,
-            Workdays = 373,
+            WorkDays = 373,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 4,
@@ -9637,9 +8323,8 @@ class GameData
         {
             Name = "Bus end station (large - 7 parking)",
             Type = TransportationType.Station,
-            Workdays = 99,
+            WorkDays = 99,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 7,
@@ -9659,9 +8344,8 @@ class GameData
         {
             Name = "Trolleybus stop",
             Type = TransportationType.Trolley,
-            Workdays = 42,
+            WorkDays = 42,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9682,9 +8366,8 @@ class GameData
         {
             Name = "Trolleybus depot (5 parking)",
             Type = TransportationType.Depot,
-            Workdays = 448,
+            WorkDays = 448,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 5,
@@ -9704,9 +8387,8 @@ class GameData
         {
             Name = "Trolleybus depot (8 parking)",
             Type = TransportationType.Depot,
-            Workdays = 517,
+            WorkDays = 517,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 8,
@@ -9729,9 +8411,8 @@ class GameData
         {
             Name = "Trolleybus end station (7 parking)",
             Type = TransportationType.Station,
-            Workdays = 143,
+            WorkDays = 143,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 7,
@@ -9752,9 +8433,8 @@ class GameData
         {
             Name = "Tram end station (6 parking)",
             Type = TransportationType.Station,
-            Workdays = 489,
+            WorkDays = 489,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 6,
@@ -9775,9 +8455,8 @@ class GameData
         {
             Name = "Tram depot (4 parking)",
             Type = TransportationType.Depot,
-            Workdays = 918,
+            WorkDays = 918,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 4,
@@ -9798,9 +8477,8 @@ class GameData
         {
             Name = "Tram depot (8 parking)",
             Type = TransportationType.Depot,
-            Workdays = 1815,
+            WorkDays = 1815,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 8,
@@ -9823,9 +8501,8 @@ class GameData
         {
             Name = "Gas station (30t fuel, 2 stations)",
             Type = TransportationType.Refueling,
-            Workdays = 98,
+            WorkDays = 98,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9845,9 +8522,8 @@ class GameData
         {
             Name = "Gas station (60t fuel, 4 stations)",
             Type = TransportationType.Refueling,
-            Workdays = 159,
+            WorkDays = 159,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9867,9 +8543,8 @@ class GameData
         {
             Name = "Gas station (120t fuel, 8 stations)",
             Type = TransportationType.Refueling,
-            Workdays = 281,
+            WorkDays = 281,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = null,
@@ -9891,9 +8566,8 @@ class GameData
         {
             Name = "Road vehicles depot (6 parking)",
             Type = TransportationType.Depot,
-            Workdays = 448,
+            WorkDays = 448,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 6,
@@ -9913,9 +8587,8 @@ class GameData
         {
             Name = "Road vehicles depot (13 parking)",
             Type = TransportationType.Depot,
-            Workdays = 785,
+            WorkDays = 785,
             PowerConsumptionMWh = 3.0,
-            WattageKW = 50,
             WaterConsumptionM3 = 0,
             HeatConsumptionMW = 0,
             ParkingSpots = 13,
@@ -9967,7 +8640,7 @@ class GameData
         BitumenResource,
         BiologicalWasteResource,
     };
-    public static List<ProductionBuilding> AllBuildings { get; } = new List<ProductionBuilding>()
+    public static List<ProductionBuilding> AllProductionBuildings { get; } = new List<ProductionBuilding>()
     {
         FoodFactory, Distillery,
         ClothingFactory,
@@ -9980,13 +8653,18 @@ class GameData
         Pumpjack, OilRefinery,
         BauxiteMine, BauxiteProcessingPlant, AluminaPlant, AluminumPlant,
         SmallFarm, MediumFarm, LargeFarm, CreateSmallField(FertilizerType.None), CreateMediumField(FertilizerType.None), CreateLargeField(FertilizerType.None),
-        LivestockFarm, LivestockHall, Slaughterhouse,
+        LivestockFarm, Slaughterhouse,
         CoalPowerPlant, SmallCoalPowerPlant, GasPowerPlant,
         SingleReactorNuclearPowerPlant, AltSingleReactorNuclearPowerPlant, ZaporozieReactor, TwinReactorNuclearPowerPlant,
         BigWindPowerPlant, SmallWindPowerPlant, SolarPowerPlant,
         SmallWaterTreatment, BigWaterTreatment, BigWaterWell, SmallWaterWell, SurfaceWaterIntake,
         SmallSewageTreatment, BigSewageTreatment,
-        LiquidPumpingStation, OilLoadingUnloading, BigOilStorage, UndergroundPumpingStation, MediumOilStorage, SmallOilStorage,
+        LargeCementPlant, MediumCementPlant, ConcretePlant, BrickFactory, AsphaltPlant, LargePrefabPanelsFactory, SmallPrefabPanelsFactory,
+        HeatingPlant, SmallHeatingPlant, 
+    };
+    public static List<SupportBuilding> AllSupportBuildings { get; } = new List<SupportBuilding>()
+    {
+        LivestockHall, LiquidPumpingStation, OilLoadingUnloading, BigOilStorage, UndergroundPumpingStation, MediumOilStorage, SmallOilStorage,
         ConveyorEngineTransfer, ConveyorOverpass,
         SmallDistributionOffice1,HorseDistributionOffice, MediumDistributionOffice1, MediumDistributionOffice2, SmallDistributionOffice2,
         TrainDistributionOffice1, TrainDistributionOffice2,
@@ -9994,9 +8672,7 @@ class GameData
         WarehouseMedium2Railway, WarehouseMedium3Railway, WarehouseMedium4, WarehouseMedium6, WarehouseSmall, WarehouseXS, WarehouseXS2,
         GrainStorageLarge1Railway, GrainStorageLarge2, GrainStorageLarge3, GrainStorageLarge4, GrainStorageLargeRailway, GrainStorageMediumRailway, GrainStorageSmall,
         GrainStorageXL, GrainStorageXLRailway1, GrainStorageXXL, GrainStorageXXLRailway, GrainStorageXXXLRailway,
-        WaterLoadingUnloadingStation, BigWaterPumpingStation, SmallWaterPumpingStation,
-        LargeCementPlant, MediumCementPlant, ConcretePlant, BrickFactory, AsphaltPlant, LargePrefabPanelsFactory, SmallPrefabPanelsFactory,
-        HeatExchanger, HeatingPlant, HeatPumpingStation, SmallHeatExchanger, SmallHeatingPlant, SmallHeatPumpingStation,
+        WaterLoadingUnloadingStation, BigWaterPumpingStation, SmallWaterPumpingStation,HeatExchanger,HeatPumpingStation, SmallHeatExchanger,SmallHeatPumpingStation,
         AggregateStorage1000, AggregateStorage1950, AggregateStorage2000, AggregateStorage2500, AggregateStorage5000, AggregateStorage870,
         TrainAggregateLoading123m, TrainAggregateLoading123mLarge, TrainAggregateLoading23m, TrainAggregateLoading32m, TrainAggregateLoading98m, TruckAggregateLoadingBig, TruckAggregateLoadingSmall, TrainAggregateLoading100m,
         OpenStorageMedium, OpenStorageSmall250, OpenStorageSmall330,
@@ -10005,13 +8681,6 @@ class GameData
         DryBulkStorage1000,DryBulkStorage1150,DryBulkStorage150,DryBulkStorage2300,DryBulkStorage2615,DryBulkStorage300,CementSilo500,CementSilo500Alt, DryBulkConveyorEngineTransfer, DryBulkConveyorOverpass,
         SewageDischarge,SewageLoadingUnloadingStation,SewagePump10m,SewagePump15m,SewagePump5m,SewageTank,
     };
-    public static List<ProductionBuilding> AllSupportBuildings
-    {
-        get
-        {
-            return AllBuildings.Where(b => b.IsSupportBuildings).ToList();
-        }
-    }
     public static List<AmenityBuilding> AllAmenityBuildings
     {
         get {

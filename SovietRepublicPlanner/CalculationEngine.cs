@@ -1,6 +1,6 @@
 ﻿class CalculationEngine
 {
-    public static CalculationResult Calculate(string resourceName, double targetAmount)
+    public static IndustryPlan Calculate(string resourceName, double targetAmount)
     {
         // Search TargetResource
         Resource targetResource = null;
@@ -13,7 +13,7 @@
         }
 
         // Construct CalculationResult instance
-        CalculationResult result = new CalculationResult();
+        IndustryPlan result = new IndustryPlan();
         BuildingRequirement targetBuildingRequirement = null;
         List<BuildingRequirement> targetBuildingRequirements = new List<BuildingRequirement>() { };
 
@@ -267,7 +267,7 @@
     public static List<ProductionBuilding> FindBuildingForResource(string resourceName)
     {
         List<ProductionBuilding> result = new List<ProductionBuilding>();
-        foreach (ProductionBuilding production_building in GameData.AllBuildings) {
+        foreach (ProductionBuilding production_building in GameData.AllProductionBuildings) {
             // Check if it's Sewage treatment
             if (production_building.SewageDisposalCapacity > 0 && production_building.Outputs.Any(ra => ra.Resource.Name == resourceName)) 
                 result.Add(production_building);

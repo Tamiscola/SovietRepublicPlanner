@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class CalculationResult
+public partial class IndustryPlan
 {
     // Resources
     public HashSet<Resource> ExpandedResources
@@ -40,7 +40,7 @@ public partial class CalculationResult
             return CalculateTotalResidue();
         }
     }
-    public List<CalculationResult> SubChains { get; set; } = new List<CalculationResult>();
+    public List<IndustryPlan> SubChains { get; set; } = new List<IndustryPlan>();
     public Dictionary<Resource, double> InternallySourcedResources
     {
         get
@@ -115,7 +115,7 @@ public partial class CalculationResult
         }
     }
 
-    public void CalculateTotalImports(Dictionary<Resource, double> DictImport, HashSet<Resource> expandedResources, CalculationResult cr)
+    public void CalculateTotalImports(Dictionary<Resource, double> DictImport, HashSet<Resource> expandedResources, IndustryPlan cr)
     {
         // Add this level's non-expanded resources
         if (TargetResource.Name == "Crops")
@@ -160,7 +160,7 @@ public partial class CalculationResult
         }
 
         // Recursively collect from SubChains
-        foreach (CalculationResult subchain in SubChains)
+        foreach (IndustryPlan subchain in SubChains)
         {
             subchain.CalculateTotalImports(DictImport, expandedResources, subchain);
         }
@@ -209,7 +209,7 @@ public partial class CalculationResult
         return result;
     }
 
-    public Dictionary<Resource, double> CalculateTotalOutput(Dictionary<Resource, double> result, CalculationResult cr)
+    public Dictionary<Resource, double> CalculateTotalOutput(Dictionary<Resource, double> result, IndustryPlan cr)
     {
         foreach (var kv in cr.ChosenBuilding.ExpectedOutput)
         {
@@ -220,7 +220,7 @@ public partial class CalculationResult
             CalculateTotalOutput(result, sub);
         return result;
     }
-    public HashSet<Resource> FindExpandedResources(HashSet<Resource> result, CalculationResult cr)
+    public HashSet<Resource> FindExpandedResources(HashSet<Resource> result, IndustryPlan cr)
     {
         // Crops
         if (cr.TargetResource == GameData.CropsResource)
@@ -240,7 +240,7 @@ public partial class CalculationResult
         return result;
     }
 
-    public Dictionary<Resource, double> CalculateTotalInternallySourced(Dictionary<Resource, double> result, CalculationResult cr)
+    public Dictionary<Resource, double> CalculateTotalInternallySourced(Dictionary<Resource, double> result, IndustryPlan cr)
     {
         // Add this node's internally sourced resources
         foreach (var kv in cr.InternallySourcedResources)
@@ -260,7 +260,7 @@ public partial class CalculationResult
         return result;
     }
 
-    public Dictionary<Resource, double> CalculateTotalConstructionMaterials(Dictionary<Resource, double> result, CalculationResult cr)
+    public Dictionary<Resource, double> CalculateTotalConstructionMaterials(Dictionary<Resource, double> result, IndustryPlan cr)
     {
         // Industrial Buildings
         foreach (var kv in cr.ChosenBuilding.ConstructionMaterials)

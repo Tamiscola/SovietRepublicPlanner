@@ -26,9 +26,8 @@ public enum PopulationType
     YoungAdults,
     Citizen
 }
-public class AmenityBuilding
+public class AmenityBuilding : Building
 {
-    public string Name { get; set; }
     public AmenityType Type { get; set; }
 
     // Worker & Visitor info
@@ -66,8 +65,6 @@ public class AmenityBuilding
     public PopulationType ServesPopulationType { get; set; } = PopulationType.Workers;
 
     // Utilities
-    public double PowerConsumptionMWh { get; set; }
-    public double WattageKW { get; set; }
     public double WaterConsumptionM3 { get; set; }
     public double HotWaterTankM3 { get; set; }
     public double HeatConsumptionMW { get; set; }
@@ -101,10 +98,6 @@ public class AmenityBuilding
     public double? QualityOfFlats { get; set; }  //  (for prisons - housing prisoners)
     public double FuelImport { get; set; } = 0;  //  (oil tank for police vehicles)
     public string RequiresResearch { get; set; }  //  (e.g., "Secret Police")
-
-    // Construction
-    public int Workdays { get; set; }
-    public Dictionary<Resource, double> ConstructionMaterials = new Dictionary<Resource, double>();
 
     // Weather requirement (for beach cafe)
     public double? MinTemperature { get; set; }

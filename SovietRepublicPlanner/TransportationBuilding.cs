@@ -7,19 +7,12 @@
     Station,
     Refueling,
 }
-public class TransportationBuilding
+public class TransportationBuilding : Building
 {
     // Identification
-    public string Name;
     public TransportationType Type;  // enum: Bus, Trolley, Tram, Depot, Station, Refueling, Maintenance
 
-    // Construction
-    public int Workdays { get; set; }
-    public Dictionary<Resource, double> ConstructionMaterials = new Dictionary<Resource, double>();
-
     // Utilities (same as other buildings)
-    public double PowerConsumptionMWh;
-    public double WattageKW;
     public double WaterConsumptionM3;
     public double HeatConsumptionMW;
 

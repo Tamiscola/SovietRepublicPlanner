@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class CalculationResult
+public partial class IndustryPlan
 {
     public void DisplayTotalReceipt()
     {
@@ -254,7 +254,7 @@ public partial class CalculationResult
     }
 
     // Helper method to recursively list buildings
-    public void DisplayAllBuildings(CalculationResult result, int depth)
+    public void DisplayAllBuildings(IndustryPlan result, int depth)
     {
         string indent = new string(' ', depth * 2);
         string supportIndent = indent + "  └";

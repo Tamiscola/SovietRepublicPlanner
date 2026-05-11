@@ -1,4 +1,6 @@
-﻿public class SavedIndustryPlan
+﻿using System;
+
+public class SavedIndustryPlan
 {
     public string ResourceName { get; set; }
     public string BuildingName { get; set; }
@@ -28,7 +30,7 @@
         public string Name { get; set; }
         public double Amount { get; set; }
     }
-    public static SavedIndustryPlan ConvertToSavedPlan(CalculationResult plan)
+    public static SavedIndustryPlan ConvertToSavedPlan(IndustryPlan plan)
     {
         // Find chosen building index
         int chosenIndex = -1;
@@ -67,18 +69,18 @@
 
         return saved;
     }
-    public static CalculationResult ConvertFromSavedPlan(SavedIndustryPlan savedPlan)
+    public static IndustryPlan ConvertFromSavedPlan(SavedIndustryPlan savedPlan)
     {
-        CalculationResult result;
+        IndustryPlan result;
 
         if (savedPlan.IsBuildingBasedPlan)
         {
             // Reconstruct building-based plan
-            result = new CalculationResult();
+            result = new IndustryPlan();
             result.WorkersProductivity = savedPlan.Productivity;
             result.TargetAmount = 0;
 
-            var building = GameData.AllBuildings
+            var building = GameData.AllProductionBuildings
                 .FirstOrDefault(b => b.Name == savedPlan.BuildingName);
 
             if (building != null)
@@ -113,38 +115,10 @@
                     foreach (var savedbi in savedPlan.SupportBuildings)
                     {
                         BuildingRequirement supportBuilding = new BuildingRequirement(GameData.AllSupportBuildings.FirstOrDefault(sb => sb.Name == savedbi.BuildingName));
+                        if (supportBuilding != null)
+                            throw new InvalidOperationException($"Support Infrastructure '{savedbi.BuildingName}' not found in GameData.");
                         supportBuilding.Count = savedbi.Count;
                         result.SupportBuildings.Add(supportBuilding);
-                    }
-                }
-
-                // Reconstruct residential buildings
-                if (savedPlan.ResidentialBuildings != null && savedPlan.ResidentialBuildings.Count() > 0)
-                {
-                    foreach (var savedRes in savedPlan.ResidentialBuildings)
-                    {
-                        ResidentialBuilding resBldg = GameData.AllResidentialBuildings.FirstOrDefault(rb => rb.Name == savedRes.BuildingName);
-                        if (resBldg != null)
-                        {
-                            ResidentialInstance resInstance = new ResidentialInstance
-                            {
-                                Building = resBldg,
-                                Count = savedRes.Count
-                            };
-                            result.ResidentialBuildings.Add(resInstance);
-                        }
-                    }
-                }
-
-                // Reconstruct amenity buildings
-                if (savedPlan.AmenityBuildings != null && savedPlan.AmenityBuildings.Count() > 0)
-                {
-                    foreach (var savedbi in savedPlan.AmenityBuildings)
-                    {
-                        AmenityInstance amenityBuilding = new AmenityInstance();
-                        amenityBuilding.Building = GameData.AllAmenityBuildings.FirstOrDefault(ab => ab.Name == savedbi.BuildingName);
-                        amenityBuilding.Count = savedbi.Count;
-                        result.AmenityBuildings.Add(amenityBuilding);
                     }
                 }
 
@@ -155,6 +129,8 @@
                     {
                         TransportationInstance transportationInstance = new TransportationInstance();
                         transportationInstance.Building = GameData.TransportationBuildings.FirstOrDefault(ti => ti.Name == savedbi.BuildingName);
+                        if (transportationInstance.Building != null)
+                            throw new InvalidOperationException($"Transportation building '{savedbi.BuildingName}' not found in GameData.");
                         transportationInstance.Count = savedbi.Count;
                         result.TransportationBuildings.Add(transportationInstance);
                     }
@@ -170,13 +146,13 @@
         else
         {
             // Reconstruct resource-target plan WITHOUT re-calculating
-            result = new CalculationResult();
+            result = new IndustryPlan();
             result.TargetResource = GameData.AllResources.FirstOrDefault(r => r.Name == savedPlan.ResourceName);
             result.TargetAmount = savedPlan.Amount;
             result.WorkersProductivity = savedPlan.Productivity;
 
             // Find the saved building by name
-            var building = GameData.AllBuildings.FirstOrDefault(b => b.Name == savedPlan.BuildingName);
+            var building = GameData.AllProductionBuildings.FirstOrDefault(b => b.Name == savedPlan.BuildingName);
 
             if (building != null)
             {
@@ -218,38 +194,6 @@
                             br2.Count = savedbi.Count;
                             result.SupportBuildings.Add(br2);
                         }
-                    }
-                }
-
-                // Reconstruct residential buildings
-                if (savedPlan.ResidentialBuildings != null && savedPlan.ResidentialBuildings.Count > 0)
-                {
-                    foreach (var savedRes in savedPlan.ResidentialBuildings)
-                    {
-                        ResidentialBuilding resBldg = GameData.AllResidentialBuildings
-                            .FirstOrDefault(rb => rb.Name == savedRes.BuildingName);
-                        if (resBldg != null)
-                        {
-                            ResidentialInstance resInstance = new ResidentialInstance
-                            {
-                                Building = resBldg,
-                                Count = savedRes.Count
-                            };
-                            result.ResidentialBuildings.Add(resInstance);
-                        }
-                    }
-                }
-
-                // Reconstruct amenity buildings
-                if (savedPlan.AmenityBuildings != null && savedPlan.AmenityBuildings.Count > 0)
-                {
-                    foreach (var savedbi in savedPlan.AmenityBuildings)
-                    {
-                        AmenityInstance amenityBuilding = new AmenityInstance();
-                        amenityBuilding.Building = GameData.AllAmenityBuildings
-                            .FirstOrDefault(ab => ab.Name == savedbi.BuildingName);
-                        amenityBuilding.Count = savedbi.Count;
-                        result.AmenityBuildings.Add(amenityBuilding);
                     }
                 }
 
