@@ -1,4 +1,5 @@
 ﻿public class SavedFile
 {
-    public List<City> Cities { get; set; } = new List<City>();
+    public string Name { get; set; }
+    public List<SavedCity> Cities { get; set; } = new List<SavedCity>();
 }

@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 public partial class City
 {
     public string Name { get; set; }
-    public List<IndustryPlan> plans = new List<IndustryPlan>();
+    public List<IndustryPlan> industryPlans = new List<IndustryPlan>();
     public List<MicroDistrict> microDistricts = new List<MicroDistrict>();
 
     // Initialize totals
@@ -18,7 +18,7 @@ public partial class City
         get
         {
             int total = 0;
-            foreach (var plan in plans) total += plan.TotalWorkers;
+            foreach (var plan in industryPlans) total += plan.TotalWorkers;
             return total;
         }
     }
@@ -26,7 +26,7 @@ public partial class City
         get
         {
             int total = 0;
-            foreach (var plan in plans) total += plan.TotalPopulationNeeded;
+            foreach (var plan in industryPlans) total += plan.TotalPopulationNeeded;
             return total;
         }
     }
@@ -35,7 +35,7 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in plans) total += plan.TotalPowerNeeded;
+            foreach (var plan in industryPlans) total += plan.TotalPowerNeeded;
             return total;
         }
     }
@@ -44,7 +44,7 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in plans) total += plan.TotalWaterNeeded;
+            foreach (var plan in industryPlans) total += plan.TotalWaterNeeded;
             return total;
         }
     }
@@ -53,7 +53,7 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in plans) total += plan.TotalHeatNeeded;
+            foreach (var plan in industryPlans) total += plan.TotalHeatNeeded;
             return total;
         }
     }
@@ -62,7 +62,7 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in plans) total += plan.TotalGarbageProduced;
+            foreach (var plan in industryPlans) total += plan.TotalGarbageProduced;
             return total;
         }
     }
@@ -71,7 +71,7 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in plans) total+= plan.TotalEnvironmentPollution;
+            foreach (var plan in industryPlans) total+= plan.TotalEnvironmentPollution;
             return total;
         }
     }
@@ -80,7 +80,7 @@ public partial class City
         get
         {
             int total = 0;
-            foreach (var plan in plans) total+= plan.TotalHousingCapacity;
+            foreach (var d in microDistricts) total+= d.TotalHousingCapacity;
             return total;
         }
     }
@@ -88,7 +88,7 @@ public partial class City
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach (var kv in plan.ExpandedUtilities)
                 {
@@ -109,7 +109,7 @@ public partial class City
         get 
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach(var kv in plan.TotalImports)
                 {
@@ -125,7 +125,7 @@ public partial class City
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach (var kv in plan.TotalResidues)
                 {
@@ -141,7 +141,7 @@ public partial class City
         get 
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach (var kv in plan.TotalCitizenConsumption)
                 {
@@ -157,7 +157,7 @@ public partial class City
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach (var kv in plan.TotalImports)
                 {
@@ -173,17 +173,17 @@ public partial class City
             return r;
         }
     }
-    public Dictionary<ProductionBuilding, int> combinedSupBldgs
+    public Dictionary<SupportBuilding, int> combinedSupBldgs
     {
         get
         {
-            Dictionary<ProductionBuilding, int> r = new Dictionary<ProductionBuilding, int>();
-            foreach (var plan in plans)
+            Dictionary<SupportBuilding, int> r = new Dictionary<SupportBuilding, int>();
+            foreach (var plan in industryPlans)
             {
-                foreach (var kv in plan.AllSupportBuildings)
+                foreach (var kv in plan.SupportBuildings)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r.Add(kv.Key, kv.Value);
+                    if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
+                    else r.Add(kv.Building, kv.Count);
                 }
             }
             return r;
@@ -194,7 +194,7 @@ public partial class City
         get
         {
             Dictionary<AmenityBuilding, int> r = new Dictionary<AmenityBuilding, int>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach (var kv in plan.AmenityBuildings)
                 {
@@ -210,7 +210,7 @@ public partial class City
         get
         {
             Dictionary<TransportationBuilding, int> r = new Dictionary<TransportationBuilding, int>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach (var kv in plan.TransportationBuildings)
                 {
@@ -226,7 +226,7 @@ public partial class City
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in plans)
+            foreach (var plan in industryPlans)
             {
                 foreach(var kv in plan.TotalConstructionMaterials)
                 {
@@ -242,7 +242,7 @@ public partial class City
         var saved = new SavedCity
         {
             Name = city.Name,
-            IndustryPlans = city.plans
+            savedIndustryPlans = city.industryPlans
                 .Select(p => SavedIndustryPlan.ConvertToSavedPlan(p))
                 .ToList(),
         };
@@ -252,7 +252,7 @@ public partial class City
     {
         City c = new City();
         c.Name = sc.Name;
-        c.plans = sc.IndustryPlans
+        c.industryPlans = sc.savedIndustryPlans
             .Select(p => SavedIndustryPlan.ConvertFromSavedPlan(p))
             .ToList();
         return c;

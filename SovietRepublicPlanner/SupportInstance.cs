@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class SupportInstance
+public class SupportInstance
 {
     public SupportBuilding Building { get; set; }
     public int Count { get; set; }

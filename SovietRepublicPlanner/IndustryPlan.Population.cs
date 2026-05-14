@@ -14,10 +14,9 @@ public partial class IndustryPlan
         {
             int thisLevel = ChosenBuilding.TotalWorkers;
             int subChainTotal = SubChains.Sum(sc => sc.TotalWorkers);
-            int supportTotal = SupportBuildings.Sum(sc => sc.TotalWorkers);
 
             // Calculate base population from production workers
-            int baseProductionWorkers = thisLevel + subChainTotal + supportTotal;
+            int baseProductionWorkers = thisLevel + subChainTotal;
             int baseCitizens = (int)(baseProductionWorkers * 1.82); // Citizens = workers × 1.82
 
             // Add full-capacity amenity workers (non-percentage-based)
@@ -39,8 +38,6 @@ public partial class IndustryPlan
             return baseProductionWorkers + fullCapacityAmenityWorkers + percentageBasedWorkers;
         }
     }
-    public double WorkerToPopulationRatio { get; set; } = 0.55;     // 55% are workers
+    public double WorkerToPopulationRatio { get; set; } = 0.70;     // 55% are workers
     public int TotalPopulationNeeded => (int)Math.Ceiling(TotalWorkers / WorkerToPopulationRatio);
-    public int TotalHousingCapacity => ResidentialBuildings.Sum(rb => rb.Building.WorkerCapacity * rb.Count);
-
 }

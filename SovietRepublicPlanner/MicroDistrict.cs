@@ -20,6 +20,7 @@ public class MicroDistrict
             return r;
         }
     }
+
     // Utilities
     public double PowerConsumption { get; set; }        // MW
     public double WaterConsumption { get; set; }        // ㎥/day

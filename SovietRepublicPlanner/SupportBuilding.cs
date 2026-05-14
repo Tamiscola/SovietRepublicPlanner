@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class SupportBuilding : Building
+public class SupportBuilding : Building
 {
     public SupportCategory SupportCategory { get; set; } = SupportCategory.None;
     public double WaterConsumption { get; set; } = 0;   // For LiveStockHall

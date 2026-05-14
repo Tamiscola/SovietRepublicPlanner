@@ -14,28 +14,42 @@ namespace SovietRepublicPlanner
     internal class Program
     {
         static List<IndustryPlan> allPlans = new List<IndustryPlan>();
+        static List<MicroDistrict> allMicroDistricts = new List<MicroDistrict>();
+        static List<City> allCities = new List<City>();
+        static City city = new City()
+        {
+            industryPlans = allPlans,
+            microDistricts = allMicroDistricts
+        };
+        static SavedFile savedFile = new SavedFile()
+        {
+            Name = "plans.json",
+        };
+
         // Navigation pointer: Points to the current position in the active plan's tree
         // Used for commands that navigate/modify existing plans (expand, dive, back, cancel)
         // - At root level: currentResult == rootResult (the plan itself)
         // - When diving: currentResult points to a SubChain within the plan
         // - When expanding: operations are performed on currentResult's level
-        // DO NOT use this when creating NEW plans - create a local CalculationResult instead
+
         static IndustryPlan currentResult;
         static int currentPlanIndex = -1;
         static IndustryPlan rootResult => (currentPlanIndex >= 0 && currentPlanIndex < allPlans.Count)
     ? allPlans[currentPlanIndex]
     : null;
         static Stack<IndustryPlan> navigationStack = new Stack<IndustryPlan>();
+        static MicroDistrict microDistrict = new MicroDistrict();
         static string currentSaveFile = "plans.json";
-        static string plansDirectory = Path.Combine(Directory.GetCurrentDirectory(), "plans");
-        static string[] jsonFiles = Directory.Exists(plansDirectory)
-            ? Directory.GetFiles(plansDirectory, "*.json")
+        static string fileDirectory = Path.Combine(Directory.GetCurrentDirectory(), "plans");
+        static string[] jsonFiles = Directory.Exists(fileDirectory)
+            ? Directory.GetFiles(fileDirectory, "*.json")
             : new string[0];    // Empty array if folder doesn't exist
+
         static void Main(string[] args)
         {
             // Check if there's 'plans' folder
-            if (!Directory.Exists(plansDirectory))
-                Directory.CreateDirectory(plansDirectory);
+            if (!Directory.Exists(fileDirectory))
+                Directory.CreateDirectory(fileDirectory);
 
             // Load existing plans if they exist
             if (jsonFiles.Length > 0)
@@ -55,14 +69,14 @@ namespace SovietRepublicPlanner
                         Console.Write("Choose file to load: ");
                         if (int.TryParse(Console.ReadLine(), out loadChoice) &&  loadChoice >= 0 && loadChoice < jsonFiles.Length)
                         {
-                            allPlans = LoadPlans(Path.Combine(plansDirectory, jsonFiles[loadChoice]));
+                            allCities = LoadFile(Path.Combine(fileDirectory, jsonFiles[loadChoice]));
                             currentSaveFile = Path.GetFileName(jsonFiles[loadChoice]);
                         } else { Console.WriteLine("Invalid input"); continue; }
                         break;
                     }
 
                     // Display success message
-                    if (allPlans.Count > 0)
+                    if (allCities.Count > 0)
                     {
                         currentPlanIndex = 0;
                         currentResult = allPlans[0];
@@ -104,9 +118,10 @@ namespace SovietRepublicPlanner
                         int saveChoice;
                         if (int.TryParse(Console.ReadLine(), out saveChoice) && saveChoice >= 0 && saveChoice <= 1)
                         {
-                            if (saveChoice == 0) SavePlans(allPlans, Path.Combine(plansDirectory, currentSaveFile));
+                            if (saveChoice == 0) SaveFile(allCities, Path.Combine(fileDirectory, currentSaveFile));
                             else if (saveChoice == 1) 
                             {
+                                // create a new filename
                                 while (true)
                                 {
                                     Console.Write($"Type the save file name: ");
@@ -114,7 +129,7 @@ namespace SovietRepublicPlanner
                                     if (!currentSaveFile.EndsWith(".json")) currentSaveFile += ".json";
                                     break;
                                 }
-                                SavePlans(allPlans, Path.Combine(plansDirectory, currentSaveFile));
+                                SaveFile(allCities, Path.Combine(fileDirectory, currentSaveFile));
                             }
                         } else { Console.WriteLine("Invalid input."); continue; }
                         Console.WriteLine("\n✓ Plans saved!");
@@ -240,41 +255,42 @@ namespace SovietRepublicPlanner
                 Console.WriteLine($"Pollution emitted: {result.Buildings[i].TotalEnvironmentPollution:F6}");
             }
         }
-        static void SavePlans(List<IndustryPlan> plans, string filename)
+        static void SaveFile(List<City> cities, string filename)
         {
             try
             {
                 var saveFile = new SavedFile
                 {
-                    Plans = plans.Select(p => SavedIndustryPlan.ConvertToSavedPlan(p)).ToList()
+                    Name = filename,
+                    Cities = cities.Select(c => City.ConvertToSavedCity(c)).ToList()
                 };
 
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(saveFile, options);
                 File.WriteAllText(filename, jsonString);
-                Console.WriteLine($"\n✓ Plans saved to {filename}");
+                Console.WriteLine($"\n✓ Cities saved to {filename}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"\n✗ Error saving plans: {ex.Message}");
+                Console.WriteLine($"\n✗ Error saving Cities: {ex.Message}");
             }
         }
-        static List<IndustryPlan> LoadPlans(string filename)
+        static List<City> LoadFile(string filename)
         {
             try
             {
                 string jsonString = File.ReadAllText(filename);
                 var saveFile = JsonSerializer.Deserialize<SavedFile>(jsonString);
-                var plans = saveFile.Plans
-                    .Select(sp => SavedIndustryPlan.ConvertFromSavedPlan(sp))
+                var cities = saveFile.Cities
+                    .Select(c => City.ConvertFromSavedCity(c))
                     .ToList();
-                Console.WriteLine($"✓ Loaded {plans.Count} plan(s) from {filename}\n");
-                return plans;
+                Console.WriteLine($"✓ Loaded {cities.Count} city(s) from {filename}\n");
+                return cities;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"✗ Error loading plans: {ex.Message}\n");
-                return new List<IndustryPlan>();
+                Console.WriteLine($"✗ Error loading Cities: {ex.Message}\n");
+                return new List<City>();
             }
         }
         static void CreateNewPlan()
@@ -481,7 +497,7 @@ namespace SovietRepublicPlanner
             // Building Choice : User Interaction
             List<ProductionBuilding> allBuildings = GameData.AllProductionBuildings;
             List<ProductionBuilding> allExtractions = allBuildings.Where(b => b.IsQualityDependent).ToList();
-            List<ProductionBuilding> allProcessing = allBuildings.Where(b => !b.IsQualityDependent && !b.IsSeasonDependent && !b.IsSupportBuildings && !b.IsUtilityBuilding).ToList();
+            List<ProductionBuilding> allProcessing = allBuildings.Where(b => !b.IsQualityDependent && !b.IsSeasonDependent && !b.IsUtilityBuilding).ToList();
             List<ProductionBuilding> selectedCategory = new List<ProductionBuilding>();
             int userInput = 0;
             double inputAmount = 0;
@@ -1116,9 +1132,9 @@ namespace SovietRepublicPlanner
                 else if (command == "masterplan")
                 {
                     City city = null;
-                    city.plans = allPlans;
+                    city.industryPlans = allPlans;
 
-                    if (city.plans.Count == 0) { Console.WriteLine("No plans created yet."); continue; }
+                    if (city.industryPlans.Count == 0) { Console.WriteLine("No plans created yet."); continue; }
                     else { city.Display();}
                     continue;
                 }
@@ -1127,16 +1143,16 @@ namespace SovietRepublicPlanner
                     //  Detect needed infrastructure types
                     //      Collect all resources that need infrastructure
                     HashSet<Resource> allIOResources = new HashSet<Resource>();
-                    List<ProductionBuilding> liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
-                    List<ProductionBuilding> bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
-                    List<ProductionBuilding> dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
-                    List<ProductionBuilding> solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
-                    List<ProductionBuilding> generalInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
-                    List<ProductionBuilding> waterInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
-                    List<ProductionBuilding> powerInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
-                    List<ProductionBuilding> sewageInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
-                    List<ProductionBuilding> heatInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
-                    Dictionary<int, List<ProductionBuilding>> categoryBuildings = new Dictionary<int, List<ProductionBuilding>>();
+                    List<SupportBuilding> liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
+                    List<SupportBuilding> bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
+                    List<SupportBuilding> dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
+                    List<SupportBuilding> solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
+                    List<SupportBuilding> generalInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
+                    List<SupportBuilding> waterInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
+                    List<SupportBuilding> powerInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
+                    List<SupportBuilding> sewageInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
+                    List<SupportBuilding> heatInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
+                    Dictionary<int, List<SupportBuilding>> categoryBuildings = new Dictionary<int, List<SupportBuilding>>();
                     int catIndex = 0;
 
                     //      Add outputs
@@ -1251,7 +1267,7 @@ namespace SovietRepublicPlanner
                     }
 
                     // User selection - Buildings, Count
-                    Dictionary<ProductionBuilding, int> chosenSupports = new Dictionary<ProductionBuilding, int>();
+                    Dictionary<SupportBuilding, int> chosenSupports = new Dictionary<SupportBuilding, int>();
                     string inputStrings;
                     while (true)
                     {
@@ -1308,11 +1324,14 @@ namespace SovietRepublicPlanner
                         if (validInput) break;
                     }
 
-                    // Create BuildingRequirement and add to SupportBuildings
+                    // Add to SupportBuildings
                     foreach (var cb in chosenSupports)
                     {
-                        BuildingRequirement addSupBuilding = new BuildingRequirement(cb.Key);
-                        addSupBuilding.Count = cb.Value;
+                        SupportInstance addSupBuilding = new SupportInstance()
+                        {
+                            Building = cb.Key,
+                            Count = cb.Value
+                        };
                         currentResult.SupportBuildings.Add(addSupBuilding);
                         Console.WriteLine($"{cb.Key.Name}: {cb.Value} added to the {currentResult.ChosenBuilding.Building.Name}!");
                     }
@@ -1725,27 +1744,27 @@ namespace SovietRepublicPlanner
                         }
                         else if (buildChoice == 2)
                         {
-                            if (currentResult.AllSupportBuildings.Count > 0)
+                            if (currentResult.SupportBuildings.Count > 0)
                             {
-                                Dictionary<int, ProductionBuilding> supIndex = new Dictionary<int, ProductionBuilding>();
+                                Dictionary<int, SupportInstance> supIndex = new Dictionary<int, SupportInstance>();
                                 Console.WriteLine("Which Support Building do you want to cancel?:");
                                 int i = 0;
-                                foreach (var kv in currentResult.AllSupportBuildings)
+                                foreach (var si in currentResult.SupportBuildings)
                                 {
-                                    Console.WriteLine($"{i}: {kv.Key.Name} x {kv.Value}");
-                                    supIndex.Add(i, kv.Key);
+                                    Console.WriteLine($"{i}: {si.Building.Name} x {si.Count}");
+                                    supIndex.Add(i, si);
                                     i++;
                                 }
                                 Console.Write("Choose the number to cancel: ");
                                 if (int.TryParse(Console.ReadLine(), out undoChoice)
                                     && undoChoice >= 0
-                                    && undoChoice < currentResult.AllSupportBuildings.Count)
+                                    && undoChoice < currentResult.SupportBuildings.Count)
                                 {
                                     var buildingToRemove = supIndex[undoChoice];
 
                                     // Recursively search and remove
-                                    if (currentResult.RemoveSupportBuilding(buildingToRemove))
-                                        Console.WriteLine($"{buildingToRemove.Name} has been canceled.");
+                                    if (currentResult.SupportBuildings.Remove(buildingToRemove))
+                                        Console.WriteLine($"{buildingToRemove.Building.Name} has been canceled.");
                                     else Console.WriteLine("Error: Building not found in tree.");
                                 }
                                 else { Console.WriteLine("Invalid input."); continue; }

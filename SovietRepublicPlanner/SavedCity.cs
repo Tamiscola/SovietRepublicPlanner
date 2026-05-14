@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 public class SavedCity
 {
     public string Name { get; set; }
-    public List<SavedIndustryPlan> IndustryPlans { get; set; }
-    public List<MicroDistrict> ResidentialArea { get; set; }
+    public List<SavedIndustryPlan> savedIndustryPlans { get; set; }
+    public List<SavedMicroDistrict> savedMicroDistrict { get; set; }
 }
-

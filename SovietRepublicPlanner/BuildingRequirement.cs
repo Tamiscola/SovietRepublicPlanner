@@ -30,7 +30,7 @@ public class BuildingRequirement
     public Dictionary<Resource, double> ConstructionMaterials => CalculateConstructionMaterials();
 
     // Utilities
-    public double TotalPowerNeeded => Count * Building.PowerConsumption;
+    public double TotalPowerNeeded => Count * Building.PowerConsumptionMWh;
     public double TotalWaterNeeded => Count * Building.WaterConsumption;
     public double TotalSewageProduced => Count * Building.SewageProduction;
     public double TotalSewageDisposalCapacity => Count * Building.SewageDisposalCapacity;

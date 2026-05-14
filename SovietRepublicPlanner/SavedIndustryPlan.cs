@@ -12,8 +12,8 @@ public class SavedIndustryPlan
     public List<double> BuildingQualities { get; set; }     // For mines/quarries
     public bool UsesVehicles { get; set; } = false;
     public List<SavedIndustryPlan> SubChains { get; set; } = new List<SavedIndustryPlan>();
-    public List<SavedBuildingInstance> SupportBuildings { get; set; }
-    public class SavedBuildingInstance
+    public List<SavedSupportInstance> SupportBuildings { get; set; }
+    public class SavedSupportInstance
     {
         public string BuildingName { get; set; }
         public int Count { get; set; }
@@ -55,7 +55,7 @@ public class SavedIndustryPlan
             SubChains = plan.SubChains
                 .Select(sc => ConvertToSavedPlan(sc))  // Calls itself!
                 .ToList(),
-            SupportBuildings = plan.SupportBuildings.Select(br => new SavedIndustryPlan.SavedBuildingInstance
+            SupportBuildings = plan.SupportBuildings.Select(br => new SavedIndustryPlan.SavedSupportInstance
             {
                 BuildingName = br.Building.Name,
                 Count = br.Count
@@ -114,11 +114,12 @@ public class SavedIndustryPlan
                 {
                     foreach (var savedbi in savedPlan.SupportBuildings)
                     {
-                        BuildingRequirement supportBuilding = new BuildingRequirement(GameData.AllSupportBuildings.FirstOrDefault(sb => sb.Name == savedbi.BuildingName));
-                        if (supportBuilding != null)
+                        SupportInstance supportInstance = new SupportInstance();
+                        supportInstance.Building = GameData.AllSupportBuildings.FirstOrDefault(b => b.Name == savedbi.BuildingName);
+                        if (supportInstance.Building == null)
                             throw new InvalidOperationException($"Support Infrastructure '{savedbi.BuildingName}' not found in GameData.");
-                        supportBuilding.Count = savedbi.Count;
-                        result.SupportBuildings.Add(supportBuilding);
+                        supportInstance.Count = savedbi.Count;
+                        result.SupportBuildings.Add(supportInstance);
                     }
                 }
 
@@ -129,7 +130,7 @@ public class SavedIndustryPlan
                     {
                         TransportationInstance transportationInstance = new TransportationInstance();
                         transportationInstance.Building = GameData.TransportationBuildings.FirstOrDefault(ti => ti.Name == savedbi.BuildingName);
-                        if (transportationInstance.Building != null)
+                        if (transportationInstance.Building == null)
                             throw new InvalidOperationException($"Transportation building '{savedbi.BuildingName}' not found in GameData.");
                         transportationInstance.Count = savedbi.Count;
                         result.TransportationBuildings.Add(transportationInstance);
@@ -185,15 +186,13 @@ public class SavedIndustryPlan
                 {
                     foreach (var savedbi in savedPlan.SupportBuildings)
                     {
-                        var supportBuilding = GameData.AllSupportBuildings
-                            .FirstOrDefault(sb => sb.Name == savedbi.BuildingName);
-
-                        if (supportBuilding != null)
-                        {
-                            BuildingRequirement br2 = new BuildingRequirement(supportBuilding);
-                            br2.Count = savedbi.Count;
-                            result.SupportBuildings.Add(br2);
-                        }
+                        SupportInstance supportInstance = new SupportInstance();
+                        supportInstance.Building = GameData.AllSupportBuildings
+                            .FirstOrDefault(ti => ti.Name == savedbi.BuildingName);
+                        if (supportInstance.Building == null)
+                            throw new InvalidOperationException($"Support building '{savedbi.BuildingName}' not found in GameData.");
+                        supportInstance.Count = savedbi.Count;
+                        result.SupportBuildings.Add(supportInstance);
                     }
                 }
 
@@ -205,6 +204,8 @@ public class SavedIndustryPlan
                         TransportationInstance transportationInstance = new TransportationInstance();
                         transportationInstance.Building = GameData.TransportationBuildings
                             .FirstOrDefault(ti => ti.Name == savedbi.BuildingName);
+                        if (transportationInstance.Building == null)
+                            throw new InvalidOperationException($"Transportation building '{savedbi.BuildingName}' not found in GameData.");
                         transportationInstance.Count = savedbi.Count;
                         result.TransportationBuildings.Add(transportationInstance);
                     }
