@@ -5962,6 +5962,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource  
             },
+            ServesPopulationType = PopulationType.Workers,            
             WorkDays = 3117,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5990,6 +5991,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 929,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6018,6 +6020,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 829,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6046,6 +6049,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 579,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6074,6 +6078,7 @@ class GameData
             {
               FoodResource, ClothesResource, ElectronicsResource, MeatResource
             },
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 189,  
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6102,6 +6107,7 @@ class GameData
             {
               ClothesResource, ElectronicsResource
             },
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 320,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6130,6 +6136,7 @@ class GameData
             {
               FoodResource, MeatResource
             },
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 0,  // Buy with rubles only
             ConstructionMaterials = new Dictionary<Resource, double>()
         },
@@ -6150,6 +6157,7 @@ class GameData
             {
               FoodResource, MeatResource
             },
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 2249,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6449,6 +6457,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 0.8,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 728,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6472,6 +6481,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 80,
             AttractionScore = 3.8,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 2085,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6495,6 +6505,7 @@ class GameData
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 150,
             AttractionScore = null,  // Not shown on card
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 1152,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6518,6 +6529,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 100,
             AttractionScore = 2.8,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 4944,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6541,6 +6553,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 40,
             AttractionScore = 2.4,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 1598,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6564,6 +6577,7 @@ class GameData
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 100,
             AttractionScore = 2.4,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 1848,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6587,6 +6601,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 60,
             AttractionScore = 3.2,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 836,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6612,6 +6627,7 @@ class GameData
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 30,
             AttractionScore = null,  // Not shown on card
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 381,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6636,6 +6652,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not shown on card
             MaxVisitors = 150,
             AttractionScore = null,  // Not shown on card
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 437,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6664,6 +6681,7 @@ class GameData
             MaxVisitors = 156,  // Max students
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Children,
             WorkDays = 488,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6689,6 +6707,7 @@ class GameData
             MaxVisitors = 84,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Children,
             WorkDays = 319,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6715,6 +6734,7 @@ class GameData
             MaxVisitors = 540,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Children,
             WorkDays = 1980,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6740,6 +6760,7 @@ class GameData
             MaxVisitors = 360,
             EducationLevel = EducationSubtype.School,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Children,
             WorkDays = 973,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6767,6 +6788,7 @@ class GameData
             MaxVisitors = 270,  // Max children
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Children,
             WorkDays = 915,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6792,6 +6814,7 @@ class GameData
             MaxVisitors = 180,
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Children,
             WorkDays = 509,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6817,6 +6840,7 @@ class GameData
             MaxVisitors = 120,
             EducationLevel = EducationSubtype.Kindergarten,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Children,
             WorkDays = 392,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -6996,6 +7020,7 @@ class GameData
             MaxVisitors = 85,  // Passenger capacity (students living here)
             EducationLevel = EducationSubtype.UniversityDorm,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.YoungAdults,
             WorkDays = 1240,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7022,6 +7047,7 @@ class GameData
             MaxVisitors = 85,  // Passenger capacity
             EducationLevel = EducationSubtype.UniversityDorm,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.YoungAdults,
             WorkDays = 1127,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7051,6 +7077,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
             AttractionScore = 2.5,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 1919,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7076,6 +7103,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 175,
             AttractionScore = 2.0,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 3587,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7103,6 +7131,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 1.8,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 716,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7128,6 +7157,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 105,
             AttractionScore = 2.0,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 518,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7154,6 +7184,7 @@ class GameData
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
             AttractionScore = 4.0,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 282,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7182,6 +7213,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not listed
             MaxVisitors = 450,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 2828,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7207,6 +7239,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 15,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 35,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7230,6 +7263,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not listed
             MaxVisitors = 5,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 55,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7252,6 +7286,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 48,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 129,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7275,6 +7310,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 21,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 52,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7300,6 +7336,7 @@ class GameData
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 32,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 132,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7322,6 +7359,7 @@ class GameData
             GarbagePerCustomer = 0,  // Not listed
             MaxVisitors = 22,
             AttractionScore = null,
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 70,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -7349,6 +7387,7 @@ class GameData
             MaxVisitors = 12,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 26,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
@@ -7379,6 +7418,7 @@ class GameData
             MaxVisitors = 60,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 149,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
@@ -7410,6 +7450,7 @@ class GameData
             MaxVisitors = 120,
             AttractionScore = null,
             ProductsOffered = {AlcoholResource},
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 993,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
@@ -7443,6 +7484,7 @@ class GameData
             MaxVisitors = 56,
             AttractionScore = 3.6,
             ProductsOffered = {AlcoholResource},
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 1294,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
@@ -7474,6 +7516,7 @@ class GameData
             MaxVisitors = 70,
             AttractionScore = 2.4,
             ProductsOffered = {AlcoholResource},
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 170,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {
@@ -7506,6 +7549,7 @@ class GameData
             MaxVisitors = 70,
             AttractionScore = 2.5,
             ProductsOffered = {AlcoholResource},
+            ServesPopulationType = PopulationType.Workers,
             WorkDays = 712,
             WarehouseCapacity = new Dictionary<Resource, double>()
             {

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-public partial class IndustryPlan
-{
-    public List<AmenityInstance> AmenityBuildings = new List<AmenityInstance>();
 
+public partial class MicroDistrict
+{
     // Amenity Rough coverage (guideline only)
     public Dictionary<AmenityType, int> GetAmenCoverage()
     {
@@ -94,9 +93,10 @@ public partial class IndustryPlan
         {
             PopulationType.Workers => totalWorkers,
             PopulationType.Citizen => totalCitizens,
+            PopulationType.Infants => (int)(totalCitizens * 0.082),
             PopulationType.Children => (int)(totalCitizens * 0.165),  // 16.5% from your data
             PopulationType.YoungAdults => (int)(totalCitizens * 0.065), // 6.5% from your data
-            _ => totalCitizens
+            _ => totalCitizens,
         };
 
         // Calculate actual demand
@@ -110,4 +110,6 @@ public partial class IndustryPlan
 
         return (int)Math.Ceiling(buildingsNeeded * workersPerBuilding);
     }
+
 }
+

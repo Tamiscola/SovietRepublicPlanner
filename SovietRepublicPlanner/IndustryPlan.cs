@@ -3,6 +3,9 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 public partial class IndustryPlan
 {
+    public string Name { get; set; }
+    public City ParentCity { get; set; }
+
     // Target
     public Resource TargetResource { get; set; }
     public double TargetAmount { get; set; }

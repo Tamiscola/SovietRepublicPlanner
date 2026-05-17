@@ -91,7 +91,7 @@ public partial class IndustryPlan
             {
                 if (r.IsConsumable && r.PerCapitalConsumption > 0)
                 {
-                    double consumption = TotalPopulationNeeded * r.PerCapitalConsumption;
+                    double consumption = TotalWorkers * r.PerCapitalConsumption;
                     result.Add(r, consumption);
                 }
             }
@@ -272,30 +272,10 @@ public partial class IndustryPlan
         // Support Buildings
         foreach (var kv in cr.SupportBuildings)
         {
-            foreach (var kv2 in kv.ConstructionMaterials)
+            foreach (var kv2 in kv.Building.ConstructionMaterials)
             {
                 if (result.ContainsKey(kv2.Key)) result[kv2.Key] += kv2.Value;
                 else result.Add(kv2.Key, kv2.Value);
-            }
-        }
-
-        // Amenity Buildings
-        foreach (var kv in cr.AmenityBuildings)
-        {
-            foreach (var k in kv.Building.ConstructionMaterials.Keys)
-            {
-                if (result.ContainsKey(k)) result[k] += kv.Building.ConstructionMaterials[k] * kv.Count;
-                else result.Add(k, kv.Building.ConstructionMaterials[k] * kv.Count);
-            }
-        }
-
-        // Residential Buildings
-        foreach (var kv in cr.ResidentialBuildings)
-        {
-            foreach (var k in kv.Building.ConstructionMaterials.Keys)
-            {
-                if (result.ContainsKey(k)) result[k] += kv.Building.ConstructionMaterials[k] * kv.Count;
-                else result.Add(k, kv.Building.ConstructionMaterials[k] * kv.Count);
             }
         }
 

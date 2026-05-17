@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class MicroDistrict
+public partial class MicroDistrict
 {
     public string Name { get; set; }
+    public City ParentCity { get; set; }
     public List<ResidentialInstance> ResidentialBuildings { get; set; } = new List<ResidentialInstance>();
     public List<AmenityInstance> AmenityBuildings { get; set; } = new List<AmenityInstance>();
     public List<TransportationInstance> TransportBuildings { get; set; } = new List<TransportationInstance>();
@@ -18,6 +19,36 @@ public class MicroDistrict
             for (int i = 0; i < ResidentialBuildings.Count; i++)
                 r += ResidentialBuildings[i].Building.WorkerCapacity;
             return r;
+        }
+    }
+    public int TotalWorkers
+    {
+        get 
+        {
+            int thisLevel = ParentCity.industryPlans.Sum(i => i.ChosenBuilding.TotalWorkers);
+            int subChainTotal = ParentCity.industryPlans.Sum(i => i.SubChains.Sum(sc => sc.TotalWorkers));
+
+            // Calculate base population from production workers
+            int baseProductionWorkers = thisLevel + subChainTotal;
+            int baseCitizens = (int)(baseProductionWorkers * 1.82); // Citizens = workers × 1.82
+
+            // Add full-capacity amenity workers (non-percentage-based)
+            int fullCapacityAmenityWorkers = AmenityBuildings
+                .Where(a => !a.Building.UsesPercentageBasedDemand)
+                .Sum(a => a.Building.EffectiveWorkersPerShift * 3 * a.Count);
+
+            // Add percentage-based amenity workers
+            int percentageBasedWorkers = 0;
+            foreach (var amenity in AmenityBuildings.Where(a => a.Building.UsesPercentageBasedDemand))
+            {
+                percentageBasedWorkers += CalculateWorkersForPercentageAmenity(
+                    amenity.Building,
+                    baseProductionWorkers,
+                    baseCitizens
+                ) * amenity.Count;
+            }
+
+            return fullCapacityAmenityWorkers + percentageBasedWorkers;
         }
     }
 

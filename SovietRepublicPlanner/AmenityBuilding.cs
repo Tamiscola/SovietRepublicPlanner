@@ -23,6 +23,7 @@ public enum PopulationType
 {
     Workers,
     Children,
+    Infants,
     YoungAdults,
     Citizen
 }
@@ -43,7 +44,7 @@ public class AmenityBuilding : Building
             EducationSubtype.UniversityDorm => MaxVisitors,  // Direct housing
             _ => MaxVisitors  // Fallback: no multiplier
         },
-        AmenityType.Shopping => (int)(MaxVisitors * 15),
+        AmenityType.Shopping => (int)(MaxVisitors * 15),    
         AmenityType.Pub => (int)(MaxVisitors * 100),
         AmenityType.Healthcare => (int)(MaxVisitors * 100),
         AmenityType.Culture => (int)(MaxVisitors * 80),

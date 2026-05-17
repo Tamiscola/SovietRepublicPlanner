@@ -87,7 +87,13 @@ public partial class City
     public Dictionary<Resource, double> utilityProduction {
         get
         {
-            Dictionary<Resource, double> r = new Dictionary<Resource, double>();
+            Dictionary<Resource, double> r = new Dictionary<Resource, double>()
+            {
+                {GameData.PowerResource, 0},
+                {GameData.WaterResource, 0},
+                {GameData.WasteWaterResource, 0},
+                {GameData.HeatResource, 0},
+            };
             foreach (var plan in industryPlans)
             {
                 foreach (var kv in plan.ExpandedUtilities)
@@ -140,16 +146,35 @@ public partial class City
     {
         get 
         {
-            Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in industryPlans)
+            Dictionary<Resource, double> result = new Dictionary<Resource, double>();
+            foreach (var r in GameData.AllResources)
             {
-                foreach (var kv in plan.TotalCitizenConsumption)
+                if (r.IsConsumable && r.PerCapitalConsumption > 0)
                 {
-                    if (r.ContainsKey(kv.Key)) { r[kv.Key] += kv.Value; }
-                    else r[kv.Key] = kv.Value;
+                    double consumption = totalWorkers * r.PerCapitalConsumption;
+                    result.Add(r, consumption);
                 }
             }
-            return r;
+            return result;
+        }
+    }
+    public Dictionary<Resource, double> ConsumptionBalance
+    {
+        get
+        {
+            Dictionary<Resource, double> result = new Dictionary<Resource, double>();
+            foreach (var kv in combinedCitizenConsumption)
+                foreach (var ip in industryPlans)
+                {
+                    if (ip.TotalOutputs.ContainsKey(kv.Key))
+                    {
+                        double produced = ip.TotalOutputs[kv.Key];
+                        double consumed = kv.Value;
+                        double balance = produced - consumed;
+                        result.Add(kv.Key, balance);
+                    }
+                }
+            return result;
         }
     }
     public Dictionary<Resource, double> net
@@ -194,12 +219,12 @@ public partial class City
         get
         {
             Dictionary<AmenityBuilding, int> r = new Dictionary<AmenityBuilding, int>();
-            foreach (var plan in industryPlans)
+            foreach (var m in microDistricts)
             {
-                foreach (var kv in plan.AmenityBuildings)
+                foreach (var ai in m.AmenityBuildings)
                 {
-                    if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
-                    else r.Add(kv.Building, kv.Count);
+                    if (r.ContainsKey(ai.Building)) r[ai.Building] += ai.Count;
+                    else r.Add(ai.Building, ai.Count);
                 }
             }
             return r;
@@ -216,6 +241,14 @@ public partial class City
                 {
                     if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
                     else r.Add(kv.Building, kv.Count);
+                }
+            }
+            foreach (var m in microDistricts)
+            {
+                foreach (var ti in m.TransportBuildings)
+                {
+                    if (r.ContainsKey(ti.Building)) r[ti.Building] += ti.Count;
+                    else r.Add(ti.Building, ti.Count);
                 }
             }
             return r;

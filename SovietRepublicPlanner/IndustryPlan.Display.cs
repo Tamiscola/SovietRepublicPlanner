@@ -8,8 +8,6 @@ public partial class IndustryPlan
 {
     public void DisplayTotalReceipt()
     {
-        var amenityCoverage = this.GetAmenCoverage();
-
         if (ChosenBuilding == null) { Console.WriteLine("There's no saved plan!"); }
         else
         {
@@ -21,7 +19,6 @@ public partial class IndustryPlan
             Console.WriteLine("│ Utilities Status:");
             Console.WriteLine("│                      Needed         Produced   Balance");
             Console.WriteLine($"│ Total Workers:      {TotalWorkers,8}");
-            Console.WriteLine($"│ Total Citizens:      {TotalPopulationNeeded,7}{TotalHousingCapacity,15}{TotalHousingCapacity - TotalPopulationNeeded,10}");
             // Power
             string powerProduced = TotalPowerProduced > 0 ? $"{TotalPowerProduced,10:F2}" : "         —";
             double powerBalance = TotalPowerProduced > 0
@@ -77,7 +74,7 @@ public partial class IndustryPlan
             // Display all buildings recursively
             DisplayAllBuildings(this, 0);
 
-            var totalSupBldgs = AllSupportBuildings;
+            var totalSupBldgs = SupportBuildings;
 
             if (totalSupBldgs.Count > 0)
             {
@@ -85,108 +82,7 @@ public partial class IndustryPlan
                 Console.WriteLine("│ Support Infrastructures:               │");
                 Console.WriteLine("├────────────────────────────────────────┤");
                 foreach (var kv in totalSupBldgs)
-                    Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
-            }
-            Console.WriteLine("├────────────────────────────────────────┤");
-            Console.WriteLine("│ Residential Buildings:");
-            Console.WriteLine("├────────────────────────────────────────┤");
-            if (TotalPopulationNeeded > TotalHousingCapacity)
-            {
-                int deficit = TotalPopulationNeeded - TotalHousingCapacity;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"WARNING: Housing deficit! Need {deficit} more housing capacity");
-                Console.WriteLine($"   (Total needed: {TotalPopulationNeeded}, Current: {TotalHousingCapacity})");
-                Console.ResetColor();
-            }
-            foreach (var ri in ResidentialBuildings)
-                Console.WriteLine($"│ · {ri.Count} × {ri.Building.Name}");
-            // In summary command - Amenity section
-            Console.WriteLine("├────────────────────────────────────────┤");
-            Console.WriteLine("│ Amenity Buildings:");
-            Console.WriteLine("├────────────────────────────────────────┤");
-
-            if (AmenityBuildings.Count == 0)
-            {
-                Console.WriteLine("│ (none)");
-            }
-            else
-            {
-                // Group by AmenityType
-                var amenitiesByType = AmenityBuildings
-                    .GroupBy(a => a.Building.Type)
-                    .OrderBy(g => g.Key);
-
-                int totalCitizens = TotalPopulationNeeded;
-                var coverage = this.GetAmenityCoverage();
-
-                foreach (var typeGroup in amenitiesByType)
-                {
-                    Console.WriteLine($"│ [ {typeGroup.Key} ]");
-
-                    // Group buildings by name within this type
-                    var buildingGroups = typeGroup
-                        .GroupBy(a => a.Building.Name)
-                        .Select(g => new
-                        {
-                            Name = g.Key,
-                            TotalCount = g.Sum(a => a.Count),
-                            Building = g.First().Building
-                        });
-
-                    foreach (var building in buildingGroups)
-                    {
-                        Console.WriteLine($"│  · {building.TotalCount} × {building.Name}");
-                    }
-
-                    // Service capacity warning (for all types)
-                    int typeCapacity = coverage.ServiceCoverage[typeGroup.Key];
-                    int deficit = totalCitizens - typeCapacity;
-                    if (deficit > 0 && (typeGroup.Key == AmenityType.Shopping
-                                     || typeGroup.Key == AmenityType.Pub
-                                     || typeGroup.Key == AmenityType.Culture
-                                     || typeGroup.Key == AmenityType.Healthcare
-                                     || typeGroup.Key == AmenityType.Sports
-                                     || typeGroup.Key == AmenityType.Education
-                                     || typeGroup.Key == AmenityType.CrimeJustice))
-                    {
-                        if (typeGroup.Key == AmenityType.Education)
-                        {
-                            int kindergartenNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.KindergartenAgePercent / 100);
-                            int schoolNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.SchoolAgePercent / 100);
-                            int kindergartenDeficit = kindergartenNeeded - coverage.KindergartenCapacity;
-                            int schoolDeficit = schoolNeeded - coverage.SchoolCapacity;
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine($"│          Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}" +
-                                             (kindergartenDeficit > 0 ? $" ({kindergartenDeficit} underserved!)" : "  "));
-                            Console.WriteLine($"│          School: {coverage.SchoolCapacity}/{schoolNeeded}" +
-                                             (schoolDeficit > 0 ? $" ({schoolDeficit} underserved!)" : "  "));
-                            Console.ResetColor();
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine($"│          {deficit} citizens underserved!");
-                            Console.ResetColor();
-                        }
-                    }
-
-                    // Product coverage warnings (ONLY for Shopping/Pub)
-                    if (typeGroup.Key == AmenityType.Shopping || typeGroup.Key == AmenityType.Pub)
-                    {
-                        var missingProducts = coverage.ProductCoverage
-                            .Where(kvp => kvp.Value == 0)  // Not served at all
-                            .Select(kvp => kvp.Key.Name);
-
-                        foreach (var product in missingProducts)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine($"│          {product} is not served!");
-                            Console.ResetColor();
-                        }
-                    }
-
-                    Console.WriteLine("│");
-                }
+                    Console.WriteLine($"│ · {kv.Count} × {kv.Building.Name}");
             }
             if (TransportationBuildings.Count() > 0)
             {
@@ -196,33 +92,6 @@ public partial class IndustryPlan
                 foreach (var ti in TransportationBuildings)
                     Console.WriteLine($"│ · {ti.Count} × {ti.Building.Name}");
             }
-            Console.WriteLine("├────────────────────────────────────────┤");
-            Console.WriteLine($"│ Citizen Consumption ({TotalPopulationNeeded} pop):");
-            Console.WriteLine("├────────────────────────────────────────┤");
-            foreach (var kv in TotalCitizenConsumption)
-            {
-                // Check if this resource is produced locally
-                bool isProducedLocally = false;
-                string statusSymbol = "○";
-
-                // Check if it's the target resource
-                if (kv.Key == this.TargetResource)
-                {
-                    isProducedLocally = true;
-                    statusSymbol = "●";
-                }
-                // Check if it's in expanded resources (has production chain)
-                else if (this.ExpandedResources.Contains(kv.Key))
-                {
-                    isProducedLocally = true;
-                    statusSymbol = "●";
-                }
-
-                // Display with status indicator
-                string statusText = isProducedLocally ? "(local)" : "(import)";
-                Console.WriteLine($"│ {statusSymbol} {kv.Value,5:F2}t/day {kv.Key.Name,-15} {statusText}");
-            }
-
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Importing Resources:");
             foreach (var kv in TotalImports)

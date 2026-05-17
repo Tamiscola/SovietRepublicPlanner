@@ -17,7 +17,7 @@ public partial class City
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│                   Needed    Produced  Balance");
         Console.WriteLine($"│ Workers    :    {totalWorkers,6}                        ");
-        Console.WriteLine($"│ Citizens   :    {totalCitizen,6}      {totalHousingCapacity,6}  {totalHousingCapacity - totalCitizen,7}");
+        Console.WriteLine($"│ Citizens   :    {totalCitizen,6}     {totalHousingCapacity,6}  {totalHousingCapacity - totalCitizen,7}");
         Console.WriteLine($"│ Power (MW) :    {totalPower,6:F2}    {utilityProduction[GameData.PowerResource],7:F2} {utilityProduction[GameData.PowerResource] - totalPower,8:F2}");
         Console.WriteLine($"│ Water (m³) :    {totalWater,6:F2}    {utilityProduction[GameData.WaterResource],7:F2} {utilityProduction[GameData.WaterResource] - totalWater,8:F2}");
         Console.WriteLine($"│ Sewage (m³):    {totalWater,6:F2}    {utilityProduction[GameData.WasteWaterResource],7:F2} {utilityProduction[GameData.WasteWaterResource] - totalWater,8:F2}");
@@ -40,9 +40,9 @@ public partial class City
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│ Planned Buildings:                     │");
         Console.WriteLine("├────────────────────────────────────────┤");
-        foreach (var plan in plans)
+        foreach (var plan in industryPlans)
             plan.DisplayAllBuildings(plan, 0);
-        if (plans.Any(p => p.AllSupportBuildings.Count() > 0))
+        if (industryPlans.Any(p => p.SupportBuildings.Count() > 0))
         {
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Support Infrastructures:               │");
@@ -62,14 +62,14 @@ public partial class City
                 Console.WriteLine("│");
             }
         }
-        if (plans.Any(p => p.ResidentialBuildings.Count > 0))
+        if (microDistricts.Any(p => p.ResidentialBuildings.Count > 0))
         {
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Residential Buildings:                 │");
             Console.WriteLine("├────────────────────────────────────────┤");
 
             Dictionary<ResidentialBuilding, int> resBuildings = new Dictionary<ResidentialBuilding, int>();
-            foreach (var plan in plans)
+            foreach (var plan in microDistricts)
             {
                 foreach (var resins in plan.ResidentialBuildings)
                 {
@@ -80,7 +80,7 @@ public partial class City
             foreach (var kv in resBuildings)
                 Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
         }
-        if (plans.Any(p => p.AmenityBuildings.Count > 0))
+        if (microDistricts.Any(p => p.AmenityBuildings.Count > 0))
         {
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Amenity Buildings:                     │");
@@ -107,7 +107,7 @@ public partial class City
                 Console.WriteLine("│");
             }
         }
-        if (plans.Any(p => p.TransportationBuildings.Count > 0))
+        if (industryPlans.Any(p => p.TransportationBuildings.Count > 0) || microDistricts.Any(m => m.TransportBuildings.Count > 0))
         {
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Transportation Buildings:              │");
@@ -120,7 +120,13 @@ public partial class City
         Console.WriteLine("├────────────────────────────────────────┤");
         foreach (var kv in net)
             if (kv.Value < 0)
+            {
+                if (kv.Key == GameData.PowerResource)
+                    Console.WriteLine($"│ {Math.Abs(kv.Value):F2} MWh/day x {kv.Key.Name}");
+                else if (kv.Key == GameData.WaterResource)
+                    Console.WriteLine($"│ {Math.Abs(kv.Value):F2} ㎥/day x {kv.Key.Name}");
                 Console.WriteLine($"│ {Math.Abs(kv.Value):F2} t/day x {kv.Key.Name}");
+            }
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│ Residues:                              │");
         Console.WriteLine("├────────────────────────────────────────┤");
@@ -129,7 +135,7 @@ public partial class City
                 if (kv.Key != GameData.PowerResource)
                     Console.WriteLine($"│ {kv.Value:F2} t/day x {kv.Key.Name}");
                 else Console.WriteLine($"│ {kv.Value:F2} MWh/day x {kv.Key.Name}");
-        if (plans.Any(p => p.TotalConstructionMaterials.Count() > 0))
+        if (industryPlans.Any(p => p.TotalConstructionMaterials.Count() > 0) || microDistricts.Any(m => m.ConstructionMaterials.Count > 0))
         {
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Total Construction Materials:          │");

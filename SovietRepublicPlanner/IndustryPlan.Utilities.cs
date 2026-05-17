@@ -11,13 +11,11 @@ public partial class IndustryPlan
     {
         get
         {
-            double thisLevel = (ChosenBuilding.BuildingInstances.Count() > 0 ? ChosenBuilding.BuildingInstances.Sum(bi => bi.Building.PowerConsumption) : ChosenBuilding.TotalPowerNeeded);
+            double thisLevel = (ChosenBuilding.BuildingInstances.Count() > 0 ? ChosenBuilding.BuildingInstances.Sum(bi => bi.Building.PowerConsumptionMWh) : ChosenBuilding.TotalPowerNeeded);
             double subChainTotal = SubChains.Sum(sc => sc.TotalPowerNeeded);
-            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.PowerConsumption * kv.Value);
-            double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.PowerMW * rb.Count);
-            double amenTotal = AmenityBuildings.Sum(a => a.Building.PowerConsumptionMWh * a.Count);
+            double supportTotal = SupportBuildings.Sum(kv => kv.Building.PowerConsumptionMWh * kv.Count);
             double transTotal = TransportationBuildings.Sum(t => t.Building.PowerConsumptionMWh * t.Count);
-            return thisLevel + subChainTotal + supportTotal + residentialTotal + amenTotal + transTotal;
+            return thisLevel + subChainTotal + supportTotal + transTotal;
         }
     }
     public double TotalWaterNeeded
@@ -26,10 +24,8 @@ public partial class IndustryPlan
         {
             double thisLevel = ChosenBuilding.TotalWaterNeeded;
             double subChainTotal = SubChains.Sum(sc => sc.TotalWaterNeeded);
-            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.WaterConsumption * kv.Value);
-            double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.WaterPerDay * rb.Count);
-            double amenTotal = AmenityBuildings.Sum(a => a.Building.WaterConsumptionM3 * a.Count);
-            return thisLevel + subChainTotal + supportTotal + residentialTotal + amenTotal;
+            double supportTotal = SupportBuildings.Sum(kv => kv.Building.PowerConsumptionMWh * kv.Count);
+            return thisLevel + subChainTotal + supportTotal;
         }
     }
     public double TotalSewageProduced
@@ -38,10 +34,8 @@ public partial class IndustryPlan
         {
             double thisLevel = ChosenBuilding.TotalSewageProduced;
             double subChainTotal = SubChains.Sum(sc => sc.TotalSewageProduced);
-            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.SewageProduction * kv.Value);
-            double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.WaterPerDay * rb.Count);
-            double amenTotal = AmenityBuildings.Sum(a => a.Building.WaterConsumptionM3 * a.Count);
-            return thisLevel + subChainTotal + supportTotal + residentialTotal;
+            double supportTotal = SupportBuildings.Sum(kv => kv.Building.PowerConsumptionMWh * kv.Count);
+            return thisLevel + subChainTotal + supportTotal;
         }
     }
     public double TotalHeatNeeded
@@ -50,10 +44,8 @@ public partial class IndustryPlan
         {
             double thisLevel = ChosenBuilding.TotalHeatNeeded;
             double subChainTotal = SubChains.Sum(sc => sc.TotalHeatNeeded);
-            double supportTotal = AllSupportBuildings.Sum(kv => kv.Key.HeatConsumption * kv.Value);
-            double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.HeatTankM3 * rb.Count);
-            double amenTotal = AmenityBuildings.Sum(a => a.Building.HotWaterTankM3 * a.Count);
-            return thisLevel + subChainTotal + supportTotal + residentialTotal + amenTotal;
+            double supportTotal = SupportBuildings.Sum(kv => kv.Building.PowerConsumptionMWh * kv.Count);
+            return thisLevel + subChainTotal + supportTotal;
         }
     }
     public double TotalGarbageProduced
@@ -62,8 +54,6 @@ public partial class IndustryPlan
         {
             double thisLevel = ChosenBuilding.TotalGarbageProduced;
             double subChainTotal = SubChains.Sum(sc => sc.TotalGarbageProduced);
-            double residentialTotal = ResidentialBuildings.Sum(rb => rb.Building.GarbageProduction * rb.Count);
-            double amenTotal = AmenityBuildings.Sum(a => a.Building.GarbageProduction * a.Count);
             return thisLevel + subChainTotal;
         }
     }
@@ -121,12 +111,6 @@ public partial class IndustryPlan
             return result;
         }
     }
-
-    // Utilities - Residential
-    public double TotalResidentialPower => ResidentialBuildings.Sum(rb => rb.Building.PowerMW * rb.Count);
-    public double TotalResidentialWater => ResidentialBuildings.Sum(rb => rb.Building.WaterPerDay * rb.Count);
-    public double TotalResidentialSewage => ResidentialBuildings.Sum(rb => rb.Building.WaterPerDay * rb.Count);
-    public double TotalResidentialHeat => ResidentialBuildings.Sum(rb => rb.Building.HeatTankM3 * rb.Count);
 
     // Utilities - Produced
     public double TotalPowerProduced
