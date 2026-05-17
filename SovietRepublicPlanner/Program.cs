@@ -1880,6 +1880,39 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "housing")
                 {
+                    // Select a district
+                    if (allMicroDistricts.Count < 1)
+                    {   // if none, create a district
+                        string mdName;
+                        Console.Write($"Write a name of the district: ");
+                        mdName = Console.ReadLine();
+                        microDistrict.Name = mdName;
+                        allMicroDistricts.Add(microDistrict);
+                    }
+                    else                               
+                    {
+                        // MicroDistrict list
+                        Console.WriteLine("Choose the District. If you want to create a new one, type '-1': ");
+                        for (int i = 0; i < allMicroDistricts.Count; i++)  
+                            Console.WriteLine($"[{i}]: {allMicroDistricts[i].Name}");
+                        Console.Write(": ");
+
+                        int userChoice;
+                        if (int.TryParse(Console.ReadLine(), out userChoice) && userChoice >= 0 && userChoice < allMicroDistricts.Count)
+                        {
+                            microDistrict = allMicroDistricts[userChoice];
+                            Console.WriteLine($"Chosen District: {microDistrict.Name}");
+                        } else if (userChoice == -1)
+                        {
+                            microDistrict = new MicroDistrict();
+                            string mdName;
+                            Console.Write($"Write a name of the district: ");
+                            mdName = Console.ReadLine();
+                            microDistrict.Name = mdName;
+                            allMicroDistricts.Add(microDistrict);
+                        }
+                    }
+
                     // Calculate total citizens from ALL plans
                     int totalWorkers = city.totalWorkers;
                     int totalHousingCapacity = allMicroDistricts.Sum(m => m.
@@ -1930,7 +1963,7 @@ namespace SovietRepublicPlanner
                                     break;
                                 }
 
-                                // Select the Count
+                                // Select the Amount
                                 Console.WriteLine("\nSet the amount:");
                                 foreach (var ri in resCount)
                                 {
@@ -1943,10 +1976,10 @@ namespace SovietRepublicPlanner
                                 microDistrict.ResidentialBuildings.AddRange(resCount);
 
                                 // Show the Capacity
-                                Console.WriteLine($"\nCurrent capacity: {microDistrict.TotalHousingCapacity}" +
-                                    $"\nExtra capcity needed: {((rootResult.TotalWorkers - microDistrict.TotalHousingCapacity) >= 0
-                                    ? (rootResult.TotalWorkers - microDistrict.TotalHousingCapacity)
-                                    : Math.Abs(rootResult.TotalWorkers - microDistrict.TotalHousingCapacity))}");
+                                Console.WriteLine($"\nCurrent capacity: {city.totalHousingCapacity}" +
+                                    $"\nExtra capcity needed: {((city.totalWorkers - city.totalHousingCapacity) >= 0
+                                    ? (city.totalWorkers - city.totalHousingCapacity)
+                                    : Math.Abs(city.totalWorkers - city.totalHousingCapacity))}");
 
                                 allValid = true;
                             }
@@ -1998,10 +2031,10 @@ namespace SovietRepublicPlanner
                                 microDistrict.ResidentialBuildings.AddRange(resCount);
 
                                 // Show the Capacity
-                                Console.WriteLine($"\nCurrent capacity: {microDistrict.TotalHousingCapacity}" +
-                                    $"\nExtra capcity needed: {((rootResult.TotalWorkers - microDistrict.TotalHousingCapacity) >= 0
-                                    ? (rootResult.TotalWorkers - microDistrict.TotalHousingCapacity)
-                                    : Math.Abs(rootResult.TotalWorkers - microDistrict.TotalHousingCapacity))}");
+                                Console.WriteLine($"\nCurrent capacity: {city.totalHousingCapacity}" +
+                                    $"\nExtra capcity needed: {((city.totalWorkers - city.totalHousingCapacity) >= 0
+                                    ? (city.totalWorkers - city.totalHousingCapacity)
+                                    : Math.Abs(city.totalWorkers - city.totalHousingCapacity))}");
 
                                 allValid = true;
                             }
@@ -2053,10 +2086,10 @@ namespace SovietRepublicPlanner
                                 microDistrict.ResidentialBuildings.AddRange(resCount);
 
                                 // Show the Capacity
-                                Console.WriteLine($"\nCurrent capacity: {microDistrict.TotalHousingCapacity}" +
-                                    $"\nExtra capcity needed: {((rootResult.TotalWorkers - microDistrict.TotalHousingCapacity) >= 0
-                                    ? (rootResult.TotalWorkers - microDistrict.TotalHousingCapacity)
-                                    : rootResult.TotalWorkers - microDistrict.TotalHousingCapacity)}");
+                                Console.WriteLine($"\nCurrent capacity: {city.totalHousingCapacity}" +
+                                    $"\nExtra capcity needed: {((city.totalWorkers - city.totalHousingCapacity) >= 0
+                                    ? (city.totalWorkers - city.totalHousingCapacity)
+                                    : city.totalWorkers - city.totalHousingCapacity)}");
 
                                 allValid = true;
                             }

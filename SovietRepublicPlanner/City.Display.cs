@@ -16,8 +16,8 @@ public partial class City
         Console.WriteLine("│ Utilities Status:                      │");
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│                   Needed    Produced  Balance");
-        Console.WriteLine($"│ Workers    :    {totalWorkers,6}                        ");
-        Console.WriteLine($"│ Citizens   :    {totalCitizen,6}     {totalHousingCapacity,6}  {totalHousingCapacity - totalCitizen,7}");
+        Console.WriteLine($"│ Workers    :    {totalWorkers,6}     {totalHousingCapacity,6}  {totalHousingCapacity - totalWorkers,7}");
+        Console.WriteLine($"│ Citizens   :    {totalCitizen,6}     ");
         Console.WriteLine($"│ Power (MW) :    {totalPower,6:F2}    {utilityProduction[GameData.PowerResource],7:F2} {utilityProduction[GameData.PowerResource] - totalPower,8:F2}");
         Console.WriteLine($"│ Water (m³) :    {totalWater,6:F2}    {utilityProduction[GameData.WaterResource],7:F2} {utilityProduction[GameData.WaterResource] - totalWater,8:F2}");
         Console.WriteLine($"│ Sewage (m³):    {totalWater,6:F2}    {utilityProduction[GameData.WasteWaterResource],7:F2} {utilityProduction[GameData.WasteWaterResource] - totalWater,8:F2}");
@@ -125,7 +125,8 @@ public partial class City
                     Console.WriteLine($"│ {Math.Abs(kv.Value):F2} MWh/day x {kv.Key.Name}");
                 else if (kv.Key == GameData.WaterResource)
                     Console.WriteLine($"│ {Math.Abs(kv.Value):F2} ㎥/day x {kv.Key.Name}");
-                Console.WriteLine($"│ {Math.Abs(kv.Value):F2} t/day x {kv.Key.Name}");
+                else
+                    Console.WriteLine($"│ {Math.Abs(kv.Value):F2} t/day x {kv.Key.Name}");
             }
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│ Residues:                              │");

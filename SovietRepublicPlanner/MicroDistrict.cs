@@ -17,7 +17,7 @@ public partial class MicroDistrict
         {
             int r = 0;
             for (int i = 0; i < ResidentialBuildings.Count; i++)
-                r += ResidentialBuildings[i].Building.WorkerCapacity;
+                r += (ResidentialBuildings[i].Building.WorkerCapacity * ResidentialBuildings[i].Count);
             return r;
         }
     }
