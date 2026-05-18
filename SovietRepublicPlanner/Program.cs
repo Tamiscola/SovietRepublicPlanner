@@ -1883,6 +1883,7 @@ namespace SovietRepublicPlanner
                     // Select a district
                     if (allMicroDistricts.Count < 1)
                     {   // if none, create a district
+                        microDistrict = new MicroDistrict();
                         string mdName;
                         Console.Write($"Write a name of the district: ");
                         mdName = Console.ReadLine();
@@ -1892,6 +1893,7 @@ namespace SovietRepublicPlanner
                     else                               
                     {
                         // MicroDistrict list
+                        microDistrict = new MicroDistrict();
                         Console.WriteLine("Choose the District. If you want to create a new one, type '-1': ");
                         for (int i = 0; i < allMicroDistricts.Count; i++)  
                             Console.WriteLine($"[{i}]: {allMicroDistricts[i].Name}");
@@ -1902,6 +1904,9 @@ namespace SovietRepublicPlanner
                         {
                             microDistrict = allMicroDistricts[userChoice];
                             Console.WriteLine($"Chosen District: {microDistrict.Name}");
+
+                            foreach (var ri in microDistrict.ResidentialBuildings) 
+                                Console.WriteLine($"│ · {ri.Count} {ri.Building.Name}"); 
                         } else if (userChoice == -1)
                         {
                             microDistrict = new MicroDistrict();

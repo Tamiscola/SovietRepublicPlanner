@@ -8653,7 +8653,7 @@ class GameData
     // All Buildings & Resources
     public static List<Resource> AllResources { get; } = new List<Resource>()
     {
-        ClothesResource,
+        ClothesResource, FoodResource, MeatResource, AlcoholResource, ElectronicsResource,
         FabricResource,
         ChemicalsResource,
         CropsResource,

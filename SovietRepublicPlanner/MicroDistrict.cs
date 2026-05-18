@@ -53,13 +53,58 @@ public partial class MicroDistrict
     }
 
     // Utilities
-    public double PowerConsumption { get; set; }        // MW
-    public double WaterConsumption { get; set; }        // ㎥/day
-    public double SewageProduction { get; set; }        // ㎥/day
+    public double PowerConsumption
+    {
+        get
+        {
+            double r = 0;
+            r += ResidentialBuildings.Sum(ri => ri.Building.PowerConsumptionMWh * ri.Count)
+                + AmenityBuildings.Sum(ai => ai.Building.PowerConsumptionMWh * ai.Count)
+                + TransportBuildings.Sum(ti => ti.Building.PowerConsumptionMWh * ti.Count);
+            return r;
+        }
+    }
+    public double WaterConsumption
+    {
+        get
+        {
+            double r = 0;
+            r += ResidentialBuildings.Sum(ri => ri.Building.WaterPerDay * ri.Count)
+                + AmenityBuildings.Sum(ai => ai.Building.WaterConsumptionM3 * ai.Count);
+            return r;
+        }
+    }// ㎥/day
+    public double SewageProduction
+    {
+        get
+        {
+            double r = 0;
+            r += ResidentialBuildings.Sum(ri => ri.Building.WaterPerDay * ri.Count)
+                + AmenityBuildings.Sum(ai => ai.Building.WaterConsumptionM3 * ai.Count);
+            return r;
+        }
+    }// ㎥/day
     public double SewageDisposalCapacity { get; set; } = 0;  // ㎥/day
-    public double HeatConsumption { get; set; }         // Gcal/day
-    public double GarbagePerWorker { get; set; }        // Garbage production per worker
-    public double GarbageProduction => TotalHousingCapacity * GarbagePerWorker;  // tons/day
+    public double HeatConsumption
+    {
+        get
+        {
+            double r = 0;
+            r += ResidentialBuildings.Sum(ri => ri.Building.HeatTankM3 * ri.Count)
+                + AmenityBuildings.Sum(ai => ai.Building.HeatConsumptionMW * ai.Count);
+            return r;
+        }
+    }// Gcal/day
+    public double GarbageProduction 
+    {
+        get
+        {
+            double r = 0;
+            r += ResidentialBuildings.Sum(ri => ri.Building.GarbageProduction * ri.Count)
+                + AmenityBuildings.Sum(ai => ai.Building.GarbageProduction * ai.Count);
+            return r;
+        }
+    }  // tons/day
 
     // Construction Materials
     public Dictionary<Resource, double> ConstructionMaterials { get; set; } = new Dictionary<Resource, double>();
@@ -87,14 +132,6 @@ public partial class MicroDistrict
                                             BuildingName = tb.Building.Name,
                                             Count = tb.Count,
                                         }).ToList(),
-            TotalHousingCapacity = microDistrict.TotalHousingCapacity,
-            PowerConsumption = microDistrict.PowerConsumption,
-            WaterConsumption = microDistrict.WaterConsumption,
-            SewageProduction = microDistrict.SewageProduction,
-            SewageDisposalCapacity = microDistrict.TotalHousingCapacity,
-            HeatConsumption = microDistrict.HeatConsumption,
-            GarbagePerWorker = microDistrict.GarbagePerWorker,
-            GarbageProduction = microDistrict.GarbageProduction,
             ConstructionMaterials = microDistrict.ConstructionMaterials
                                         .Select(cm => new SavedMicroDistrict.SavedResourceInstance
                                         {
@@ -131,12 +168,6 @@ public partial class MicroDistrict
                                                     .FirstOrDefault(tb => tb.Name == sti.BuildingName),
                                         Count = sti.Count
                                     }).ToList(),
-            PowerConsumption = savedMicroDistrict.PowerConsumption,
-            WaterConsumption = savedMicroDistrict.WaterConsumption,
-            SewageProduction = savedMicroDistrict.SewageProduction,
-            SewageDisposalCapacity = savedMicroDistrict.SewageDisposalCapacity,
-            HeatConsumption = savedMicroDistrict.HeatConsumption,
-            GarbagePerWorker = savedMicroDistrict.GarbagePerWorker,
             ConstructionMaterials = savedMicroDistrict.ConstructionMaterials
                                     .ToDictionary(sri => GameData.AllResources
                                                             .FirstOrDefault(r => r.Name == sri.Name),

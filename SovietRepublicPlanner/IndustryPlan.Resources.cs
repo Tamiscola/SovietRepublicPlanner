@@ -80,7 +80,6 @@ public partial class IndustryPlan
             return CalculateTotalConstructionMaterials(result, this);
         }
     }
-
     // Resources - Citizen Consumption
     public Dictionary<Resource, double> TotalCitizenConsumption
     {
@@ -92,7 +91,10 @@ public partial class IndustryPlan
                 if (r.IsConsumable && r.PerCapitalConsumption > 0)
                 {
                     double consumption = TotalWorkers * r.PerCapitalConsumption;
-                    result.Add(r, consumption);
+                    if (result.ContainsKey(r))
+                        result[r] += consumption;
+                    else
+                        result.Add(r, consumption);
                 }
             }
             return result;

@@ -9,7 +9,7 @@ public partial class City
     public void Display()
     {
         Console.WriteLine("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        Console.WriteLine("┃         MASTER PLAN                    ┃");
+        Console.WriteLine("┃         CITY PLAN                      ┃");
         Console.WriteLine("┞━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┦");
         // Display Status section
         Console.WriteLine("├────────────────────────────────────────┤");
@@ -38,7 +38,7 @@ public partial class City
             }
         }
         Console.WriteLine("├────────────────────────────────────────┤");
-        Console.WriteLine("│ Planned Buildings:                     │");
+        Console.WriteLine("│ Planned Industry:                      │");
         Console.WriteLine("├────────────────────────────────────────┤");
         foreach (var plan in industryPlans)
             plan.DisplayAllBuildings(plan, 0);
@@ -65,20 +65,15 @@ public partial class City
         if (microDistricts.Any(p => p.ResidentialBuildings.Count > 0))
         {
             Console.WriteLine("├────────────────────────────────────────┤");
-            Console.WriteLine("│ Residential Buildings:                 │");
+            Console.WriteLine("│ MicroDistricts:                 ");
             Console.WriteLine("├────────────────────────────────────────┤");
 
-            Dictionary<ResidentialBuilding, int> resBuildings = new Dictionary<ResidentialBuilding, int>();
-            foreach (var plan in microDistricts)
+            foreach (var m in microDistricts)
             {
-                foreach (var resins in plan.ResidentialBuildings)
-                {
-                    if (resBuildings.ContainsKey(resins.Building)) resBuildings[resins.Building] += resins.Count;
-                    else resBuildings.Add(resins.Building, resins.Count);
-                }
+                Console.WriteLine($"│ [ {m.Name} ]:");
+                foreach (var ri in m.ResidentialBuildings)
+                    Console.WriteLine($"│ · {ri.Count} × {ri.Building.Name}");
             }
-            foreach (var kv in resBuildings)
-                Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
         }
         if (microDistricts.Any(p => p.AmenityBuildings.Count > 0))
         {
@@ -118,16 +113,23 @@ public partial class City
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│ Import Needed:                         │");
         Console.WriteLine("├────────────────────────────────────────┤");
+        Console.WriteLine($"│ [ Industry Resources ]");
         foreach (var kv in net)
             if (kv.Value < 0)
             {
                 if (kv.Key == GameData.PowerResource)
-                    Console.WriteLine($"│ {Math.Abs(kv.Value):F2} MWh/day x {kv.Key.Name}");
+                    Console.WriteLine($"│ · {Math.Abs(kv.Value):F2} MWh/day x {kv.Key.Name}");
                 else if (kv.Key == GameData.WaterResource)
-                    Console.WriteLine($"│ {Math.Abs(kv.Value):F2} ㎥/day x {kv.Key.Name}");
+                    Console.WriteLine($"│ · {Math.Abs(kv.Value):F2} ㎥/day x {kv.Key.Name}");
                 else
-                    Console.WriteLine($"│ {Math.Abs(kv.Value):F2} t/day x {kv.Key.Name}");
+                    Console.WriteLine($"│ · {Math.Abs(kv.Value):F2} t/day x {kv.Key.Name}");
             }
+        Console.WriteLine($"\n│ [ Citizen Supply ]");
+        foreach (var kv in combinedCitizenConsumption)
+        {
+            if (!net.ContainsKey(kv.Key))
+                Console.WriteLine($"│ · {kv.Value} t/day x {kv.Key.Name}");
+        }
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│ Residues:                              │");
         Console.WriteLine("├────────────────────────────────────────┤");

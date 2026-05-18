@@ -152,7 +152,10 @@ public partial class City
                 if (r.IsConsumable && r.PerCapitalConsumption > 0)
                 {
                     double consumption = totalWorkers * r.PerCapitalConsumption;
-                    result.Add(r, consumption);
+                    if (result.ContainsKey(r))
+                        result[r] += consumption;
+                    else
+                        result.Add(r, consumption);
                 }
             }
             return result;
