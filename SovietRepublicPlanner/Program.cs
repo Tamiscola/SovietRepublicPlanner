@@ -15,12 +15,13 @@ namespace SovietRepublicPlanner
     {
         static List<IndustryPlan> allPlans = new List<IndustryPlan>();
         static List<MicroDistrict> allMicroDistricts = new List<MicroDistrict>();
-        static List<City> allCities = new List<City>();
         static City city = new City()
         {
+            Name = "City 1",
             industryPlans = allPlans,
             microDistricts = allMicroDistricts
         };
+        static List<City> allCities = new List<City>();
         static SavedFile savedFile = new SavedFile()
         {
             Name = "plans.json",
@@ -70,6 +71,7 @@ namespace SovietRepublicPlanner
                         if (int.TryParse(Console.ReadLine(), out loadChoice) &&  loadChoice >= 0 && loadChoice < jsonFiles.Length)
                         {
                             allCities = LoadFile(Path.Combine(fileDirectory, jsonFiles[loadChoice]));
+                            allPlans = allCities[0].industryPlans;
                             currentSaveFile = Path.GetFileName(jsonFiles[loadChoice]);
                         } else { Console.WriteLine("Invalid input"); continue; }
                         break;
@@ -132,7 +134,7 @@ namespace SovietRepublicPlanner
                                 SaveFile(allCities, Path.Combine(fileDirectory, currentSaveFile));
                             }
                         } else { Console.WriteLine("Invalid input."); continue; }
-                        Console.WriteLine("\n✓ Plans saved!");
+                        Console.WriteLine("\n✓ File saved!");
                     }
                     Console.WriteLine("\nGoodbye!");
                     break;
@@ -259,16 +261,13 @@ namespace SovietRepublicPlanner
         {
             try
             {
-                var saveFile = new SavedFile
-                {
-                    Name = filename,
-                    Cities = cities.Select(c => City.ConvertToSavedCity(c)).ToList()
-                };
+                savedFile.Name = filename;
+                savedFile.Cities = cities.Select(c => City.ConvertToSavedCity(c)).ToList();  
 
                 var options = new JsonSerializerOptions { WriteIndented = true };
-                string jsonString = JsonSerializer.Serialize(saveFile, options);
+                string jsonString = JsonSerializer.Serialize(savedFile, options);
                 File.WriteAllText(filename, jsonString);
-                Console.WriteLine($"\n✓ Cities saved to {filename}");
+                Console.WriteLine($"\n{cities.Count} Cities saved to {filename}");
             }
             catch (Exception ex)
             {
@@ -285,6 +284,13 @@ namespace SovietRepublicPlanner
                     .Select(c => City.ConvertFromSavedCity(c))
                     .ToList();
                 Console.WriteLine($"✓ Loaded {cities.Count} city(s) from {filename}\n");
+
+                foreach (var city in cities) 
+                {
+                    Console.WriteLine($"City Name : {city.Name}");
+                    Console.WriteLine($"City Plans : {city.industryPlans.Count}");
+                    Console.WriteLine($"City MicroDistricts : {city.microDistricts.Count}");
+                }
                 return cities;
             }
             catch (Exception ex)
@@ -474,6 +480,7 @@ namespace SovietRepublicPlanner
             // Add to list and set as current
             allPlans.Add(result);
             currentPlanIndex = allPlans.Count - 1;
+            allCities.Add(city);
             currentResult = allPlans[currentPlanIndex];
             navigationStack.Clear();
             CommandLoop();
@@ -655,6 +662,7 @@ namespace SovietRepublicPlanner
 
             // Add to list and set as current
             currentPlanIndex = allPlans.Count - 1;
+            allCities.Add(city);
             currentResult = allPlans[currentPlanIndex];
             navigationStack.Clear();
             CommandLoop();
