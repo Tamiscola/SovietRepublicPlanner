@@ -107,9 +107,9 @@ public partial class IndustryPlan
                     displayResidue -= this.TargetAmount;
 
                 if (kv.Key != GameData.CropsResource)
-                    Console.WriteLine($"│ · {displayResidue,6:F2}t/day {kv.Key.Name,-20}");
+                    Console.WriteLine($"│ ·{displayResidue,6:F2}t/day {kv.Key.Name,-20}");
                 else
-                    Console.WriteLine($"│ · {displayResidue,6:F2}t/yr {kv.Key.Name,-20}");
+                    Console.WriteLine($"│ ·{displayResidue,6:F2}t/yr {kv.Key.Name,-20}");
             }
             if (TotalConstructionMaterials.Count() > 0)
             {
@@ -118,6 +118,7 @@ public partial class IndustryPlan
                 Console.WriteLine("├────────────────────────────────────────┤");
                 foreach (var kv in TotalConstructionMaterials)
                     Console.WriteLine($"│ · {kv.Value:F2} × {kv.Key.Name}");
+                Console.WriteLine("└────────────────────────────────────────┘");
             }
         }
     }

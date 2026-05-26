@@ -1187,12 +1187,12 @@ namespace SovietRepublicPlanner
                     continue;
                 }
                 else if (command == "switchcity")
-                {
-                    if (allPlans.Count <= 1) { Console.WriteLine("Only one plan exists. Nothing to switch to."); continue; }
+                { 
+                    if (allCities.Count <= 1) { Console.WriteLine("Only one City exists. Nothing to switch to."); continue; }
 
                     // Display plan list
                     Console.WriteLine("\n=== All Cities ===");
-                    for (int i = 0; i < allPlans.Count(); i++)
+                    for (int i = 0; i < allCities.Count(); i++)
                     {
                         string marker = "← ACTIVE";
                         Console.WriteLine($"{i}. {allCities[i].Name}" +
@@ -1202,14 +1202,14 @@ namespace SovietRepublicPlanner
                     // Choose Plan to switch
                     Console.Write("Choose the city: ");
                     int cityChoice;
-                    if (int.TryParse(Console.ReadLine(), out cityChoice) && cityChoice >= 0 && cityChoice < allPlans.Count())
+                    if (int.TryParse(Console.ReadLine(), out cityChoice) && cityChoice >= 0 && cityChoice < allCities.Count())
                     {
                         city = allCities[cityChoice];
                         allPlans = city.industryPlans;
                         allMicroDistricts = city.microDistricts;
-                        if (allPlans.Count > 1) currentResult = new IndustryPlan();
+                        if (allPlans.Count < 1) currentResult = new IndustryPlan();
                         else currentResult = allPlans[0];
-                        if (allMicroDistricts.Count > 1) microDistrict = new MicroDistrict();
+                        if (allMicroDistricts.Count < 1) microDistrict = new MicroDistrict();
                         else microDistrict = allMicroDistricts[0];
                     }
                     else { Console.Write("Invalid city choice. "); continue; }
