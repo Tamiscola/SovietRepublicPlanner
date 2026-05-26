@@ -66,10 +66,16 @@ namespace SovietRepublicPlanner
                         if (int.TryParse(Console.ReadLine(), out loadChoice) &&  loadChoice >= 0 && loadChoice < jsonFiles.Length)
                         {
                             allCities = LoadFile(Path.Combine(fileDirectory, jsonFiles[loadChoice]));
-                            city = allCities[0];
-                            allPlans = city.industryPlans;
-                            allMicroDistricts = city.microDistricts;
-                            currentSaveFile = Path.GetFileName(jsonFiles[loadChoice]);
+                            if (allCities.Count > 0)
+                            {
+                                city = allCities[0];
+                                allPlans = city.industryPlans;
+                                allMicroDistricts = city.microDistricts;
+                                currentSaveFile = Path.GetFileName(jsonFiles[loadChoice]);
+                            } else
+                            {
+                                Console.WriteLine($"No city is in this File.");
+                            }
                         } else { Console.WriteLine("Invalid input"); continue; }
                         break;
                     }
@@ -1211,6 +1217,7 @@ namespace SovietRepublicPlanner
                         else currentResult = allPlans[0];
                         if (allMicroDistricts.Count < 1) microDistrict = new MicroDistrict();
                         else microDistrict = allMicroDistricts[0];
+                        Console.WriteLine($"Switched to city '{city.Name}'!");
                     }
                     else { Console.Write("Invalid city choice. "); continue; }
                 }
@@ -1450,18 +1457,37 @@ namespace SovietRepublicPlanner
                         if (validInput) break;
                     }
 
-                    // Add to SupportBuildings
-                    foreach (var cb in chosenSupports)
+                    Console.Write($"On which level will you save Support Infrastructure?\n[0]: {city.Name}\n[1]: {currentResult.ChosenBuilding.Building.Name}\n:");
+                    choiceIndex = int.TryParse(Console.ReadLine(), out choiceIndex) ? choiceIndex : -1;
+
+                    // Add to City.SupportBuildings
+                    if (choiceIndex == 0)
                     {
-                        SupportInstance addSupBuilding = new SupportInstance()
+                        foreach (var cb in chosenSupports)
                         {
-                            Building = cb.Key,
-                            Count = cb.Value
-                        };
-                        currentResult.SupportBuildings.Add(addSupBuilding);
-                        Console.WriteLine($"{cb.Key.Name}: {cb.Value} added to the {currentResult.ChosenBuilding.Building.Name}!");
+                            SupportInstance addSupBuilding = new SupportInstance()
+                            {
+                                Building = cb.Key,
+                                Count = cb.Value
+                            };
+                            city.SupportBuildings.Add(addSupBuilding);
+                            Console.WriteLine($"{cb.Key.Name}: {cb.Value} added to the {city.Name}!");
+                        }
                     }
-                    Console.WriteLine("Check");
+                    // Add to IndustryPlan.SupportBuildings
+                    else if (choiceIndex == 1)
+                    {
+                        foreach (var cb in chosenSupports)
+                        {
+                            SupportInstance addSupBuilding = new SupportInstance()
+                            {
+                                Building = cb.Key,
+                                Count = cb.Value
+                            };
+                            currentResult.SupportBuildings.Add(addSupBuilding);
+                            Console.WriteLine($"{cb.Key.Name}: {cb.Value} added to the {currentResult.ChosenBuilding.Building.Name}!");
+                        }
+                    } else { Console.WriteLine("Invalid input."); continue; }
                     continue;
                 }
                 else if (command == "amenity")

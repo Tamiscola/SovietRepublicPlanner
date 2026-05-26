@@ -42,7 +42,7 @@ public partial class City
         Console.WriteLine("├────────────────────────────────────────┤");
         foreach (var plan in industryPlans)
             plan.DisplayAllBuildings(plan, 0);
-        if (industryPlans.Any(p => p.SupportBuildings.Count() > 0))
+        if (combinedSupBldgs.Count() > 0)
         {
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Support Infrastructures:               │");

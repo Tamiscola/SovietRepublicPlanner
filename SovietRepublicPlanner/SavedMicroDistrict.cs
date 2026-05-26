@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 public class SavedMicroDistrict
 {
     public string Name { get; set; }
+    public SavedCity City { get; set; }
     public List<SavedResidentialInstance> ResidentialBuildings { get; set; } = new List<SavedResidentialInstance>();
     public List<SavedAmenityInstance> AmenityBuildings { get; set; } = new List<SavedAmenityInstance>();
     public List<SavedTransportationInstance> TransportBuildings { get; set; } = new List<SavedTransportationInstance>();
