@@ -100,12 +100,13 @@ namespace SovietRepublicPlanner
                 // Creation menu
                 Console.WriteLine("\n────────────────────────────────────────");
                 Console.WriteLine("  'createcity'- Create a new city");
+                Console.WriteLine("  'switchcity'- Switch City");
                 Console.WriteLine("  'newplan'   - Resource-target mode (Default City)");
                 Console.WriteLine("  'buildplan' - Building-count mode (Default City)");
                 Console.WriteLine("  'navigate'  - View/modify existing plans");
                 Console.WriteLine("  'done'      - Exit program");
                 Console.Write("> ");
-                List<string> planInputs = new List<string> { "createcity", "newplan", "buildplan", "navigate", "view", "done"};
+                List<string> planInputs = new List<string> { "createcity", "switchcity","newplan", "buildplan", "navigate", "view", "done"};
                 string planInput = ReadLineWithCompletion(planInputs).ToLower().Trim();
                 if (planInput == "createcity")
                 {
@@ -123,15 +124,31 @@ namespace SovietRepublicPlanner
                     allMicroDistricts = c.microDistricts;
                     allCities.Add(city);
                 }
+                else if (planInput == "switchcity")
+                {
+                    if (allCities.Count <= 1) { Console.WriteLine("There's no city to switch"); continue; }
+                    Console.WriteLine($"[ City List ]:");
+                    for (int i = 0; i < allCities.Count; i++)
+                    {
+                        Console.WriteLine($"[{i}]: {allCities[i].Name}");
+                    }
+                    int choice;
+                    if (int.TryParse(Console.ReadLine(), out choice) && choice >= 0 && choice < allCities.Count)
+                    {
+                        city = allCities[choice];
+                        allPlans = city.industryPlans;
+                        allMicroDistricts = city.microDistricts;
+                    } else { Console.WriteLine("Invalid index"); continue; }
+                }
                 else if (planInput == "newplan") { CreateNewPlan(); }            // After creating, loop back (will enter CommandLoop next iteration)
                 else if (planInput == "buildplan") { CreateBuildPlan(); }   // After creating, loop back (will enter CommandLoop next iteration)
                 else if (planInput == "navigate" || planInput == "view")    // Go back into CommandLoop without creating a new plan
                 {
                     if (allPlans.Count > 0) { continue; }   // Skip to next iteration, which enters CommandLoop
-                    else {Console.WriteLine("No plans exist yet. Create one first!");}
+                    else { Console.WriteLine("No plans exist yet. Create one first!"); }
                 }
-                else if (planInput == "done")                               
-                { 
+                else if (planInput == "done")
+                {
                     Console.Write("Save plans before exiting? [y/n]: ");
                     if (Console.ReadKey().KeyChar == 'y')
                     {
@@ -141,7 +158,7 @@ namespace SovietRepublicPlanner
                         if (int.TryParse(Console.ReadLine(), out saveChoice) && saveChoice >= 0 && saveChoice <= 1)
                         {
                             if (saveChoice == 0) SaveFile(allCities, Path.Combine(fileDirectory, currentSaveFile));
-                            else if (saveChoice == 1) 
+                            else if (saveChoice == 1)
                             {
                                 // create a new filename
                                 while (true)
