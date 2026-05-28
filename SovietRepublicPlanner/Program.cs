@@ -729,8 +729,9 @@ namespace SovietRepublicPlanner
                     break;  // Exit CommandLoop, returns to main menu
                 }
 
-                Console.Write("\nCommand (listcities/listplans/masterplan/switchcity/switchplan/newcity/expand/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
-                List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "support", "cancel", "back", "dive", "summary", "housing", "amenity", "transportation", "done", "newcity", "switchcity" };
+                Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
+                List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "support", "cancel", "back", "dive", "summary", 
+                    "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", };
                 string command = ReadLineWithCompletion(commands).ToLower().Trim(); if (command == "expand")
                 {
                     // Choose Resources or Utility to expand
@@ -1209,8 +1210,63 @@ namespace SovietRepublicPlanner
 
                     continue;
                 }
+                else if (command == "listdistrict")
+                {
+                    if (allMicroDistricts.Count() == 0) { Console.WriteLine("No plans created yet."); continue; }
+
+                    Console.WriteLine("\n=== All MicroDistricts ===");
+                    for (int i = 0; i < allMicroDistricts.Count(); i++)
+                    {
+                        string marker = "← ACTIVE";
+                        Console.WriteLine($"{i}. {allMicroDistricts[i].Name}" +
+                            $"{(allMicroDistricts[i] == microDistrict ? marker : null)}");
+                    }
+                    Console.WriteLine();
+                    Console.Write("[d] Delete a District  [Enter] Return to commands\n> ");
+
+                    // Plan deletion
+                    if (Console.ReadKey().KeyChar == 'd')
+                    {
+                        Console.WriteLine();
+                        int delChoice;
+                        Console.Write($"Which District to delete? [0-" + (allMicroDistricts.Count() - 1) + "]: ");
+                        if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < allMicroDistricts.Count())
+                        {
+                            // Confirm deletion
+                            Console.WriteLine($"Delete '{allMicroDistricts[delChoice].Name}? [y/n]");
+                            if (Console.ReadKey().KeyChar == 'y')
+                            {
+                                Console.WriteLine();
+                                allMicroDistricts.RemoveAt(delChoice);
+                                if (delChoice < currentPlanIndex) currentPlanIndex--;   // Deleted before active plan → shift index down
+                                else if (delChoice == currentPlanIndex)
+                                {
+                                    // Deleted the active plan → pick new active
+                                    if (allMicroDistricts.Count > 0)
+                                        currentPlanIndex = Math.Min(delChoice, allMicroDistricts.Count - 1);
+                                    else
+                                        currentPlanIndex = -1;  // No plans left
+                                }   // else: deleted after active plan, no change needed
+
+                                // Update currentResult
+                                if (currentPlanIndex >= 0 && allMicroDistricts.Count > 0) microDistrict = allMicroDistricts[currentPlanIndex];
+                                else microDistrict = null;
+
+                                // Display confirmation
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("MicroDistrict deleted!");
+                                Console.ResetColor();
+                            }
+                            else continue;
+                        }
+                        else { Console.WriteLine("Invalid input"); continue; }
+                    }
+                    else { Console.WriteLine("invalid input."); continue; } // Return to commands
+
+                    continue;
+                }
                 else if (command == "switchcity")
-                { 
+                {
                     if (allCities.Count <= 1) { Console.WriteLine("Only one City exists. Nothing to switch to."); continue; }
 
                     // Display plan list
@@ -1260,6 +1316,31 @@ namespace SovietRepublicPlanner
                         currentResult = allPlans[currentPlanIndex];
                         navigationStack.Clear();
                         Console.WriteLine($"Switched to: {rootResult.TargetResource.Name} ({rootResult.TargetAmount} t/day)");
+                    }
+                    else { Console.Write("Invalid input. "); continue; }
+                }
+                else if (command == "switchdistrict")
+                {
+                    if (allMicroDistricts.Count <= 1) { Console.WriteLine("Only one plan exists. Nothing to switch to."); continue; }
+
+                    // Display plan list
+                    Console.WriteLine("\n=== All MicroDistricts ===");
+                    for (int i = 0; i < allMicroDistricts.Count(); i++)
+                    {
+                        string marker = "← ACTIVE";
+                        Console.WriteLine($"{i}. {allMicroDistricts[i].Name}" +
+                            $"{(allMicroDistricts[i] == microDistrict ? marker : null)}");
+                    }
+
+                    // Choose Plan to switch
+                    Console.Write("Choose the MicroDistrict to switch: ");
+                    int planChoice;
+                    if (int.TryParse(Console.ReadLine(), out planChoice) && planChoice >= 0 && planChoice < allMicroDistricts.Count())
+                    {
+                        currentPlanIndex = planChoice;
+                        microDistrict = allMicroDistricts[currentPlanIndex];
+                        navigationStack.Clear();
+                        Console.WriteLine($"Switched to: {microDistrict.Name}");
                     }
                     else { Console.Write("Invalid input. "); continue; }
                 }
@@ -2154,7 +2235,7 @@ namespace SovietRepublicPlanner
                                 Console.WriteLine($"\nCurrent capacity: {city.totalHousingCapacity}" +
                                     $"\nExtra capcity needed: {((city.totalWorkers - city.totalHousingCapacity) >= 0
                                     ? (city.totalWorkers - city.totalHousingCapacity)
-                                    : Math.Abs(city.totalWorkers - city.totalHousingCapacity))}");
+                                    : city.totalWorkers - city.totalHousingCapacity)}");
 
                                 allValid = true;
                             }
