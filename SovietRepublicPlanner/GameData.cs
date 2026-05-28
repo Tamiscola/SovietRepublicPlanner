@@ -1648,10 +1648,10 @@ class GameData
 
     // Utility Buildings
     // Electricity
-    public static ProductionBuilding SmallCoalPowerPlant { get; } = CreateSmallCoalPowerPlant();
-    public static ProductionBuilding CreateSmallCoalPowerPlant()
+    public static UtilityBuilding SmallCoalPowerPlant { get; } = CreateSmallCoalPowerPlant();
+    public static UtilityBuilding CreateSmallCoalPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Coal Power Plant";
         result.Inputs = new List<ResourceAmount>()
     {
@@ -1663,14 +1663,11 @@ class GameData
     };
         result.WorkersPerShift = 10;
         result.PowerConsumptionMWh = 0.30;
-        result.WaterConsumption = 0.20;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0.20;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 22.00;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
+        result.Type = UtilityType.Power;
         result.SupportCategory = SupportCategory.PowerHandling;
         result.WorkDays = 4920;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
