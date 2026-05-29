@@ -20,7 +20,10 @@ public partial class IndustryPlan
     public List<BuildingRequirement> Buildings { get; set; } = new List<BuildingRequirement>();
 
     // Selected ProductionBuilding
-    public BuildingRequirement ChosenBuilding { get; set; }     
+    public BuildingRequirement ChosenBuilding { get; set; }
+
+    // Selected UtilityBuilding
+    public List<UtilityInstance> UtilityBuildings { get; set; } = new List<UtilityInstance>();
 
     // Selected SupportBuildings and their amount
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();     

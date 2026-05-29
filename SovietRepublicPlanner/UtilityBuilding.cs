@@ -25,6 +25,7 @@ public class UtilityBuilding : Building
     // Utilities (same as other buildings)
     public double WaterConsumptionM3;
     public double SewageProductionM3 => WaterConsumptionM3;
+    public double SewageDisposalCapacity { get; set; } = 0;
     public double HeatConsumptionM3;
     public double GarbagePerWorker;
     public double BaseGarbageProduction { get; set; } = 0;

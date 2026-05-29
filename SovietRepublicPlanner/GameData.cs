@@ -95,6 +95,7 @@ class GameData
     public static Resource HeatResource = new Resource("Heat", 1, false, true) { RequiresHeatInfrastructure = true};
 
     // Wastes
+    public static Resource MixedWaste = new Resource("Mixed Waste", 0, false, false);
     public static Resource BiologicalWasteResource = new Resource("Biological Waste", 0, false, false);
 
     // Production buildings instances
@@ -1684,10 +1685,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding CoalPowerPlant { get; } = CreateCoalPowerPlant();
-    public static ProductionBuilding CreateCoalPowerPlant()
+    public static UtilityBuilding CoalPowerPlant { get; } = CreateCoalPowerPlant();
+    public static UtilityBuilding CreateCoalPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Coal Power Plant";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -1699,15 +1700,11 @@ class GameData
         };
         result.WorkersPerShift = 20;
         result.PowerConsumptionMWh = 0.6;
-        result.WaterConsumption = 0.4;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0.4;       // Resource + daily water consumption
+        result.WaterConsumptionM3 = 0.4;
+        result.HeatConsumptionM3 = 0;
         result.BaseGarbageProduction =0.03;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 39.5 / 365;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.WorkDays = 7631;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -1722,10 +1719,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding GasPowerPlant { get; } = CreateGasPowerPlant();
-    public static ProductionBuilding CreateGasPowerPlant()
+    public static UtilityBuilding GasPowerPlant { get; } = CreateGasPowerPlant();
+    public static UtilityBuilding CreateGasPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Gas Power Plant";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -1737,15 +1734,11 @@ class GameData
         };
         result.WorkersPerShift = 15;
         result.PowerConsumptionMWh = 3.4;
-        result.WaterConsumption = 0.3;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0.3;       // Resource + daily water consumption
+        result.WaterConsumptionM3 = 0.3;
+        result.HeatConsumptionM3 = 0;
         result.BaseGarbageProduction = 0.11;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 35.8 / 365;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.WorkDays = 6328;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -1758,10 +1751,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SingleReactorNuclearPowerPlant { get; } = CreateSingleReactorNuclearPowerPlant();
-    public static ProductionBuilding CreateSingleReactorNuclearPowerPlant()
+    public static UtilityBuilding SingleReactorNuclearPowerPlant { get; } = CreateSingleReactorNuclearPowerPlant();
+    public static UtilityBuilding CreateSingleReactorNuclearPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Single Reactor Nuclear Power Plant";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -1775,14 +1768,10 @@ class GameData
         };
         result.WorkersPerShift = 60;
         result.PowerConsumptionMWh = 7.8;
-        result.WaterConsumption = 1.2;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 1.2;       // Resource + daily water consumption
+        result.WaterConsumptionM3 = 1.2;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 9 / 365;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.WorkDays = 12561;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -1798,10 +1787,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding AltSingleReactorNuclearPowerPlant { get; } = CreateAltSingleReactorNuclearPowerPlant();
-    public static ProductionBuilding CreateAltSingleReactorNuclearPowerPlant()
+    public static UtilityBuilding AltSingleReactorNuclearPowerPlant { get; } = CreateAltSingleReactorNuclearPowerPlant();
+    public static UtilityBuilding CreateAltSingleReactorNuclearPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Alt Single-Reactor Nuclear Power Plant";
         result.Inputs = new List<ResourceAmount>()
     {
@@ -1815,15 +1804,11 @@ class GameData
     };
         result.WorkersPerShift = 40;
         result.PowerConsumptionMWh = 7.8;
-        result.WaterConsumption = 1.20;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 1.20;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 3.00;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
-        result.IsUtilityBuilding = true;
         result.WorkDays = 10548;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
@@ -1839,10 +1824,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding TwinReactorNuclearPowerPlant { get; } = CreateTwinReactorNuclearPowerPlant();
-    public static ProductionBuilding CreateTwinReactorNuclearPowerPlant()
+    public static UtilityBuilding TwinReactorNuclearPowerPlant { get; } = CreateTwinReactorNuclearPowerPlant();
+    public static UtilityBuilding CreateTwinReactorNuclearPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Twin Reactor Nuclear Power Plant";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -1856,14 +1841,10 @@ class GameData
         };
         result.WorkersPerShift = 120;
         result.PowerConsumptionMWh = 9.6;
-        result.WaterConsumption = 2.4;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 2.4;       // Resource + daily water consumption
+        result.WaterConsumptionM3 = 2.4;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 14.2 / 365;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.WorkDays = 20418;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
@@ -1879,10 +1860,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding ZaporozieReactor { get; } = CreateZaporozieReactor();
-    public static ProductionBuilding CreateZaporozieReactor()
+    public static UtilityBuilding ZaporozieReactor { get; } = CreateZaporozieReactor();
+    public static UtilityBuilding CreateZaporozieReactor()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Zaporozie Reactor";
         result.Inputs = new List<ResourceAmount>()
     {
@@ -1896,14 +1877,10 @@ class GameData
     };
         result.WorkersPerShift = 45;
         result.PowerConsumptionMWh = 8.0;
-        result.WaterConsumption = 1.36;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 1.36;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 4.20;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
         result.WorkDays = 13499;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -1920,10 +1897,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SmallWindPowerPlant { get; } = CreateSmallWindPowerPlant();
-    public static ProductionBuilding CreateSmallWindPowerPlant()
+    public static UtilityBuilding SmallWindPowerPlant { get; } = CreateSmallWindPowerPlant();
+    public static UtilityBuilding CreateSmallWindPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Wind Power Plant";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
@@ -1932,14 +1909,10 @@ class GameData
     };
         result.WorkersPerShift = 0;
         result.PowerConsumptionMWh = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
         result.WorkDays = 239;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -1954,10 +1927,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding BigWindPowerPlant { get; } = CreateBigWindPowerPlant();
-    public static ProductionBuilding CreateBigWindPowerPlant()
+    public static UtilityBuilding BigWindPowerPlant { get; } = CreateBigWindPowerPlant();
+    public static UtilityBuilding CreateBigWindPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Big Wind Power Plant";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
@@ -1966,14 +1939,10 @@ class GameData
     };
         result.WorkersPerShift = 0;
         result.PowerConsumptionMWh = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
         result.WorkDays = 689;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -1988,10 +1957,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SolarPowerPlant { get; } = CreateSolarPowerPlant();
-    public static ProductionBuilding CreateSolarPowerPlant()
+    public static UtilityBuilding SolarPowerPlant { get; } = CreateSolarPowerPlant();
+    public static UtilityBuilding CreateSolarPowerPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Solar Power Plant";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
@@ -2000,14 +1969,10 @@ class GameData
     };
         result.WorkersPerShift = 8;
         result.PowerConsumptionMWh = 0.24;
-        result.WaterConsumption = 0.16;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0.16;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.PowerHandling;
         result.WorkDays = 8413;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2021,10 +1986,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SmallWaterWell { get; } = CreateSmallWaterWell();
-    public static ProductionBuilding CreateSmallWaterWell()
+    public static UtilityBuilding SmallWaterWell { get; } = CreateSmallWaterWell();
+    public static UtilityBuilding CreateSmallWaterWell()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Water Well";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
@@ -2033,14 +1998,10 @@ class GameData
     };
         result.WorkersPerShift = 0;
         result.PowerConsumptionMWh = 2.1;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.WaterHandling;
         result.WorkDays = 393;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2056,10 +2017,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding BigWaterWell { get; } = CreateBigWaterWell();
-    public static ProductionBuilding CreateBigWaterWell()
+    public static UtilityBuilding BigWaterWell { get; } = CreateBigWaterWell();
+    public static UtilityBuilding CreateBigWaterWell()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Big Water Well";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
@@ -2068,14 +2029,10 @@ class GameData
     };
         result.WorkersPerShift = 7;
         result.PowerConsumptionMWh = 5.7;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.20;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.WaterHandling;
         result.WorkDays = 744;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2091,10 +2048,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SurfaceWaterIntake { get; } = CreateSurfaceWaterIntake();
-    public static ProductionBuilding CreateSurfaceWaterIntake()
+    public static UtilityBuilding SurfaceWaterIntake { get; } = CreateSurfaceWaterIntake();
+    public static UtilityBuilding CreateSurfaceWaterIntake()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Surface Water Intake";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
@@ -2103,14 +2060,10 @@ class GameData
     };
         result.WorkersPerShift = 0;
         result.PowerConsumptionMWh = 0;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.SupportCategory = SupportCategory.WaterHandling;
         result.WorkDays = 22;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2123,10 +2076,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SmallWaterTreatment { get; } = CreateSmallWaterTreatment();
-    public static ProductionBuilding CreateSmallWaterTreatment()
+    public static UtilityBuilding SmallWaterTreatment { get; } = CreateSmallWaterTreatment();
+    public static UtilityBuilding CreateSmallWaterTreatment()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Water Treatment";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -2140,14 +2093,10 @@ class GameData
         };
         result.WorkersPerShift = 5;
         result.PowerConsumptionMWh = 10;
-        result.WaterConsumption = 0.1;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0.1 + 13;       // Resource + daily water consumption
+        result.WaterConsumptionM3 = 0.1;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 10 },
@@ -2161,10 +2110,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding BigWaterTreatment { get; } = CreateBigWaterTreatment();
-    public static ProductionBuilding CreateBigWaterTreatment()
+    public static UtilityBuilding BigWaterTreatment { get; } = CreateBigWaterTreatment();
+    public static UtilityBuilding CreateBigWaterTreatment()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Big Water Treatment";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -2178,14 +2127,10 @@ class GameData
         };
         result.WorkersPerShift = 10;
         result.PowerConsumptionMWh = 13;
-        result.WaterConsumption = 0.2;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0.2 + 30;       // Resource + daily water consumption
+        result.WaterConsumptionM3 = 0.2;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 26 },
@@ -2199,10 +2144,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SmallSewageTreatment { get; } = CreateSmallSewageTreatment();
-    public static ProductionBuilding CreateSmallSewageTreatment()
+    public static UtilityBuilding SmallSewageTreatment { get; } = CreateSmallSewageTreatment();
+    public static UtilityBuilding CreateSmallSewageTreatment()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Sewage Treatment";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -2215,15 +2160,11 @@ class GameData
         };
         result.WorkersPerShift = 10;
         result.PowerConsumptionMWh = 11;
-        result.WaterConsumption = 0.2;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0.2;       // daily water consumption
+        result.WaterConsumptionM3 = 0.2;
+        result.HeatConsumptionM3 = 0;
         result.SewageDisposalCapacity = 80;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 80 },
@@ -2237,10 +2178,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding BigSewageTreatment { get; } = CreateBigSewageTreatment();
-    public static ProductionBuilding CreateBigSewageTreatment()
+    public static UtilityBuilding BigSewageTreatment { get; } = CreateBigSewageTreatment();
+    public static UtilityBuilding CreateBigSewageTreatment()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Big Sewage Treatment";
         result.Inputs = new List<ResourceAmount>()
         {
@@ -2253,15 +2194,11 @@ class GameData
         };
         result.WorkersPerShift = 20;
         result.PowerConsumptionMWh = 15;
-        result.WaterConsumption = 0.4;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0.4;       // daily water consumption
+        result.WaterConsumptionM3 = 0.4;
+        result.HeatConsumptionM3 = 0;
         result.SewageDisposalCapacity = 220;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
         {
             {ConcreteResource, 202 },
@@ -2275,10 +2212,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding SmallHeatingPlant { get; } = CreateSmallHeatingPlant();
-    public static ProductionBuilding CreateSmallHeatingPlant()
+    public static UtilityBuilding SmallHeatingPlant { get; } = CreateSmallHeatingPlant();
+    public static UtilityBuilding CreateSmallHeatingPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Heating Plant";
         result.Inputs = new List<ResourceAmount>()
     {
@@ -2290,14 +2227,10 @@ class GameData
     };
         result.WorkersPerShift = 7;
         result.PowerConsumptionMWh = 27;
-        result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0;
+        result.WaterConsumptionM3 = 0;
+        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 7.0 / 365;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 18 },
@@ -2311,10 +2244,10 @@ class GameData
         return result;
     }
 
-    public static ProductionBuilding HeatingPlant { get; } = CreateHeatingPlant();
-    public static ProductionBuilding CreateHeatingPlant()
+    public static UtilityBuilding HeatingPlant { get; } = CreateHeatingPlant();
+    public static UtilityBuilding CreateHeatingPlant()
     {
-        ProductionBuilding result = new ProductionBuilding();
+        UtilityBuilding result = new UtilityBuilding();
         result.Name = "Heating Plant";
         result.Inputs = new List<ResourceAmount>()
     {
@@ -2326,15 +2259,11 @@ class GameData
     };
         result.WorkersPerShift = 30;
         result.PowerConsumptionMWh = 63;
-        result.WaterConsumption = 0.60;
-        result.HeatConsumption = 0;
-        result.SewageProduction = 0.60;
+        result.WaterConsumptionM3 = 0.60;
+        result.HeatConsumptionM3 = 0;
         result.BaseGarbageProduction = 0.01;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 26.50 / 365;
-        result.IsSeasonDependent = false;
-        result.SeasonalMultiplier = 0;
-        result.IsUtilityBuilding = true;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
     {
         {ConcreteResource, 58 },
@@ -8695,13 +8624,7 @@ class GameData
         BauxiteMine, BauxiteProcessingPlant, AluminaPlant, AluminumPlant,
         SmallFarm, MediumFarm, LargeFarm, CreateSmallField(FertilizerType.None), CreateMediumField(FertilizerType.None), CreateLargeField(FertilizerType.None),
         LivestockFarm, Slaughterhouse,
-        CoalPowerPlant, SmallCoalPowerPlant, GasPowerPlant,
-        SingleReactorNuclearPowerPlant, AltSingleReactorNuclearPowerPlant, ZaporozieReactor, TwinReactorNuclearPowerPlant,
-        BigWindPowerPlant, SmallWindPowerPlant, SolarPowerPlant,
-        SmallWaterTreatment, BigWaterTreatment, BigWaterWell, SmallWaterWell, SurfaceWaterIntake,
-        SmallSewageTreatment, BigSewageTreatment,
         LargeCementPlant, MediumCementPlant, ConcretePlant, BrickFactory, AsphaltPlant, LargePrefabPanelsFactory, SmallPrefabPanelsFactory,
-        HeatingPlant, SmallHeatingPlant, 
     };
     public static List<SupportBuilding> AllSupportBuildings { get; } = new List<SupportBuilding>()
     {
@@ -8743,4 +8666,12 @@ class GameData
         .Concat(LargeResidentialBuildings).ToList();
     public static List<TransportationBuilding> AllTransportationBuildings { get; } = new List<TransportationBuilding>()
         .Concat(TransportationBuildings).ToList();
+    public static List<UtilityBuilding> AllUtilityBuildings { get; } = new List<UtilityBuilding>()
+    {
+        CoalPowerPlant, SmallCoalPowerPlant, GasPowerPlant,
+        SingleReactorNuclearPowerPlant, AltSingleReactorNuclearPowerPlant, ZaporozieReactor, TwinReactorNuclearPowerPlant,
+        BigWindPowerPlant, SmallWindPowerPlant, SolarPowerPlant,
+        SmallWaterTreatment, BigWaterTreatment, BigWaterWell, SmallWaterWell, SurfaceWaterIntake,
+        SmallSewageTreatment, BigSewageTreatment,HeatingPlant, SmallHeatingPlant,
+    };
 }

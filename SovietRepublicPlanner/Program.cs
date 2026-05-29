@@ -180,95 +180,6 @@ namespace SovietRepublicPlanner
             }
             return;
         }
-        // Helper method
-        static void ExpandUtility(IndustryPlan result, Resource utility, double totalNeeded)
-        {
-            Console.WriteLine($"\n{utility.Name}: {totalNeeded:F2} needed");
-
-            // Find buildings that produce this utility
-            List<ProductionBuilding> utilityBuildings = CalculationEngine.FindBuildingForResource(utility.Name);
-            if (utilityBuildings.Count() == 0) { Console.WriteLine($"No buildings found that produce {utility.Name}!"); return; }
-
-            // Show options and get user choice
-            IndustryPlan expandedResult = new IndustryPlan();
-            expandedResult.TargetResource = utility;
-            expandedResult.TargetAmount = totalNeeded;
-            int choiceIndex;
-            expandedResult = CalculationEngine.Calculate(utility.Name, totalNeeded);
-
-            // Display Options
-            Console.WriteLine($"{expandedResult.TargetResource.Name} {expandedResult.TargetAmount} has been expanded.");
-            // Display Sewage Treatment Options
-            if (utility == GameData.WasteWaterResource)
-            {
-                for (int i = 0; i < expandedResult.Buildings.Count(); i++)
-                {
-                    Console.WriteLine("\n====================================================================");
-                    Console.WriteLine($"Required number of building: {expandedResult.Buildings[i].Count} {expandedResult.Buildings[i].Building.Name}\n" +
-                        $"Total Workers: {expandedResult.Buildings[i].TotalWorkers}");
-                    Console.Write("Sewage Disposal Capacity: ");
-                    foreach (Resource r in expandedResult.Buildings[i].ExpectedOutput.Keys)
-                    {
-                        Console.Write($"{expandedResult.Buildings[i].ExpectedOutput[r]}㎥/day {r.Name} ");
-                    }
-                    Console.WriteLine("\n\nRequired Input Resources: ");
-                    foreach (Resource r in expandedResult.Buildings[i].RequiredResources.Keys)
-                    {
-                        Console.WriteLine($"- {expandedResult.Buildings[i].RequiredResources[r]} {r.Name}");
-                    }
-                    Console.WriteLine($"Power consumption: {expandedResult.Buildings[i].TotalPowerNeeded}");
-                    Console.WriteLine($"Water consumption: {expandedResult.Buildings[i].TotalWaterNeeded}");
-                    Console.WriteLine($"Heat consumption: {expandedResult.Buildings[i].TotalHeatNeeded}");
-                    Console.WriteLine($"Sewage produced: {expandedResult.Buildings[i].TotalSewageProduced}");
-                    Console.WriteLine($"Garbage produced: {expandedResult.Buildings[i].TotalGarbageProduced}");
-                    Console.WriteLine($"Pollution emitted: {expandedResult.Buildings[i].TotalEnvironmentPollution}");
-                }
-            }
-            // Display Power/Water Options
-            else { DisplayOptions(expandedResult); }
-
-            // User chooses a BuildingRequirement (if there's more than one option)
-            if (expandedResult.Buildings.Count > 1)
-            {
-                Console.Write($"Choose the Option plan(number): ");
-                while (true)
-                {
-                    if (!int.TryParse(Console.ReadLine(), out choiceIndex) || choiceIndex < 0 || choiceIndex > expandedResult.Buildings.Count())
-                    {
-                        Console.WriteLine("Invalid input. Choose the Option plan(number).");
-                    }
-                    else
-                    {
-                        choiceIndex--;
-                        expandedResult.ChosenBuilding = expandedResult.Buildings[choiceIndex];
-                        break;
-                    }
-                }
-            }
-            // When there's only one option
-            else
-            {
-                choiceIndex = 0;
-                Console.Write("Do you want to add this plan? (y/n): ");
-                char addInput;
-                while (true)
-                {
-                    if (!char.TryParse(Console.ReadLine(), out addInput))
-                    {
-                        Console.Write("Invalid input. Do you want to add this plan? (y/n):");
-                        break;
-                    }
-                    else if (addInput == 'y')
-                    {
-                        expandedResult.ChosenBuilding = expandedResult.Buildings[choiceIndex];
-                        break;
-                    }
-                    else if (addInput == 'n') { break; }
-                }
-            }
-            result.SubChains.Add(expandedResult);
-            Console.WriteLine($"{utility.Name} has been expanded!");
-        }
         static void DisplayOptions(IndustryPlan result)
         {
             for (int i = 0; i < result.Buildings.Count(); i++)
@@ -732,9 +643,10 @@ namespace SovietRepublicPlanner
                 Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
                 List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "support", "cancel", "back", "dive", "summary", 
                     "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", };
-                string command = ReadLineWithCompletion(commands).ToLower().Trim(); if (command == "expand")
+                string command = ReadLineWithCompletion(commands).ToLower().Trim(); 
+                if (command == "expand")
                 {
-                    // Choose Resources or Utility to expand
+                    // Choose Resources to expand
                     List<Resource> resourcesToExpand = new List<Resource>();
 
                     // Option 1: Production Inputs
@@ -754,9 +666,6 @@ namespace SovietRepublicPlanner
                         }
                     }
 
-                    // Option 3: Utility
-                    List<Resource> utilNeeds = currentResult.TotalUtilityNeeds.Keys.ToList();
-
                     // Display Options grouped
                     Console.WriteLine("Available resources to expand:");
                     if (productionInputs.Count() > 0)
@@ -771,21 +680,11 @@ namespace SovietRepublicPlanner
                         foreach (var r in citizenNeeds)
                             Console.WriteLine($"  · {r.Name}");
                     }
-                    if (utilNeeds.Count() > 0)
-                    {
-                        Console.WriteLine("\n[Utility]");
-                        foreach (var r in utilNeeds)
-                            if (r == GameData.WasteWaterResource) { Console.WriteLine($"  · Sewage"); }
-                            else Console.WriteLine($"  · {r.Name}");
-                    }
 
-                    bool isUtility = false;
-                    Resource utilityResource = null;
-                    double utilityAmount = 0;
                     bool allValid = false;
                     while (!allValid)
                     {
-                        Console.Write($"\nType the resource or utility to expand ('0' to back): ");
+                        Console.Write($"\nType the resource to expand ('0' to back): ");
                         expandInput = Console.ReadLine();
                         string[] inputNames = expandInput.Split(',');
 
@@ -801,59 +700,15 @@ namespace SovietRepublicPlanner
 
                             if (trimmedName == "0") { break; }
 
-                            // check if it's Utility
-                            if (trimmedName == "power")
-                            {
-                                isUtility = true;
-                                utilityResource = GameData.PowerResource;
-                                utilityAmount = currentResult.TotalPowerNeeded + (currentResult.ChosenBuilding.RequiredResources.ContainsKey(GameData.PowerResource)
-                                    ? currentResult.ChosenBuilding.RequiredResources[GameData.PowerResource] : 0);
-                                ExpandUtility(currentResult, utilityResource, utilityAmount);
-                                continue;
-                            }
-                            if (trimmedName == "water")
-                            {
-                                isUtility = true;
-                                utilityResource = GameData.WaterResource;
-                                utilityAmount = currentResult.TotalWaterNeeded + (currentResult.ChosenBuilding.RequiredResources.ContainsKey(GameData.WaterResource)
-                                    ? currentResult.ChosenBuilding.RequiredResources[GameData.WaterResource] : 0);
-                                ExpandUtility(currentResult, utilityResource, utilityAmount);
-                                continue;
-                            }
-                            if (trimmedName == "sewage")
-                            {
-                                isUtility = true;
-                                utilityResource = GameData.WasteWaterResource;
-                                utilityAmount = currentResult.TotalWaterNeeded + (currentResult.ChosenBuilding.RequiredResources.ContainsKey(GameData.WaterResource)
-                                    ? currentResult.ChosenBuilding.RequiredResources[GameData.WaterResource] : 0);
-                                ExpandUtility(currentResult, utilityResource, utilityAmount);
-                            }
-                            if (trimmedName == "heat")
-                            {
-                                isUtility = true;
-                                utilityResource = GameData.HeatResource;
-                                utilityAmount = currentResult.TotalHeatNeeded;
-                                ExpandUtility(currentResult, utilityResource, utilityAmount);
-                            }
-
                             // Search for the resource
                             foreach (Resource r in currentResult.ChosenBuilding.RequiredResources.Keys)
                             {
                                 if (r.Name.ToLower() == trimmedName)
                                 {
-                                    if (r.IsUtility)
-                                    {
-                                        Console.WriteLine($"Unexpected utility resource: {r.Name}");
-                                        allValid = false;
-                                        break;
-                                    }
                                     // Normal resource
-                                    else
-                                    {
-                                        resourcesToExpand.Add(r);
-                                        matchedResource = r;
-                                        break;
-                                    }
+                                    resourcesToExpand.Add(r);
+                                    matchedResource = r;
+                                    break;
                                 }
                             }
 

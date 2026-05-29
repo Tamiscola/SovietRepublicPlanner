@@ -90,9 +90,10 @@ public partial class IndustryPlan
             {
                 result[GameData.WasteWaterResource] += TotalSewageProduced;
             }
-            if (TotalHeatProduced > 0)
+            // Add Garbage Produced
+            if (TotalGarbageProduced > 0)
             {
-                result[GameData.HeatResource] += TotalHeatNeeded;
+                result[GameData.MixedWaste] += TotalGarbageProduced;
             }
             // Add utility as input resource (power/water as production inputs)
             foreach (var kv in ChosenBuilding.RequiredResources)
@@ -110,100 +111,6 @@ public partial class IndustryPlan
             }
             return result;
         }
-    }
-
-    // Utilities - Produced
-    public double TotalPowerProduced
-    {
-        get
-        {
-            double result = 0;
-            return CalculateTotalPowerProduced(result, this);
-        }
-    }
-    public double TotalWaterProduced
-    {
-        get
-        {
-            double result = 0;
-            return CalculateTotalWaterProduced(result, this);
-        }
-    }
-    public double TotalHeatProduced
-    {
-        get
-        {
-            double result = 0;
-            return CalculateTotalHeatProduced(result, this);
-        }
-    }
-
-    public Dictionary<Resource, BuildingRequirement> ExpandedUtilities
-    {
-        get
-        {
-            Dictionary<Resource, BuildingRequirement> result = new Dictionary<Resource, BuildingRequirement>();
-            return CalculateExpandedUtility(result, this);
-        }
-    }
-
-    public Dictionary<Resource, BuildingRequirement> CalculateExpandedUtility(Dictionary<Resource, BuildingRequirement> result, IndustryPlan cr)
-    {
-        if (cr.ChosenBuilding.Building.IsUtilityBuilding && cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key.IsUtility))
-        {
-            foreach (var kv in cr.ChosenBuilding.ExpectedOutput)
-                if (kv.Key == GameData.PowerResource)
-                {
-                    if (!result.ContainsKey(GameData.PowerResource))
-                        result.Add(GameData.PowerResource, cr.ChosenBuilding);
-                    else Console.WriteLine($"There's already existing utility building {cr.ChosenBuilding.Building.Name} for Power.");
-                }
-                else if (kv.Key == GameData.WaterResource)
-                {
-                    if (!result.ContainsKey(GameData.WaterResource))
-                        result.Add(GameData.WaterResource, cr.ChosenBuilding);
-                    else Console.WriteLine($"There's already existing utility building {cr.ChosenBuilding.Building.Name} for Water.");
-                }
-                else if (kv.Key == GameData.WasteWaterResource)
-                {
-                    if (!result.ContainsKey(GameData.WasteWaterResource))
-                        result.Add(GameData.WasteWaterResource, cr.ChosenBuilding);
-                    else Console.WriteLine($"There's already existing utility building {cr.ChosenBuilding.Building.Name} for Waste water.");
-                }
-                else if (kv.Key == GameData.HeatResource)
-                {
-                    if (!result.ContainsKey(GameData.HeatResource))
-                        result.Add(GameData.HeatResource, cr.ChosenBuilding);
-                    else Console.WriteLine($"There's already existing utility building {cr.ChosenBuilding.Building.Name} for Heat.");
-                }
-        }
-        foreach (var sub in cr.SubChains)
-            CalculateExpandedUtility(result, sub);
-        return result;
-    }
-    public double CalculateTotalPowerProduced(double d, IndustryPlan cr)
-    {
-        if (cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key == GameData.PowerResource))
-            d += cr.ChosenBuilding.ExpectedOutput[GameData.PowerResource];
-        foreach (var sub in cr.SubChains)
-            d = CalculateTotalPowerProduced(d, sub);
-        return d;
-    }
-    public double CalculateTotalWaterProduced(double d, IndustryPlan cr)
-    {
-        if (cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key == GameData.WaterResource))
-            d += cr.ChosenBuilding.ExpectedOutput[GameData.WaterResource];
-        foreach (var sub in cr.SubChains)
-            d = CalculateTotalWaterProduced(d, sub);
-        return d;
-    }
-    public double CalculateTotalHeatProduced(double d, IndustryPlan cr)
-    {
-        if (cr.ChosenBuilding.ExpectedOutput.Any(eo => eo.Key == GameData.HeatResource))
-            d += cr.ChosenBuilding.ExpectedOutput[GameData.HeatResource];
-        foreach (var sub in cr.SubChains)
-            d = CalculateTotalHeatProduced(d, sub);
-        return d;
     }
     private void CollectInputWater(Dictionary<Resource, double> result, IndustryPlan cr)
     {
