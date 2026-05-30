@@ -11,6 +11,7 @@ public partial class City
     public string Name { get; set; }
     public List<IndustryPlan> industryPlans = new List<IndustryPlan>();
     public List<MicroDistrict> microDistricts = new List<MicroDistrict>();
+    public List<UtilityInstance> UtilityBuildings = new List<UtilityInstance>();
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
     public List<TransportationInstance> TransportationBuildings = new List<TransportationInstance>();
 
@@ -21,6 +22,14 @@ public partial class City
         {
             int total = 0;
             foreach (var plan in industryPlans) total += plan.TotalWorkers;
+            foreach (var m in microDistricts) total += m.TotalWorkers;
+            foreach (var ins in UtilityBuildings)
+            {
+                foreach (var u in ins)
+                {
+                    total += u.TotalWorkers;
+                }
+            }
             return total;
         }
     }

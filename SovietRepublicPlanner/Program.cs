@@ -457,7 +457,7 @@ namespace SovietRepublicPlanner
             // Building Choice : User Interaction
             List<ProductionBuilding> allBuildings = GameData.AllProductionBuildings;
             List<ProductionBuilding> allExtractions = allBuildings.Where(b => b.IsQualityDependent).ToList();
-            List<ProductionBuilding> allProcessing = allBuildings.Where(b => !b.IsQualityDependent && !b.IsSeasonDependent && !b.IsUtilityBuilding).ToList();
+            List<ProductionBuilding> allProcessing = allBuildings.Where(b => !b.IsQualityDependent && !b.IsSeasonDependent).ToList();
             List<ProductionBuilding> selectedCategory = new List<ProductionBuilding>();
             int userInput = 0;
             double inputAmount = 0;

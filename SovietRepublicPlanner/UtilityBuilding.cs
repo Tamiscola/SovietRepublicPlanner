@@ -18,7 +18,9 @@ public class UtilityBuilding : Building
     public UtilityType Type;
     public SupportCategory SupportCategory;
 
+    // Resources & Workers
     public int WorkersPerShift;
+    public int TotalWorkers => WorkersPerShift * 3;
     public List<ResourceAmount> Inputs { get; set; } = new List<ResourceAmount>();
     public List<ResourceAmount> Outputs { get; set; } = new List<ResourceAmount>();
 

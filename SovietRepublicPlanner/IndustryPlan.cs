@@ -22,13 +22,9 @@ public partial class IndustryPlan
     // Selected ProductionBuilding
     public BuildingRequirement ChosenBuilding { get; set; }
 
-    // Selected UtilityBuilding
-    public List<UtilityInstance> UtilityBuildings { get; set; } = new List<UtilityInstance>();
-
     // Selected SupportBuildings and their amount
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();     
 
     // Selected TransportationBuildings and their amount
     public List<TransportationInstance> TransportationBuildings = new List<TransportationInstance>();
-    public int TotalBuildings { get; set; }
 }
