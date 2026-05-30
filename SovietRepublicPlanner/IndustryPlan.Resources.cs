@@ -15,7 +15,7 @@ public partial class IndustryPlan
             return FindExpandedResources(result, this);
         }
     }
-    public Dictionary<Resource, double> TotalImports
+    public Dictionary<Resource, double> TotalInputs
     {
         get
         {

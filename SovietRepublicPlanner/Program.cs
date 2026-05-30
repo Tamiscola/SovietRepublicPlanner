@@ -778,9 +778,9 @@ namespace SovietRepublicPlanner
                         IndustryPlan expandedResult = new IndustryPlan();
                         expandedResult.TargetResource = resourcesToExpand[j];
                         // Use total imports if available (represents all unfulfilled demand)
-                        if (rootResult.TotalImports.ContainsKey(resourcesToExpand[j]))
+                        if (rootResult.TotalInputs.ContainsKey(resourcesToExpand[j]))
                         {
-                            expandedResult.TargetAmount = rootResult.TotalImports[resourcesToExpand[j]];
+                            expandedResult.TargetAmount = rootResult.TotalInputs[resourcesToExpand[j]];
                         }
                         else
                         {

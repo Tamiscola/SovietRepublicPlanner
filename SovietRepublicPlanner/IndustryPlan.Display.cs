@@ -94,7 +94,7 @@ public partial class IndustryPlan
             }
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Importing Resources:");
-            foreach (var kv in TotalImports)
+            foreach (var kv in TotalInputs)
                 Console.WriteLine($"│ ·{kv.Value,6:F2}t/day {kv.Key.Name,-20}");
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Resource Residues:");

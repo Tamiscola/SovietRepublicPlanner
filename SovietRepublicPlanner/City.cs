@@ -11,7 +11,7 @@ public partial class City
     public string Name { get; set; }
     public List<IndustryPlan> industryPlans = new List<IndustryPlan>();
     public List<MicroDistrict> microDistricts = new List<MicroDistrict>();
-    public List<UtilityInstance> UtilityBuildings = new List<UtilityInstance>();
+    public List<UtilityPlan> UtilityPlans = new List<UtilityPlan>();
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
     public List<TransportationInstance> TransportationBuildings = new List<TransportationInstance>();
 
@@ -23,13 +23,7 @@ public partial class City
             int total = 0;
             foreach (var plan in industryPlans) total += plan.TotalWorkers;
             foreach (var m in microDistricts) total += m.TotalWorkers;
-            foreach (var ins in UtilityBuildings)
-            {
-                foreach (var u in ins)
-                {
-                    total += u.TotalWorkers;
-                }
-            }
+            foreach (var p in UtilityPlans) total += p.TotalWorkers;
             return total;
         }
     }
@@ -47,6 +41,8 @@ public partial class City
         {
             double total = 0;
             foreach (var plan in industryPlans) total += plan.TotalPowerNeeded;
+            foreach (var m in microDistricts) total += m.PowerConsumption;
+            foreach (var p in UtilityPlans) total += p.TotalPowerConsumptionMWh;
             return total;
         }
     }
@@ -56,6 +52,8 @@ public partial class City
         {
             double total = 0;
             foreach (var plan in industryPlans) total += plan.TotalWaterNeeded;
+            foreach (var m in microDistricts) total += m.WaterConsumption;
+            foreach (var p in UtilityPlans) total += p.TotalWaterConsumptionM3;
             return total;
         }
     }
@@ -65,6 +63,8 @@ public partial class City
         {
             double total = 0;
             foreach (var plan in industryPlans) total += plan.TotalHeatNeeded;
+            foreach (var m in microDistricts) total += m.HeatConsumption;
+            foreach (var p in UtilityPlans) total += p.TotalHeatConsumptionM3;
             return total;
         }
     }
@@ -74,6 +74,8 @@ public partial class City
         {
             double total = 0;
             foreach (var plan in industryPlans) total += plan.TotalGarbageProduced;
+            foreach (var m in microDistricts) total += m.GarbageProduction;
+            foreach (var p in UtilityPlans) total += p.TotalGarbageProduction;
             return total;
         }
     }
@@ -83,6 +85,7 @@ public partial class City
         {
             double total = 0;
             foreach (var plan in industryPlans) total+= plan.TotalEnvironmentPollution;
+            foreach (var p in UtilityPlans) total += p.TotalEnvironmentPollution;
             return total;
         }
     }
@@ -95,7 +98,7 @@ public partial class City
             return total;
         }
     }
-    public Dictionary<Resource, double> utilityProduction {
+    public Dictionary<Resource, double> UtilityProduction {
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>()
@@ -105,17 +108,12 @@ public partial class City
                 {GameData.WasteWaterResource, 0},
                 {GameData.HeatResource, 0},
             };
-            foreach (var plan in industryPlans)
+            foreach (var plan in UtilityPlans)
             {
-                foreach (var kv in plan.ExpandedUtilities)
+                foreach (var kv in plan.TotalOutputs)
                 {
-                    foreach (var kv2 in kv.Value.ExpectedOutput)
-                    {
-                        if (r.ContainsKey(kv2.Key))
-                            r[kv2.Key] += kv2.Value;
-                        else
-                            r[kv2.Key] = kv2.Value;
-                    }
+                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                    else r.Add(kv.Key, kv.Value);
                 }
             }
             return r;
@@ -128,7 +126,15 @@ public partial class City
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
             foreach (var plan in industryPlans)
             {
-                foreach(var kv in plan.TotalImports)
+                foreach(var kv in plan.TotalInputs)
+                {
+                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                    else r[kv.Key] = kv.Value;
+                }
+            }
+            foreach (var plan in UtilityPlans)
+            {
+                foreach (var kv in plan.TotalInputs)
                 {
                     if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
                     else r[kv.Key] = kv.Value;
@@ -198,7 +204,7 @@ public partial class City
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
             foreach (var plan in industryPlans)
             {
-                foreach (var kv in plan.TotalImports)
+                foreach (var kv in plan.TotalInputs)
                 {
                     if (r.ContainsKey(kv.Key)) r[kv.Key] -= kv.Value;
                     else r[kv.Key] = -kv.Value;

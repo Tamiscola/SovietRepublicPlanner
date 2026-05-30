@@ -18,10 +18,10 @@ public partial class City
         Console.WriteLine("│                   Needed    Produced  Balance");
         Console.WriteLine($"│ Workers    :    {totalWorkers,6}     {totalHousingCapacity,6}  {totalHousingCapacity - totalWorkers,7}");
         Console.WriteLine($"│ Citizens   :    {totalCitizen,6}     ");
-        Console.WriteLine($"│ Power (MW) :    {totalPower,6:F2}    {utilityProduction[GameData.PowerResource],7:F2} {utilityProduction[GameData.PowerResource] - totalPower,8:F2}");
-        Console.WriteLine($"│ Water (m³) :    {totalWater,6:F2}    {utilityProduction[GameData.WaterResource],7:F2} {utilityProduction[GameData.WaterResource] - totalWater,8:F2}");
-        Console.WriteLine($"│ Sewage (m³):    {totalWater,6:F2}    {utilityProduction[GameData.WasteWaterResource],7:F2} {utilityProduction[GameData.WasteWaterResource] - totalWater,8:F2}");
-        Console.WriteLine($"│ Heat (MW)  :    {totalHeat,6:F2}    {utilityProduction[GameData.HeatResource],7:F2} {utilityProduction[GameData.HeatResource] - totalHeat,8:F2}");
+        Console.WriteLine($"│ Power (MW) :    {totalPower,6:F2}    {UtilityProduction[GameData.PowerResource],7:F2} {UtilityProduction[GameData.PowerResource] - totalPower,8:F2}");
+        Console.WriteLine($"│ Water (m³) :    {totalWater,6:F2}    {UtilityProduction[GameData.WaterResource],7:F2} {UtilityProduction[GameData.WaterResource] - totalWater,8:F2}");
+        Console.WriteLine($"│ Sewage (m³):    {totalWater,6:F2}    {UtilityProduction[GameData.WasteWaterResource],7:F2} {UtilityProduction[GameData.WasteWaterResource] - totalWater,8:F2}");
+        Console.WriteLine($"│ Heat (MW)  :    {totalHeat,6:F2}    {UtilityProduction[GameData.HeatResource],7:F2} {UtilityProduction[GameData.HeatResource] - totalHeat,8:F2}");
         Console.WriteLine($"│ Garbage    :    {totalGarbage,6:F6} t/day              ");
         Console.WriteLine($"│ Pollution  :    {totalPollution,6:F6} t/day            ");
         Console.WriteLine("├────────────────────────────────────────┤");
