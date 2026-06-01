@@ -75,6 +75,7 @@ public partial class IndustryPlan
             result.Add(GameData.WaterResource, 0);
             result.Add(GameData.WasteWaterResource, 0);
             result.Add(GameData.HeatResource, 0);
+            result.Add(GameData.MixedWaste, 0);
 
             // Add utility consumption (power/water consumed to run buildings)
             if (TotalPowerNeeded > 0)

@@ -8608,7 +8608,7 @@ class GameData
         AsphaltResource,
         PrefabPanelsResource,
         BitumenResource,
-        BiologicalWasteResource,
+        BiologicalWasteResource, MixedWaste
     };
     public static List<ProductionBuilding> AllProductionBuildings { get; } = new List<ProductionBuilding>()
     {

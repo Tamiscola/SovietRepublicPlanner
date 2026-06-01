@@ -292,6 +292,22 @@ public partial class City
                     else r.Add(kv.Key, kv.Value);
                 }
             }
+            foreach (var m in microDistricts)
+            {
+                foreach (var kv in m.ConstructionMaterials)
+                {
+                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                    else r.Add(kv.Key, kv.Value);
+                }
+            }
+            foreach (var p in UtilityPlans)
+            {
+                foreach (var kv in p.ConstructionMaterials)
+                {
+                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                    else r.Add(kv.Key, kv.Value);
+                }
+            }
             return r;
         }
     }

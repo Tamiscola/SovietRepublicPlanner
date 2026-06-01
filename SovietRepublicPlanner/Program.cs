@@ -1681,59 +1681,10 @@ namespace SovietRepublicPlanner
                 {
                     int buildChoice;
                     int diveChoice;
-                    Console.Write("Which one to dive into? (press 9 to go back): [0]Utility, [1]SubChain: ");
+                    Console.Write("Which one to dive into? (press 9 to go back): [1]SubChain: ");
                     if (int.TryParse(Console.ReadLine(), out buildChoice) && buildChoice >= 0 && buildChoice <= 1)
                     {
-                        if (buildChoice == 0)
-                        {
-                            if (currentResult.ExpandedUtilities.Count() > 0)
-                            {
-                                Dictionary<int, Resource> utilIndex = new Dictionary<int, Resource>();
-                                Console.WriteLine("Which utility do you want to dive into?:");
-                                int i = 0;
-                                foreach (var kv in currentResult.ExpandedUtilities)
-                                {
-                                    Console.WriteLine($"{i}: {kv.Key.Name}");
-                                    utilIndex.Add(i, kv.Key);
-                                    i++;
-                                }
-                                Console.Write("Choose the number to dive: ");
-                                if (int.TryParse(Console.ReadLine(), out diveChoice) && diveChoice >= 0 && diveChoice <= currentResult.ExpandedUtilities.Count())
-                                {
-                                    Console.WriteLine($"Dived to {currentResult.ExpandedUtilities[utilIndex[diveChoice]].Building.Name}.");
-                                    // Display the current level again
-                                    if (utilIndex[diveChoice] == GameData.PowerResource)
-                                        Console.WriteLine($"\nTarget Resource: {utilIndex[diveChoice].Name} {currentResult.ChosenBuilding.TotalPowerNeeded} MWh/day");
-                                    else if (utilIndex[diveChoice] == GameData.WaterResource)
-                                        Console.WriteLine($"\nTarget Resource: {utilIndex[diveChoice].Name} {currentResult.ChosenBuilding.TotalWaterNeeded} ㎥/day");
-                                    Console.WriteLine("\n====================================================================");
-                                    Console.WriteLine($"Required number of building: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].Count} {currentResult.ExpandedUtilities[utilIndex[diveChoice]].Building.Name}\n" +
-                                        $"Total Workers: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].TotalWorkers}");
-                                    Console.Write("Expected Output: ");
-                                    foreach (Resource r in currentResult.ExpandedUtilities[utilIndex[diveChoice]].ExpectedOutput.Keys)
-                                    {
-                                        if (utilIndex[diveChoice] == GameData.PowerResource)
-                                            Console.Write($"{currentResult.ExpandedUtilities[utilIndex[diveChoice]].ExpectedOutput[r]} MWh/day {r.Name} ");
-                                        else if (utilIndex[diveChoice] == GameData.WaterResource)
-                                            Console.Write($"{currentResult.ExpandedUtilities[utilIndex[diveChoice]].ExpectedOutput[r]} ㎥/day {r.Name} ");
-                                    }
-                                    Console.WriteLine("\n\nRequired Input Resources: ");
-                                    foreach (Resource r in currentResult.ExpandedUtilities[utilIndex[diveChoice]].RequiredResources.Keys)
-                                    {
-                                        Console.WriteLine($"- {currentResult.ExpandedUtilities[utilIndex[diveChoice]].RequiredResources[r]} {r.Name}");
-                                    }
-                                    Console.WriteLine($"Power consumption: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].TotalPowerNeeded}");
-                                    Console.WriteLine($"Water consumption: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].TotalWaterNeeded}");
-                                    Console.WriteLine($"Heat consumption: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].TotalHeatNeeded}");
-                                    Console.WriteLine($"Sewage produced: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].TotalSewageProduced}");
-                                    Console.WriteLine($"Garbage produced: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].TotalGarbageProduced}");
-                                    Console.WriteLine($"Pollution emitted: {currentResult.ExpandedUtilities[utilIndex[diveChoice]].TotalEnvironmentPollution}");
-                                }
-                                else { Console.WriteLine("Invalid input."); continue; }
-                            }
-                            else { Console.WriteLine("\nNo Utility to dive into!"); }
-                        }
-                        else if (buildChoice == 1)
+                        if (buildChoice == 1)
                         {
                             if (currentResult.SubChains.Count > 0)
                             {
@@ -1784,50 +1735,10 @@ namespace SovietRepublicPlanner
                 {
                     int buildChoice;
                     int undoChoice;
-                    Console.Write("Which one to cancel? (press 9 to go back): \n[0]Utility \n[1]SubChain \n[2]Support Buildings \n[3]Residential Buildings \n[4]Amenity Buildings \n[5]Transportation Buildings: ");
+                    Console.Write("Which one to cancel? (press 9 to go back):\n[1]SubChain \n[2]Support Buildings \n[3]Residential Buildings \n[4]Amenity Buildings \n[5]Transportation Buildings: ");
                     if (int.TryParse(Console.ReadLine(), out buildChoice) && buildChoice >= 0 && buildChoice <= 5)
                     {
-                        if (buildChoice == 0)
-                        {
-                            if (currentResult.ExpandedUtilities.Count() > 0)
-                            {
-                                Dictionary<int, Resource> utilIndex = new Dictionary<int, Resource>();
-                                Console.WriteLine("Which utility do you want to cancel?:");
-                                int i = 0;
-                                foreach (var kv in currentResult.ExpandedUtilities)
-                                {
-                                    Console.WriteLine($"{i}: {kv.Key.Name}");
-                                    utilIndex.Add(i, kv.Key);
-                                    i++;
-                                }
-                                Console.Write("Choose the number to cancel: ");
-                                if (int.TryParse(Console.ReadLine(), out undoChoice) && undoChoice >= 0 && undoChoice < currentResult.ExpandedUtilities.Count())
-                                {
-                                    Resource utilityToCancel = utilIndex[undoChoice];
-
-                                    // Get the building name BEFORE we remove anything
-                                    string buildingName = currentResult.ExpandedUtilities.ContainsKey(utilityToCancel)
-                                        ? currentResult.ExpandedUtilities[utilityToCancel].Building.Name
-                                        : "Unknown building";
-
-                                    // Find and remove the SubChain that produces this utility
-                                    IndustryPlan subChainToRemove = currentResult.SubChains
-                                        .FirstOrDefault(sc => sc.TargetResource == utilityToCancel);
-
-                                    if (subChainToRemove != null)
-                                        currentResult.SubChains.Remove(subChainToRemove);
-
-                                    // Remove from ExpandedUtilities tracking
-                                    if (currentResult.ExpandedUtilities.ContainsKey(utilityToCancel))
-                                        currentResult.ExpandedUtilities.Remove(utilityToCancel);
-
-                                    Console.WriteLine($"{buildingName} has been canceled.");
-                                }
-                                else { Console.WriteLine("Invalid input."); continue; }
-                            }
-                            else { Console.WriteLine("\nNo Utility to cancel!"); }
-                        }
-                        else if (buildChoice == 1)
+                        if (buildChoice == 1)
                         {
                             if (currentResult.SubChains.Count() > 0)
                             {

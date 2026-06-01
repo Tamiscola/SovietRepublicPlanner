@@ -132,6 +132,8 @@ public class UtilityPlan
         }
     }
 
+    public Dictionary<Resource, double> ConstructionMaterials { get; set; } = new Dictionary<Resource, double>();
+
     // Transport-specific
     public int? TotalParkingSpots;  // nullable - not all have this
     public double? TotalFuelStorageCapacity;  // nullable - only gas stations/end stations

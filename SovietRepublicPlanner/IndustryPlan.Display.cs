@@ -18,16 +18,12 @@ public partial class IndustryPlan
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ Utilities Status:");
             Console.WriteLine("│                      Needed         Produced   Balance");
-            Console.WriteLine($"│ Total Workers:      {TotalWorkers,8}");
+            Console.WriteLine($"│ Total Workers:{TotalWorkers,13}");
             // Power
-            string powerProduced = TotalPowerProduced > 0 ? $"{TotalPowerProduced,10:F2}" : "         —";
-            double powerBalance = TotalPowerProduced > 0
-                ? TotalPowerProduced - TotalPowerNeeded
-                : -TotalPowerNeeded;
-            string powerBalanceStr = TotalPowerProduced > 0
-                ? $"{(powerBalance >= 0 ? "+" : "")}{powerBalance:F2}"
-                : $"-{TotalPowerNeeded:F2}";
-            Console.WriteLine($"│ Power (MW): {TotalPowerNeeded,16:F2}{powerProduced}  {powerBalanceStr,13}");
+            string minusBalance = TotalPopulationNeeded < 0
+                ? "-"
+                : "";
+            Console.WriteLine($"│ Power (MW):{TotalPowerNeeded,16:F2}{minusBalance + TotalPowerNeeded,27:F2}");
             // Water
             double waterInput = TotalUtilityNeeds.ContainsKey(GameData.WaterResource)
                 ? TotalUtilityNeeds[GameData.WaterResource] - TotalWaterNeeded
@@ -35,38 +31,20 @@ public partial class IndustryPlan
             string waterLabel = waterInput > 0
                 ? $"{TotalUtilityNeeds[GameData.WaterResource]:F2} ({TotalWaterNeeded:F2}+{waterInput:F2})"
                 : $"{TotalWaterNeeded:F2}";
-            string waterProduced = TotalWaterProduced > 0 ? $"{TotalWaterProduced,10:F2}" : "         —";
-            double waterBalance = TotalWaterProduced > 0
-                ? TotalWaterProduced - TotalUtilityNeeds[GameData.WaterResource]
-                : -TotalWaterNeeded;
-            string waterBalanceStr = TotalWaterProduced > 0
-                ? $"{(waterBalance >= 0 ? "+" : "")}{waterBalance:F2}"
-                : (TotalUtilityNeeds.ContainsKey(GameData.WaterResource)) ? $"-{TotalUtilityNeeds[GameData.WaterResource]:F2}" : "0.00";
-            Console.WriteLine($"│ Water (t/day): {waterLabel,13}{waterProduced}  {waterBalanceStr,13}");
+            minusBalance = double.Parse(waterLabel) < 0
+                ? "-"
+                : "";
+            Console.WriteLine($"│ Water (t/day):{waterLabel,13}{minusBalance + waterLabel,27}");
             // Heat
-            string heatProduced = TotalHeatProduced > 0 ? $"{TotalHeatProduced,10:F2}" : "         —";
-            double heatBalance = TotalHeatProduced > 0
-                ? TotalHeatProduced - TotalHeatNeeded
-                : -TotalHeatNeeded;
-            string heatBalanceStr = TotalHeatProduced > 0
-                ? $"{(heatBalance >= 0 ? "+" : "")}{heatBalance:F2}"
-                : $"-{TotalHeatNeeded:F2}";
-            Console.WriteLine($"│ Heat (MW):        {TotalHeatNeeded,10:F2}{heatProduced}  {heatBalanceStr,13}");
+            minusBalance = TotalHeatNeeded < 0
+                ? "-"
+                : "";
+            Console.WriteLine($"│ Heat (MW):{TotalHeatNeeded,17:F2}{minusBalance + TotalHeatNeeded,27}");
             // Sewage
-            double sewageTreated = TotalUtilityNeeds.ContainsKey(GameData.WasteWaterResource)
-                ? (ExpandedUtilities.Any(eu => eu.Key == GameData.WasteWaterResource) ? ExpandedUtilities[GameData.WasteWaterResource].TotalSewageDisposalCapacity : 0)
-                : 0;
-            if (SupportBuildings.Any(sb => sb.Building == GameData.SewageDischarge)) sewageTreated = TotalWaterProduced;
-            string sewageProduced = TotalSewageProduced > 0 ? $"{TotalSewageProduced,10:F2}" : "         —";
-            double sewageBalance = TotalSewageProduced > 0
-                ? sewageTreated - TotalSewageProduced
-                : -TotalSewageProduced;
-            string sewageBalanceStr = TotalSewageProduced > 0
-                ? $"{(sewageBalance >= 0 ? "+" : "")}{sewageBalance:F2}"
-                : $"{TotalSewageProduced:F2}";
-            Console.WriteLine($"│ Sewage (t/day):   {sewageProduced}{sewageTreated,10}  {sewageBalanceStr,13}");
-            Console.WriteLine($"│ Garbage (t/day):  {TotalGarbageProduced,10:F2}        —  {TotalGarbageProduced,14:F2}");
-            Console.WriteLine($"│ Pollution:        {TotalEnvironmentPollution,10:F6}        —  {TotalEnvironmentPollution,14:F6}");
+            string sewageProduced = TotalSewageProduced > 0 ? $"{TotalSewageProduced,12:F2}" : "         —";
+            Console.WriteLine($"│ Sewage (t/day):{sewageProduced}{sewageProduced,27}");
+            Console.WriteLine($"│ Garbage (t/day):{TotalGarbageProduced,11:F2}{TotalGarbageProduced,27:F2}");
+            Console.WriteLine($"│ Pollution:{TotalEnvironmentPollution,17:F6}{TotalEnvironmentPollution,27:F6}");
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ All Buildings in Chain:                │");
             Console.WriteLine("├────────────────────────────────────────┤");
