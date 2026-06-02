@@ -2,6 +2,7 @@
 
 public class SavedIndustryPlan
 {
+    public SavedCity ParentCity { get; set; }
     public string ResourceName { get; set; }
     public string BuildingName { get; set; }
     public double Amount { get; set; }
@@ -41,6 +42,7 @@ public class SavedIndustryPlan
 
         var saved = new SavedIndustryPlan
         {
+            ParentCity = City.ConvertToSavedCity(plan.ParentCity),
             ResourceName = plan.TargetResource.Name,
             BuildingName = plan.ChosenBuilding?.Building.Name,
             Amount = plan.TargetAmount,

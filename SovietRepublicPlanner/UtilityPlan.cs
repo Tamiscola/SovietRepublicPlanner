@@ -10,6 +10,7 @@ public class UtilityPlan
     public string Name { get; set; }
     public City ParentCity { get; set; }
     public List<UtilityInstance> Buildings { get; set; }
+    public List<SupportInstance> SupportBuildings { get; set; }
     public UtilityType Type;
 
     // Workers & Resources
@@ -20,38 +21,6 @@ public class UtilityPlan
             foreach (UtilityInstance instance in Buildings)
             {
                 r += instance.Building.TotalWorkers * instance.Count;
-            }
-            return r;
-        }
-    }
-    public Dictionary<Resource, double> TotalInputs
-    {
-        get
-        {
-            Dictionary<Resource, double> r= new Dictionary<Resource, double>();
-            foreach (UtilityInstance instance in Buildings)
-            {
-                foreach (var ra in instance.Building.Inputs)
-                {
-                    if (r.ContainsKey(ra.Resource)) r[ra.Resource] += ra.Amount;
-                    else r.Add(ra.Resource, ra.Amount);
-                }
-            }
-            return r;
-        }
-    }
-    public Dictionary<Resource, double> TotalOutputs
-    {
-        get
-        {
-            Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (UtilityInstance instance in Buildings)
-            {
-                foreach (var ra in instance.Building.Inputs)
-                {
-                    if (r.ContainsKey(ra.Resource)) r[ra.Resource] += ra.Amount;
-                    else r.Add(ra.Resource, ra.Amount);
-                }
             }
             return r;
         }
@@ -132,10 +101,44 @@ public class UtilityPlan
         }
     }
 
+    // Construction
     public Dictionary<Resource, double> ConstructionMaterials { get; set; } = new Dictionary<Resource, double>();
 
     // Transport-specific
     public int? TotalParkingSpots;  // nullable - not all have this
     public double? TotalFuelStorageCapacity;  // nullable - only gas stations/end stations
     public int? TotalPassengerCapacity;  // nullable - only stops/platforms
+
+    public static SavedUtilityPlan ConvertToSavedUtilityPlan(UtilityPlan plan)
+    {
+        if (plan == null) { Console.WriteLine("No plan to convert."); return null; }
+        var s = new SavedUtilityPlan()
+        {
+            ParentCity = City.ConvertToSavedCity(plan.ParentCity),
+            Buildings = plan.Buildings.Select(b => new SavedUtilityPlan.SavedUtilityInstance()
+            {
+                BuildingName = b.Building.Name,
+                Count = b.Count,
+            }).ToList(),
+            SavedSupportBuildings = plan.SupportBuildings.Select(s => new SavedIndustryPlan.SavedSupportInstance()
+            {
+                BuildingName = s.Building.Name,
+                Count = s.Count,
+            }).ToList(),
+            Type = plan.Type,
+            TotalWorkers = plan.TotalWorkers,
+            PowerConsumption = plan.TotalPowerConsumptionMWh,
+            WaterConsumption = plan.TotalWaterConsumptionM3,
+            SewageProduction = plan.TotalSewageProductionM3,
+            SewageDisposalCapacity = plan.TotalSewageDisposalCapacity,
+            HeatConsumption = plan.TotalHeatConsumptionM3,
+            GarbageProduction = plan.TotalGarbageProduction,
+            ConstructionMaterials = plan.ConstructionMaterials.Select(c =>  new SavedUtilityPlan.SavedResourceInstance()
+            {
+                Name = c.Key.Name,
+                Amount = c.Value,
+            }).ToList(),
+        };
+        return s;
+    }
 }
