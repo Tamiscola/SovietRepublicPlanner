@@ -235,15 +235,6 @@ namespace SovietRepublicPlanner
                     .Select(c => City.ConvertFromSavedCity(c))
                     .ToList();
                 Console.WriteLine($"✓ Loaded {cities.Count} city(s) from {filename}\n");
-                
-
-                // Debug print
-                //foreach (var city in cities) 
-                //{
-                //    Console.WriteLine($"City Name : {city.Name}");
-                //    Console.WriteLine($"City Plans : {city.industryPlans.Count}");
-                //    Console.WriteLine($"City MicroDistricts : {city.microDistricts.Count}");
-                //}
                 return cities;
             }
             catch (Exception ex)

@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 public class SavedCity
 {
     public string Name { get; set; }
-    public List<SavedIndustryPlan> savedIndustryPlans { get; set; }
-    public List<SavedMicroDistrict> savedMicroDistrict { get; set; }
-    public List<SavedSupportInstance> savedSupportBuildings { get; set; }
+    public List<SavedIndustryPlan>? savedIndustryPlans { get; set; }
+    public List<SavedMicroDistrict>? savedMicroDistricts { get; set; }
+    public List<SavedUtilityPlan>? savedUtilityPlans { get; set; }
+    public List<SavedSupportInstance>? savedSupportBuildings { get; set; }
     public class SavedSupportInstance
     {
         public string BuildingName { get; set; }

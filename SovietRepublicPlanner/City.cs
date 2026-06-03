@@ -9,11 +9,11 @@ using System.Xml.Serialization;
 public partial class City
 {
     public string Name { get; set; }
-    public List<IndustryPlan> industryPlans = new List<IndustryPlan>();
-    public List<MicroDistrict> microDistricts = new List<MicroDistrict>();
-    public List<UtilityPlan> UtilityPlans = new List<UtilityPlan>();
-    public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
-    public List<TransportationInstance> TransportationBuildings = new List<TransportationInstance>();
+    public List<IndustryPlan>? industryPlans = new List<IndustryPlan>();
+    public List<MicroDistrict>? microDistricts = new List<MicroDistrict>();
+    public List<UtilityPlan>? UtilityPlans = new List<UtilityPlan>();
+    public List<SupportInstance>? SupportBuildings { get; set; } = new List<SupportInstance>();
+    public List<TransportationInstance>? TransportationBuildings = new List<TransportationInstance>();
 
     // Initialize totals
     public int totalWorkers
@@ -319,8 +319,11 @@ public partial class City
             savedIndustryPlans = city.industryPlans
                 .Select(p => SavedIndustryPlan.ConvertToSavedPlan(p))
                 .ToList(),
-            savedMicroDistrict = city.microDistricts
+            savedMicroDistricts = city.microDistricts
                 .Select(m => MicroDistrict.ConvertToSavedMicroDistrict(m))
+                .ToList(),
+            savedUtilityPlans = city.UtilityPlans
+                .Select(m => UtilityPlan.ConvertToSavedUtilityPlan(m))
                 .ToList(),
             savedSupportBuildings = city.combinedSupBldgs
                 .Select(i => new SavedCity.SavedSupportInstance
@@ -341,24 +344,26 @@ public partial class City
     {
         City c = new City();
         c.Name = sc.Name;
-        c.industryPlans = sc.savedIndustryPlans
+        c.industryPlans = sc.savedIndustryPlans?
             .Select(p => SavedIndustryPlan.ConvertFromSavedPlan(p))
             .ToList();
-        c.microDistricts = sc.savedMicroDistrict
+        c.microDistricts = sc.savedMicroDistricts?
             .Select(p => MicroDistrict.ConvertFromSavedMicroDistrict(p))
             .ToList();
-        c.SupportBuildings = sc.savedSupportBuildings
-            .Select(i => new SupportInstance
+        c.UtilityPlans = sc.savedUtilityPlans?
+            .Select(p => SavedUtilityPlan.ConvertToUtilityPlan(p))
+            .ToList();
+        c.SupportBuildings = sc.savedSupportBuildings?.Select(i => new SupportInstance
             {
                 Building = GameData.AllSupportBuildings
-                            .FirstOrDefault(s => s.Name == i.BuildingName),
+                            .FirstOrDefault(sb => sb.Name == i.BuildingName),
                 Count = i.Count
             }).ToList();
-        c.TransportationBuildings = sc.savedTransportationBuildings
+        c.TransportationBuildings = sc.savedTransportationBuildings?
             .Select(i => new TransportationInstance
             {
                 Building = GameData.TransportationBuildings
-                            .FirstOrDefault(s => s.Name == i.BuildingName),
+                            .FirstOrDefault(tb => tb.Name == i.BuildingName),
                 Count = i.Count
             }).ToList();
         return c;

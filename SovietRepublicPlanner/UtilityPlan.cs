@@ -25,6 +25,38 @@ public class UtilityPlan
             return r;
         }
     }
+    public Dictionary<Resource, double> TotalInputs
+    {
+        get
+        {
+            Dictionary<Resource, double> result = new Dictionary<Resource, double>();
+            foreach (UtilityInstance instance in Buildings)
+            {
+                foreach (var o in instance.Building.Inputs)
+                {
+                    if (result.ContainsKey(o.Resource)) result[o.Resource] += o.Amount;
+                    else result.Add(o.Resource, o.Amount);
+                }
+            }
+            return result;
+        }
+    }
+    public Dictionary<Resource, double> TotalOutputs
+    {
+        get
+        {
+            Dictionary<Resource, double> result = new Dictionary<Resource, double>();
+            foreach (UtilityInstance instance in Buildings)
+            {
+                foreach (var o in instance.Building.Outputs)
+                {
+                    if (result.ContainsKey(o.Resource)) result[o.Resource] += o.Amount;
+                    else result.Add(o.Resource, o.Amount);
+                }
+            }
+            return result;
+        }
+    }
 
     // Utilities 
     public double TotalPowerConsumptionMWh

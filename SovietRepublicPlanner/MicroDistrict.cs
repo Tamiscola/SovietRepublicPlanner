@@ -144,33 +144,34 @@ public partial class MicroDistrict
     }
     public static MicroDistrict ConvertFromSavedMicroDistrict(SavedMicroDistrict savedMicroDistrict)
     {
+        if (savedMicroDistrict == null) { Console.WriteLine("No microdistricts."); return new MicroDistrict(); }
         var md = new MicroDistrict
         {
             Name = savedMicroDistrict.Name,
             ResidentialBuildings = savedMicroDistrict.ResidentialBuildings
                                     .Select(sri => new ResidentialInstance
                                     {
-                                        Building = GameData.AllResidentialBuildings
-                                                    .FirstOrDefault(rb => rb.Name == sri.BuildingName),
+                                        Building = (ResidentialBuilding)GameData.AllResidentialBuildings
+                                                    .Where(rb => rb.Name == sri.BuildingName),
                                         Count = sri.Count
                                     }).ToList(),
             AmenityBuildings = savedMicroDistrict.AmenityBuildings
                                     .Select(sai => new AmenityInstance
                                     {
-                                        Building = GameData.AllAmenityBuildings
-                                                    .FirstOrDefault(ab => ab.Name == sai.BuildingName),
+                                        Building = (AmenityBuilding)GameData.AllAmenityBuildings
+                                                    .Where(ab => ab.Name == sai.BuildingName),
                                         Count = sai.Count
                                     }).ToList(),
             TransportBuildings = savedMicroDistrict.TransportBuildings
                                     .Select(sti => new TransportationInstance
                                     {
-                                        Building = GameData.AllTransportationBuildings
-                                                    .FirstOrDefault(tb => tb.Name == sti.BuildingName),
+                                        Building = (TransportationBuilding)GameData.AllTransportationBuildings
+                                                    .Where(tb => tb.Name == sti.BuildingName),
                                         Count = sti.Count
                                     }).ToList(),
             ConstructionMaterials = savedMicroDistrict.ConstructionMaterials
-                                    .ToDictionary(sri => GameData.AllResources
-                                                            .FirstOrDefault(r => r.Name == sri.Name),
+                                    .ToDictionary(sri => (Resource)GameData.AllResources
+                                                            .Where(r => r.Name == sri.Name),
                                                   sri => sri.Amount)
         };
         return md;
