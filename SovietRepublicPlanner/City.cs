@@ -9,11 +9,11 @@ using System.Xml.Serialization;
 public partial class City
 {
     public string Name { get; set; }
-    public List<IndustryPlan>? industryPlans = new List<IndustryPlan>();
-    public List<MicroDistrict>? microDistricts = new List<MicroDistrict>();
-    public List<UtilityPlan>? UtilityPlans = new List<UtilityPlan>();
-    public List<SupportInstance>? SupportBuildings { get; set; } = new List<SupportInstance>();
-    public List<TransportationInstance>? TransportationBuildings = new List<TransportationInstance>();
+    public List<IndustryPlan> industryPlans { get; set; } = new List<IndustryPlan>();
+    public List<MicroDistrict> microDistricts { get; set; } = new List<MicroDistrict>();
+    public List<UtilityPlan> UtilityPlans { get; set; } = new List<UtilityPlan>();
+    public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
+    public List<TransportationInstance> TransportationBuildings { get; set; } = new List<TransportationInstance>();
 
     // Initialize totals
     public int totalWorkers
@@ -21,9 +21,18 @@ public partial class City
         get
         {
             int total = 0;
-            foreach (var plan in industryPlans) total += plan.TotalWorkers;
-            foreach (var m in microDistricts) total += m.TotalWorkers;
-            foreach (var p in UtilityPlans) total += p.TotalWorkers;
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans) total += plan.TotalWorkers;
+            }
+            if (microDistricts.Count > 0)
+            {
+                foreach (var m in microDistricts) total += m.TotalWorkers;
+            }
+            if (UtilityPlans.Count > 0)
+            {
+                foreach (var p in UtilityPlans) total += p.TotalWorkers;
+            }
             return total;
         }
     }
@@ -31,7 +40,10 @@ public partial class City
         get
         {
             int total = 0;
-            foreach (var plan in industryPlans) total += plan.TotalPopulationNeeded;
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans) total += plan.TotalPopulationNeeded;
+            }
             return total;
         }
     }
@@ -40,9 +52,18 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in industryPlans) total += plan.TotalPowerNeeded;
-            foreach (var m in microDistricts) total += m.PowerConsumption;
-            foreach (var p in UtilityPlans) total += p.TotalPowerConsumptionMWh;
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans) total += plan.TotalPowerNeeded;
+            }
+            if (microDistricts.Count > 0)
+            {
+                foreach (var m in microDistricts) total += m.PowerConsumption;
+            }
+            if (UtilityPlans.Count > 0)
+            {
+                foreach (var p in UtilityPlans) total += p.TotalPowerConsumptionMWh;
+            }
             return total;
         }
     }
@@ -51,9 +72,19 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in industryPlans) total += plan.TotalWaterNeeded;
-            foreach (var m in microDistricts) total += m.WaterConsumption;
-            foreach (var p in UtilityPlans) total += p.TotalWaterConsumptionM3;
+
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans) total += plan.TotalWaterNeeded;
+            }
+            if (microDistricts.Count > 0)
+            {
+                foreach (var m in microDistricts) total += m.WaterConsumption;
+            }
+            if (UtilityPlans.Count > 0)
+            {
+                foreach (var p in UtilityPlans) total += p.TotalWaterConsumptionM3;
+            }
             return total;
         }
     }
@@ -62,9 +93,18 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in industryPlans) total += plan.TotalHeatNeeded;
-            foreach (var m in microDistricts) total += m.HeatConsumption;
-            foreach (var p in UtilityPlans) total += p.TotalHeatConsumptionM3;
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans) total += plan.TotalHeatNeeded;
+            }
+            if (microDistricts.Count > 0)
+            {
+                foreach (var m in microDistricts) total += m.HeatConsumption;
+            }
+            if (UtilityPlans.Count > 0)
+            {
+                foreach (var p in UtilityPlans) total += p.TotalHeatConsumptionM3;
+            }
             return total;
         }
     }
@@ -73,9 +113,18 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in industryPlans) total += plan.TotalGarbageProduced;
-            foreach (var m in microDistricts) total += m.GarbageProduction;
-            foreach (var p in UtilityPlans) total += p.TotalGarbageProduction;
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans) total += plan.TotalGarbageProduced;
+            }
+            if (microDistricts.Count > 0)
+            {
+                foreach (var m in microDistricts) total += m.GarbageProduction;
+            }
+            if (UtilityPlans.Count > 0)
+            {
+                foreach (var p in UtilityPlans) total += p.TotalGarbageProduction;
+            }
             return total;
         }
     }
@@ -84,8 +133,14 @@ public partial class City
         get
         {
             double total = 0;
-            foreach (var plan in industryPlans) total+= plan.TotalEnvironmentPollution;
-            foreach (var p in UtilityPlans) total += p.TotalEnvironmentPollution;
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans) total += plan.TotalEnvironmentPollution;
+            }
+            if (UtilityPlans.Count > 0)
+            {
+                foreach (var p in UtilityPlans) total += p.TotalEnvironmentPollution;
+            }
             return total;
         }
     }
@@ -94,7 +149,10 @@ public partial class City
         get
         {
             int total = 0;
-            foreach (var d in microDistricts) total+= d.TotalHousingCapacity;
+            if (microDistricts.Count > 0)
+            {
+                foreach (var d in microDistricts) total += d.TotalHousingCapacity;
+            }
             return total;
         }
     }
@@ -108,12 +166,15 @@ public partial class City
                 {GameData.WasteWaterResource, 0},
                 {GameData.HeatResource, 0},
             };
-            foreach (var plan in UtilityPlans)
+            if (UtilityPlans.Count > 0)
             {
-                foreach (var kv in plan.TotalOutputs)
+                foreach (var plan in UtilityPlans)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r.Add(kv.Key, kv.Value);
+                    foreach (var kv in plan.TotalOutputs)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r.Add(kv.Key, kv.Value);
+                    }
                 }
             }
             return r;
@@ -124,20 +185,26 @@ public partial class City
         get 
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in industryPlans)
+            if (industryPlans.Count > 0)
             {
-                foreach(var kv in plan.TotalInputs)
+                foreach (var plan in industryPlans)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r[kv.Key] = kv.Value;
+                    foreach (var kv in plan.TotalInputs)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r[kv.Key] = kv.Value;
+                    }
                 }
             }
-            foreach (var plan in UtilityPlans)
+            if (UtilityPlans.Count > 0)
             {
-                foreach (var kv in plan.TotalInputs)
+                foreach (var plan in UtilityPlans)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r[kv.Key] = kv.Value;
+                    foreach (var kv in plan.TotalInputs)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r[kv.Key] = kv.Value;
+                    }
                 }
             }
             return r;
@@ -148,12 +215,15 @@ public partial class City
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in industryPlans)
+            if (industryPlans.Count > 0)
             {
-                foreach (var kv in plan.TotalResidues)
+                foreach (var plan in industryPlans)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r[kv.Key] = kv.Value;
+                    foreach (var kv in plan.TotalResidues)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r[kv.Key] = kv.Value;
+                    }
                 }
             }
             return r;
@@ -184,14 +254,17 @@ public partial class City
         {
             Dictionary<Resource, double> result = new Dictionary<Resource, double>();
             foreach (var kv in combinedCitizenConsumption)
-                foreach (var ip in industryPlans)
+                if (industryPlans.Count > 0)
                 {
-                    if (ip.TotalOutputs.ContainsKey(kv.Key))
+                    foreach (var ip in industryPlans)
                     {
-                        double produced = ip.TotalOutputs[kv.Key];
-                        double consumed = kv.Value;
-                        double balance = produced - consumed;
-                        result.Add(kv.Key, balance);
+                        if (ip.TotalOutputs.ContainsKey(kv.Key))
+                        {
+                            double produced = ip.TotalOutputs[kv.Key];
+                            double consumed = kv.Value;
+                            double balance = produced - consumed;
+                            result.Add(kv.Key, balance);
+                        }
                     }
                 }
             return result;
@@ -202,17 +275,20 @@ public partial class City
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in industryPlans)
+            if (industryPlans.Count > 0)
             {
-                foreach (var kv in plan.TotalInputs)
+                foreach (var plan in industryPlans)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] -= kv.Value;
-                    else r[kv.Key] = -kv.Value;
-                }
-                foreach (var kv in plan.TotalResidues)
-                {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r[kv.Key] = kv.Value;
+                    foreach (var kv in plan.TotalInputs)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] -= kv.Value;
+                        else r[kv.Key] = -kv.Value;
+                    }
+                    foreach (var kv in plan.TotalResidues)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r[kv.Key] = kv.Value;
+                    }
                 }
             }
             return r;
@@ -223,17 +299,23 @@ public partial class City
         get
         {
             Dictionary<SupportBuilding, int> r = new Dictionary<SupportBuilding, int>();
-            foreach (var kv in SupportBuildings)
+            if (SupportBuildings.Count > 0)
             {
-                if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
-                else r.Add(kv.Building, kv.Count);
-            }
-            foreach (var plan in industryPlans)
-            {
-                foreach (var kv in plan.SupportBuildings)
+                foreach (var kv in SupportBuildings)
                 {
                     if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
                     else r.Add(kv.Building, kv.Count);
+                }
+            }
+            if (industryPlans.Count > 0)
+            {
+                foreach (var plan in industryPlans)
+                {
+                    foreach (var kv in plan.SupportBuildings)
+                    {
+                        if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
+                        else r.Add(kv.Building, kv.Count);
+                    }
                 }
             }
             return r;
@@ -244,12 +326,15 @@ public partial class City
         get
         {
             Dictionary<AmenityBuilding, int> r = new Dictionary<AmenityBuilding, int>();
-            foreach (var m in microDistricts)
+            if (microDistricts.Count > 0)
             {
-                foreach (var ai in m.AmenityBuildings)
+                foreach (var m in microDistricts)
                 {
-                    if (r.ContainsKey(ai.Building)) r[ai.Building] += ai.Count;
-                    else r.Add(ai.Building, ai.Count);
+                    foreach (var ai in m.AmenityBuildings)
+                    {
+                        if (r.ContainsKey(ai.Building)) r[ai.Building] += ai.Count;
+                        else r.Add(ai.Building, ai.Count);
+                    }
                 }
             }
             return r;
@@ -260,20 +345,26 @@ public partial class City
         get
         {
             Dictionary<TransportationBuilding, int> r = new Dictionary<TransportationBuilding, int>();
-            foreach (var plan in industryPlans)
+            if (industryPlans.Count > 0)
             {
-                foreach (var kv in plan.TransportationBuildings)
+                foreach (var plan in industryPlans)
                 {
-                    if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
-                    else r.Add(kv.Building, kv.Count);
+                    foreach (var kv in plan.TransportationBuildings)
+                    {
+                        if (r.ContainsKey(kv.Building)) r[kv.Building] += kv.Count;
+                        else r.Add(kv.Building, kv.Count);
+                    }
                 }
             }
-            foreach (var m in microDistricts)
+            if (microDistricts.Count > 0)
             {
-                foreach (var ti in m.TransportBuildings)
+                foreach (var m in microDistricts)
                 {
-                    if (r.ContainsKey(ti.Building)) r[ti.Building] += ti.Count;
-                    else r.Add(ti.Building, ti.Count);
+                    foreach (var ti in m.TransportBuildings)
+                    {
+                        if (r.ContainsKey(ti.Building)) r[ti.Building] += ti.Count;
+                        else r.Add(ti.Building, ti.Count);
+                    }
                 }
             }
             return r;
@@ -284,28 +375,37 @@ public partial class City
         get
         {
             Dictionary<Resource, double> r = new Dictionary<Resource, double>();
-            foreach (var plan in industryPlans)
+            if (industryPlans.Count > 0)
             {
-                foreach(var kv in plan.TotalConstructionMaterials)
+                foreach (var plan in industryPlans)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r.Add(kv.Key, kv.Value);
+                    foreach (var kv in plan.TotalConstructionMaterials)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r.Add(kv.Key, kv.Value);
+                    }
                 }
             }
-            foreach (var m in microDistricts)
+            if (microDistricts.Count > 0)
             {
-                foreach (var kv in m.ConstructionMaterials)
+                foreach (var m in microDistricts)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r.Add(kv.Key, kv.Value);
+                    foreach (var kv in m.ConstructionMaterials)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r.Add(kv.Key, kv.Value);
+                    }
                 }
             }
-            foreach (var p in UtilityPlans)
+            if (UtilityPlans.Count > 0)
             {
-                foreach (var kv in p.ConstructionMaterials)
+                foreach (var p in UtilityPlans)
                 {
-                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
-                    else r.Add(kv.Key, kv.Value);
+                    foreach (var kv in p.ConstructionMaterials)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r.Add(kv.Key, kv.Value);
+                    }
                 }
             }
             return r;
@@ -346,26 +446,26 @@ public partial class City
         c.Name = sc.Name;
         c.industryPlans = sc.savedIndustryPlans?
             .Select(p => SavedIndustryPlan.ConvertFromSavedPlan(p))
-            .ToList();
+            .ToList() ?? new List<IndustryPlan>();
         c.microDistricts = sc.savedMicroDistricts?
             .Select(p => MicroDistrict.ConvertFromSavedMicroDistrict(p))
-            .ToList();
+            .ToList() ?? new List<MicroDistrict>();
         c.UtilityPlans = sc.savedUtilityPlans?
             .Select(p => SavedUtilityPlan.ConvertToUtilityPlan(p))
-            .ToList();
+            .ToList() ?? new List<UtilityPlan>();
         c.SupportBuildings = sc.savedSupportBuildings?.Select(i => new SupportInstance
             {
                 Building = GameData.AllSupportBuildings
                             .FirstOrDefault(sb => sb.Name == i.BuildingName),
                 Count = i.Count
-            }).ToList();
+            }).ToList() ?? new List<SupportInstance>();
         c.TransportationBuildings = sc.savedTransportationBuildings?
             .Select(i => new TransportationInstance
             {
                 Building = GameData.TransportationBuildings
                             .FirstOrDefault(tb => tb.Name == i.BuildingName),
                 Count = i.Count
-            }).ToList();
+            }).ToList() ?? new List<TransportationInstance>();
         return c;
     }
 }
