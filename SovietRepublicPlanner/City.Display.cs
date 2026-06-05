@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -109,6 +110,45 @@ public partial class City
             Console.WriteLine("├────────────────────────────────────────┤");
             foreach (var kv in combinedTransBldgs)
                 Console.WriteLine($"│ · {kv.Value} × {kv.Key.Name}");
+        }
+        if (UtilityPlans.Any(u => u.Buildings.Count > 0))
+        {
+            Console.WriteLine("├────────────────────────────────────────┤");
+            Console.WriteLine("│ Utility Buildings:                     │");
+            Console.WriteLine("├────────────────────────────────────────┤");
+
+            foreach (var u in UtilityPlans)
+            {
+                // Sort UtilityInstances according to the type
+                Dictionary<UtilityType, List<UtilityInstance>> d = new Dictionary<UtilityType, List<UtilityInstance>>()
+                {
+                    {UtilityType.Power, new List<UtilityInstance>()},
+                    {UtilityType.Water, new List<UtilityInstance>()},
+                    {UtilityType.Sewage, new List<UtilityInstance>()},
+                    {UtilityType.Heat, new List < UtilityInstance >()},
+                    {UtilityType.Garbage, new List < UtilityInstance >()},
+                };
+                foreach (var ins in u.Buildings)
+                {
+                    if (d.ContainsKey(ins.Building.Type)) 
+                    {
+                        d[ins.Building.Type].Add(ins);
+                    }
+                }
+
+                // Display
+                foreach (var kv in d)
+                {
+                    if (kv.Value.Count > 0)
+                    {
+                        Console.WriteLine($"│ [ {kv.Key} ]");
+                        foreach (var ui in kv.Value)
+                        {
+                            Console.WriteLine($"│ · {ui.Count} x {ui.Building.Name}");
+                        }
+                    }
+                }
+            }
         }
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│ Import Needed:                         │");

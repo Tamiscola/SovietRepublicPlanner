@@ -631,8 +631,8 @@ namespace SovietRepublicPlanner
                     break;  // Exit CommandLoop, returns to main menu
                 }
 
-                Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
-                List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "support", "cancel", "back", "dive", "summary", 
+                Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/utility/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
+                List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "utility","support", "cancel", "back", "dive", "summary", 
                     "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", };
                 string command = ReadLineWithCompletion(commands).ToLower().Trim(); 
                 if (command == "expand")
@@ -940,6 +940,10 @@ namespace SovietRepublicPlanner
                     navigationStack.Push(currentResult);    // Remember where user was
                     currentResult = (currentResult.SubChains.Count - 1 < 0) ? currentResult : currentResult.SubChains[currentResult.SubChains.Count - 1];
                     continue;
+                }
+                else if (command == "utility")
+                {
+
                 }
                 else if (command == "listcities")
                 {
