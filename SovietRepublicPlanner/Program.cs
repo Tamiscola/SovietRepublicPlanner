@@ -943,7 +943,31 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "utility")
                 {
+                    // User selection : Utility Resource to expand
+                    List<Resource> r = new List<Resource>();
 
+                    Console.WriteLine("Type the utility to expand:\n[0]: Power\n[1]: Water\n[2]: Sewage\n[3]: Heat\n[4]: Garbage\n\n");
+                    List<UtilityBuilding> powerbuildings = GameData.AllUtilityBuildings
+                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.PowerResource))
+                        .ToList();
+                    List<UtilityBuilding> waterbuildings = GameData.AllUtilityBuildings
+                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WaterResource))
+                        .ToList();
+                    List<UtilityBuilding> sewagebuildings = GameData.AllUtilityBuildings
+                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WasteWaterResource))
+                        .ToList();
+                    List<UtilityBuilding> heatbuildings = GameData.AllUtilityBuildings
+                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.HeatResource))
+                        .ToList();
+                    List<UtilityBuilding> garbagebuildings = GameData.AllUtilityBuildings
+                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.MixedWaste))
+                        .ToList();
+
+                    UtilityInstance ui = new UtilityInstance();
+                    UtilityPlan p = new UtilityPlan();
+                    p.Buildings.Add(ui);
+                    city.UtilityPlans.Add(p);
+                    continue;
                 }
                 else if (command == "listcities")
                 {
