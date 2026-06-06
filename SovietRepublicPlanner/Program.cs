@@ -632,9 +632,9 @@ namespace SovietRepublicPlanner
                 }
 
                 Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/utility/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
-                List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "utility","support", "cancel", "back", "dive", "summary", 
+                List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "utility","support", "cancel", "back", "dive", "summary",
                     "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", };
-                string command = ReadLineWithCompletion(commands).ToLower().Trim(); 
+                string command = ReadLineWithCompletion(commands).ToLower().Trim();
                 if (command == "expand")
                 {
                     // Choose Resources to expand
@@ -944,14 +944,14 @@ namespace SovietRepublicPlanner
                 else if (command == "utility")
                 {
                     // User selection : Utility Resource to expand
-                    List<Resource> r = new List<Resource>();
+                    List<Resource> ur = new List<Resource>();
 
                     Console.WriteLine("Type the utility to expand:\n[0]: Power\n[1]: Water\n[2]: Sewage\n[3]: Heat\n[4]: Garbage\n\n");
                     List<UtilityBuilding> powerbuildings = GameData.AllUtilityBuildings
                         .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.PowerResource))
                         .ToList();
                     List<UtilityBuilding> waterbuildings = GameData.AllUtilityBuildings
-                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WaterResource))
+                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WaterResource || ra.Resource == GameData.RawWaterResource))
                         .ToList();
                     List<UtilityBuilding> sewagebuildings = GameData.AllUtilityBuildings
                         .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WasteWaterResource))
@@ -962,6 +962,71 @@ namespace SovietRepublicPlanner
                     List<UtilityBuilding> garbagebuildings = GameData.AllUtilityBuildings
                         .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.MixedWaste))
                         .ToList();
+
+                    // User Selection : Display
+                    int utilchoice;
+                    int bldgchoice;
+
+                    if (int.TryParse(Console.ReadLine(), out utilchoice) && utilchoice >= 0 && utilchoice < 5)
+                    {
+                        Console.WriteLine();
+                        if (utilchoice == 0)
+                        {
+                            for (int i = 0; i < powerbuildings.Count; i++)
+                            {
+                                string inputs = string.Join("\n\t", powerbuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                string outputs = string.Join("\n\t", powerbuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                Console.WriteLine($"[{i}]: {powerbuildings[i].Name} " +
+                                    $"\n- input: {inputs}" +
+                                    $"\n- output: {outputs}\n");
+                            }
+                        }
+                        if (utilchoice == 1)
+                        {
+                            for (int i = 0; i < waterbuildings.Count; i++)
+                            {
+                                string inputs = string.Join("\n\t", waterbuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                string outputs = string.Join("\n\t", waterbuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                Console.WriteLine($"[{i}]: {waterbuildings[i].Name} " +
+                                    $"\n- input: {inputs}" +
+                                    $"\n- output: {outputs}\n");
+                            }
+                        }
+                        if (utilchoice == 2)
+                        {
+                            for (int i = 0; i < sewagebuildings.Count; i++)
+                            {
+                                string inputs = string.Join("\n\t", sewagebuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                string outputs = string.Join("\n\t", sewagebuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                Console.WriteLine($"[{i}]: {sewagebuildings[i].Name} " +
+                                    $"\n- input: {inputs}" +
+                                    $"\n- output: {outputs}\n");
+                            }
+                        }
+                        if (utilchoice == 3)
+                        {
+                            for (int i = 0; i < heatbuildings.Count; i++)
+                            {
+                                string inputs = string.Join("\n\t", heatbuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                string outputs = string.Join("\n\t", heatbuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                Console.WriteLine($"[{i}]: {heatbuildings[i].Name} " +
+                                    $"\n- input: {inputs}" +
+                                    $"\n- output: {outputs} \n");
+                            }
+                        }
+                        if (utilchoice == 4)
+                        {
+                            for (int i = 0; i < garbagebuildings.Count; i++)
+                            {
+                                string inputs = string.Join("\n\t", garbagebuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                string outputs = string.Join("\n\t", garbagebuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                Console.WriteLine($"[{i}]: {garbagebuildings[i].Name} " +
+                                    $"\n- input: {inputs}" +
+                                    $"\n- output: {outputs} \n");
+                            }
+                        }
+                    }
+                    Console.Write(": ");
 
                     UtilityInstance ui = new UtilityInstance();
                     UtilityPlan p = new UtilityPlan();
@@ -1459,7 +1524,8 @@ namespace SovietRepublicPlanner
                             currentResult.SupportBuildings.Add(addSupBuilding);
                             Console.WriteLine($"{cb.Key.Name}: {cb.Value} added to the {currentResult.ChosenBuilding.Building.Name}!");
                         }
-                    } else { Console.WriteLine("Invalid input."); continue; }
+                    }
+                    else { Console.WriteLine("Invalid input."); continue; }
                     continue;
                 }
                 else if (command == "amenity")
@@ -1487,16 +1553,16 @@ namespace SovietRepublicPlanner
                         // Map choice to enum
                         AmenityType[] typeMap = new AmenityType[]
                         {
-                            AmenityType.Shopping,      // 1
-                            AmenityType.Pub,           // 2
-                            AmenityType.Healthcare,    // 3
-                            AmenityType.Fireservice,   // 4
-                            AmenityType.CityService,   // 5
-                            AmenityType.Culture,       // 6
-                            AmenityType.Sports,        // 7
-                            AmenityType.Education,     // 8
-                            AmenityType.CrimeJustice,  // 9
-                            AmenityType.Fountain       // 10
+                        AmenityType.Shopping,      // 1
+                        AmenityType.Pub,           // 2
+                        AmenityType.Healthcare,    // 3
+                        AmenityType.Fireservice,   // 4
+                        AmenityType.CityService,   // 5
+                        AmenityType.Culture,       // 6
+                        AmenityType.Sports,        // 7
+                        AmenityType.Education,     // 8
+                        AmenityType.CrimeJustice,  // 9
+                        AmenityType.Fountain       // 10
                         };
                         AmenityType selectedType = typeMap[amenChoice - 1];
                         Console.WriteLine("┌─────────────────────────────────────────");
@@ -1652,12 +1718,12 @@ namespace SovietRepublicPlanner
                         // Map choice to enum
                         TransportationType[] typeMap = new TransportationType[]
                         {
-                            TransportationType.Bus,
-                            TransportationType.Trolley,
-                            TransportationType.Tram,
-                            TransportationType.Depot,
-                            TransportationType.Station,
-                            TransportationType.Refueling,
+                        TransportationType.Bus,
+                        TransportationType.Trolley,
+                        TransportationType.Tram,
+                        TransportationType.Depot,
+                        TransportationType.Station,
+                        TransportationType.Refueling,
                         };
                         TransportationType selectedType = typeMap[tranChoice - 1];
                         Console.WriteLine("┌─────────────────────────────────────────");
@@ -1943,7 +2009,8 @@ namespace SovietRepublicPlanner
 
                             foreach (var ri in microDistrict.ResidentialBuildings)
                                 Console.WriteLine($"│ · {ri.Count} {ri.Building.Name}");
-                        } else if (userChoice == -1)
+                        }
+                        else if (userChoice == -1)
                         {
                             microDistrict = new MicroDistrict();
                             string mdName;
