@@ -943,96 +943,191 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "utility")
                 {
-                    // User selection : Utility Resource to expand
-                    List<Resource> ur = new List<Resource>();
-
-                    Console.WriteLine("Type the utility to expand:\n[0]: Power\n[1]: Water\n[2]: Sewage\n[3]: Heat\n[4]: Garbage\n\n");
-                    List<UtilityBuilding> powerbuildings = GameData.AllUtilityBuildings
-                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.PowerResource))
-                        .ToList();
-                    List<UtilityBuilding> waterbuildings = GameData.AllUtilityBuildings
-                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WaterResource || ra.Resource == GameData.RawWaterResource))
-                        .ToList();
-                    List<UtilityBuilding> sewagebuildings = GameData.AllUtilityBuildings
-                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WasteWaterResource))
-                        .ToList();
-                    List<UtilityBuilding> heatbuildings = GameData.AllUtilityBuildings
-                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.HeatResource))
-                        .ToList();
-                    List<UtilityBuilding> garbagebuildings = GameData.AllUtilityBuildings
-                        .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.MixedWaste))
-                        .ToList();
-
-                    // User Selection : Display
-                    int utilchoice;
-                    int bldgchoice;
-
-                    if (int.TryParse(Console.ReadLine(), out utilchoice) && utilchoice >= 0 && utilchoice < 5)
+                    // List and Choose existing UtilityPlans
+                    if (city.UtilityPlans.Count > 0)
                     {
-                        Console.WriteLine();
-                        if (utilchoice == 0)
-                        {
-                            for (int i = 0; i < powerbuildings.Count; i++)
-                            {
-                                string inputs = string.Join("\n\t", powerbuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                string outputs = string.Join("\n\t", powerbuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                Console.WriteLine($"[{i}]: {powerbuildings[i].Name} " +
-                                    $"\n- input: {inputs}" +
-                                    $"\n- output: {outputs}\n");
-                            }
-                        }
-                        if (utilchoice == 1)
-                        {
-                            for (int i = 0; i < waterbuildings.Count; i++)
-                            {
-                                string inputs = string.Join("\n\t", waterbuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                string outputs = string.Join("\n\t", waterbuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                Console.WriteLine($"[{i}]: {waterbuildings[i].Name} " +
-                                    $"\n- input: {inputs}" +
-                                    $"\n- output: {outputs}\n");
-                            }
-                        }
-                        if (utilchoice == 2)
-                        {
-                            for (int i = 0; i < sewagebuildings.Count; i++)
-                            {
-                                string inputs = string.Join("\n\t", sewagebuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                string outputs = string.Join("\n\t", sewagebuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                Console.WriteLine($"[{i}]: {sewagebuildings[i].Name} " +
-                                    $"\n- input: {inputs}" +
-                                    $"\n- output: {outputs}\n");
-                            }
-                        }
-                        if (utilchoice == 3)
-                        {
-                            for (int i = 0; i < heatbuildings.Count; i++)
-                            {
-                                string inputs = string.Join("\n\t", heatbuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                string outputs = string.Join("\n\t", heatbuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                Console.WriteLine($"[{i}]: {heatbuildings[i].Name} " +
-                                    $"\n- input: {inputs}" +
-                                    $"\n- output: {outputs} \n");
-                            }
-                        }
-                        if (utilchoice == 4)
-                        {
-                            for (int i = 0; i < garbagebuildings.Count; i++)
-                            {
-                                string inputs = string.Join("\n\t", garbagebuildings[i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                string outputs = string.Join("\n\t", garbagebuildings[i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
-                                Console.WriteLine($"[{i}]: {garbagebuildings[i].Name} " +
-                                    $"\n- input: {inputs}" +
-                                    $"\n- output: {outputs} \n");
-                            }
-                        }
-                    }
-                    Console.Write(": ");
+                        int pc;
 
-                    UtilityInstance ui = new UtilityInstance();
-                    UtilityPlan p = new UtilityPlan();
-                    p.Buildings.Add(ui);
-                    city.UtilityPlans.Add(p);
-                    continue;
+                        // List the existing UtilityPlans in City
+                        Console.WriteLine("Choose the UtilityPlan or Create a new one(Type -1): ");
+                        for (int i = 0; i < city.UtilityPlans.Count; i++)
+                        {
+                            Console.WriteLine($"[{i}]: {city.UtilityPlans[i].Name}");
+                        }
+
+                        // Choose a UtilityPlan
+                        if (int.TryParse(Console.ReadLine(), out pc) && pc >= 0 && pc < city.UtilityPlans.Count)
+                        {
+                            Console.WriteLine("\n┌────────────────────────────────────────┐");
+                            Console.WriteLine("│         UTILITY PLAN                   │");
+                            Console.WriteLine("├────────────────────────────────────────┤");
+                            Console.WriteLine($"│ Name: {city.UtilityPlans[pc].Name} ");
+                            Console.WriteLine("├────────────────────────────────────────┤");
+                            Console.WriteLine("│ Utilities Status:");
+                            Console.WriteLine("│                      Needed         Produced   Balance");
+                            Console.WriteLine($"│ Total Workers:{city.UtilityPlans[pc].TotalWorkers,13}");
+
+                            // Power
+                            double produced = city.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.PowerResource)
+                                ? city.UtilityPlans[pc].TotalOutputs[GameData.PowerResource]
+                                : 0;
+                            Console.WriteLine($"│ Power (MW):{city.UtilityPlans[pc].TotalPowerConsumptionMWh,16:F2}{produced,17:F2}{produced - city.UtilityPlans[pc].TotalPowerConsumptionMWh,10:F2}");
+                            // Water
+                            produced = city.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.WaterResource)
+                                ? city.UtilityPlans[pc].TotalOutputs[GameData.WaterResource]
+                                : 0;
+                            Console.WriteLine($"│ Water (t/day):{city.UtilityPlans[pc].TotalWaterConsumptionM3,13:F2}{produced,17:F2}{produced - city.UtilityPlans[pc].TotalWaterConsumptionM3,10}");
+                            // Heat
+                            produced = city.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.HeatResource)
+                                ? city.UtilityPlans[pc].TotalOutputs[GameData.HeatResource]
+                                : 0;
+                            Console.WriteLine($"│ Heat (MW):{city.UtilityPlans[pc].TotalHeatConsumptionM3,17:F2}{produced,17:F2}{produced - city.UtilityPlans[pc].TotalHeatConsumptionM3,10}");
+                            // Sewage
+                            produced = city.UtilityPlans[pc].TotalSewageDisposalCapacity;
+                            Console.WriteLine($"│ Sewage (t/day):{city.UtilityPlans[pc].TotalWaterConsumptionM3,14:F2}{produced,17:F2}{0,10}");
+
+                            // Garbage
+                            Console.WriteLine($"│ Garbage (t/day):{city.UtilityPlans[pc].TotalGarbageProduction,11:F2}{city.UtilityPlans[pc].TotalGarbageProduction,27:F2}");
+
+                            Console.WriteLine($"│ Pollution:{city.UtilityPlans[pc].TotalEnvironmentPollution,17:F6}{city.UtilityPlans[pc].TotalEnvironmentPollution,27:F6}");
+                            Console.WriteLine("├────────────────────────────────────────┤");
+                            Console.WriteLine("│ All Utility Buildings :                │");
+                            Console.WriteLine("├────────────────────────────────────────┤");
+
+                            // Display all buildings recursively
+                            foreach (var ui in city.UtilityPlans[pc].Buildings)
+                            {
+                                Console.WriteLine($"│ [ {city.UtilityPlans[pc].Type} ]");
+                                Console.WriteLine($"│   · {ui.Count} x {ui.Building.Name}");
+                            }
+
+                            var totalSupBldgs = city.UtilityPlans[pc].SupportBuildings;
+
+                            if (totalSupBldgs.Count > 0)
+                            {
+                                Console.WriteLine("├────────────────────────────────────────┤");
+                                Console.WriteLine("│ Support Infrastructures:               │");
+                                Console.WriteLine("├────────────────────────────────────────┤");
+                                foreach (var kv in totalSupBldgs)
+                                    Console.WriteLine($"│ · {kv.Count} × {kv.Building.Name}");
+                            }
+                            //if (TransportationBuildings.Count() > 0)
+                            //{
+                            //    Console.WriteLine("├────────────────────────────────────────┤");
+                            //    Console.WriteLine("│ Transportation Buildings:");
+                            //    Console.WriteLine("├────────────────────────────────────────┤");
+                            //    foreach (var ti in TransportationBuildings)
+                            //        Console.WriteLine($"│ · {ti.Count} × {ti.Building.Name}");
+                            //}
+                            Console.WriteLine("├────────────────────────────────────────┤");
+                            Console.WriteLine("│ Importing Resources:");
+                            foreach (var kv in city.UtilityPlans[pc].TotalInputs)
+                                Console.WriteLine($"│ ·{kv.Value,6:F2}t/day {kv.Key.Name,-20}");
+                            if (city.UtilityPlans[pc].ConstructionMaterials.Count() > 0)
+                            {
+                                Console.WriteLine("├────────────────────────────────────────┤");
+                                Console.WriteLine("│ Total Construction Materials:");
+                                Console.WriteLine("├────────────────────────────────────────┤");
+                                foreach (var kv in city.UtilityPlans[pc].ConstructionMaterials)
+                                    Console.WriteLine($"│ · {kv.Value:F2} × {kv.Key.Name}");
+                                Console.WriteLine("└────────────────────────────────────────┘");
+                            }
+                        }
+                        else { Console.WriteLine("Invalid index. Going back to the command menu"); continue; }
+                    }
+                    // Create a new UtilityPlan
+                    else
+                    {
+                        // Setting Utility Resources to expand
+                        List<Resource> ur = new List<Resource>();
+                        UtilityInstance ui = new UtilityInstance();
+                        UtilityPlan p = new UtilityPlan();
+
+                        // Naming UtilityPlan
+                        Console.Write("Write a name of the Utility Plan. (Defulat name: CityName - buildingName)\n: ");
+                        while (true)
+                        {
+                            string un = Console.ReadLine();
+
+                            if (string.IsNullOrEmpty(un)) { continue; }
+                            else 
+                            {
+                                p.Name = un;
+                                Console.WriteLine($"Utility Plan: {un}"); break; 
+                            }
+                        }
+
+                        Console.WriteLine("Type the utility to expand:\n[0]: Power\n[1]: Water\n[2]: Sewage\n[3]: Heat\n[4]: Garbage\n\n");
+                        List<UtilityBuilding> powerbuildings = GameData.AllUtilityBuildings
+                            .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.PowerResource))
+                            .ToList();
+                        List<UtilityBuilding> waterbuildings = GameData.AllUtilityBuildings
+                            .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WaterResource || ra.Resource == GameData.RawWaterResource))
+                            .ToList();
+                        List<UtilityBuilding> sewagebuildings = GameData.AllUtilityBuildings
+                            .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.WasteWaterResource))
+                            .ToList();
+                        List<UtilityBuilding> heatbuildings = GameData.AllUtilityBuildings
+                            .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.HeatResource))
+                            .ToList();
+                        List<UtilityBuilding> garbagebuildings = GameData.AllUtilityBuildings
+                            .Where(ub => ub.Outputs.Any(ra => ra.Resource == GameData.MixedWaste))
+                            .ToList();
+                        List<List<UtilityBuilding>> utilityBuildings = new List<List<UtilityBuilding>>()
+                        {
+                            powerbuildings,
+                            waterbuildings,
+                            sewagebuildings,
+                            heatbuildings,
+                            garbagebuildings
+                        };
+
+                        // User Selection & Display
+                        int utilchoice;
+                        int bldgchoice;
+
+                        if (int.TryParse(Console.ReadLine(), out utilchoice) && utilchoice >= 0 && utilchoice < 5)
+                        {
+                            // Display : util category choice
+                            Console.WriteLine();
+
+                            for (int i = 0; i < utilityBuildings[utilchoice].Count; i++)
+                            {
+                                string inputs = string.Join("\n\t", utilityBuildings[utilchoice][i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                string outputs = string.Join("\n\t", utilityBuildings[utilchoice][i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
+                                Console.WriteLine($"[{i}]: {utilityBuildings[utilchoice][i].Name} " +
+                                    $"\n- input: {inputs}" +
+                                    $"\n- output: {outputs}\n");
+                            }
+
+                            // Display : util building choice
+                            Console.Write(": ");
+
+                            if (int.TryParse(Console.ReadLine(), out bldgchoice) && bldgchoice >= 0 && bldgchoice < utilityBuildings[utilchoice].Count)
+                            {
+                                ui.Building = utilityBuildings[utilchoice][bldgchoice];
+                                Console.Write($"{utilityBuildings[utilchoice][bldgchoice].Name} has been selected.\nHow many buildings?: ");
+
+                                int amount;
+
+                                if (int.TryParse(Console.ReadLine(), out amount) && amount > 0)
+                                {
+                                    ui.Count = amount;
+                                    Console.WriteLine($"{amount} x {utilityBuildings[utilchoice][bldgchoice]} has been added to the UtilityInstance.");
+                                }
+                                else { Console.WriteLine("Invalid amount. Going back to the command loop."); continue; }
+
+                                p.Buildings.Add(ui);
+                                Console.WriteLine($"{amount} x {utilityBuildings[utilchoice][bldgchoice]} has been added to the {p.Name}.");
+                            }
+                            else { Console.WriteLine("Invalid index. Going back to the command loop."); continue; }
+                        }
+                        else { Console.WriteLine("Invalid index. Going back to the command loop."); continue; }
+
+                        city.UtilityPlans.Add(p);
+                        Console.WriteLine($"{p.Name} has been added to the City {city.Name}.");
+                        continue;
+                    }
                 }
                 else if (command == "listcities")
                 {

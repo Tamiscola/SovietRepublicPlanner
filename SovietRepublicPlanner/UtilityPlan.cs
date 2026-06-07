@@ -9,8 +9,8 @@ public class UtilityPlan
     // Identification
     public string Name { get; set; }
     public City ParentCity { get; set; }
-    public List<UtilityInstance> Buildings { get; set; }
-    public List<SupportInstance> SupportBuildings { get; set; }
+    public List<UtilityInstance> Buildings { get; set; } = new List<UtilityInstance>();
+    public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
     public UtilityType Type;
 
     // Workers & Resources
