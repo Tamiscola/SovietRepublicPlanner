@@ -86,6 +86,12 @@ namespace SovietRepublicPlanner
                         currentPlanIndex = 0;
                         currentResult = allPlans[0];
                         Console.WriteLine($"\n'{currentSaveFile}' Loaded. Type 'listplans' to view them.");
+
+                        //debug
+                        for (int i = 0; i < allCities.Count; i++) 
+                        {
+                            Console.WriteLine($"{i}: {allCities[i].Name}");
+                        }
                     }
                 }
             }
@@ -157,6 +163,9 @@ namespace SovietRepublicPlanner
                         int saveChoice;
                         if (int.TryParse(Console.ReadLine(), out saveChoice) && saveChoice >= 0 && saveChoice <= 1)
                         {
+                            // debug
+                            Console.WriteLine($"allCities : {allCities.Count}");
+
                             if (saveChoice == 0) SaveFile(allCities, Path.Combine(fileDirectory, currentSaveFile));
                             else if (saveChoice == 1)
                             {
@@ -207,6 +216,9 @@ namespace SovietRepublicPlanner
         }
         static void SaveFile(List<City> cities, string filename)
         {
+            // debug
+            Console.WriteLine($"SaveFile() allCities : {cities.Count}");
+
             try
             {
                 SavedFile savedFile = new SavedFile()
@@ -943,65 +955,73 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "utility")
                 {
+                    // Designate the City
+                    City currentCity = allCities.FirstOrDefault(c => c.Name == city.Name);
+                    if (currentCity == null)
+                    {
+                        Console.WriteLine($"There's no a City chosen.");
+                        continue;
+                    }
+
                     // List and Choose existing UtilityPlans
-                    if (city.UtilityPlans.Count > 0)
+                    if (currentCity.UtilityPlans.Count > 0)
                     {
                         int pc;
 
                         // List the existing UtilityPlans in City
                         Console.WriteLine("Choose the UtilityPlan or Create a new one(Type -1): ");
-                        for (int i = 0; i < city.UtilityPlans.Count; i++)
+                        for (int i = 0; i < currentCity.UtilityPlans.Count; i++)
                         {
-                            Console.WriteLine($"[{i}]: {city.UtilityPlans[i].Name}");
+                            Console.WriteLine($"[{i}]: {currentCity.UtilityPlans[i].Name}");
                         }
 
                         // Choose a UtilityPlan
-                        if (int.TryParse(Console.ReadLine(), out pc) && pc >= 0 && pc < city.UtilityPlans.Count)
+                        if (int.TryParse(Console.ReadLine(), out pc) && pc >= 0 && pc < currentCity.UtilityPlans.Count)
                         {
                             Console.WriteLine("\n┌────────────────────────────────────────┐");
                             Console.WriteLine("│         UTILITY PLAN                   │");
                             Console.WriteLine("├────────────────────────────────────────┤");
-                            Console.WriteLine($"│ Name: {city.UtilityPlans[pc].Name} ");
+                            Console.WriteLine($"│ Name: {currentCity.UtilityPlans[pc].Name} ");
                             Console.WriteLine("├────────────────────────────────────────┤");
                             Console.WriteLine("│ Utilities Status:");
                             Console.WriteLine("│                      Needed         Produced   Balance");
-                            Console.WriteLine($"│ Total Workers:{city.UtilityPlans[pc].TotalWorkers,13}");
+                            Console.WriteLine($"│ Total Workers:{currentCity.UtilityPlans[pc].TotalWorkers,13}");
 
                             // Power
-                            double produced = city.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.PowerResource)
-                                ? city.UtilityPlans[pc].TotalOutputs[GameData.PowerResource]
+                            double produced = currentCity.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.PowerResource)
+                                ? currentCity.UtilityPlans[pc].TotalOutputs[GameData.PowerResource]
                                 : 0;
-                            Console.WriteLine($"│ Power (MW):{city.UtilityPlans[pc].TotalPowerConsumptionMWh,16:F2}{produced,17:F2}{produced - city.UtilityPlans[pc].TotalPowerConsumptionMWh,10:F2}");
+                            Console.WriteLine($"│ Power (MW):{currentCity.UtilityPlans[pc].TotalPowerConsumptionMWh,16:F2}{produced,17:F2}{produced - currentCity.UtilityPlans[pc].TotalPowerConsumptionMWh,10:F2}");
                             // Water
-                            produced = city.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.WaterResource)
-                                ? city.UtilityPlans[pc].TotalOutputs[GameData.WaterResource]
+                            produced = currentCity.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.WaterResource)
+                                ? currentCity.UtilityPlans[pc].TotalOutputs[GameData.WaterResource]
                                 : 0;
-                            Console.WriteLine($"│ Water (t/day):{city.UtilityPlans[pc].TotalWaterConsumptionM3,13:F2}{produced,17:F2}{produced - city.UtilityPlans[pc].TotalWaterConsumptionM3,10}");
+                            Console.WriteLine($"│ Water (t/day):{currentCity.UtilityPlans[pc].TotalWaterConsumptionM3,13:F2}{produced,17:F2}{produced - currentCity.UtilityPlans[pc].TotalWaterConsumptionM3,10}");
                             // Heat
-                            produced = city.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.HeatResource)
-                                ? city.UtilityPlans[pc].TotalOutputs[GameData.HeatResource]
+                            produced = currentCity.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.HeatResource)
+                                ? currentCity.UtilityPlans[pc].TotalOutputs[GameData.HeatResource]
                                 : 0;
-                            Console.WriteLine($"│ Heat (MW):{city.UtilityPlans[pc].TotalHeatConsumptionM3,17:F2}{produced,17:F2}{produced - city.UtilityPlans[pc].TotalHeatConsumptionM3,10}");
+                            Console.WriteLine($"│ Heat (MW):{currentCity.UtilityPlans[pc].TotalHeatConsumptionM3,17:F2}{produced,17:F2}{produced - currentCity.UtilityPlans[pc].TotalHeatConsumptionM3,10}");
                             // Sewage
-                            produced = city.UtilityPlans[pc].TotalSewageDisposalCapacity;
-                            Console.WriteLine($"│ Sewage (t/day):{city.UtilityPlans[pc].TotalWaterConsumptionM3,14:F2}{produced,17:F2}{0,10}");
+                            produced = currentCity.UtilityPlans[pc].TotalSewageDisposalCapacity;
+                            Console.WriteLine($"│ Sewage (t/day):{currentCity.UtilityPlans[pc].TotalWaterConsumptionM3,14:F2}{produced,17:F2}{0,10}");
 
                             // Garbage
-                            Console.WriteLine($"│ Garbage (t/day):{city.UtilityPlans[pc].TotalGarbageProduction,11:F2}{city.UtilityPlans[pc].TotalGarbageProduction,27:F2}");
+                            Console.WriteLine($"│ Garbage (t/day):{currentCity.UtilityPlans[pc].TotalGarbageProduction,11:F2}{currentCity.UtilityPlans[pc].TotalGarbageProduction,27:F2}");
 
-                            Console.WriteLine($"│ Pollution:{city.UtilityPlans[pc].TotalEnvironmentPollution,17:F6}{city.UtilityPlans[pc].TotalEnvironmentPollution,27:F6}");
+                            Console.WriteLine($"│ Pollution:{currentCity.UtilityPlans[pc].TotalEnvironmentPollution,17:F6}{currentCity.UtilityPlans[pc].TotalEnvironmentPollution,27:F6}");
                             Console.WriteLine("├────────────────────────────────────────┤");
                             Console.WriteLine("│ All Utility Buildings :                │");
                             Console.WriteLine("├────────────────────────────────────────┤");
 
                             // Display all buildings recursively
-                            foreach (var ui in city.UtilityPlans[pc].Buildings)
+                            foreach (var ui in currentCity.UtilityPlans[pc].Buildings)
                             {
-                                Console.WriteLine($"│ [ {city.UtilityPlans[pc].Type} ]");
+                                Console.WriteLine($"│ [ {currentCity.UtilityPlans[pc].Type} ]");
                                 Console.WriteLine($"│   · {ui.Count} x {ui.Building.Name}");
                             }
 
-                            var totalSupBldgs = city.UtilityPlans[pc].SupportBuildings;
+                            var totalSupBldgs = currentCity.UtilityPlans[pc].SupportBuildings;
 
                             if (totalSupBldgs.Count > 0)
                             {
@@ -1021,14 +1041,14 @@ namespace SovietRepublicPlanner
                             //}
                             Console.WriteLine("├────────────────────────────────────────┤");
                             Console.WriteLine("│ Importing Resources:");
-                            foreach (var kv in city.UtilityPlans[pc].TotalInputs)
+                            foreach (var kv in currentCity.UtilityPlans[pc].TotalInputs)
                                 Console.WriteLine($"│ ·{kv.Value,6:F2}t/day {kv.Key.Name,-20}");
-                            if (city.UtilityPlans[pc].ConstructionMaterials.Count() > 0)
+                            if (currentCity.UtilityPlans[pc].ConstructionMaterials.Count() > 0)
                             {
                                 Console.WriteLine("├────────────────────────────────────────┤");
                                 Console.WriteLine("│ Total Construction Materials:");
                                 Console.WriteLine("├────────────────────────────────────────┤");
-                                foreach (var kv in city.UtilityPlans[pc].ConstructionMaterials)
+                                foreach (var kv in currentCity.UtilityPlans[pc].ConstructionMaterials)
                                     Console.WriteLine($"│ · {kv.Value:F2} × {kv.Key.Name}");
                                 Console.WriteLine("└────────────────────────────────────────┘");
                             }
@@ -1124,8 +1144,9 @@ namespace SovietRepublicPlanner
                         }
                         else { Console.WriteLine("Invalid index. Going back to the command loop."); continue; }
 
-                        city.UtilityPlans.Add(p);
+                        currentCity.UtilityPlans.Add(p);
                         Console.WriteLine($"{p.Name} has been added to the City {city.Name}.");
+                        Console.WriteLine($"allCities count : {allCities.Count}");
                         continue;
                     }
                 }

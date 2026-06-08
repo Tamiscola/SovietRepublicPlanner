@@ -413,6 +413,10 @@ public partial class City
     }
     public static SavedCity ConvertToSavedCity(City city)
     {
+        // debug
+        Console.WriteLine($"ConvertToSavedCity() CityName : {city.Name}");
+        Console.WriteLine($"ConvertToSavedCity() Object : {city}");
+
         var saved = new SavedCity
         {
             Name = city.Name,

@@ -42,7 +42,6 @@ public class SavedIndustryPlan
 
         var saved = new SavedIndustryPlan
         {
-            ParentCity = City.ConvertToSavedCity(plan.ParentCity),
             ResourceName = plan.TargetResource.Name,
             BuildingName = plan.ChosenBuilding?.Building.Name,
             Amount = plan.TargetAmount,

@@ -35,15 +35,14 @@ public class SavedUtilityPlan
         var p = new UtilityPlan()
         {
             Name = plan.Name,
-            ParentCity = City.ConvertFromSavedCity(plan.ParentCity),
             Buildings = plan.Buildings.Select(su => new UtilityInstance()
             {
-                Building = (UtilityBuilding)GameData.AllUtilityBuildings.Where(u => u.Name == su.BuildingName),
+                Building = GameData.AllUtilityBuildings.FirstOrDefault(u => u.Name == su.BuildingName),
                 Count = su.Count
             }).ToList(),
             SupportBuildings = plan.SavedSupportBuildings.Select(ssb => new SupportInstance()
             {
-                Building = (SupportBuilding)GameData.AllSupportBuildings.Where(sb => sb.Name == ssb.BuildingName),
+                Building = GameData.AllSupportBuildings.FirstOrDefault(sb => sb.Name == ssb.BuildingName),
                 Count = ssb.Count
             }).ToList(),
             Type = plan.Type,
