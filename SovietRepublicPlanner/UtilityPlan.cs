@@ -146,6 +146,7 @@ public class UtilityPlan
         if (plan == null) { Console.WriteLine("No plan to convert."); return null; }
         var s = new SavedUtilityPlan()
         {
+            Name = plan.Name,
             Buildings = plan.Buildings.Select(b => new SavedUtilityPlan.SavedUtilityInstance()
             {
                 BuildingName = b.Building.Name,

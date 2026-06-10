@@ -1041,6 +1041,7 @@ namespace SovietRepublicPlanner
                             //}
                             Console.WriteLine("├────────────────────────────────────────┤");
                             Console.WriteLine("│ Importing Resources:");
+                            Console.WriteLine("├────────────────────────────────────────┤");
                             foreach (var kv in currentCity.UtilityPlans[pc].TotalInputs)
                                 Console.WriteLine($"│ ·{kv.Value,6:F2}t/day {kv.Key.Name,-20}");
                             if (currentCity.UtilityPlans[pc].ConstructionMaterials.Count() > 0)
@@ -1051,6 +1052,48 @@ namespace SovietRepublicPlanner
                                 foreach (var kv in currentCity.UtilityPlans[pc].ConstructionMaterials)
                                     Console.WriteLine($"│ · {kv.Value:F2} × {kv.Key.Name}");
                                 Console.WriteLine("└────────────────────────────────────────┘");
+                            }
+
+                            // User Choice : Modify || Delete UtilityPlan
+                            Console.Write($"Which action do you want to do on this plan? (m : modify | d : delete): ");
+                            char actionChoice;
+
+                            if (char.TryParse(Console.ReadLine(), out actionChoice) && (actionChoice == 'm' || actionChoice == 'd'))
+                            {
+                                // Deletion
+                                if (actionChoice == 'd')
+                                {
+                                    Console.WriteLine($"Do you want to delete this UtilityPlan ({currentCity.UtilityPlans[pc].Name})? [y/n]");
+                                    char deleteChoice;
+                                    if (char.TryParse(Console.ReadLine(), out deleteChoice) && (deleteChoice == 'y' || deleteChoice == 'n'))
+                                    {
+                                        if (deleteChoice == 'y')
+                                        {
+                                            Console.WriteLine($"{currentCity.UtilityPlans[pc].Name} has been deleted.");
+                                            currentCity.UtilityPlans.Remove(currentCity.UtilityPlans[pc]);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Going back to CommandLoop");
+                                            continue;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Invalid input. Going back to CommandLoop");
+                                        continue;
+                                    }
+                                }
+                                // Modification
+                                else
+                                {
+                                    Console.WriteLine("This feature is not yet completed. Going back to CommandLoop");
+                                    continue;
+                                }
+                            } else
+                            {
+                                Console.WriteLine("Invalid input. Going back to CommandLoop");
+                                continue;
                             }
                         }
                         else { Console.WriteLine("Invalid index. Going back to the command menu"); continue; }
