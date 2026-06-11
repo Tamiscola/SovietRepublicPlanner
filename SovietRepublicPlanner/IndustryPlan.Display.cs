@@ -31,7 +31,7 @@ public partial class IndustryPlan
             string waterLabel = waterInput > 0
                 ? $"{TotalUtilityNeeds[GameData.WaterResource]:F2} ({TotalWaterNeeded:F2}+{waterInput:F2})"
                 : $"{TotalWaterNeeded:F2}";
-            minusBalance = double.Parse(waterLabel) < 0
+            minusBalance = waterInput < 0
                 ? "-"
                 : "";
             Console.WriteLine($"│ Water (t/day):{waterLabel,13}{minusBalance + waterLabel,27}");
