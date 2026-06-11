@@ -481,6 +481,9 @@ public partial class City
                             .FirstOrDefault(tb => tb.Name == i.BuildingName),
                 Count = i.Count
             }).ToList() ?? new List<TransportationInstance>();
+        c.industryPlans.ForEach(p => p.ParentCity = c);
+        c.microDistricts.ForEach(p => p.ParentCity = c);
+        c.UtilityPlans.ForEach(p => p.ParentCity = c);
         return c;
     }
 }

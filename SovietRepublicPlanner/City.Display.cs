@@ -14,6 +14,8 @@ public partial class City
         Console.WriteLine("┞━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┦");
         // Display Status section
         Console.WriteLine("├────────────────────────────────────────┤");
+        Console.WriteLine($"│ City Name: {Name}                      ");
+        Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│ Utilities Status:                      │");
         Console.WriteLine("├────────────────────────────────────────┤");
         Console.WriteLine("│                   Needed    Produced  Balance");
@@ -158,13 +160,20 @@ public partial class City
             if (kv.Value < 0)
             {
                 if (kv.Key == GameData.PowerResource)
+                {
                     Console.WriteLine($"│ · {Math.Abs(kv.Value):F2} MWh/day x {kv.Key.Name}");
+                }
                 else if (kv.Key == GameData.WaterResource)
+                {
                     Console.WriteLine($"│ · {Math.Abs(kv.Value):F2} ㎥/day x {kv.Key.Name}");
+                }
                 else
+                {
                     Console.WriteLine($"│ · {Math.Abs(kv.Value):F2} t/day x {kv.Key.Name}");
+                }
             }
-        Console.WriteLine($"\n│ [ Citizen Supply ]");
+        Console.WriteLine($"│ ");
+        Console.WriteLine($"│ [ Citizen Supply ]");
         foreach (var kv in combinedCitizenConsumption)
         {
             if (!net.ContainsKey(kv.Key))

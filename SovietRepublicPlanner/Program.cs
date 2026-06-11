@@ -2141,14 +2141,23 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "housing")
                 {
+                    // Designate the City
+                    City currentCity = allCities.FirstOrDefault(c => c.Name == city.Name);
+                    if (currentCity == null)
+                    {
+                        Console.WriteLine($"There's no City chosen.");
+                        continue;
+                    }
+
                     // Select a district
-                    if (allMicroDistricts.Count < 1)
+                    if (currentCity.microDistricts.Count < 1)
                     {   // if none, create a district
                         microDistrict = new MicroDistrict();
                         string mdName;
                         Console.Write($"Write a name of the district: ");
                         mdName = Console.ReadLine();
                         microDistrict.Name = mdName;
+                        microDistrict.ParentCity = currentCity;
                         allMicroDistricts.Add(microDistrict);
                     }
                     else
@@ -2168,22 +2177,66 @@ namespace SovietRepublicPlanner
 
                             foreach (var ri in microDistrict.ResidentialBuildings)
                                 Console.WriteLine($"│ · {ri.Count} {ri.Building.Name}");
+
+                            // User Choice : Modify || Delete UtilityPlan
+                            Console.Write($"Which action do you want to do on this plan? (m : modify | d : delete): ");
+                            char actionChoice;
+
+                            if (char.TryParse(Console.ReadLine(), out actionChoice) && (actionChoice == 'm' || actionChoice == 'd'))
+                            {
+                                // Deletion
+                                if (actionChoice == 'd')
+                                {
+                                    Console.WriteLine($"Do you want to delete this District Plan ({microDistrict.Name})? [y/n]");
+                                    char deleteChoice;
+                                    if (char.TryParse(Console.ReadLine(), out deleteChoice) && (deleteChoice == 'y' || deleteChoice == 'n'))
+                                    {
+                                        if (deleteChoice == 'y')
+                                        {
+                                            Console.WriteLine($"{microDistrict.Name} has been deleted.");
+                                            allMicroDistricts.RemoveAt(allMicroDistricts.IndexOf(microDistrict));
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Going back to CommandLoop");
+                                            continue;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Invalid input. Going back to CommandLoop");
+                                        continue;
+                                    }
+                                }
+                                // Modification
+                                else
+                                {
+                                    Console.WriteLine("This feature is not yet completed. Going back to CommandLoop");
+                                    continue;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input. Going back to CommandLoop");
+                                continue;
+                            }
                         }
                         else if (userChoice == -1)
                         {
-                            microDistrict = new MicroDistrict();
+                            MicroDistrict md = new MicroDistrict();
                             string mdName;
                             Console.Write($"Write a name of the district: ");
                             mdName = Console.ReadLine();
                             microDistrict.Name = mdName;
+                            microDistrict.ParentCity = currentCity;
                             allMicroDistricts.Add(microDistrict);
                         }
                     }
 
                     // Calculate total citizens from ALL plans
                     int totalWorkers = city.totalWorkers;
-                    int totalHousingCapacity = allMicroDistricts.Sum(m => m.
-                    TotalHousingCapacity);
+                    int totalHousingCapacity = allMicroDistricts.Sum(m => m.TotalHousingCapacity);
                     Console.WriteLine($"\nYou need extra housing for {totalWorkers - totalHousingCapacity} workers.");
                     bool allValid = false;
                     while (!allValid)
