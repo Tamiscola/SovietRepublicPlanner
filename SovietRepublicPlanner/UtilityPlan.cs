@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,6 +56,32 @@ public class UtilityPlan
                 }
             }
             return result;
+        }
+    }
+    public Dictionary<Resource, double> net
+    {
+        get
+        {
+            Dictionary<Resource, double> r = new Dictionary<Resource, double>();
+            foreach (var kv in TotalInputs)
+            {
+                if (r.ContainsKey(kv.Key)) r[kv.Key] -= kv.Value;
+                else r[kv.Key] = -kv.Value;
+            }
+            foreach (var kv in TotalOutputs)
+            {
+                if (kv.Key == GameData.PowerResource)
+                {
+                    if (r.ContainsKey(kv.Key)) r[kv.Key] += (kv.Value - TotalPowerConsumptionMWh);
+                    else r[kv.Key] = kv.Value - TotalPowerConsumptionMWh;
+                }
+                else
+                {
+                    if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                    else r[kv.Key] = kv.Value;
+                }
+            }
+            return r;
         }
     }
 

@@ -291,6 +291,17 @@ public partial class City
                     }
                 }
             }
+            if (UtilityPlans.Count > 0)
+            {
+                foreach (var plan in UtilityPlans)
+                {
+                    foreach (var kv in plan.net)
+                    {
+                        if (r.ContainsKey(kv.Key)) r[kv.Key] += kv.Value;
+                        else r[kv.Key] = kv.Value;
+                    }
+                }
+            }
             return r;
         }
     }
