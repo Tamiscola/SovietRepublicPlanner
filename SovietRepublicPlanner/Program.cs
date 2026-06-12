@@ -1689,6 +1689,18 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "amenity")
                 {
+                    // Designate the City
+                    City currentCity = allCities.FirstOrDefault(c => c.Name == city.Name);
+                    if (currentCity == null)
+                    {
+                        Console.WriteLine($"There's no a City chosen.");
+                        continue;
+                    }
+
+                    microDistrict = currentCity.microDistricts.Count > 0
+                        ? currentCity.microDistricts[0]
+                        : new MicroDistrict();
+
                     // Flat selection menu
                     Console.WriteLine("Select Amenity Type:");
                     Console.WriteLine("[1] Shopping");
@@ -1733,7 +1745,7 @@ namespace SovietRepublicPlanner
                         int currentCapacity = coverage.ServiceCoverage[selectedType];
 
                         // Calculate needed capacity
-                        var (neededCapacity, populationDesc, showCapacity) = CalculateCapacityNeeded(selectedType, rootResult);
+                        var (neededCapacity, populationDesc, showCapacity) = CalculateCapacityNeeded(selectedType, city);
 
                         // Display capacity info
                         if (showCapacity)
@@ -1845,7 +1857,7 @@ namespace SovietRepublicPlanner
                                 amenityInstance.Building = buildingsOfType[buildChoice - 1];
                                 amenityInstance.Count = count;
                                 microDistrict.AmenityBuildings.Add(amenityInstance);
-                                Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added!");
+                                Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to {microDistrict.Name} of City {microDistrict.ParentCity.Name}!");
                                 Console.WriteLine($"Citizen Capacity: {buildingsOfType[buildChoice - 1].CitizenCapacity * count}");
                                 Console.WriteLine($"Needed Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
                             }
@@ -2518,6 +2530,10 @@ namespace SovietRepublicPlanner
                 else { Console.Write("Invalid Input. "); continue; }
             }
         }
+        static void AddAmenityInstance()
+        {
+
+        }
         static string ReadLineWithCompletion(List<string> availableCommands)
         {
             string input = "";
@@ -2775,27 +2791,27 @@ namespace SovietRepublicPlanner
         // Returns (needed capacity, description of population)
         private static (int capacity, string description, bool showCapacity) CalculateCapacityNeeded(
     AmenityType type,
-    IndustryPlan result)
+    City c)
         {
-            int citizens = result.TotalPopulationNeeded;
-            int workers = result.TotalWorkers;
+            int citizens = c.totalCitizen;
+            int workers = c.totalWorkers;
 
             return type switch
             {
                 AmenityType.Shopping =>
                     ((int)Math.Ceiling((double)workers / 15), $"{workers} workers", true),
                 AmenityType.Pub =>
-                    ((int)Math.Ceiling((double)citizens / 100), $"{citizens} citizens", true),
+                    ((int)Math.Ceiling((double)workers / 100), $"{workers} citizens", true),
                 AmenityType.Culture =>
-                    ((int)Math.Ceiling((double)citizens / 80), $"{citizens} citizens", true),
+                    ((int)Math.Ceiling((double)workers / 80), $"{workers} citizens", true),
                 AmenityType.Sports =>
-                    ((int)Math.Ceiling((double)citizens / 80), $"{citizens} citizens", true),
+                    ((int)Math.Ceiling((double)workers / 80), $"{workers} citizens", true),
                 AmenityType.Healthcare =>
                     ((int)Math.Ceiling((double)citizens / 100), $"{citizens} citizens (optional)", true),
                 AmenityType.Education =>
                     (0, "See breakdown below", true),
                 AmenityType.CrimeJustice =>
-                    ((int)Math.Ceiling((double)citizens / 50), $"{citizens} citizens (estimate)", true),
+                    ((int)Math.Ceiling((double)workers / 50), $"{workers} citizens (estimate)", true),
                 AmenityType.Fireservice =>
                     (0, "Coverage-based (not capacity)", false),
                 AmenityType.CityService =>
