@@ -2210,13 +2210,13 @@ namespace SovietRepublicPlanner
                                     }
                                 }
                                 // Modification
-                                else
+                                else if (actionChoice == 'm')
                                 {
-                                    // User Choice : Modify || Delete Instances
-                                    Console.Write($"Modification : Which action do you want to do on this Instances? (m : modify | d : delete): ");
+                                    // User Choice : Add || Delete Instances
+                                    Console.Write($"Modification : Which action do you want to do on this Instances? (a : add | d : delete): ");
                                     char actionChoice2;
 
-                                    if (char.TryParse(Console.ReadLine(), out actionChoice2) && (actionChoice2 == 'm' || actionChoice2 == 'd'))
+                                    if (char.TryParse(Console.ReadLine(), out actionChoice2) && (actionChoice2 == 'a' || actionChoice2 == 'd'))
                                     {
                                         // Deletion
                                         if (actionChoice2 == 'd')
@@ -2297,10 +2297,17 @@ namespace SovietRepublicPlanner
                                             }
                                             else { Console.WriteLine("Invalid input. Going back to Command Loop."); continue; }
                                         }
+                                        // Addition 
+                                        else if (actionChoice2 == 'a')
+                                        {
+                                            AddResidentialInstance(city, microDistrict);
+                                        }
                                     }
-
-
-                                    // Addition 
+                                    continue;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input. Going back to CommandLoop");
                                     continue;
                                 }
                             }
@@ -2321,191 +2328,194 @@ namespace SovietRepublicPlanner
                             allMicroDistricts.Add(microDistrict);
                         }
                     }
-
-                    // Calculate total citizens from ALL plans
-                    int totalWorkers = city.totalWorkers;
-                    int totalHousingCapacity = allMicroDistricts.Sum(m => m.TotalHousingCapacity);
-                    Console.WriteLine($"\nYou need extra housing for {totalWorkers - totalHousingCapacity} workers.");
-                    bool allValid = false;
-                    while (!allValid)
-                    {
-                        // User choose Residential Size
-                        int sizeChoice;
-                        Console.Write($"\nChoose the Size of Residential:\n[0]: Small\n[1]: Medium\n[2]: Large\n: ");
-                        if (int.TryParse(Console.ReadLine(), out sizeChoice) && sizeChoice >= 0 && sizeChoice <= 2)
-                        {
-                            // Small
-                            int userChoice;
-                            int count;
-                            if (sizeChoice == 0)
-                            {
-                                Dictionary<int, ResidentialBuilding> resList = new Dictionary<int, ResidentialBuilding>();
-
-                                // Display Buildings
-                                Console.WriteLine($"Small Residentials:");
-                                for (int i = 0; i < GameData.SmallResidentialBuildings.Count(); i++)
-                                {
-                                    Console.WriteLine($"[{i + 1}]: {GameData.SmallResidentialBuildings[i].WorkerCapacity}, {GameData.SmallResidentialBuildings[i].Name}");
-                                    resList.Add(i + 1, GameData.SmallResidentialBuildings[i]);
-                                }
-
-                                // Select Building type
-                                Console.Write($"\nSelect the types ('type, type, type ...'): ");
-                                List<ResidentialInstance> resCount = new List<ResidentialInstance>();
-                                while (true)
-                                {
-                                    string input = Console.ReadLine();
-                                    string[] parsed = input.Split(',');
-                                    ResidentialInstance addRL = new ResidentialInstance();
-                                    foreach (var s in parsed)
-                                    {
-                                        foreach (var rl in resList)
-                                            if ((int.TryParse(s.Trim(), out userChoice) ? userChoice : 0) == rl.Key)
-                                            {
-                                                if (userChoice == 0) { continue; }
-                                                if (resCount.Any(ri => ri.Building == resList[userChoice])) { continue; }
-                                                addRL.Building = resList[userChoice];
-                                                resCount.Add(addRL);
-                                            }
-                                    }
-                                    break;
-                                }
-
-                                // Select the Amount
-                                Console.WriteLine("\nSet the amount:");
-                                foreach (var ri in resCount)
-                                {
-                                    Console.Write($"{ri.Building.Name}: ");
-                                    if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
-                                        ri.Count += count;
-                                }
-
-                                // Add resCount to CalculationResult
-                                microDistrict.ResidentialBuildings.AddRange(resCount);
-
-                                // Show the Capacity
-                                Console.WriteLine($"\nCurrent capacity: {city.totalHousingCapacity}" +
-                                    $"\nExtra capcity needed: {((city.totalWorkers - city.totalHousingCapacity) >= 0
-                                    ? (city.totalWorkers - city.totalHousingCapacity)
-                                    : city.totalWorkers - city.totalHousingCapacity)}");
-
-                                allValid = true;
-                            }
-                            // Medium
-                            else if (sizeChoice == 1)
-                            {
-                                Dictionary<int, ResidentialBuilding> resList = new Dictionary<int, ResidentialBuilding>();
-
-                                // Display Buildings
-                                Console.WriteLine($"Medium Residentials:");
-                                for (int i = 0; i < GameData.MediumResidentialBuildings.Count(); i++)
-                                {
-                                    Console.WriteLine($"[{i + 1}]: {GameData.MediumResidentialBuildings[i].WorkerCapacity}, {GameData.MediumResidentialBuildings[i].Name}");
-                                    resList.Add(i + 1, GameData.MediumResidentialBuildings[i]);
-                                }
-
-                                // Select Building type
-                                Console.Write($"\nSelect the types ('type, type, type ...'): ");
-                                List<ResidentialInstance> resCount = new List<ResidentialInstance>();
-                                while (true)
-                                {
-                                    string input = Console.ReadLine();
-                                    string[] parsed = input.Split(',');
-                                    ResidentialInstance addRL = new ResidentialInstance();
-                                    foreach (var s in parsed)
-                                    {
-                                        foreach (var rl in resList)
-                                            if ((int.TryParse(s.Trim(), out userChoice) ? userChoice : 0) == rl.Key)
-                                            {
-                                                if (userChoice == 0) { continue; }
-                                                if (resCount.Any(ri => ri.Building == resList[userChoice])) { continue; }
-                                                addRL.Building = resList[userChoice];
-                                                resCount.Add(addRL);
-                                            }
-                                    }
-                                    break;
-                                }
-
-                                // Select the Count
-                                Console.WriteLine("\nSet the amount:");
-                                foreach (var ri in resCount)
-                                {
-                                    Console.Write($"{ri.Building.Name}: ");
-                                    if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
-                                        ri.Count += count;
-                                }
-
-                                // Add resCount to CalculationResult
-                                microDistrict.ResidentialBuildings.AddRange(resCount);
-
-                                // Show the Capacity
-                                Console.WriteLine($"\nCurrent capacity: {city.totalHousingCapacity}" +
-                                    $"\nExtra capcity needed: {((city.totalWorkers - city.totalHousingCapacity) >= 0
-                                    ? (city.totalWorkers - city.totalHousingCapacity)
-                                    : Math.Abs(city.totalWorkers - city.totalHousingCapacity))}");
-
-                                allValid = true;
-                            }
-                            // Large
-                            else
-                            {
-                                Dictionary<int, ResidentialBuilding> resList = new Dictionary<int, ResidentialBuilding>();
-
-                                // Display Buildings
-                                Console.WriteLine($"Large Residentials:");
-                                for (int i = 0; i < GameData.LargeResidentialBuildings.Count(); i++)
-                                {
-                                    Console.WriteLine($"[{i + 1}]: {GameData.LargeResidentialBuildings[i].WorkerCapacity}, {GameData.LargeResidentialBuildings[i].Name}");
-                                    resList.Add(i + 1, GameData.LargeResidentialBuildings[i]);
-                                }
-
-                                // Select Building type
-                                Console.Write($"\nSelect the types ('type, type, type ...'): ");
-                                List<ResidentialInstance> resCount = new List<ResidentialInstance>();
-                                while (true)
-                                {
-                                    string input = Console.ReadLine();
-                                    string[] parsed = input.Split(',');
-                                    ResidentialInstance addRL = new ResidentialInstance();
-                                    foreach (var s in parsed)
-                                    {
-                                        foreach (var rl in resList)
-                                            if ((int.TryParse(s.Trim(), out userChoice) ? userChoice : 0) == rl.Key)
-                                            {
-                                                if (userChoice == 0) { continue; }
-                                                if (resCount.Any(ri => ri.Building == resList[userChoice])) { continue; }
-                                                addRL.Building = resList[userChoice];
-                                                resCount.Add(addRL);
-                                            }
-                                    }
-                                    break;
-                                }
-
-                                // Select the Count
-                                Console.WriteLine("\nSet the amount:");
-                                foreach (var ri in resCount)
-                                {
-                                    Console.Write($"{ri.Building.Name}: ");
-                                    if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
-                                        ri.Count += count;
-                                }
-
-                                // Add resCount to CalculationResult
-                                microDistrict.ResidentialBuildings.AddRange(resCount);
-
-                                // Show the Capacity
-                                Console.WriteLine($"\nCurrent capacity: {city.totalHousingCapacity}" +
-                                    $"\nExtra capcity needed: {((city.totalWorkers - city.totalHousingCapacity) >= 0
-                                    ? (city.totalWorkers - city.totalHousingCapacity)
-                                    : city.totalWorkers - city.totalHousingCapacity)}");
-
-                                allValid = true;
-                            }
-                        }
-                        else { Console.Write("Invalid Input. "); continue; }
-                    }
+                    AddResidentialInstance(city, microDistrict);
                     continue;   // back to 'command'
                 }
+            }
+        }
+        static void AddResidentialInstance(City c, MicroDistrict md)
+        {
+            // Calculate total citizens from ALL plans
+            int totalWorkers = c.totalWorkers;
+            int totalHousingCapacity = c.microDistricts.Sum(m => m.TotalHousingCapacity);
+            Console.WriteLine($"\nYou need extra housing for {totalWorkers - totalHousingCapacity} workers.");
+            bool allValid = false;
+            while (!allValid)
+            {
+                // User choose Residential Size
+                int sizeChoice;
+                Console.Write($"\nChoose the Size of Residential:\n[0]: Small\n[1]: Medium\n[2]: Large\n: ");
+                if (int.TryParse(Console.ReadLine(), out sizeChoice) && sizeChoice >= 0 && sizeChoice <= 2)
+                {
+                    // Small
+                    int userChoice;
+                    int count;
+                    if (sizeChoice == 0)
+                    {
+                        Dictionary<int, ResidentialBuilding> resList = new Dictionary<int, ResidentialBuilding>();
+
+                        // Display Buildings
+                        Console.WriteLine($"Small Residentials:");
+                        for (int i = 0; i < GameData.SmallResidentialBuildings.Count(); i++)
+                        {
+                            Console.WriteLine($"[{i + 1}]: {GameData.SmallResidentialBuildings[i].WorkerCapacity}, {GameData.SmallResidentialBuildings[i].Name}");
+                            resList.Add(i + 1, GameData.SmallResidentialBuildings[i]);
+                        }
+
+                        // Select Building type
+                        Console.Write($"\nSelect the types ('type, type, type ...'): ");
+                        List<ResidentialInstance> resCount = new List<ResidentialInstance>();
+                        while (true)
+                        {
+                            string input = Console.ReadLine();
+                            string[] parsed = input.Split(',');
+                            ResidentialInstance addRL = new ResidentialInstance();
+                            foreach (var s in parsed)
+                            {
+                                foreach (var rl in resList)
+                                    if ((int.TryParse(s.Trim(), out userChoice) ? userChoice : 0) == rl.Key)
+                                    {
+                                        if (userChoice == 0) { continue; }
+                                        if (resCount.Any(ri => ri.Building == resList[userChoice])) { continue; }
+                                        addRL.Building = resList[userChoice];
+                                        resCount.Add(addRL);
+                                    }
+                            }
+                            break;
+                        }
+
+                        // Select the Amount
+                        Console.WriteLine("\nSet the amount:");
+                        foreach (var ri in resCount)
+                        {
+                            Console.Write($"{ri.Building.Name}: ");
+                            if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
+                                ri.Count += count;
+                        }
+
+                        // Add resCount to CalculationResult
+                        md.ResidentialBuildings.AddRange(resCount);
+
+                        // Show the Capacity
+                        Console.WriteLine($"\nCurrent capacity: {c.totalHousingCapacity}" +
+                            $"\nExtra capcity needed: {((c.totalWorkers - c.totalHousingCapacity) >= 0
+                            ? (c.totalWorkers - c.totalHousingCapacity)
+                            : c.totalWorkers - c.totalHousingCapacity)}");
+
+                        allValid = true;
+                    }
+                    // Medium
+                    else if (sizeChoice == 1)
+                    {
+                        Dictionary<int, ResidentialBuilding> resList = new Dictionary<int, ResidentialBuilding>();
+
+                        // Display Buildings
+                        Console.WriteLine($"Medium Residentials:");
+                        for (int i = 0; i < GameData.MediumResidentialBuildings.Count(); i++)
+                        {
+                            Console.WriteLine($"[{i + 1}]: {GameData.MediumResidentialBuildings[i].WorkerCapacity}, {GameData.MediumResidentialBuildings[i].Name}");
+                            resList.Add(i + 1, GameData.MediumResidentialBuildings[i]);
+                        }
+
+                        // Select Building type
+                        Console.Write($"\nSelect the types ('type, type, type ...'): ");
+                        List<ResidentialInstance> resCount = new List<ResidentialInstance>();
+                        while (true)
+                        {
+                            string input = Console.ReadLine();
+                            string[] parsed = input.Split(',');
+                            ResidentialInstance addRL = new ResidentialInstance();
+                            foreach (var s in parsed)
+                            {
+                                foreach (var rl in resList)
+                                    if ((int.TryParse(s.Trim(), out userChoice) ? userChoice : 0) == rl.Key)
+                                    {
+                                        if (userChoice == 0) { continue; }
+                                        if (resCount.Any(ri => ri.Building == resList[userChoice])) { continue; }
+                                        addRL.Building = resList[userChoice];
+                                        resCount.Add(addRL);
+                                    }
+                            }
+                            break;
+                        }
+
+                        // Select the Count
+                        Console.WriteLine("\nSet the amount:");
+                        foreach (var ri in resCount)
+                        {
+                            Console.Write($"{ri.Building.Name}: ");
+                            if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
+                                ri.Count += count;
+                        }
+
+                        // Add resCount to CalculationResult
+                        md.ResidentialBuildings.AddRange(resCount);
+
+                        // Show the Capacity
+                        Console.WriteLine($"\nCurrent capacity: {c.totalHousingCapacity}" +
+                            $"\nExtra capcity needed: {((c.totalWorkers - c.totalHousingCapacity) >= 0
+                            ? (c.totalWorkers - c.totalHousingCapacity)
+                            : Math.Abs(c.totalWorkers - c.totalHousingCapacity))}");
+
+                        allValid = true;
+                    }
+                    // Large
+                    else
+                    {
+                        Dictionary<int, ResidentialBuilding> resList = new Dictionary<int, ResidentialBuilding>();
+
+                        // Display Buildings
+                        Console.WriteLine($"Large Residentials:");
+                        for (int i = 0; i < GameData.LargeResidentialBuildings.Count(); i++)
+                        {
+                            Console.WriteLine($"[{i + 1}]: {GameData.LargeResidentialBuildings[i].WorkerCapacity}, {GameData.LargeResidentialBuildings[i].Name}");
+                            resList.Add(i + 1, GameData.LargeResidentialBuildings[i]);
+                        }
+
+                        // Select Building type
+                        Console.Write($"\nSelect the types ('type, type, type ...'): ");
+                        List<ResidentialInstance> resCount = new List<ResidentialInstance>();
+                        while (true)
+                        {
+                            string input = Console.ReadLine();
+                            string[] parsed = input.Split(',');
+                            ResidentialInstance addRL = new ResidentialInstance();
+                            foreach (var s in parsed)
+                            {
+                                foreach (var rl in resList)
+                                    if ((int.TryParse(s.Trim(), out userChoice) ? userChoice : 0) == rl.Key)
+                                    {
+                                        if (userChoice == 0) { continue; }
+                                        if (resCount.Any(ri => ri.Building == resList[userChoice])) { continue; }
+                                        addRL.Building = resList[userChoice];
+                                        resCount.Add(addRL);
+                                    }
+                            }
+                            break;
+                        }
+
+                        // Select the Count
+                        Console.WriteLine("\nSet the amount:");
+                        foreach (var ri in resCount)
+                        {
+                            Console.Write($"{ri.Building.Name}: ");
+                            if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
+                                ri.Count += count;
+                        }
+
+                        // Add resCount to CalculationResult
+                        md.ResidentialBuildings.AddRange(resCount);
+
+                        // Show the Capacity
+                        Console.WriteLine($"\nCurrent capacity: {c.totalHousingCapacity}" +
+                            $"\nExtra capcity needed: {((c.totalWorkers - c.totalHousingCapacity) >= 0
+                            ? (c.totalWorkers - c.totalHousingCapacity)
+                            : c.totalWorkers - c.totalHousingCapacity)}");
+
+                        allValid = true;
+                    }
+                }
+                else { Console.Write("Invalid Input. "); continue; }
             }
         }
         static string ReadLineWithCompletion(List<string> availableCommands)
