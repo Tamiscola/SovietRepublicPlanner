@@ -2178,8 +2178,8 @@ namespace SovietRepublicPlanner
                             foreach (var ri in microDistrict.ResidentialBuildings)
                                 Console.WriteLine($"│ · {ri.Count} {ri.Building.Name}");
 
-                            // User Choice : Modify || Delete UtilityPlan
-                            Console.Write($"Which action do you want to do on this plan? (m : modify | d : delete): ");
+                            // User Choice : Modify || Delete MicroDistrict
+                            Console.Write($"Which action do you want to do on this Plan? (m : modify | d : delete): ");
                             char actionChoice;
 
                             if (char.TryParse(Console.ReadLine(), out actionChoice) && (actionChoice == 'm' || actionChoice == 'd'))
@@ -2212,7 +2212,95 @@ namespace SovietRepublicPlanner
                                 // Modification
                                 else
                                 {
-                                    Console.WriteLine("This feature is not yet completed. Going back to CommandLoop");
+                                    // User Choice : Modify || Delete Instances
+                                    Console.Write($"Modification : Which action do you want to do on this Instances? (m : modify | d : delete): ");
+                                    char actionChoice2;
+
+                                    if (char.TryParse(Console.ReadLine(), out actionChoice2) && (actionChoice2 == 'm' || actionChoice2 == 'd'))
+                                    {
+                                        // Deletion
+                                        if (actionChoice2 == 'd')
+                                        {
+                                            // Display List
+                                            for (int i = 0; i < microDistrict.ResidentialBuildings.Count + microDistrict.AmenityBuildings.Count; i++)
+                                            {
+                                                // AmenityInstance List
+                                                if (i == microDistrict.ResidentialBuildings.Count)
+                                                {
+                                                    Console.WriteLine($"[{i}]: {microDistrict.AmenityBuildings[i - microDistrict.ResidentialBuildings.Count].Count} " +
+                                                        $"x {microDistrict.AmenityBuildings[i - microDistrict.ResidentialBuildings.Count].Building.Name}");
+                                                }
+                                                // ResidentailInstance List
+                                                else
+                                                {
+                                                    Console.WriteLine($"[{i}]: {microDistrict.ResidentialBuildings[i].Count} x {microDistrict.ResidentialBuildings[i].Building.Name}");
+                                                }
+                                            }
+                                            Console.Write(": ");
+
+                                            // Choose Instance
+                                            int instanceChoice;
+                                            if (int.TryParse(Console.ReadLine(), out instanceChoice) && instanceChoice >= 0 && instanceChoice < microDistrict.ResidentialBuildings.Count + microDistrict.AmenityBuildings.Count)
+                                            {
+                                                // AmenityInstance
+                                                if (instanceChoice == microDistrict.ResidentialBuildings.Count)
+                                                {
+                                                    // Confirm 
+                                                    char deleteChoice2;
+                                                    Console.WriteLine($"Do you want to delete this AmenityInstance ({microDistrict.AmenityBuildings[instanceChoice - microDistrict.ResidentialBuildings.Count].Building.Name})? [y/n]");
+                                                    if (char.TryParse(Console.ReadLine(), out deleteChoice2) && (deleteChoice2 == 'y' || deleteChoice2 == 'n'))
+                                                    {
+                                                        if (deleteChoice2 == 'y')
+                                                        {
+                                                            Console.WriteLine($"{microDistrict.AmenityBuildings[instanceChoice - microDistrict.ResidentialBuildings.Count].Building.Name} has been deleted.");
+                                                            microDistrict.AmenityBuildings.RemoveAt(instanceChoice - microDistrict.ResidentialBuildings.Count);
+                                                            continue;
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.WriteLine("Deletion Canceled. Going back to CommandLoop");
+                                                            continue;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine("Invalid input. Going back to CommandLoop");
+                                                        continue;
+                                                    }
+                                                }
+                                                // ResidentailInstance
+                                                else
+                                                {
+                                                    // Confirm 
+                                                    char deleteChoice2;
+                                                    Console.WriteLine($"Do you want to delete this ResidentialInstance ({microDistrict.ResidentialBuildings[instanceChoice].Building.Name})? [y/n]");
+                                                    if (char.TryParse(Console.ReadLine(), out deleteChoice2) && (deleteChoice2 == 'y' || deleteChoice2 == 'n'))
+                                                    {
+                                                        if (deleteChoice2 == 'y')
+                                                        {
+                                                            Console.WriteLine($"{microDistrict.ResidentialBuildings[instanceChoice].Building.Name} has been deleted.");
+                                                            microDistrict.ResidentialBuildings.RemoveAt(instanceChoice);
+                                                            continue;
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.WriteLine("Deletion Canceled. Going back to CommandLoop");
+                                                            continue;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine("Invalid input. Going back to CommandLoop");
+                                                        continue;
+                                                    }
+                                                }
+                                            }
+                                            else { Console.WriteLine("Invalid input. Going back to Command Loop."); continue; }
+                                        }
+                                    }
+
+
+                                    // Addition 
                                     continue;
                                 }
                             }

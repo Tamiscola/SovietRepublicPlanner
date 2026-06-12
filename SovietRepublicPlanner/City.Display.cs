@@ -65,7 +65,7 @@ public partial class City
                 Console.WriteLine("│");
             }
         }
-        if (microDistricts.Any(p => p.ResidentialBuildings.Count > 0))
+        if (microDistricts.Count > 0)
         {
             Console.WriteLine("├────────────────────────────────────────┤");
             Console.WriteLine("│ MicroDistricts:                 ");
