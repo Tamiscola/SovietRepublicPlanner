@@ -34,7 +34,7 @@ public class AmenityBuilding : Building
     // Worker & Visitor info
     public int WorkersPerShift { get; set; }
     public int MaxVisitors { get; set; }
-    public int CitizenCapacity => Type switch
+    public int Coverage => Type switch
     {
         AmenityType.Education => EducationLevel switch
         {
