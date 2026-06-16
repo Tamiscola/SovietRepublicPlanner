@@ -55,6 +55,7 @@ public class AmenityBuilding : Building
         AmenityType.Fountain => 0,
         _ => (int)(MaxVisitors * 30)  // Fallback
     };
+    public int CustomersPerWorker => (int)Math.Floor((double)MaxVisitors / EffectiveWorkersPerShift); // default 100% Productivity of Worker
     public int EffectiveWorkersPerShift => (int)Math.Ceiling(WorkersPerShift / CalculationSettings.ProductivityMultiplier);
     public List<Resource> ProductsOffered { get; set; } = new List<Resource>();
 
