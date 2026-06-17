@@ -1087,8 +1087,36 @@ namespace SovietRepublicPlanner
                                 // Modification
                                 else
                                 {
-                                    Console.WriteLine("This feature is not yet completed. Going back to CommandLoop");
-                                    continue;
+                                    for (int i2 = 0; i2 < currentCity.UtilityPlans[pc].Buildings.Count; i2++) 
+                                    {
+                                        Console.WriteLine($"[{i2}]: {currentCity.UtilityPlans[pc].Buildings[i2].Building.Name}"); 
+                                    }
+                                    Console.Write($"Which action do you want to do on these instances? (a : add | d : delete): ");
+
+                                    if (char.TryParse(Console.ReadLine(), out actionChoice) && (actionChoice == 'a' || actionChoice == 'd'))
+                                    {
+                                        // Addition
+                                        if (actionChoice == 'a')
+                                        {
+                                            AddUtilityInstance(currentCity.UtilityPlans[pc]);
+                                        }
+                                        // Deletion
+                                        else if (actionChoice == 'd')
+                                        {
+                                            Console.Write($"\nChoose the instance to delete: ");
+                                            int deleteChoice;
+                                            if (int.TryParse(Console.ReadLine(), out deleteChoice) && deleteChoice >= 0 && deleteChoice < currentCity.UtilityPlans[pc].Buildings.Count)
+                                            {
+                                                Console.WriteLine($"{currentCity.UtilityPlans[pc].Buildings[deleteChoice].Building.Name} has been deleted from {currentCity.UtilityPlans[pc].Name}");
+                                                currentCity.UtilityPlans[pc].Buildings.RemoveAt(deleteChoice);
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid input. Going back to Command Loop");
+                                                continue;
+                                            }
+                                        }
+                                    } else { Console.WriteLine("Invalid action choice. Going back to Command Loop"); continue; }
                                 }
                             } else
                             {
@@ -2532,6 +2560,13 @@ namespace SovietRepublicPlanner
                     Console.WriteLine($"Utility Plan: {un}"); break;
                 }
             }
+            AddUtilityInstance(p);
+            c.UtilityPlans.Add(p);
+            Console.WriteLine($"{p.Name} has been added to the City {c.Name}.");
+        }
+        static void AddUtilityInstance(UtilityPlan utilityPlan)
+        {
+            UtilityInstance ui = new UtilityInstance();
 
             Console.WriteLine("Type the utility to expand:\n[0]: Power\n[1]: Water\n[2]: Sewage\n[3]: Heat\n[4]: Garbage\n\n");
             List<UtilityBuilding> powerbuildings = GameData.AllUtilityBuildings
@@ -2593,14 +2628,12 @@ namespace SovietRepublicPlanner
                     }
                     else { Console.WriteLine("Invalid amount. Going back to the command loop."); return; }
 
-                    p.Buildings.Add(ui);
-                    Console.WriteLine($"{amount} x {utilityBuildings[utilchoice][bldgchoice]} has been added to the {p.Name}.");
+                    utilityPlan.Buildings.Add(ui);
+                    Console.WriteLine($"{amount} x {utilityBuildings[utilchoice][bldgchoice]} has been added to the {utilityPlan.Name}.");
                 }
                 else { Console.WriteLine("Invalid index. Going back to the command loop."); return; }
             }
             else { Console.WriteLine("Invalid index. Going back to the command loop."); return; }
-            c.UtilityPlans.Add(p);
-            Console.WriteLine($"{p.Name} has been added to the City {c.Name}.");
         }
         static string ReadLineWithCompletion(List<string> availableCommands)
         {

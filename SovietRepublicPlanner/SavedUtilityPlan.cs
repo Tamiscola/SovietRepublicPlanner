@@ -45,7 +45,6 @@ public class SavedUtilityPlan
                 Building = GameData.AllSupportBuildings.FirstOrDefault(sb => sb.Name == ssb.BuildingName),
                 Count = ssb.Count
             }).ToList(),
-            Type = plan.Type,
         };
         return p;
     }

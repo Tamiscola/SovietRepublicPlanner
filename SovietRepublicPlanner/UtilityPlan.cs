@@ -12,7 +12,7 @@ public class UtilityPlan
     public City ParentCity { get; set; }
     public List<UtilityInstance> Buildings { get; set; } = new List<UtilityInstance>();
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
-    public UtilityType Type;
+    public UtilityType? Type => Buildings[0].Building.Type;
 
     // Workers & Resources
     public int TotalWorkers {
@@ -184,7 +184,6 @@ public class UtilityPlan
                 BuildingName = s.Building.Name,
                 Count = s.Count,
             }).ToList(),
-            Type = plan.Type,
             TotalWorkers = plan.TotalWorkers,
             PowerConsumption = plan.TotalPowerConsumptionMWh,
             WaterConsumption = plan.TotalWaterConsumptionM3,

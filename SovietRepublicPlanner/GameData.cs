@@ -1986,11 +1986,13 @@ class GameData
         return result;
     }
 
+    // Water
     public static UtilityBuilding SmallWaterWell { get; } = CreateSmallWaterWell();
     public static UtilityBuilding CreateSmallWaterWell()
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Water Well";
+        result.Type = UtilityType.Water;
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
     {
@@ -2022,6 +2024,7 @@ class GameData
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Big Water Well";
+        result.Type = UtilityType.Water;
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
     {
@@ -2053,6 +2056,7 @@ class GameData
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Surface Water Intake";
+        result.Type = UtilityType.Water;
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>()
     {
@@ -2081,6 +2085,7 @@ class GameData
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Water Treatment";
+        result.Type = UtilityType.Water;
         result.Inputs = new List<ResourceAmount>()
         {
             new ResourceAmount(PowerResource, 3.9, TimePeriod.Day),
@@ -2115,6 +2120,7 @@ class GameData
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Big Water Treatment";
+        result.Type = UtilityType.Water;
         result.Inputs = new List<ResourceAmount>()
         {
             new ResourceAmount(PowerResource, 7.6, TimePeriod.Day),
@@ -2144,11 +2150,13 @@ class GameData
         return result;
     }
 
+    // Sewage
     public static UtilityBuilding SmallSewageTreatment { get; } = CreateSmallSewageTreatment();
     public static UtilityBuilding CreateSmallSewageTreatment()
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Sewage Treatment";
+        result.Type = UtilityType.Sewage;
         result.Inputs = new List<ResourceAmount>()
         {
             new ResourceAmount(PowerResource, 5.1, TimePeriod.Day),
@@ -2183,6 +2191,7 @@ class GameData
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Big Sewage Treatment";
+        result.Type = UtilityType.Sewage;
         result.Inputs = new List<ResourceAmount>()
         {
             new ResourceAmount(PowerResource, 9.2, TimePeriod.Day),
@@ -2212,11 +2221,13 @@ class GameData
         return result;
     }
 
+    // Heat
     public static UtilityBuilding SmallHeatingPlant { get; } = CreateSmallHeatingPlant();
     public static UtilityBuilding CreateSmallHeatingPlant()
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Small Heating Plant";
+        result.Type = UtilityType.Heat;
         result.Inputs = new List<ResourceAmount>()
     {
         new ResourceAmount(CoalResource, 2.1, TimePeriod.Day)
@@ -2249,6 +2260,7 @@ class GameData
     {
         UtilityBuilding result = new UtilityBuilding();
         result.Name = "Heating Plant";
+        result.Type = UtilityType.Heat;
         result.Inputs = new List<ResourceAmount>()
     {
         new ResourceAmount(CoalResource, 8.41, TimePeriod.Day)
