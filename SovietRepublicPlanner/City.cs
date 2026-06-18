@@ -11,6 +11,7 @@ public partial class City
     public string Name { get; set; }
     public List<IndustryPlan> industryPlans { get; set; } = new List<IndustryPlan>();
     public List<MicroDistrict> microDistricts { get; set; } = new List<MicroDistrict>();
+    public List<AmenityInstance> AmenityBuildings { get; set; } = new List<AmenityInstance>();
     public List<UtilityPlan> UtilityPlans { get; set; } = new List<UtilityPlan>();
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
     public List<TransportationInstance> TransportationBuildings { get; set; } = new List<TransportationInstance>();
@@ -437,6 +438,12 @@ public partial class City
             savedMicroDistricts = city.microDistricts
                 .Select(m => MicroDistrict.ConvertToSavedMicroDistrict(m))
                 .ToList(),
+            savedAmenityBuildings = city.AmenityBuildings
+                .Select(i => new SavedCity.SavedAmenityInstance
+                {
+                    BuildingName = i.Building.Name,
+                    Count = i.Count
+                }).ToList(),
             savedUtilityPlans = city.UtilityPlans
                 .Select(m => UtilityPlan.ConvertToSavedUtilityPlan(m))
                 .ToList(),
@@ -465,6 +472,12 @@ public partial class City
         c.microDistricts = sc.savedMicroDistricts?
             .Select(p => MicroDistrict.ConvertFromSavedMicroDistrict(p))
             .ToList() ?? new List<MicroDistrict>();
+        c.AmenityBuildings = sc.savedAmenityBuildings?.Select(i => new AmenityInstance
+        {
+            Building = GameData.AllAmenityBuildings
+                            .FirstOrDefault(sb => sb.Name == i.BuildingName),
+            Count = i.Count
+        }).ToList() ?? new List<AmenityInstance>();
         c.UtilityPlans = sc.savedUtilityPlans?
             .Select(p => SavedUtilityPlan.ConvertToUtilityPlan(p))
             .ToList() ?? new List<UtilityPlan>();

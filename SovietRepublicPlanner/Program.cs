@@ -1656,7 +1656,7 @@ namespace SovietRepublicPlanner
                         int dChoice;
                         if (int.TryParse(Console.ReadLine(), out dChoice) && dChoice >= 0 && dChoice < currentCity.microDistricts.Count)
                         {
-                            microDistrict = currentCity.microDistricts[0];
+                            microDistrict = currentCity.microDistricts[dChoice];
                             Console.WriteLine($"Current District : {microDistrict.Name}");
                             Console.WriteLine($"Amenities: ");
 
@@ -1687,7 +1687,7 @@ namespace SovietRepublicPlanner
                                         else Console.WriteLine("Invalid action input. Going back to Command Loop."); continue;
                                     }
                                     else if (aChoice == 'b') { Console.WriteLine("Going back to Command Loop."); continue; }
-                                    else if (aChoice == 'a') { AddAmenityInstance(currentCity, microDistrict); continue; }
+                                    else if (aChoice == 'a') { AddAmenityInstance(currentCity, dChoice); continue; }
                                 }
                                 else { Console.WriteLine("Invalid action input. Going back to Command Loop."); continue; }
                             }
@@ -1696,14 +1696,14 @@ namespace SovietRepublicPlanner
                             { 
                                 Console.WriteLine($"· None");
                                 // Create a new AmenityInstance
-                                AddAmenityInstance(currentCity, microDistrict);
+                                AddAmenityInstance(currentCity, dChoice);
                                 continue;
                             }
                         }
                         // Create Amenity on City Level
                         else if (dChoice == -1)
                         {
-
+                            AddAmenityInstance(currentCity, dChoice);
                         }
                         else { Console.WriteLine("Invalid Input. Going back to Command Loop."); continue; }
                     }
@@ -2377,8 +2377,10 @@ namespace SovietRepublicPlanner
                 else { Console.Write("Invalid Input. "); continue; }
             }
         }
-        static void AddAmenityInstance(City c, MicroDistrict md)
+        static void AddAmenityInstance(City c, int index)
         {
+            MicroDistrict md = c.microDistricts[index];   
+
             // Flat selection menu
             Console.WriteLine("Select Amenity Type:");
             Console.WriteLine("[1] Shopping");
@@ -2423,7 +2425,7 @@ namespace SovietRepublicPlanner
                 int currentCapacity = coverage.ServiceCoverage[selectedType];
 
                 // Calculate needed capacity
-                var (neededCapacity, populationDesc, showCapacity) = CalculateCapacityNeeded(selectedType, city);
+                var (neededCapacity, populationDesc, showCapacity) = CalculateCapacityNeeded(selectedType, c);
 
                 // Display capacity info
                 if (showCapacity)
@@ -2534,10 +2536,21 @@ namespace SovietRepublicPlanner
                         AmenityInstance amenityInstance = new AmenityInstance();
                         amenityInstance.Building = buildingsOfType[buildChoice - 1];
                         amenityInstance.Count = count;
-                        md.AmenityBuildings.Add(amenityInstance);
-                        Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to {microDistrict.Name} of City {microDistrict.ParentCity.Name}!");
-                        Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].Coverage * count}");
-                        Console.WriteLine($"Needed Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
+                        if (index >= 0)
+                        {
+                            md.AmenityBuildings.Add(amenityInstance);
+                            Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to District {md.Name} of City {md.ParentCity.Name}!");
+                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].Coverage * count}");
+                            Console.WriteLine($"Needed Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
+                        }
+                        // Add AmenityInstance to City Level
+                        else
+                        {
+                            c.AmenityBuildings.Add(amenityInstance);
+                            Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to City {c.Name} directly!");
+                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].Coverage * count}");
+                            Console.WriteLine($"Needed Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
+                        }
                     }
                     else { Console.Write("Invalid Input."); }
                 }
