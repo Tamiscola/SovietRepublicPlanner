@@ -1645,7 +1645,7 @@ namespace SovietRepublicPlanner
                     if (currentCity.microDistricts.Count > 0)
                     {
                         // Display MicroDistricts
-                        Console.WriteLine("Choose a District: ");
+                        Console.WriteLine("Choose a District(Or press '-1' to create an amenity on City Level): ");
                         for (int i = 0; i < currentCity.microDistricts.Count; i++)
                         {
                             Console.WriteLine($"[{i}]: {currentCity.microDistricts[i].Name}");
@@ -1700,8 +1700,13 @@ namespace SovietRepublicPlanner
                                 continue;
                             }
                         }
+                        // Create Amenity on City Level
+                        else if (dChoice == -1)
+                        {
+
+                        }
                         else { Console.WriteLine("Invalid Input. Going back to Command Loop."); continue; }
-                    } 
+                    }
                     // No MicroDistrict existing
                     else
                     {

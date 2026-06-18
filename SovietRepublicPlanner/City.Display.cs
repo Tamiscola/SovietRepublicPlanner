@@ -96,13 +96,13 @@ public partial class City
 
                 foreach (var kv in categoryGroup.OrderBy(x => x.Key.Name))
                 {
-                    Console.WriteLine($"│  · {kv.Value} × {kv.Key.Name}");
+                    Console.WriteLine($"│  · {kv.Value} × {kv.Key.Name} [{kv.Key.Coverage * kv.Value}]");
                 }
 
                 // Add warnings for this category
                 DisplayCategoryWarnings(categoryGroup.Key, categoryGroup.ToList(), totalWorkers, totalCitizen);
 
-                Console.WriteLine("│");
+                //Console.WriteLine("│");
             }
         }
         if (industryPlans.Any(p => p.TransportationBuildings.Count > 0) || microDistricts.Any(m => m.TransportBuildings.Count > 0))
