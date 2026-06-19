@@ -11,6 +11,7 @@ public class SavedMicroDistrict
     public List<SavedResidentialInstance> ResidentialBuildings { get; set; } = new List<SavedResidentialInstance>();
     public List<SavedAmenityInstance> AmenityBuildings { get; set; } = new List<SavedAmenityInstance>();
     public List<SavedTransportationInstance> TransportBuildings { get; set; } = new List<SavedTransportationInstance>();
+    public List<SavedSupportInstance> SupportBuildings { get; set; } = new List<SavedSupportInstance>();
     public int TotalHousingCapacity { get; set; }
     public double PowerConsumption { get; set; }        // MW
     public double WaterConsumption { get; set; }        // ㎥/day
@@ -26,6 +27,11 @@ public class SavedMicroDistrict
         public int Count { get; set; }
     }
     public class SavedAmenityInstance
+    {
+        public string BuildingName { get; set; }
+        public int Count { get; set; }
+    }
+    public class SavedSupportInstance
     {
         public string BuildingName { get; set; }
         public int Count { get; set; }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static MicroDistrict;
 
 public partial class City
 {
@@ -28,7 +29,7 @@ public partial class City
             }
             if (microDistricts.Count > 0)
             {
-                foreach (var m in microDistricts) total += m.TotalWorkers;
+                foreach (var m in microDistricts) total += m.AmenityWorkers;
             }
             if (UtilityPlans.Count > 0)
             {
@@ -498,5 +499,57 @@ public partial class City
         c.microDistricts.ForEach(p => p.ParentCity = c);
         c.UtilityPlans.ForEach(p => p.ParentCity = c);
         return c;
+    }
+    public AmenityCoverage GetAmenityCoverage()
+    {
+        var coverage = new AmenityCoverage();
+
+        // Initialize consumable products
+        var consumables = new[] { GameData.FoodResource, GameData.MeatResource,
+                              GameData.ClothesResource, GameData.AlcoholResource,
+                              GameData.ElectronicsResource };
+        foreach (var resource in consumables)
+            coverage.ProductCoverage[resource] = 0;
+
+        // Initialize service types
+        foreach (AmenityType type in Enum.GetValues(typeof(AmenityType)))
+            coverage.ServiceCoverage[type] = 0;
+
+
+        // Calculate coverage
+        foreach (var amenity in AmenityBuildings)
+        {
+            // Product-based coverage (Shopping, Pub)
+            if (amenity.Building.ProductsOffered.Count > 0)
+            {
+                foreach (var product in amenity.Building.ProductsOffered)
+                {
+                    if (coverage.ProductCoverage.ContainsKey(product))
+                        coverage.ProductCoverage[product] += amenity.TotalCapacity;
+                }
+            }
+
+            // Service-based coverage (all amenity types)
+            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalCapacity;
+
+            // Education subtype tracking
+            if (amenity.Building.Type == AmenityType.Education)
+            {
+                switch (amenity.Building.EducationLevel)
+                {
+                    case EducationSubtype.Kindergarten:
+                        coverage.KindergartenCapacity += amenity.TotalCapacity;
+                        break;
+                    case EducationSubtype.School:
+                        coverage.SchoolCapacity += amenity.TotalCapacity;
+                        break;
+                    case EducationSubtype.University:
+                        coverage.UniversityCapacity += amenity.TotalCapacity;
+                        break;
+                        // UniversityDorm doesn't count - it's housing, not essential service
+                }
+            }
+        }
+        return coverage;
     }
 }

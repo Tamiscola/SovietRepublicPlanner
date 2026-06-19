@@ -11,6 +11,7 @@ public partial class MicroDistrict
     public List<ResidentialInstance> ResidentialBuildings { get; set; } = new List<ResidentialInstance>();
     public List<AmenityInstance> AmenityBuildings { get; set; } = new List<AmenityInstance>();
     public List<TransportationInstance> TransportBuildings { get; set; } = new List<TransportationInstance>();
+    public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
     public int TotalHousingCapacity
     {
         get
@@ -21,7 +22,7 @@ public partial class MicroDistrict
             return r;
         }
     }
-    public int TotalWorkers
+    public int AmenityWorkers
     {
         get 
         {
@@ -49,6 +50,25 @@ public partial class MicroDistrict
             }
 
             return fullCapacityAmenityWorkers + percentageBasedWorkers;
+        }
+    }
+    public Dictionary<Resource, double> CitizenConsumption
+    {
+        get
+        {
+            Dictionary<Resource, double> result = new Dictionary<Resource, double>();
+            foreach (var r in GameData.AllResources)
+            {
+                if (r.IsConsumable && r.PerCapitalConsumption > 0)
+                {
+                    double consumption = TotalHousingCapacity * r.PerCapitalConsumption;
+                    if (result.ContainsKey(r))
+                        result[r] += consumption;
+                    else
+                        result.Add(r, consumption);
+                }
+            }
+            return result;
         }
     }
 
@@ -126,6 +146,12 @@ public partial class MicroDistrict
                                             BuildingName = ab.Building.Name,
                                             Count = ab.Count,
                                         }).ToList(),
+            SupportBuildings = microDistrict.SupportBuildings
+                                        .Select(ab => new SavedMicroDistrict.SavedSupportInstance
+                                        {
+                                            BuildingName = ab.Building.Name,
+                                            Count = ab.Count,
+                                        }).ToList(),
             TransportBuildings = microDistrict.TransportBuildings
                                         .Select(tb => new SavedMicroDistrict.SavedTransportationInstance
                                         {
@@ -159,6 +185,13 @@ public partial class MicroDistrict
                                     .Select(sai => new AmenityInstance
                                     {
                                         Building = GameData.AllAmenityBuildings
+                                                    .FirstOrDefault(ab => ab.Name == sai.BuildingName),
+                                        Count = sai.Count
+                                    }).ToList(),
+            SupportBuildings = savedMicroDistrict.SupportBuildings
+                                    .Select(sai => new SupportInstance
+                                    {
+                                        Building = GameData.AllSupportBuildings
                                                     .FirstOrDefault(ab => ab.Name == sai.BuildingName),
                                         Count = sai.Count
                                     }).ToList(),

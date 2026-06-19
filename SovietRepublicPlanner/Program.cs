@@ -1254,44 +1254,47 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "listdistrict")
                 {
-                    if (allMicroDistricts.Count() == 0) { Console.WriteLine("No plans created yet."); continue; }
+                    City currentCity = city;
+                    if (currentCity.microDistricts.Count() == 0) { Console.WriteLine("No plans created yet."); continue; }
 
                     Console.WriteLine("\n=== All MicroDistricts ===");
-                    for (int i = 0; i < allMicroDistricts.Count(); i++)
+                    for (int i = 0; i < currentCity.microDistricts.Count(); i++)
                     {
                         string marker = "← ACTIVE";
-                        Console.WriteLine($"{i}. {allMicroDistricts[i].Name}" +
-                            $"{(allMicroDistricts[i] == microDistrict ? marker : null)}");
+                        Console.WriteLine($"{i}. {currentCity.microDistricts[i].Name}" +
+                            $"{(currentCity.microDistricts[i] == microDistrict ? marker : null)}");
                     }
                     Console.WriteLine();
-                    Console.Write("[d] Delete a District  [Enter] Return to commands\n> ");
+                    Console.Write("[d] Delete a District  [Number] Display District Info  [Enter] Return to commands\n> ");
+                    string input = Console.ReadLine()?.Trim().ToLower();
+                    int dChoice;
 
                     // Plan deletion
-                    if (Console.ReadKey().KeyChar == 'd')
+                    if (input == "d")
                     {
                         Console.WriteLine();
                         int delChoice;
-                        Console.Write($"Which District to delete? [0-" + (allMicroDistricts.Count() - 1) + "]: ");
-                        if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < allMicroDistricts.Count())
+                        Console.Write($"Which District to delete? [0-" + (currentCity.microDistricts.Count() - 1) + "]: ");
+                        if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < currentCity.microDistricts.Count())
                         {
                             // Confirm deletion
-                            Console.WriteLine($"Delete '{allMicroDistricts[delChoice].Name}? [y/n]");
+                            Console.WriteLine($"Delete '{currentCity.microDistricts[delChoice].Name}? [y/n]");
                             if (Console.ReadKey().KeyChar == 'y')
                             {
                                 Console.WriteLine();
-                                allMicroDistricts.RemoveAt(delChoice);
+                                currentCity.microDistricts.RemoveAt(delChoice);
                                 if (delChoice < currentPlanIndex) currentPlanIndex--;   // Deleted before active plan → shift index down
                                 else if (delChoice == currentPlanIndex)
                                 {
                                     // Deleted the active plan → pick new active
-                                    if (allMicroDistricts.Count > 0)
-                                        currentPlanIndex = Math.Min(delChoice, allMicroDistricts.Count - 1);
+                                    if (currentCity.microDistricts.Count > 0)
+                                        currentPlanIndex = Math.Min(delChoice, currentCity.microDistricts.Count - 1);
                                     else
                                         currentPlanIndex = -1;  // No plans left
                                 }   // else: deleted after active plan, no change needed
 
                                 // Update currentResult
-                                if (currentPlanIndex >= 0 && allMicroDistricts.Count > 0) microDistrict = allMicroDistricts[currentPlanIndex];
+                                if (currentPlanIndex >= 0 && currentCity.microDistricts.Count > 0) microDistrict = currentCity.microDistricts[currentPlanIndex];
                                 else microDistrict = null;
 
                                 // Display confirmation
@@ -1303,8 +1306,14 @@ namespace SovietRepublicPlanner
                         }
                         else { Console.WriteLine("Invalid input"); continue; }
                     }
+                    // Display District
+                    else if (int.TryParse(input, out dChoice) && dChoice >= 0 && dChoice < currentCity.microDistricts.Count)
+                    {
+                        microDistrict = currentCity.microDistricts[dChoice];
+                        Console.WriteLine($"Now You're in {microDistrict.Name} of City {microDistrict.ParentCity.Name}");
+                        currentCity.microDistricts[dChoice].Display();
+                    }
                     else { Console.WriteLine("invalid input."); continue; } // Return to commands
-
                     continue;
                 }
                 else if (command == "switchcity")
@@ -2379,7 +2388,11 @@ namespace SovietRepublicPlanner
         }
         static void AddAmenityInstance(City c, int index)
         {
-            MicroDistrict md = c.microDistricts[index];   
+            MicroDistrict md = new MicroDistrict();
+
+            if (index == -1) { }
+            else { md = c.microDistricts[index]; }
+
 
             // Flat selection menu
             Console.WriteLine("Select Amenity Type:");
@@ -2420,19 +2433,24 @@ namespace SovietRepublicPlanner
                 Console.WriteLine($"│ {selectedType} Buildings:");
                 Console.WriteLine("└─────────────────────────────────────────");
 
-                // Get current coverage
+                // Get current district coverage
                 var coverage = md.GetAmenityCoverage();
                 int currentCapacity = coverage.ServiceCoverage[selectedType];
 
+                // Get current city coverage
+                var cityCoverage = c.GetAmenityCoverage();
+                int cityCurrentCapacity = cityCoverage.ServiceCoverage[selectedType];
+
                 // Calculate needed capacity
-                var (neededCapacity, populationDesc, showCapacity) = CalculateCapacityNeeded(selectedType, c);
+                var (neededCapacity, cityPopulationDesc, showCapacity) = CalculateCapacityNeeded(selectedType, c);
 
                 // Display capacity info
                 if (showCapacity)
                 {
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine($"Population: {populationDesc}");
+                    Console.WriteLine($"City Population: {cityPopulationDesc}");
+                    Console.WriteLine($"District Maximum Population: {md.TotalHousingCapacity}");
                     Console.ResetColor();
 
                     // Special handling for Education
@@ -2475,24 +2493,49 @@ namespace SovietRepublicPlanner
                     {
                         // Standard capacity display
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"Current capacity: {currentCapacity}");
-                        Console.WriteLine($"Needed capacity: {neededCapacity}");
+                        if (index != -1)
+                        {
+                            Console.WriteLine($"Current capacity: {currentCapacity}");
+                            Console.WriteLine($"Needed capacity: {md.TotalHousingCapacity}");
 
-                        int difference = currentCapacity - neededCapacity;
-                        if (difference < 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($" Deficit: {-difference}");
-                        }
-                        else if (difference > 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine($" Surplus: {difference}");
+                            int difference = currentCapacity - md.TotalHousingCapacity;
+                            if (difference < 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($" Deficit: {-difference}");
+                            }
+                            else if (difference > 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine($" Surplus: {difference}");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(" Perfect match!");
+                            }
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine(" Perfect match!");
+                            Console.WriteLine($"Current capacity: {cityCurrentCapacity}");
+                            Console.WriteLine($"Needed capacity: {neededCapacity}");
+
+                            int difference = currentCapacity - neededCapacity;
+                            if (difference < 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($" Deficit: {-difference}");
+                            }
+                            else if (difference > 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine($" Surplus: {difference}");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(" Perfect match!");
+                            }
                         }
                         Console.ResetColor();
                     }

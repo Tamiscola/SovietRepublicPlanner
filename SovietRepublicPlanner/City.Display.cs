@@ -75,18 +75,43 @@ public partial class City
             {
                 Console.WriteLine($"│ [ {m.Name} ]:");
                 foreach (var ri in m.ResidentialBuildings)
+                {
                     Console.WriteLine($"│ · {ri.Count} × {ri.Building.Name}");
+                    if (m.AmenityBuildings.Count > 0)
+                    {
+                        // Group amenities by AmenityType enum
+                        var amenitiesByCategory = m.AmenityBuildings
+                            .GroupBy(kv => kv.Building.Type)
+                            .OrderBy(g => (int)g.Key); // Order by enum value
+
+                        foreach (var categoryGroup in amenitiesByCategory)
+                        {
+                            string categoryName = GetCategoryDisplayName(categoryGroup.Key);
+                            Console.WriteLine($"│ \t└ [ {categoryName} ]");
+
+                            foreach (var kv in categoryGroup.OrderBy(x => x.Building.Name))
+                            {
+                                Console.WriteLine($"│   \t· {kv.Count} × {kv.Building.Name} [{kv.Building.Coverage * kv.Count}]");
+                            }
+
+                            // Add warnings for this category
+                            DisplayCategoryWarnings(categoryGroup.Key, categoryGroup.ToList(), totalWorkers, totalCitizen);
+
+                            //Console.WriteLine("│");
+                        }
+                    }
+                }
             }
         }
-        if (microDistricts.Any(p => p.AmenityBuildings.Count > 0))
+        if (AmenityBuildings.Count > 0)
         {
             Console.WriteLine("├────────────────────────────────────────┤");
-            Console.WriteLine("│ Amenity Buildings:                     │");
+            Console.WriteLine("│ City Amenity Buildings:                │");
             Console.WriteLine("├────────────────────────────────────────┤");
 
             // Group amenities by AmenityType enum
-            var amenitiesByCategory = combinedAmeBldgs
-                .GroupBy(kv => kv.Key.Type)
+            var amenitiesByCategory = AmenityBuildings
+                .GroupBy(kv => kv.Building.Type)
                 .OrderBy(g => (int)g.Key); // Order by enum value
 
             foreach (var categoryGroup in amenitiesByCategory)
@@ -94,13 +119,19 @@ public partial class City
                 string categoryName = GetCategoryDisplayName(categoryGroup.Key);
                 Console.WriteLine($"│ [ {categoryName} ]");
 
-                foreach (var kv in categoryGroup.OrderBy(x => x.Key.Name))
+                foreach (var kv in categoryGroup.OrderBy(x => x.Building.Name))
                 {
-                    Console.WriteLine($"│  · {kv.Value} × {kv.Key.Name} [{kv.Key.Coverage * kv.Value}]");
+                    Console.WriteLine($"│  · {kv.Count} × {kv.Building.Name} [{kv.Building.Coverage * kv.Count}]");
                 }
 
+                List<AmenityInstance> amenityInstances = categoryGroup.Select(g => new AmenityInstance()
+                {
+                    Building = g.Building,
+                    Count = g.Count
+                }).ToList();
+
                 // Add warnings for this category
-                DisplayCategoryWarnings(categoryGroup.Key, categoryGroup.ToList(), totalWorkers, totalCitizen);
+                DisplayCategoryWarnings(categoryGroup.Key, amenityInstances, totalWorkers, totalCitizen);
 
                 //Console.WriteLine("│");
             }
@@ -197,7 +228,7 @@ public partial class City
         }
         Console.WriteLine("└────────────────────────────────────────┘");
     }
-    private static string GetSupCategoryDisplayName(SupportCategory type)
+    public static string GetSupCategoryDisplayName(SupportCategory type)
     {
         return type switch
         {
@@ -213,7 +244,7 @@ public partial class City
             _ => type.ToString()
         };
     }
-    private static string GetCategoryDisplayName(AmenityType type)
+    public static string GetCategoryDisplayName(AmenityType type)
     {
         return type switch
         {
@@ -230,12 +261,13 @@ public partial class City
             _ => type.ToString()
         };
     }
-    private static void DisplayCategoryWarnings(AmenityType type, List<KeyValuePair<AmenityBuilding, int>> amenities, int totalWorkers, int totalCitizens)
+    public static void DisplayCategoryWarnings(AmenityType type, List<AmenityInstance> amenities, int totalWorkers, int totalCitizens)
     {
         switch (type)
         {
+            
             case AmenityType.Shopping:
-                int shoppingCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 15); // ×15 ratio
+                int shoppingCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 15); // ×15 ratio
                 int shoppingNeeded = totalWorkers;
 
                 if (shoppingCapacity < shoppingNeeded)
@@ -245,11 +277,11 @@ public partial class City
                     Console.ResetColor();
                 }
 
-                bool hasAlcohol = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.AlcoholResource));
-                bool hasFood = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.FoodResource));
-                bool hasClothes = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.ClothesResource));
-                bool hasMeat = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.MeatResource));
-                bool hasElectronics = amenities.Any(kv => kv.Key.ProductsOffered.Contains(GameData.ElectronicsResource));
+                bool hasAlcohol = amenities.Any(kv => kv.Building.ProductsOffered.Contains(GameData.AlcoholResource));
+                bool hasFood = amenities.Any(kv => kv.Building.ProductsOffered.Contains(GameData.FoodResource));
+                bool hasClothes = amenities.Any(kv => kv.Building.ProductsOffered.Contains(GameData.ClothesResource));
+                bool hasMeat = amenities.Any(kv => kv.Building.ProductsOffered.Contains(GameData.MeatResource));
+                bool hasElectronics = amenities.Any(kv => kv.Building.ProductsOffered.Contains(GameData.ElectronicsResource));
                 if (!hasAlcohol)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -284,7 +316,7 @@ public partial class City
                 break;
 
             case AmenityType.Pub:
-                int pubCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 100); // ×100 ratio
+                int pubCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 100); // ×100 ratio
                 int pubNeeded = totalCitizens;
 
                 if (pubCapacity < pubNeeded)
@@ -296,7 +328,7 @@ public partial class City
                 break;
 
             case AmenityType.Healthcare:
-                int healthcareCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 100); // ×100 ratio
+                int healthcareCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 100); // ×100 ratio
                 int healthcareNeeded = totalCitizens;
 
                 if (healthcareCapacity < healthcareNeeded)
@@ -308,7 +340,7 @@ public partial class City
                 break;
 
             case AmenityType.Culture:
-                int cultureCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 80); // ×80 ratio
+                int cultureCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 80); // ×80 ratio
                 int cultureNeeded = totalCitizens;
 
                 if (cultureCapacity < cultureNeeded)
@@ -320,7 +352,7 @@ public partial class City
                 break;
 
             case AmenityType.Sports:
-                int sportsCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 80); // ×80 ratio
+                int sportsCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 80); // ×80 ratio
                 int sportsNeeded = totalCitizens;
 
                 if (sportsCapacity < sportsNeeded)
@@ -333,16 +365,16 @@ public partial class City
 
             case AmenityType.Education:
                 // Filter by EducationSubtype instead of name matching
-                var kindergartens = amenities.Where(kv => kv.Key.EducationLevel == EducationSubtype.Kindergarten).ToList();
-                var schools = amenities.Where(kv => kv.Key.EducationLevel == EducationSubtype.School).ToList();
+                var kindergartens = amenities.Where(kv => kv.Building.EducationLevel == EducationSubtype.Kindergarten).ToList();
+                var schools = amenities.Where(kv => kv.Building.EducationLevel == EducationSubtype.School).ToList();
 
                 // Use CalculationSettings percentages
                 int kindergartenNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.KindergartenAgePercent / 100);
                 int schoolNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.SchoolAgePercent / 100);
 
                 // Education buildings: MaxVisitors × 12 for kindergarten, × 20 for school
-                int kindergartenCapacity = kindergartens.Sum(kv => kv.Key.MaxVisitors * kv.Value * 12);
-                int schoolCapacity = schools.Sum(kv => kv.Key.MaxVisitors * kv.Value * 20);
+                int kindergartenCapacity = kindergartens.Sum(kv => kv.Building.MaxVisitors * kv.Count * 12);
+                int schoolCapacity = schools.Sum(kv => kv.Building.MaxVisitors * kv.Count * 20);
 
                 if (kindergartenCapacity < kindergartenNeeded)
                 {
@@ -372,7 +404,7 @@ public partial class City
                 break;
 
             case AmenityType.CrimeJustice:
-                int crimeCapacity = amenities.Sum(kv => kv.Key.MaxVisitors * kv.Value * 50); // ×50 estimate
+                int crimeCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 50); // ×50 estimate
                 int crimeNeeded = totalCitizens;
 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
