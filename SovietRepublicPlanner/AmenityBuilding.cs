@@ -32,7 +32,8 @@ public class AmenityBuilding : Building
     public AmenityType Type { get; set; }
 
     // Worker & Visitor info
-    public int WorkersPerShift { get; set; }
+    public int MaxWorkers { get; set; }
+    public int CurNumEmp {  get; set; }
     public int MaxVisitors { get; set; }
     public int Coverage => Type switch
     {
@@ -55,8 +56,13 @@ public class AmenityBuilding : Building
         AmenityType.Fountain => 0,
         _ => (int)(MaxVisitors * 30)  // Fallback
     };
+    public int CurCustomCapacity => (CurNumEmp * CustomersPerWorker) > MaxVisitors
+        ? MaxVisitors
+        : CurNumEmp * CustomersPerWorker;
     public int CustomersPerWorker => (int)Math.Floor((double)MaxVisitors / EffectiveWorkersPerShift); // default 100% Productivity of Worker
-    public int EffectiveWorkersPerShift => (int)Math.Ceiling(WorkersPerShift / CalculationSettings.ProductivityMultiplier);
+    public int EffectiveWorkersPerShift => (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier) > MaxWorkers
+        ? MaxWorkers
+        : (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier); // Practical Number of workers that can reach 100% production
     public List<Resource> ProductsOffered { get; set; } = new List<Resource>();
 
     // Percentage-based demand
@@ -79,7 +85,7 @@ public class AmenityBuilding : Building
         get
         {
             double result = 0;
-            result = GarbagePerWorker * WorkersPerShift + GarbagePerCustomer * MaxVisitors;
+            result = GarbagePerWorker * MaxWorkers + GarbagePerCustomer * MaxVisitors;
             return result;
         }
     }

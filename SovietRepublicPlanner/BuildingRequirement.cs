@@ -14,12 +14,12 @@ public class BuildingRequirement
     // Workers
     public double WorkersProductivity { get; set; } = 100.0;
     public bool UseVehicles { get; set; } = false;  // Instance-specific choice
-    public int baseTotalWorkers => Count * Building.WorkersPerShift * 3;
+    public int baseTotalWorkers => Count * Building.CurNumEmp * 3;
     public int TotalWorkers 
     {  get
         {
             if (UseVehicles) return 0;
-            if (Building.WorkersPerShift == 0 || CalculationSettings.ProductivityMultiplier == 0) return 0;
+            if (Building.MaxWorkers == 0 || CalculationSettings.ProductivityMultiplier == 0) return 0;
             return (int)Math.Ceiling(baseTotalWorkers / CalculationSettings.ProductivityMultiplier);
         }
     }

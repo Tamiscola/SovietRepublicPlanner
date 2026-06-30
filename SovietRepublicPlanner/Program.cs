@@ -385,7 +385,7 @@ namespace SovietRepublicPlanner
 
                             if (vehicleChoice == 'y')
                             {
-                                result.ChosenBuilding.Building.WorkersPerShift = 0;  // Override to vehicles
+                                result.ChosenBuilding.Building.MaxWorkers = 0;  // Override to vehicles
                             }
                             // else keep the default 100 workers
                         }
@@ -418,7 +418,7 @@ namespace SovietRepublicPlanner
 
                             if (vehicleChoice == 'y')
                             {
-                                result.ChosenBuilding.Building.WorkersPerShift = 0;  // Override to vehicles
+                                result.ChosenBuilding.Building.MaxWorkers = 0;  // Override to vehicles
                             }
                             // else keep the default 100 workers
                         }
@@ -936,7 +936,7 @@ namespace SovietRepublicPlanner
                                         {
                                             if (userChoice == 1)
                                             {
-                                                expandedResult.ChosenBuilding.Building.WorkersPerShift = 0;
+                                                expandedResult.ChosenBuilding.Building.MaxWorkers = 0;
                                                 Console.WriteLine("Vehicles choosed.");
                                             }
                                             else { break; Console.WriteLine("Workers choosed."); }

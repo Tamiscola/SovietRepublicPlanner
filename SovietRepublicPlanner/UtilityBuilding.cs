@@ -19,10 +19,18 @@ public class UtilityBuilding : Building
     public SupportCategory SupportCategory;
 
     // Resources & Workers
-    public int WorkersPerShift;
-    public int TotalWorkers => WorkersPerShift * 3;
+    public int MaxWorkers;
+    public int CurNumEmp { get; set; }
+    public int TotalWorkers => MaxWorkers * 3;
     public List<ResourceAmount> Inputs { get; set; } = new List<ResourceAmount>();
     public List<ResourceAmount> Outputs { get; set; } = new List<ResourceAmount>();
+    public double ProdPerWorker => (double)100 / EffectiveWorkersPerShift;
+    public double CurProductivity => (CurNumEmp * ProdPerWorker) > 100
+        ? 100
+        : CurNumEmp * ProdPerWorker;
+    public int EffectiveWorkersPerShift => (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier) > MaxWorkers
+    ? MaxWorkers
+    : (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier); // Practical Number of workers that can reach 100% production
 
     // Utilities (same as other buildings)
     public double WaterConsumptionM3;
@@ -32,7 +40,7 @@ public class UtilityBuilding : Building
     public double GarbagePerWorker;
     public double BaseGarbageProduction { get; set; } = 0;
     public double EnvironmentPollution;
-    public double GarbageProduction => BaseGarbageProduction + (WorkersPerShift * GarbagePerWorker);  // tons/day
+    public double GarbageProduction => BaseGarbageProduction + (MaxWorkers * GarbagePerWorker);  // tons/day
 
     // Transport-specific
     public int? ParkingSpots;  // nullable - not all have this

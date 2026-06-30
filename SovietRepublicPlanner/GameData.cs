@@ -113,7 +113,7 @@ class GameData
         {
             new ResourceAmount(FoodResource, 20.0, TimePeriod.Day),
         };
-        result.WorkersPerShift = 170;
+        result.MaxWorkers = 170;
         result.PowerConsumptionMWh = 7.6;
         result.WaterConsumption = 3.4;
         result.HeatConsumption = 0;
@@ -152,7 +152,7 @@ class GameData
         {
             new ResourceAmount(AlcoholResource, 6.0, TimePeriod.Day),
         };
-        result.WorkersPerShift = 100;
+        result.MaxWorkers = 100;
         result.PowerConsumptionMWh = 13.0;
         result.WaterConsumption = 2.0;
         result.HeatConsumption = 0;
@@ -189,7 +189,7 @@ class GameData
         {
             new ResourceAmount(ClothesResource, 1.2, TimePeriod.Day)
         };
-        result.WorkersPerShift = 80;
+        result.MaxWorkers = 80;
         result.PowerConsumptionMWh = 3.6;
         result.WaterConsumption = 1.60;
         result.HeatConsumption = 0;
@@ -229,7 +229,7 @@ class GameData
         {
             new ResourceAmount(FabricResource, 5.0, TimePeriod.Day),
         };
-        result.WorkersPerShift = 100;
+        result.MaxWorkers = 100;
         result.PowerConsumptionMWh = 19;
         result.WaterConsumption = 2.0;      // building water consumption (drinkable)
         result.HeatConsumption = 0;
@@ -268,7 +268,7 @@ class GameData
         new ResourceAmount(FuelResource, 125, TimePeriod.Day),
         new ResourceAmount(BitumenResource, 75, TimePeriod.Day)
     };
-        result.WorkersPerShift = 500;
+        result.MaxWorkers = 500;
         result.PowerConsumptionMWh = 36.0;
         result.WaterConsumption = 10.00;
         result.HeatConsumption = 0;
@@ -308,7 +308,7 @@ class GameData
         {
             new ResourceAmount(ChemicalsResource, 0.81, TimePeriod.Day)
         };
-        result.WorkersPerShift = 60;
+        result.MaxWorkers = 60;
         result.PowerConsumptionMWh = 25;
         result.WaterConsumption = 1.2;
         result.HeatConsumption = 0;
@@ -351,7 +351,7 @@ class GameData
         {
             new ResourceAmount(ChemicalsResource, 2.7, TimePeriod.Day)
         };
-        result.WorkersPerShift = 200;
+        result.MaxWorkers = 200;
         result.PowerConsumptionMWh = 60;
         result.WaterConsumption = 4;
         result.HeatConsumption = 0;
@@ -393,7 +393,7 @@ class GameData
         {
             new ResourceAmount(ChemicalsResource, 9.4, TimePeriod.Day)
         };
-        result.WorkersPerShift = 700;
+        result.MaxWorkers = 700;
         result.PowerConsumptionMWh = 197;
         result.WaterConsumption = 14;
         result.HeatConsumption = 0;
@@ -433,7 +433,7 @@ class GameData
     {
         new ResourceAmount(PlasticsResource, 6.6, TimePeriod.Day)
     };
-        result.WorkersPerShift = 60;
+        result.MaxWorkers = 60;
         result.PowerConsumptionMWh = 20;
         result.WaterConsumption = 1.20;
         result.HeatConsumption = 0;
@@ -472,7 +472,7 @@ class GameData
     {
         new ResourceAmount(SolidFertilizerResource, 25, TimePeriod.Day)
     };
-        result.WorkersPerShift = 25;
+        result.MaxWorkers = 25;
         result.PowerConsumptionMWh = 3.0; // 3.0 MWh/day
         result.WaterConsumption = 0.5;
         result.HeatConsumption = 0;
@@ -509,7 +509,7 @@ class GameData
     {
         new ResourceAmount(LiquidFertilizerResource, 17, TimePeriod.Day)
     };
-        result.WorkersPerShift = 25;
+        result.MaxWorkers = 25;
         result.PowerConsumptionMWh = 9.8; // 9.8 MWh/day
         result.WaterConsumption = 15.0; // 15m³/day
         result.HeatConsumption = 0;
@@ -546,7 +546,7 @@ class GameData
     {
         new ResourceAmount(MechanicComponentsResource, 15, TimePeriod.Day)
     };
-        result.WorkersPerShift = 150;
+        result.MaxWorkers = 150;
         result.PowerConsumptionMWh = 8.1; // 8.1 MWh/day
         result.WaterConsumption = 3.0;
         result.HeatConsumption = 0;
@@ -587,7 +587,7 @@ class GameData
         {
             new ResourceAmount(SteelResource, 9.4, TimePeriod.Day)
         };
-        result.WorkersPerShift = 500;
+        result.MaxWorkers = 500;
         result.PowerConsumptionMWh = 48;
         result.WaterConsumption = 10;
         result.HeatConsumption = 0;
@@ -626,7 +626,7 @@ class GameData
         {
             new ResourceAmount(IronResource, 105, TimePeriod.Day)
         };
-        result.WorkersPerShift = 15;
+        result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 17;
         result.WaterConsumption = 0.3;
         result.HeatConsumption = 0;
@@ -663,7 +663,7 @@ class GameData
         {
             new ResourceAmount(CoalResource, 120, TimePeriod.Day)
         };
-        result.WorkersPerShift = 15;
+        result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 15;
         result.WaterConsumption = 0.3;
         result.HeatConsumption = 0;
@@ -696,7 +696,7 @@ class GameData
         {
             new ResourceAmount(CoalOreResource, 4.2 * 220, TimePeriod.Day)
         };
-        result.WorkersPerShift = 220;
+        result.MaxWorkers = 220;
         result.PowerConsumptionMWh = 9.2;
         result.WaterConsumption = 4.4;
         result.HeatConsumption = 0;
@@ -732,7 +732,7 @@ class GameData
         {
             new ResourceAmount(WoodResource, 63, TimePeriod.Day),
         };
-        result.WorkersPerShift = 10;
+        result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 7.2;
         result.WaterConsumption = 0.2;
         result.HeatConsumption = 0;
@@ -769,7 +769,7 @@ class GameData
     {
         new ResourceAmount(BoardsResource, 140, TimePeriod.Day)
     };
-        result.WorkersPerShift = 20;
+        result.MaxWorkers = 20;
         result.PowerConsumptionMWh = 6.7; // 6.7 MWh/day
         result.WaterConsumption = 0.4;
         result.HeatConsumption = 0;
@@ -808,7 +808,7 @@ class GameData
         {
             new ResourceAmount(GravelResource, 27, TimePeriod.Day)
         };
-        result.WorkersPerShift = 5;
+        result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 9.2;
         result.WaterConsumption = 0.1;
         result.HeatConsumption = 0;
@@ -845,7 +845,7 @@ class GameData
         {
             new ResourceAmount(GravelResource, 82, TimePeriod.Day)
         };
-        result.WorkersPerShift = 15;
+        result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 24;
         result.WaterConsumption = 0.3;
         result.HeatConsumption = 0;
@@ -878,7 +878,7 @@ class GameData
         {
             new ResourceAmount(QuarriedStoneResource, 3.5 * 100, TimePeriod.Day)
         };
-        result.WorkersPerShift = 100;
+        result.MaxWorkers = 100;
         result.PowerConsumptionMWh = 23;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
@@ -914,7 +914,7 @@ class GameData
         {
             new ResourceAmount(QuarriedStoneResource, 3.5 * 40, TimePeriod.Day)
         };
-        result.WorkersPerShift = 40;
+        result.MaxWorkers = 40;
         result.PowerConsumptionMWh = 9.8;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
@@ -953,7 +953,7 @@ class GameData
         {
             new ResourceAmount(OilResource, 7, TimePeriod.Day)
         };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.9;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
@@ -985,7 +985,7 @@ class GameData
         {
             new ResourceAmount(RawBauxiteResource, 0.5 * 45, TimePeriod.Day)
         };
-        result.WorkersPerShift = 45;
+        result.MaxWorkers = 45;
         result.PowerConsumptionMWh = 4.3;
         result.WaterConsumption = 0.9;
         result.HeatConsumption = 0;
@@ -1022,7 +1022,7 @@ class GameData
     {
         new ResourceAmount(BauxiteResource, 75, TimePeriod.Day)
     };
-        result.WorkersPerShift = 25;
+        result.MaxWorkers = 25;
         result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 0.50;
         result.HeatConsumption = 0;
@@ -1057,7 +1057,7 @@ class GameData
     {
         new ResourceAmount(AluminumResource, 30, TimePeriod.Day)
     };
-        result.WorkersPerShift = 350;
+        result.MaxWorkers = 350;
         result.PowerConsumptionMWh = 151.0;
         result.WaterConsumption = 7.0;
         result.HeatConsumption = 0;
@@ -1094,7 +1094,7 @@ class GameData
     {
         new ResourceAmount(AluminumOxideResource, 33, TimePeriod.Day)
     };
-        result.WorkersPerShift = 370;
+        result.MaxWorkers = 370;
         result.PowerConsumptionMWh = 17.0;
         result.WaterConsumption = 7.40;
         result.HeatConsumption = 0;
@@ -1214,7 +1214,7 @@ class GameData
         result.Name = "Small Farm";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
@@ -1245,7 +1245,7 @@ class GameData
         result.Name = "Medium Farm";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
@@ -1276,7 +1276,7 @@ class GameData
         result.Name = "Large Farm";
         result.Inputs = new List<ResourceAmount>() { };
         result.Outputs = new List<ResourceAmount>() { };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
         result.HeatConsumption = 0;
@@ -1314,7 +1314,7 @@ class GameData
     {
         new ResourceAmount() { Resource = LivestockResource, Amount = 10 }
     };
-        result.WorkersPerShift = 50;
+        result.MaxWorkers = 50;
         result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 2.30;
         result.HeatConsumption = 0;
@@ -1350,7 +1350,7 @@ class GameData
     {
         new ResourceAmount() { Resource = MeatResource, Amount = 60 }
     };
-        result.WorkersPerShift = 50;
+        result.MaxWorkers = 50;
         result.PowerConsumptionMWh = 3.4;
         result.WaterConsumption = 1.56;
         result.HeatConsumption = 0;
@@ -1390,7 +1390,7 @@ class GameData
     {
         new ResourceAmount() { Resource = PrefabPanelsResource, Amount = 71 }
     };
-        result.WorkersPerShift = 65;
+        result.MaxWorkers = 65;
         result.PowerConsumptionMWh = 8.0;
         result.WaterConsumption = 1.30;
         result.HeatConsumption = 0;
@@ -1428,7 +1428,7 @@ class GameData
     {
         new ResourceAmount() { Resource = PrefabPanelsResource, Amount = 55 }
     };
-        result.WorkersPerShift = 50;
+        result.MaxWorkers = 50;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 1.00;
         result.HeatConsumption = 0;
@@ -1467,7 +1467,7 @@ class GameData
     {
         new ResourceAmount(CementResource, 108, TimePeriod.Day),
     };
-        result.WorkersPerShift = 40;
+        result.MaxWorkers = 40;
         result.PowerConsumptionMWh = 6.3;
         result.WaterConsumption = 0.80;
         result.HeatConsumption = 0;
@@ -1505,7 +1505,7 @@ class GameData
     {
         new ResourceAmount(CementResource, 81, TimePeriod.Day),
     };
-        result.WorkersPerShift = 30;
+        result.MaxWorkers = 30;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0.69;
         result.HeatConsumption = 0;
@@ -1545,7 +1545,7 @@ class GameData
     {
         new ResourceAmount(ConcreteResource, 175, TimePeriod.Day),
     };
-        result.WorkersPerShift = 5;
+        result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 15;
         result.WaterConsumption = 0.10;      // building water consumption
         result.HeatConsumption = 0;
@@ -1585,7 +1585,7 @@ class GameData
     {
         new ResourceAmount(BricksResource, 51, TimePeriod.Day),
     };
-        result.WorkersPerShift = 75;
+        result.MaxWorkers = 75;
         result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 1.50;
         result.HeatConsumption = 0;
@@ -1625,7 +1625,7 @@ class GameData
     {
         new ResourceAmount(AsphaltResource, 145, TimePeriod.Day),
     };
-        result.WorkersPerShift = 5;
+        result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 18;
         result.WaterConsumption = 0.10;
         result.HeatConsumption = 0;
@@ -1662,7 +1662,7 @@ class GameData
     {
         new ResourceAmount() { Resource = PowerResource, Amount = 600 } // 600 MW * 24 hours = 14400 MWh/day
     };
-        result.WorkersPerShift = 10;
+        result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 0.30;
         result.WaterConsumptionM3 = 0.20;
         result.HeatConsumptionM3 = 0;
@@ -1698,7 +1698,7 @@ class GameData
         {
             new ResourceAmount(PowerResource, 1400, TimePeriod.Day),
         };
-        result.WorkersPerShift = 20;
+        result.MaxWorkers = 20;
         result.PowerConsumptionMWh = 0.6;
         result.WaterConsumptionM3 = 0.4;
         result.HeatConsumptionM3 = 0;
@@ -1732,7 +1732,7 @@ class GameData
         {
             new ResourceAmount(PowerResource, 1050, TimePeriod.Day),
         };
-        result.WorkersPerShift = 15;
+        result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 3.4;
         result.WaterConsumptionM3 = 0.3;
         result.HeatConsumptionM3 = 0;
@@ -1766,7 +1766,7 @@ class GameData
             new ResourceAmount(PowerResource, 4680, TimePeriod.Day),
             new ResourceAmount(NuclearWasteResource, 0.020, TimePeriod.Day)
         };
-        result.WorkersPerShift = 60;
+        result.MaxWorkers = 60;
         result.PowerConsumptionMWh = 7.8;
         result.WaterConsumptionM3 = 1.2;
         result.HeatConsumptionM3 = 0;
@@ -1802,7 +1802,7 @@ class GameData
         new ResourceAmount() { Resource = PowerResource, Amount = 2320 },
         new ResourceAmount() { Resource = NuclearWasteResource, Amount = 0.010 }
     };
-        result.WorkersPerShift = 40;
+        result.MaxWorkers = 40;
         result.PowerConsumptionMWh = 7.8;
         result.WaterConsumptionM3 = 1.20;
         result.HeatConsumptionM3 = 0;
@@ -1839,7 +1839,7 @@ class GameData
             new ResourceAmount(PowerResource, 9360, TimePeriod.Day),
             new ResourceAmount(NuclearWasteResource, 0.040, TimePeriod.Day)
         };
-        result.WorkersPerShift = 120;
+        result.MaxWorkers = 120;
         result.PowerConsumptionMWh = 9.6;
         result.WaterConsumptionM3 = 2.4;
         result.HeatConsumptionM3 = 0;
@@ -1875,7 +1875,7 @@ class GameData
         new ResourceAmount() { Resource = PowerResource, Amount = 5850 }, // 5850 MW * 24 hours = 140400 MWh/day
         new ResourceAmount() { Resource = NuclearWasteResource, Amount = 0.023 }
     };
-        result.WorkersPerShift = 45;
+        result.MaxWorkers = 45;
         result.PowerConsumptionMWh = 8.0;
         result.WaterConsumptionM3 = 1.36;
         result.HeatConsumptionM3 = 0;
@@ -1907,7 +1907,7 @@ class GameData
     {
         new ResourceAmount() { Resource = PowerResource, Amount = 15} // 15 MW * 24 hours = 360 MWh/day
     };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 0;
         result.WaterConsumptionM3 = 0;
         result.HeatConsumptionM3 = 0;
@@ -1937,7 +1937,7 @@ class GameData
     {
         new ResourceAmount() { Resource = PowerResource, Amount = 35} // 35 MW * 24 hours = 840 MWh/day
     };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 0;
         result.WaterConsumptionM3 = 0;
         result.HeatConsumptionM3 = 0;
@@ -1967,7 +1967,7 @@ class GameData
     {
         new ResourceAmount() { Resource = PowerResource, Amount = 560 } 
     };
-        result.WorkersPerShift = 8;
+        result.MaxWorkers = 8;
         result.PowerConsumptionMWh = 0.24;
         result.WaterConsumptionM3 = 0.16;
         result.HeatConsumptionM3 = 0;
@@ -1998,7 +1998,7 @@ class GameData
     {
         new ResourceAmount() { Resource = RawWaterResource, Amount = 70 }
     };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 2.1;
         result.WaterConsumptionM3 = 0;
         result.HeatConsumptionM3 = 0;
@@ -2030,7 +2030,7 @@ class GameData
     {
         new ResourceAmount() { Resource = RawWaterResource, Amount = 215 }
     };
-        result.WorkersPerShift = 7;
+        result.MaxWorkers = 7;
         result.PowerConsumptionMWh = 5.7;
         result.WaterConsumptionM3 = 0;
         result.HeatConsumptionM3 = 0;
@@ -2062,7 +2062,7 @@ class GameData
     {
         new ResourceAmount() { Resource = RawWaterResource, Amount = 150 }
     };
-        result.WorkersPerShift = 0;
+        result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 0;
         result.WaterConsumptionM3 = 0;
         result.HeatConsumptionM3 = 0;
@@ -2096,7 +2096,7 @@ class GameData
         {
             new ResourceAmount(WaterResource, 120, TimePeriod.Day),
         };
-        result.WorkersPerShift = 5;
+        result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 10;
         result.WaterConsumptionM3 = 0.1;
         result.HeatConsumptionM3 = 0;
@@ -2131,7 +2131,7 @@ class GameData
         {
             new ResourceAmount(WaterResource, 300, TimePeriod.Day),
         };
-        result.WorkersPerShift = 10;
+        result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 13;
         result.WaterConsumptionM3 = 0.2;
         result.HeatConsumptionM3 = 0;
@@ -2166,7 +2166,7 @@ class GameData
         {
             new ResourceAmount(WasteWaterResource, 80, TimePeriod.Day)
         };
-        result.WorkersPerShift = 10;
+        result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 11;
         result.WaterConsumptionM3 = 0.2;
         result.HeatConsumptionM3 = 0;
@@ -2201,7 +2201,7 @@ class GameData
         {
             new ResourceAmount(WasteWaterResource, 220, TimePeriod.Day)
         };
-        result.WorkersPerShift = 20;
+        result.MaxWorkers = 20;
         result.PowerConsumptionMWh = 15;
         result.WaterConsumptionM3 = 0.4;
         result.HeatConsumptionM3 = 0;
@@ -2236,7 +2236,7 @@ class GameData
     {
         new ResourceAmount(HeatResource, 450, TimePeriod.Day),
     };
-        result.WorkersPerShift = 7;
+        result.MaxWorkers = 7;
         result.PowerConsumptionMWh = 27;
         result.WaterConsumptionM3 = 0;
         result.HeatConsumptionM3 = 0;
@@ -2269,7 +2269,7 @@ class GameData
     {
         new ResourceAmount(HeatResource, 1050, TimePeriod.Day),
     };
-        result.WorkersPerShift = 30;
+        result.MaxWorkers = 30;
         result.PowerConsumptionMWh = 63;
         result.WaterConsumptionM3 = 0.60;
         result.HeatConsumptionM3 = 0;
@@ -5887,7 +5887,7 @@ class GameData
         {
             Name = "Shopping center",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 45,
+            MaxWorkers = 45,
             PowerConsumptionMWh = 5.6,
             WaterConsumptionM3 = 0.90,
             HotWaterTankM3 = 22,
@@ -5916,7 +5916,7 @@ class GameData
         {
             Name = "Small shopping center (180 visitors)",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 30,
+            MaxWorkers = 30,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 10,
@@ -5945,7 +5945,7 @@ class GameData
         {
             Name = "Small shopping center (150 visitors, 829 WorkDays)",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 25,
+            MaxWorkers = 25,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
@@ -5974,7 +5974,7 @@ class GameData
         {
             Name = "Small shopping center (150 visitors, 579 WorkDays)",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 25,
+            MaxWorkers = 25,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
@@ -6003,7 +6003,7 @@ class GameData
         {
             Name = "Grocery store",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 15,
+            MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
@@ -6032,7 +6032,7 @@ class GameData
         {
             Name = "Small store",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 15,
+            MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
@@ -6061,7 +6061,7 @@ class GameData
         {
             Name = "Grocery kiosk",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 1,
+            MaxWorkers = 1,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0.56,
@@ -6082,7 +6082,7 @@ class GameData
         {
             Name = "\"Panorama\" (restaurant)",
             Type = AmenityType.Shopping,
-            WorkersPerShift = 25,
+            MaxWorkers = 25,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 4,
@@ -6113,7 +6113,7 @@ class GameData
         {
             Name = "Technical services (2123 WorkDays, 15 parking)",
             Type = AmenityType.CityService,  // Or create new CityService type if you prefer
-            WorkersPerShift = 0,  // Not shown on card
+            MaxWorkers = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown
             HotWaterTankM3 = 0,  // Not shown
@@ -6139,7 +6139,7 @@ class GameData
         {
             Name = "Technical services (1382 WorkDays, 8 parking)",
             Type = AmenityType.CityService,
-            WorkersPerShift = 0,  // Not shown on card
+            MaxWorkers = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown
             HotWaterTankM3 = 0,  // Not shown
@@ -6165,7 +6165,7 @@ class GameData
         {
             Name = "City accounting office",
             Type = AmenityType.CityService,
-            WorkersPerShift = 25,
+            MaxWorkers = 25,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 1.75,
@@ -6191,7 +6191,7 @@ class GameData
         {
             Name = "Technical services (785 WorkDays, 5 parking)",
             Type = AmenityType.CityService,
-            WorkersPerShift = 0,  // Not shown on card
+            MaxWorkers = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown
             HotWaterTankM3 = 0,  // Not shown
@@ -6220,7 +6220,7 @@ class GameData
         {
             Name = "Hospital (90 patients)",
             Type = AmenityType.Healthcare,
-            WorkersPerShift = 60,  // 30 workers + 30 nurses
+            MaxWorkers = 60,  // 30 workers + 30 nurses
             PowerConsumptionMWh = 5.9,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 8,
@@ -6249,7 +6249,7 @@ class GameData
         {
             Name = "Hospital (450 patients)",
             Type = AmenityType.Healthcare,
-            WorkersPerShift = 180,  // 90 workers + 90 nurses
+            MaxWorkers = 180,  // 90 workers + 90 nurses
             PowerConsumptionMWh = 13,
             WaterConsumptionM3 = 3.60,
             HotWaterTankM3 = 34,
@@ -6276,7 +6276,7 @@ class GameData
         {
             Name = "Small clinic",
             Type = AmenityType.Healthcare,
-            WorkersPerShift = 10,  // 5 workers + 5 nurses
+            MaxWorkers = 10,  // 5 workers + 5 nurses
             PowerConsumptionMWh = 3.5,
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 1.44,
@@ -6305,7 +6305,7 @@ class GameData
         {
             Name = "Fire station (40 workers, 4 parking)",
             Type = AmenityType.Fireservice,  // Or add new Emergency type
-            WorkersPerShift = 40,
+            MaxWorkers = 40,
             PowerConsumptionMWh = 4.2,
             WaterConsumptionM3 = 0.80,
             HotWaterTankM3 = 2.80,
@@ -6331,7 +6331,7 @@ class GameData
         {
             Name = "Fire station (50 workers, 8 parking)",
             Type = AmenityType.Fireservice,
-            WorkersPerShift = 50,
+            MaxWorkers = 50,
             PowerConsumptionMWh = 4.5,
             WaterConsumptionM3 = 1.00,
             HotWaterTankM3 = 3,
@@ -6357,7 +6357,7 @@ class GameData
         {
             Name = "Fire station (30 workers, 2 parking)",
             Type = AmenityType.Fireservice,
-            WorkersPerShift = 30,
+            MaxWorkers = 30,
             PowerConsumptionMWh = 3.9,
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 0,  // Not shown on card
@@ -6386,7 +6386,7 @@ class GameData
         {
             Name = "Gallery of art",
             Type = AmenityType.Culture,
-            WorkersPerShift = 15,
+            MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 5,
@@ -6410,7 +6410,7 @@ class GameData
         {
             Name = "\"The Palace of Communism\" (museum)",
             Type = AmenityType.Culture,
-            WorkersPerShift = 20,
+            MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 5,
@@ -6434,7 +6434,7 @@ class GameData
         {
             Name = "Cinema",
             Type = AmenityType.Culture,
-            WorkersPerShift = 6,
+            MaxWorkers = 6,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.12,
             HotWaterTankM3 = 7,
@@ -6458,7 +6458,7 @@ class GameData
         {
             Name = "Pyramid museum",
             Type = AmenityType.Culture,
-            WorkersPerShift = 20,
+            MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 6,
@@ -6482,7 +6482,7 @@ class GameData
         {
             Name = "National uprising museum",
             Type = AmenityType.Culture,
-            WorkersPerShift = 8,
+            MaxWorkers = 8,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.16,
             HotWaterTankM3 = 2.52,
@@ -6506,7 +6506,7 @@ class GameData
         {
             Name = "Republic theater",
             Type = AmenityType.Culture,
-            WorkersPerShift = 20,
+            MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.40,
             HotWaterTankM3 = 6,
@@ -6530,7 +6530,7 @@ class GameData
         {
             Name = "Museum of the Republic",
             Type = AmenityType.Culture,
-            WorkersPerShift = 15,
+            MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 3,
@@ -6556,7 +6556,7 @@ class GameData
         {
             Name = "House of culture",
             Type = AmenityType.Culture,
-            WorkersPerShift = 5,
+            MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 1.82,
@@ -6581,7 +6581,7 @@ class GameData
         {
             Name = "Amphitheatre",
             Type = AmenityType.Culture,
-            WorkersPerShift = 5,
+            MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown on card
             HotWaterTankM3 = 0,  // Not shown on card
@@ -6609,7 +6609,7 @@ class GameData
         {
             Name = "School (156 students)",
             Type = AmenityType.Education,
-            WorkersPerShift = 26,  // 13 + 13
+            MaxWorkers = 26,  // 13 + 13
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.52,
             HotWaterTankM3 = 9,
@@ -6635,7 +6635,7 @@ class GameData
         {
             Name = "School (84 students)",
             Type = AmenityType.Education,
-            WorkersPerShift = 14,  // 7 + 7
+            MaxWorkers = 14,  // 7 + 7
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.28,
             HotWaterTankM3 = 5,
@@ -6662,7 +6662,7 @@ class GameData
         {
             Name = "School (540 students)",
             Type = AmenityType.Education,
-            WorkersPerShift = 90,  // 45 + 45
+            MaxWorkers = 90,  // 45 + 45
             PowerConsumptionMWh = 9.2,
             WaterConsumptionM3 = 1.80,
             HotWaterTankM3 = 32,
@@ -6688,7 +6688,7 @@ class GameData
         {
             Name = "School (360 students)",
             Type = AmenityType.Education,
-            WorkersPerShift = 60,  // 30 + 30
+            MaxWorkers = 60,  // 30 + 30
             PowerConsumptionMWh = 6.1,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 21,
@@ -6716,7 +6716,7 @@ class GameData
         {
             Name = "Kindergarten (270 children)",
             Type = AmenityType.Education,
-            WorkersPerShift = 27,
+            MaxWorkers = 27,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.54,
             HotWaterTankM3 = 15,
@@ -6742,7 +6742,7 @@ class GameData
         {
             Name = "Kindergarten (180 children)",
             Type = AmenityType.Education,
-            WorkersPerShift = 18,
+            MaxWorkers = 18,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 10,
@@ -6768,7 +6768,7 @@ class GameData
         {
             Name = "Kindergarten (120 children)",
             Type = AmenityType.Education,
-            WorkersPerShift = 12,
+            MaxWorkers = 12,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.24,
             HotWaterTankM3 = 6,
@@ -6797,7 +6797,7 @@ class GameData
         {
             Name = "Small headquarters of the Party",
             Type = AmenityType.Education,
-            WorkersPerShift = 80,  // 40 + 40
+            MaxWorkers = 80,  // 40 + 40
             PowerConsumptionMWh = 3.4,
             WaterConsumptionM3 = 1.60,
             HotWaterTankM3 = 9,
@@ -6827,7 +6827,7 @@ class GameData
         {
             Name = "Headquarters of the Communist Party",
             Type = AmenityType.Education,
-            WorkersPerShift = 140,  // 70 + 70
+            MaxWorkers = 140,  // 70 + 70
             PowerConsumptionMWh = 9.2,
             WaterConsumptionM3 = 2.80,
             HotWaterTankM3 = 30,
@@ -6857,7 +6857,7 @@ class GameData
         {
             Name = "Medical university",
             Type = AmenityType.Education,
-            WorkersPerShift = 100,  // 50 + 50
+            MaxWorkers = 100,  // 50 + 50
             PowerConsumptionMWh = 6.6,
             WaterConsumptionM3 = 2.00,
             HotWaterTankM3 = 21,
@@ -6887,7 +6887,7 @@ class GameData
         {
             Name = "Technical university (60 students)",
             Type = AmenityType.Education,
-            WorkersPerShift = 60,  // 30 + 30
+            MaxWorkers = 60,  // 30 + 30
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 7,
@@ -6916,7 +6916,7 @@ class GameData
         {
             Name = "Technical university (225 students)",
             Type = AmenityType.Education,
-            WorkersPerShift = 150,  // 75 + 75
+            MaxWorkers = 150,  // 75 + 75
             PowerConsumptionMWh = 7.2,
             WaterConsumptionM3 = 3.00,
             HotWaterTankM3 = 21,
@@ -6948,7 +6948,7 @@ class GameData
         {
             Name = "University halls of residence (82 bricks)",
             Type = AmenityType.Education,
-            WorkersPerShift = 0,  // No workers, it's a dorm
+            MaxWorkers = 0,  // No workers, it's a dorm
             PowerConsumptionMWh = 10,
             WaterConsumptionM3 = 3.83,
             HotWaterTankM3 = 5,
@@ -6975,7 +6975,7 @@ class GameData
         {
             Name = "University halls of residence (72 bricks)",
             Type = AmenityType.Education,
-            WorkersPerShift = 0,  // No workers
+            MaxWorkers = 0,  // No workers
             PowerConsumptionMWh = 10,
             WaterConsumptionM3 = 3.83,
             HotWaterTankM3 = 5,
@@ -7006,7 +7006,7 @@ class GameData
         {
             Name = "Sport hall (105 visitors)",
             Type = AmenityType.Sports,
-            WorkersPerShift = 15,
+            MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
@@ -7032,7 +7032,7 @@ class GameData
         {
             Name = "Sport hall (175 visitors)",
             Type = AmenityType.Sports,
-            WorkersPerShift = 25,
+            MaxWorkers = 25,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 10,
@@ -7060,7 +7060,7 @@ class GameData
         {
             Name = "Indoor pool",
             Type = AmenityType.Sports,
-            WorkersPerShift = 18,
+            MaxWorkers = 18,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 5,
@@ -7086,7 +7086,7 @@ class GameData
         {
             Name = "Outdoor swimming pool",
             Type = AmenityType.Sports,
-            WorkersPerShift = 15,
+            MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 0,  // No hot water tank listed
@@ -7113,7 +7113,7 @@ class GameData
         {
             Name = "Beach",
             Type = AmenityType.Sports,
-            WorkersPerShift = 5,
+            MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 0,  // No hot water tank listed
@@ -7142,7 +7142,7 @@ class GameData
         {
             Name = "City stadium",
             Type = AmenityType.Sports,
-            WorkersPerShift = 15,
+            MaxWorkers = 15,
             PowerConsumptionMWh = 3.2,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
@@ -7168,7 +7168,7 @@ class GameData
         {
             Name = "Volleyball court",
             Type = AmenityType.Sports,
-            WorkersPerShift = 3,
+            MaxWorkers = 3,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
@@ -7192,7 +7192,7 @@ class GameData
         {
             Name = "Tennis court",
             Type = AmenityType.Sports,
-            WorkersPerShift = 1,
+            MaxWorkers = 1,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
@@ -7215,7 +7215,7 @@ class GameData
         {
             Name = "Basketball and volleyball court (48 visitors)",
             Type = AmenityType.Sports,
-            WorkersPerShift = 6,
+            MaxWorkers = 6,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
@@ -7239,7 +7239,7 @@ class GameData
         {
             Name = "Basketball and volleyball court (21 visitors)",
             Type = AmenityType.Sports,
-            WorkersPerShift = 3,
+            MaxWorkers = 3,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
@@ -7265,7 +7265,7 @@ class GameData
         {
             Name = "Football field (32 visitors)",
             Type = AmenityType.Sports,
-            WorkersPerShift = 4,
+            MaxWorkers = 4,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
@@ -7288,7 +7288,7 @@ class GameData
         {
             Name = "Football field (22 visitors)",
             Type = AmenityType.Sports,
-            WorkersPerShift = 1,
+            MaxWorkers = 1,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
             HotWaterTankM3 = 0,
@@ -7315,7 +7315,7 @@ class GameData
         {
             Name = "Alcohol kiosk",
             Type = AmenityType.Pub,
-            WorkersPerShift = 1,
+            MaxWorkers = 1,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0.66,
@@ -7346,7 +7346,7 @@ class GameData
         {
             Name = "Pub (60 visitors)",
             Type = AmenityType.Pub,
-            WorkersPerShift = 5,
+            MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.10,
             HotWaterTankM3 = 3,
@@ -7378,7 +7378,7 @@ class GameData
         {
             Name = "Pub (120 visitors)",
             Type = AmenityType.Pub,
-            WorkersPerShift = 10,
+            MaxWorkers = 10,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 6,
@@ -7412,7 +7412,7 @@ class GameData
         {
             Name = "\"The View\" (cafe/bar)",
             Type = AmenityType.Pub,
-            WorkersPerShift = 8,
+            MaxWorkers = 8,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.16,
             HotWaterTankM3 = 3,
@@ -7444,7 +7444,7 @@ class GameData
         {
             Name = "Beach cafe/bar",
             Type = AmenityType.Pub,
-            WorkersPerShift = 7,
+            MaxWorkers = 7,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.14,
             HotWaterTankM3 = 3,
@@ -7477,7 +7477,7 @@ class GameData
         {
             Name = "\"Delicje\" (café/bar)",
             Type = AmenityType.Pub,
-            WorkersPerShift = 10,
+            MaxWorkers = 10,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.20,
             HotWaterTankM3 = 4,
@@ -7513,7 +7513,7 @@ class GameData
         {
             Name = "Big fountain",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,  // Cosmetic, no workers
+            MaxWorkers = 0,  // Cosmetic, no workers
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.06,
             HotWaterTankM3 = 0,
@@ -7538,7 +7538,7 @@ class GameData
         {
             Name = "Medium fountain",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.03,
             HotWaterTankM3 = 0,
@@ -7563,7 +7563,7 @@ class GameData
         {
             Name = "Small fountain",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0,
@@ -7587,7 +7587,7 @@ class GameData
         {
             Name = "Rectangular fountain",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 3.6,
             WaterConsumptionM3 = 0.09,
             HotWaterTankM3 = 0,
@@ -7612,7 +7612,7 @@ class GameData
         {
             Name = "Small round fountain (v1)",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.04,
             HotWaterTankM3 = 0,
@@ -7637,7 +7637,7 @@ class GameData
         {
             Name = "Small round fountain (v2)",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.01,
             HotWaterTankM3 = 0,
@@ -7662,7 +7662,7 @@ class GameData
         {
             Name = "Medium round fountain (v1)",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.04,
             HotWaterTankM3 = 0,
@@ -7687,7 +7687,7 @@ class GameData
         {
             Name = "Medium round fountain (v2)",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 4.6,
             WaterConsumptionM3 = 0.13,
             HotWaterTankM3 = 0,
@@ -7712,7 +7712,7 @@ class GameData
         {
             Name = "Medium round fountain (v3)",
             Type = AmenityType.Fountain,
-            WorkersPerShift = 0,
+            MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.03,
             HotWaterTankM3 = 0,
@@ -7739,7 +7739,7 @@ class GameData
         {
             Name = "Prison (210 visitors)",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 70,
+            MaxWorkers = 70,
             PowerConsumptionMWh = 4.0,
             WaterConsumptionM3 = 10.85,
             HotWaterTankM3 = 15,
@@ -7778,7 +7778,7 @@ class GameData
         {
             Name = "Prison (60 visitors)",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 20,
+            MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 3.10,
             HotWaterTankM3 = 4,
@@ -7819,7 +7819,7 @@ class GameData
         {
             Name = "Court house",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 50,  // Max workers
+            MaxWorkers = 50,  // Max workers
             PowerConsumptionMWh = 4.0,
             WaterConsumptionM3 = 1.60,
             HotWaterTankM3 = 5,
@@ -7847,7 +7847,7 @@ class GameData
         {
             Name = "Court house (small)",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 15,  // Max workers
+            MaxWorkers = 15,  // Max workers
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 1.75,
@@ -7876,7 +7876,7 @@ class GameData
         {
             Name = "Police station",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 20,  // Max workers
+            MaxWorkers = 20,  // Max workers
             PowerConsumptionMWh = 4.8,
             WaterConsumptionM3 = 1.20,
             HotWaterTankM3 = 4,
@@ -7905,7 +7905,7 @@ class GameData
         {
             Name = "Police station (small)",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 8,  // Max workers
+            MaxWorkers = 8,  // Max workers
             PowerConsumptionMWh = 3.5,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 1.26,
@@ -7938,7 +7938,7 @@ class GameData
         {
             Name = "Secret police",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 30,
+            MaxWorkers = 30,
             PowerConsumptionMWh = 4.8,
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 2.10,
@@ -7966,7 +7966,7 @@ class GameData
         {
             Name = "Secret police (small)",
             Type = AmenityType.CrimeJustice,
-            WorkersPerShift = 18,
+            MaxWorkers = 18,
             PowerConsumptionMWh = 3.5,
             WaterConsumptionM3 = 0.36,
             HotWaterTankM3 = 1.26,

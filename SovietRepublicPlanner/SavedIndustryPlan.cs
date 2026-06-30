@@ -52,7 +52,7 @@ public class SavedIndustryPlan
             BuildingQualities = plan.ChosenBuilding?.BuildingInstances
                 .Select(bi => bi.ResourceAbundanceMultiplier)
                 .ToList(),
-            UsesVehicles = (plan.ChosenBuilding?.Building.WorkersPerShift == 0),
+            UsesVehicles = (plan.ChosenBuilding?.Building.MaxWorkers == 0),
             SubChains = plan.SubChains
                 .Select(sc => ConvertToSavedPlan(sc))  // Calls itself!
                 .ToList(),
@@ -89,7 +89,7 @@ public class SavedIndustryPlan
                 // Set vehicle mode if needed
                 if (savedPlan.UsesVehicles && building.CanUseVehicles)
                 {
-                    building.WorkersPerShift = 0;
+                    building.MaxWorkers = 0;
                 }
 
                 BuildingRequirement br = new BuildingRequirement(building);
@@ -161,7 +161,7 @@ public class SavedIndustryPlan
                 // Set vehicle mode if needed
                 if (savedPlan.UsesVehicles && building.CanUseVehicles)
                 {
-                    building.WorkersPerShift = 0;
+                    building.MaxWorkers = 0;
                 }
 
                 BuildingRequirement br = new BuildingRequirement(building);
