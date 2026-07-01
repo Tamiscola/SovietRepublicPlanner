@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 public partial class IndustryPlan
 {
     // Workers
-    public int BaseWorkers => ChosenBuilding.baseTotalWorkers;
     public int TotalWorkers
     {
         get

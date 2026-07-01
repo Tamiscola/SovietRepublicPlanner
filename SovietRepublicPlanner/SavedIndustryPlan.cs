@@ -6,6 +6,7 @@ public class SavedIndustryPlan
     public string ResourceName { get; set; }
     public string BuildingName { get; set; }
     public double Amount { get; set; }
+    public int CurNumEmp { get; set; }
     public double Productivity { get; set; }
     public int ChosenBuildingIndex { get; set; }
     public bool IsBuildingBasedPlan { get; set; } = false;
@@ -45,6 +46,7 @@ public class SavedIndustryPlan
             ResourceName = plan.TargetResource.Name,
             BuildingName = plan.ChosenBuilding?.Building.Name,
             Amount = plan.TargetAmount,
+            CurNumEmp = plan.ChosenBuilding.Building.CurNumEmp,
             Productivity = plan.WorkersProductivity,
             ChosenBuildingIndex = chosenIndex,
             IsBuildingBasedPlan = (plan.TargetAmount == 0),
@@ -92,6 +94,7 @@ public class SavedIndustryPlan
                     building.MaxWorkers = 0;
                 }
 
+                building.CurNumEmp = savedPlan.CurNumEmp;
                 BuildingRequirement br = new BuildingRequirement(building);
                 br.Count = savedPlan.BuildingCount;
                 br.WorkersProductivity = savedPlan.Productivity;
@@ -164,6 +167,7 @@ public class SavedIndustryPlan
                     building.MaxWorkers = 0;
                 }
 
+                building.CurNumEmp = savedPlan.CurNumEmp;
                 BuildingRequirement br = new BuildingRequirement(building);
                 br.Count = savedPlan.BuildingCount;
                 br.WorkersProductivity = savedPlan.Productivity;

@@ -1278,11 +1278,23 @@ namespace SovietRepublicPlanner
                                 switch (modOption)
                                 {
                                     case 0:
-                                        Console.Write($"How many employees?: ");
+                                        Console.Write($"How many employees for {currentResult.ChosenBuilding.Building.Name}?: ");
                                         if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= currentResult.ChosenBuilding.Building.MaxWorkers)
                                         {
                                             currentResult.ChosenBuilding.Building.CurNumEmp = curNumEmp;
                                         } else { Console.WriteLine("Invalid input"); continue; }
+                                        foreach (var item in currentResult.SubChains)
+                                        {
+                                            if (item.ChosenBuilding != null)
+                                            {
+                                                Console.Write($"How many employees for {item.ChosenBuilding.Building.Name}?: ");
+                                                if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= item.ChosenBuilding.Building.MaxWorkers)
+                                                {
+                                                    item.ChosenBuilding.Building.CurNumEmp = curNumEmp;
+                                                }
+                                                else { Console.WriteLine("The Number of workers are either too big or minus."); continue; }
+                                            }
+                                        }
                                         break;
                                     case 1:
                                         Console.WriteLine("Not available at the moment.");

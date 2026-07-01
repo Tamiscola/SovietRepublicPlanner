@@ -137,7 +137,7 @@ public partial class IndustryPlan
         {
             // Display THIS level's building
             if (result.ChosenBuilding != null)
-                Console.WriteLine($"│ {indent}· {result.ChosenBuilding.Count} × {result.ChosenBuilding.Building.Name}");
+                Console.WriteLine($"│ {indent}· {result.ChosenBuilding.Count} × {result.ChosenBuilding.Building.Name} [{result.ChosenBuilding.Building.CurNumEmp * result.ChosenBuilding.Count} / {result.ChosenBuilding.Building.MaxWorkers * result.ChosenBuilding.Count}]");
 
             // Aggregate SubChains at the NEXT level
             Dictionary<ProductionBuilding, int> subChainBuildings = new Dictionary<ProductionBuilding, int>();
@@ -157,7 +157,7 @@ public partial class IndustryPlan
             // Display aggregated SubChain buildings
             string subIndent = new string(' ', (depth + 1) * 2);
             foreach (var kv in subChainBuildings)
-                Console.WriteLine($"│ {subIndent}· {kv.Value} × {kv.Key.Name}");
+                Console.WriteLine($"│ {subIndent}· {kv.Value} × {kv.Key.Name} [{kv.Key.CurNumEmp * kv.Value} / {kv.Key.MaxWorkers * kv.Value}]");
 
             // Now recurse into SubChains' SubChains (depth + 2)
             foreach (var subChain in result.SubChains)

@@ -164,7 +164,6 @@ public partial class MicroDistrict
                                             Name = cm.Key.Name,
                                             Amount = cm.Value
                                         }).ToList(),
-
         };
         return saved;
     }
