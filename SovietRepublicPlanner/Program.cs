@@ -1199,44 +1199,47 @@ namespace SovietRepublicPlanner
                 }
                 else if (command == "listplans")
                 {
-                    if (allPlans.Count() == 0) { Console.WriteLine("No plans created yet."); continue; }
+                    City currentCity = city;
+                    if (currentCity.industryPlans.Count() == 0) { Console.WriteLine("No plans created yet."); continue; }
 
                     Console.WriteLine("\n=== All Plans ===");
-                    for (int i = 0; i < allPlans.Count(); i++)
+                    for (int i = 0; i < currentCity.industryPlans.Count(); i++)
                     {
                         string marker = "← ACTIVE";
-                        Console.WriteLine($"{i}. {allPlans[i].TargetResource.Name} ({allPlans[i].TargetAmount} t/day) " +
-                            $"{(allPlans[i] == rootResult ? marker : null)}");
+                        Console.WriteLine($"{i}. {currentCity.industryPlans[i].TargetResource.Name} ({currentCity.industryPlans[i].TargetAmount} t/day) " +
+                            $"{(currentCity.industryPlans[i] == rootResult ? marker : null)}");
                     }
                     Console.WriteLine();
-                    Console.Write("[d] Delete a plan  [Enter] Return to commands\n> ");
+                    Console.Write("[d] Delete a plan  [m] Modify plan  [Index] Display District Info  [Enter] Return to commands\n> ");
+                    string input = Console.ReadLine()?.Trim().ToLower();
+                    int dChoice;
 
                     // Plan deletion
-                    if (Console.ReadKey().KeyChar == 'd')
+                    if (input == "d")
                     {
                         Console.WriteLine();
                         int delChoice;
-                        Console.Write($"Which plan to delete? [0-" + (allPlans.Count() - 1) + "]: ");
-                        if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < allPlans.Count())
+                        Console.Write($"Which plan to delete? [0-" + (currentCity.industryPlans.Count() - 1) + "]: ");
+                        if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < currentCity.industryPlans.Count())
                         {
                             // Confirm deletion
-                            Console.WriteLine($"Delete '{allPlans[delChoice].TargetResource.Name} ({allPlans[delChoice].TargetAmount}t/day)'? [y/n]");
+                            Console.WriteLine($"Delete '{currentCity.industryPlans[delChoice].TargetResource.Name} ({currentCity.industryPlans[delChoice].TargetAmount}t/day)'? [y/n]");
                             if (Console.ReadKey().KeyChar == 'y')
                             {
                                 Console.WriteLine();
-                                allPlans.RemoveAt(delChoice);
+                                currentCity.industryPlans.RemoveAt(delChoice);
                                 if (delChoice < currentPlanIndex) currentPlanIndex--;   // Deleted before active plan → shift index down
                                 else if (delChoice == currentPlanIndex)
                                 {
                                     // Deleted the active plan → pick new active
-                                    if (allPlans.Count > 0)
-                                        currentPlanIndex = Math.Min(delChoice, allPlans.Count - 1);
+                                    if (currentCity.industryPlans.Count > 0)
+                                        currentPlanIndex = Math.Min(delChoice, currentCity.industryPlans.Count - 1);
                                     else
                                         currentPlanIndex = -1;  // No plans left
                                 }   // else: deleted after active plan, no change needed
 
                                 // Update currentResult
-                                if (currentPlanIndex >= 0 && allPlans.Count > 0) currentResult = allPlans[currentPlanIndex];
+                                if (currentPlanIndex >= 0 && currentCity.industryPlans.Count > 0) currentResult = currentCity.industryPlans[currentPlanIndex];
                                 else currentResult = null;
 
                                 // Display confirmation
@@ -1245,6 +1248,48 @@ namespace SovietRepublicPlanner
                                 Console.ResetColor();
                             }
                             else continue;
+                        }
+                        else { Console.WriteLine("Invalid input"); continue; }
+                    }
+                    // Display IndustryPlan
+                    else if (int.TryParse(input, out dChoice) && dChoice >= 0 && dChoice < currentCity.industryPlans.Count)
+                    {
+                        currentResult = currentCity.industryPlans[dChoice];
+                        Console.WriteLine($"Now You're in {currentResult.Name} of City {currentResult.ParentCity.Name}");
+                        currentCity.industryPlans[dChoice].DisplayTotalReceipt();
+                    }
+                    // Modify Plan
+                    else if (input == "m")
+                    {
+                        Console.WriteLine();
+                        int modChoice;
+                        Console.Write($"Which plan to modify? [0-" + (currentCity.industryPlans.Count() - 1) + "]: ");
+                        if (int.TryParse(Console.ReadLine(), out modChoice) && modChoice >= 0 && modChoice < currentCity.industryPlans.Count())
+                        {
+                            currentResult = currentCity.industryPlans[modChoice];
+                            Console.WriteLine($"Now You're in {currentResult.Name} of City {currentResult.ParentCity.Name}");
+                            currentCity.industryPlans[modChoice].DisplayTotalReceipt();
+                            Console.Write($"\nWhat do you want to modify? [0: Current Number of Employees || 1: Support Infrastructures]: ");
+                            int modOption;
+                            int curNumEmp;
+
+                            if (int.TryParse(Console.ReadLine(), out modOption) && modOption >= 0 && modOption <= 1)
+                            {
+                                switch (modOption)
+                                {
+                                    case 0:
+                                        Console.Write($"How many employees?: ");
+                                        if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= currentResult.ChosenBuilding.Building.MaxWorkers)
+                                        {
+                                            currentResult.ChosenBuilding.Building.CurNumEmp = curNumEmp;
+                                        } else { Console.WriteLine("Invalid input"); continue; }
+                                        break;
+                                    case 1:
+                                        Console.WriteLine("Not available at the moment.");
+                                        break;
+                                }
+                            }
+                            else { Console.WriteLine("Invalid input"); continue; }
                         }
                         else { Console.WriteLine("Invalid input"); continue; }
                     }
@@ -1265,7 +1310,7 @@ namespace SovietRepublicPlanner
                             $"{(currentCity.microDistricts[i] == microDistrict ? marker : null)}");
                     }
                     Console.WriteLine();
-                    Console.Write("[d] Delete a District  [Number] Display District Info  [Enter] Return to commands\n> ");
+                    Console.Write("[d] Delete a District  [Index] Display District Info  [Enter] Return to commands\n> ");
                     string input = Console.ReadLine()?.Trim().ToLower();
                     int dChoice;
 
