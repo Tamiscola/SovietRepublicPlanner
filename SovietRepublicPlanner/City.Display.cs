@@ -91,7 +91,7 @@ public partial class City
 
                             foreach (var kv in categoryGroup.OrderBy(x => x.Building.Name))
                             {
-                                Console.WriteLine($"│   \t· {kv.Count} × {kv.Building.Name} [{kv.Building.Coverage * kv.Count}]");
+                                Console.WriteLine($"│   \t· {kv.Count} × {kv.Building.Name} [{kv.Building.MaxCoverage * kv.Count}]");
                             }
 
                             // Add warnings for this category
@@ -121,7 +121,7 @@ public partial class City
 
                 foreach (var kv in categoryGroup.OrderBy(x => x.Building.Name))
                 {
-                    Console.WriteLine($"│  · {kv.Count} × {kv.Building.Name} [{kv.Building.Coverage * kv.Count}]");
+                    Console.WriteLine($"│  · {kv.Count} × {kv.Building.Name} [{kv.Building.MaxCoverage * kv.Count}]");
                 }
 
                 List<AmenityInstance> amenityInstances = categoryGroup.Select(g => new AmenityInstance()

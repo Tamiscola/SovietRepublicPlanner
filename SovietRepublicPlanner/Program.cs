@@ -2627,7 +2627,7 @@ namespace SovietRepublicPlanner
 
                 // Display buildings
                 for (int i = 0; i < buildingsOfType.Count; i++)
-                    Console.WriteLine($"[{i + 1}] (Coverage: {buildingsOfType[i].Coverage}) {buildingsOfType[i].Name}");
+                    Console.WriteLine($"[{i + 1}] (Coverage: {buildingsOfType[i].MaxCoverage}) {buildingsOfType[i].Name}");
                 Console.Write("[0] Back\n: ");
                 int buildChoice;
 
@@ -2644,16 +2644,32 @@ namespace SovietRepublicPlanner
                         Console.WriteLine($"School: {coverage.SchoolCapacity}/{schoolNeeded}");
                         Console.ResetColor();
                     }
-                    else
+                    else if (selectedType == AmenityType.Healthcare)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine($"{city.totalCitizen} citizens need to be served.");
                         Console.ResetColor();
                     }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"{city.totalWorkers} workers need to be served.");
+                        Console.ResetColor();
+                    }
+
+                    // Decide Current Number of Employees
+                    Console.Write($"How many workers in the {buildingsOfType[buildChoice - 1].Name}(0 - {buildingsOfType[buildChoice - 1].MaxWorkers})?: ");
+                    int curNumEmp;
+                    if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= buildingsOfType[buildChoice - 1].MaxWorkers)
+                    {
+                        buildingsOfType[buildChoice - 1].CurNumEmp = curNumEmp;
+                        Console.WriteLine($"Current Number of Employees : {buildingsOfType[buildChoice - 1].CurNumEmp} [Capacity: {buildingsOfType[buildChoice - 1].CurCustomCapacity} / Coverage: {buildingsOfType[buildChoice - 1].CurCoverage}]");
+                    } else { Console.WriteLine($"The number of Workers should be within the range Max workers of the building.");}
+
                     Console.Write("How many?: ");
                     int count;
 
-                    // Decide amount
+                    // Decide amount of the Building
                     if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
                     {
                         AmenityInstance amenityInstance = new AmenityInstance();
@@ -2663,16 +2679,16 @@ namespace SovietRepublicPlanner
                         {
                             md.AmenityBuildings.Add(amenityInstance);
                             Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to District {md.Name} of City {md.ParentCity.Name}!");
-                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].Coverage * count}");
-                            Console.WriteLine($"Needed Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
+                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].CurCoverage * count} / {buildingsOfType[buildChoice - 1].MaxCoverage * count}");
+                            Console.WriteLine($"Optimized Max Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
                         }
                         // Add AmenityInstance to City Level
                         else
                         {
                             c.AmenityBuildings.Add(amenityInstance);
                             Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to City {c.Name} directly!");
-                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].Coverage * count}");
-                            Console.WriteLine($"Needed Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
+                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].CurCoverage * count} / {buildingsOfType[buildChoice - 1].MaxCoverage * count}");
+                            Console.WriteLine($"Optimized Max Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
                         }
                     }
                     else { Console.Write("Invalid Input."); }

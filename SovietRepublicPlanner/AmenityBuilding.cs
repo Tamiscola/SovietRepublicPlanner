@@ -35,7 +35,28 @@ public class AmenityBuilding : Building
     public int MaxWorkers { get; set; }
     public int CurNumEmp {  get; set; }
     public int MaxVisitors { get; set; }
-    public int Coverage => Type switch
+    public int CurCoverage => Type switch
+    {
+        AmenityType.Education => EducationLevel switch
+        {
+            EducationSubtype.Kindergarten => (int)(CurCustomCapacity * 15),
+            EducationSubtype.School => (int)(CurCustomCapacity * 20),
+            EducationSubtype.University => (int)(CurCustomCapacity * 20),
+            EducationSubtype.UniversityDorm => CurCustomCapacity,  // Direct housing
+            _ => CurCustomCapacity  // Fallback: no multiplier
+        },
+        AmenityType.Shopping => (int)(CurCustomCapacity * 15),    
+        AmenityType.Pub => (int)(CurCustomCapacity * 100),
+        AmenityType.Healthcare => (int)(CurCustomCapacity * 100),
+        AmenityType.Culture => (int)(CurCustomCapacity * 80),
+        AmenityType.Sports => (int)(CurCustomCapacity * 80),
+        AmenityType.CrimeJustice => (int)(CurCustomCapacity * 100),
+        AmenityType.Fireservice => 0,
+        AmenityType.CityService => 0,
+        AmenityType.Fountain => 0,
+        _ => (int)(CurCustomCapacity * 30)  // Fallback
+    };
+    public int MaxCoverage => Type switch
     {
         AmenityType.Education => EducationLevel switch
         {
@@ -45,7 +66,7 @@ public class AmenityBuilding : Building
             EducationSubtype.UniversityDorm => MaxVisitors,  // Direct housing
             _ => MaxVisitors  // Fallback: no multiplier
         },
-        AmenityType.Shopping => (int)(MaxVisitors * 15),    
+        AmenityType.Shopping => (int)(MaxVisitors * 15),
         AmenityType.Pub => (int)(MaxVisitors * 100),
         AmenityType.Healthcare => (int)(MaxVisitors * 100),
         AmenityType.Culture => (int)(MaxVisitors * 80),
