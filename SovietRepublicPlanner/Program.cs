@@ -389,6 +389,18 @@ namespace SovietRepublicPlanner
                             }
                             // else keep the default 100 workers
                         }
+                        // Set the Current Number of Employees
+                        else
+                        {
+                            Console.Write($"How many workers? [0 - {result.ChosenBuilding.Building.MaxWorkers}]: ");
+                            int curNumEmp;
+                            if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= result.ChosenBuilding.Building.MaxWorkers)
+                            {
+                                result.ChosenBuilding.Building.CurNumEmp = curNumEmp;
+                                Console.WriteLine($"The number of workers for {result.ChosenBuilding.Building.Name}: {result.ChosenBuilding.Building.CurNumEmp}");
+                            }
+                            else { Console.WriteLine("The number of workers should be within the range of 0 ~ Max number of workers"); continue; }
+                        }
                         break;
                     }
                 }
@@ -510,6 +522,17 @@ namespace SovietRepublicPlanner
                         if (vehicleChoice == 'y')
                             result.ChosenBuilding.UseVehicles = true;  // Override to vehicles
                         // else keep the default 100 workers
+                    }
+                    // Set the Current Number of Employees
+                    else
+                    {
+                        Console.Write($"How many workers? [0 - {result.ChosenBuilding.Building.MaxWorkers}]: ");
+                        int curNumEmp;
+                        if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= result.ChosenBuilding.Building.MaxWorkers)
+                        {
+                            result.ChosenBuilding.Building.CurNumEmp = curNumEmp;
+                            Console.WriteLine($"The number of workers for {result.ChosenBuilding.Building.Name}: {result.ChosenBuilding.Building.CurNumEmp}");
+                        } else { Console.WriteLine("The number of workers should be within the range of 0 ~ Max number of workers"); continue; }
                     }
                 }
                 else { Console.Write("invalid input: "); continue; }
