@@ -29,6 +29,7 @@ public class SavedMicroDistrict
     public class SavedAmenityInstance
     {
         public string BuildingName { get; set; }
+        public int CurNumEmp { get; set; }
         public int Count { get; set; }
     }
     public class SavedSupportInstance

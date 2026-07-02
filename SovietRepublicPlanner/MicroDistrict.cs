@@ -144,6 +144,7 @@ public partial class MicroDistrict
                                         .Select(ab => new SavedMicroDistrict.SavedAmenityInstance
                                         {
                                             BuildingName = ab.Building.Name,
+                                            CurNumEmp = ab.Building.CurNumEmp,
                                             Count = ab.Count,
                                         }).ToList(),
             SupportBuildings = microDistrict.SupportBuildings
@@ -185,6 +186,7 @@ public partial class MicroDistrict
                                     {
                                         Building = GameData.AllAmenityBuildings
                                                     .FirstOrDefault(ab => ab.Name == sai.BuildingName),
+                                        CurNumEmp = sai.CurNumEmp,
                                         Count = sai.Count
                                     }).ToList(),
             SupportBuildings = savedMicroDistrict.SupportBuildings
