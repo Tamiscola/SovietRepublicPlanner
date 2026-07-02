@@ -14,7 +14,7 @@ public partial class MicroDistrict
         foreach (var type in Enum.GetValues(typeof(AmenityType)))
         {
             var buildings = AmenityBuildings.Where(a => a.Building.Type == (AmenityType)type);
-            int totalCapacity = buildings.Sum(a => a.TotalCapacity);
+            int totalCapacity = buildings.Sum(a => a.TotalMaxCoverage);
             coverage[(AmenityType)type] = totalCapacity;
         }
         return coverage;
@@ -53,12 +53,12 @@ public partial class MicroDistrict
                 foreach (var product in amenity.Building.ProductsOffered)
                 {
                     if (coverage.ProductCoverage.ContainsKey(product))
-                        coverage.ProductCoverage[product] += amenity.TotalCapacity;
+                        coverage.ProductCoverage[product] += amenity.TotalCurCoverage;
                 }
             }
 
             // Service-based coverage (all amenity types)
-            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalCapacity;
+            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalCurCoverage;
 
             // Education subtype tracking
             if (amenity.Building.Type == AmenityType.Education)
@@ -66,13 +66,13 @@ public partial class MicroDistrict
                 switch (amenity.Building.EducationLevel)
                 {
                     case EducationSubtype.Kindergarten:
-                        coverage.KindergartenCapacity += amenity.TotalCapacity;
+                        coverage.KindergartenCapacity += amenity.TotalCurCoverage;
                         break;
                     case EducationSubtype.School:
-                        coverage.SchoolCapacity += amenity.TotalCapacity;
+                        coverage.SchoolCapacity += amenity.TotalCurCoverage;
                         break;
                     case EducationSubtype.University:
-                        coverage.UniversityCapacity += amenity.TotalCapacity;
+                        coverage.UniversityCapacity += amenity.TotalCurCoverage;
                         break;
                         // UniversityDorm doesn't count - it's housing, not essential service
                 }

@@ -182,12 +182,17 @@ public partial class MicroDistrict
                                         Count = sri.Count
                                     }).ToList(),
             AmenityBuildings = savedMicroDistrict.AmenityBuildings
-                                    .Select(sai => new AmenityInstance
+                                    .Select(sai =>
                                     {
-                                        Building = GameData.AllAmenityBuildings
-                                                    .FirstOrDefault(ab => ab.Name == sai.BuildingName),
-                                        CurNumEmp = sai.CurNumEmp,
-                                        Count = sai.Count
+                                        var building = GameData.AllAmenityBuildings
+                                            .FirstOrDefault(ab => ab.Name == sai.BuildingName);
+                                        building.CurNumEmp = sai.CurNumEmp;
+
+                                        return new AmenityInstance
+                                        {
+                                            Building = building,
+                                            Count = sai.Count
+                                        };
                                     }).ToList(),
             SupportBuildings = savedMicroDistrict.SupportBuildings
                                     .Select(sai => new SupportInstance

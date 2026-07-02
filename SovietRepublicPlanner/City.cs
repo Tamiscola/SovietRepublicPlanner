@@ -525,12 +525,12 @@ public partial class City
                 foreach (var product in amenity.Building.ProductsOffered)
                 {
                     if (coverage.ProductCoverage.ContainsKey(product))
-                        coverage.ProductCoverage[product] += amenity.TotalCapacity;
+                        coverage.ProductCoverage[product] += amenity.TotalMaxCoverage;
                 }
             }
 
             // Service-based coverage (all amenity types)
-            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalCapacity;
+            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalMaxCoverage;
 
             // Education subtype tracking
             if (amenity.Building.Type == AmenityType.Education)
@@ -538,13 +538,13 @@ public partial class City
                 switch (amenity.Building.EducationLevel)
                 {
                     case EducationSubtype.Kindergarten:
-                        coverage.KindergartenCapacity += amenity.TotalCapacity;
+                        coverage.KindergartenCapacity += amenity.TotalMaxCoverage;
                         break;
                     case EducationSubtype.School:
-                        coverage.SchoolCapacity += amenity.TotalCapacity;
+                        coverage.SchoolCapacity += amenity.TotalMaxCoverage;
                         break;
                     case EducationSubtype.University:
-                        coverage.UniversityCapacity += amenity.TotalCapacity;
+                        coverage.UniversityCapacity += amenity.TotalMaxCoverage;
                         break;
                         // UniversityDorm doesn't count - it's housing, not essential service
                 }

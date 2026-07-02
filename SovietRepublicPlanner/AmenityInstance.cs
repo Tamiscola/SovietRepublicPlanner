@@ -4,5 +4,6 @@
     public int Count;
     public int CurNumEmp;
     public int TotalWorkers => Building.CurNumEmp * 3 * Count;
-    public int TotalCapacity => Building.MaxCoverage * Count;
+    public int TotalMaxCoverage => Building.MaxCoverage * Count;
+    public int TotalCurCoverage => Building.CurCoverage * Count;
 }

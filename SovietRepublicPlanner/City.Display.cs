@@ -74,6 +74,7 @@ public partial class City
             foreach (var m in microDistricts)
             {
                 Console.WriteLine($"│ [ {m.Name} ]:");
+                // Residential Buildings
                 foreach (var ri in m.ResidentialBuildings)
                 {
                     Console.WriteLine($"│ · {ri.Count} × {ri.Building.Name}");
@@ -91,7 +92,7 @@ public partial class City
 
                             foreach (var kv in categoryGroup.OrderBy(x => x.Building.Name))
                             {
-                                Console.WriteLine($"│   \t· {kv.Count} × {kv.Building.Name} [{kv.Building.MaxCoverage * kv.Count}]");
+                                Console.WriteLine($"│   \t· {kv.Count} × {kv.Building.Name} [Coverage: {kv.TotalCurCoverage} / {kv.Building.MaxCoverage * kv.Count} | Workers: {kv.Building.CurNumEmp * kv.Count}/{kv.Building.MaxWorkers * kv.Count}]");
                             }
 
                             // Add warnings for this category
@@ -267,7 +268,7 @@ public partial class City
         {
             
             case AmenityType.Shopping:
-                int shoppingCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 15); // ×15 ratio
+                int shoppingCapacity = amenities.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 15); // ×15 ratio
                 int shoppingNeeded = totalWorkers;
 
                 if (shoppingCapacity < shoppingNeeded)
@@ -316,19 +317,19 @@ public partial class City
                 break;
 
             case AmenityType.Pub:
-                int pubCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 100); // ×100 ratio
-                int pubNeeded = totalCitizens;
+                int pubCapacity = amenities.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 100); // ×100 ratio
+                int pubNeeded = totalWorkers;
 
                 if (pubCapacity < pubNeeded)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"│            {pubNeeded - pubCapacity} citizens underserved!");
+                    Console.WriteLine($"│            {pubNeeded - pubCapacity} workers underserved!");
                     Console.ResetColor();
                 }
                 break;
 
             case AmenityType.Healthcare:
-                int healthcareCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 100); // ×100 ratio
+                int healthcareCapacity = amenities.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 100); // ×100 ratio
                 int healthcareNeeded = totalCitizens;
 
                 if (healthcareCapacity < healthcareNeeded)
@@ -340,7 +341,7 @@ public partial class City
                 break;
 
             case AmenityType.Culture:
-                int cultureCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 80); // ×80 ratio
+                int cultureCapacity = amenities.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 80); // ×80 ratio
                 int cultureNeeded = totalCitizens;
 
                 if (cultureCapacity < cultureNeeded)
@@ -352,7 +353,7 @@ public partial class City
                 break;
 
             case AmenityType.Sports:
-                int sportsCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 80); // ×80 ratio
+                int sportsCapacity = amenities.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 80); // ×80 ratio
                 int sportsNeeded = totalCitizens;
 
                 if (sportsCapacity < sportsNeeded)
@@ -373,8 +374,8 @@ public partial class City
                 int schoolNeeded = (int)Math.Ceiling(totalCitizens * CalculationSettings.SchoolAgePercent / 100);
 
                 // Education buildings: MaxVisitors × 12 for kindergarten, × 20 for school
-                int kindergartenCapacity = kindergartens.Sum(kv => kv.Building.MaxVisitors * kv.Count * 12);
-                int schoolCapacity = schools.Sum(kv => kv.Building.MaxVisitors * kv.Count * 20);
+                int kindergartenCapacity = kindergartens.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 12);
+                int schoolCapacity = schools.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 20);
 
                 if (kindergartenCapacity < kindergartenNeeded)
                 {
@@ -404,7 +405,7 @@ public partial class City
                 break;
 
             case AmenityType.CrimeJustice:
-                int crimeCapacity = amenities.Sum(kv => kv.Building.MaxVisitors * kv.Count * 50); // ×50 estimate
+                int crimeCapacity = amenities.Sum(kv => kv.Building.CurCustomCapacity * kv.Count * 50); // ×50 estimate
                 int crimeNeeded = totalCitizens;
 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
