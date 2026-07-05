@@ -12,7 +12,7 @@ public partial class City
     public string Name { get; set; }
     public List<IndustryPlan> industryPlans { get; set; } = new List<IndustryPlan>();
     public List<MicroDistrict> microDistricts { get; set; } = new List<MicroDistrict>();
-    public List<AmenityInstance> AmenityBuildings { get; set; } = new List<AmenityInstance>();
+    public List<AmenityInstance> CityAmenityBuildings { get; set; } = new List<AmenityInstance>();
     public List<UtilityPlan> UtilityPlans { get; set; } = new List<UtilityPlan>();
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
     public List<TransportationInstance> TransportationBuildings { get; set; } = new List<TransportationInstance>();
@@ -439,10 +439,12 @@ public partial class City
             savedMicroDistricts = city.microDistricts
                 .Select(m => MicroDistrict.ConvertToSavedMicroDistrict(m))
                 .ToList(),
-            savedAmenityBuildings = city.AmenityBuildings
+            savedCityAmenityBuildings = city.CityAmenityBuildings
                 .Select(i => new SavedCity.SavedAmenityInstance
                 {
+                    Name = i.Name,
                     BuildingName = i.Building.Name,
+                    CurNumEmp = i.CurNumEmp,
                     Count = i.Count
                 }).ToList(),
             savedUtilityPlans = city.UtilityPlans
@@ -473,10 +475,12 @@ public partial class City
         c.microDistricts = sc.savedMicroDistricts?
             .Select(p => MicroDistrict.ConvertFromSavedMicroDistrict(p))
             .ToList() ?? new List<MicroDistrict>();
-        c.AmenityBuildings = sc.savedAmenityBuildings?.Select(i => new AmenityInstance
+        c.CityAmenityBuildings = sc.savedCityAmenityBuildings?.Select(i => new AmenityInstance
         {
             Building = GameData.AllAmenityBuildings
                             .FirstOrDefault(sb => sb.Name == i.BuildingName),
+            Name = i.Name,
+            CurNumEmp = i.CurNumEmp,
             Count = i.Count
         }).ToList() ?? new List<AmenityInstance>();
         c.UtilityPlans = sc.savedUtilityPlans?
@@ -517,7 +521,7 @@ public partial class City
 
 
         // Calculate coverage
-        foreach (var amenity in AmenityBuildings)
+        foreach (var amenity in CityAmenityBuildings)
         {
             // Product-based coverage (Shopping, Pub)
             if (amenity.Building.ProductsOffered.Count > 0)
@@ -525,12 +529,12 @@ public partial class City
                 foreach (var product in amenity.Building.ProductsOffered)
                 {
                     if (coverage.ProductCoverage.ContainsKey(product))
-                        coverage.ProductCoverage[product] += amenity.TotalMaxCoverage;
+                        coverage.ProductCoverage[product] += amenity.TotalCurCoverage;
                 }
             }
 
             // Service-based coverage (all amenity types)
-            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalMaxCoverage;
+            coverage.ServiceCoverage[amenity.Building.Type] += amenity.TotalCurCoverage;
 
             // Education subtype tracking
             if (amenity.Building.Type == AmenityType.Education)
@@ -538,13 +542,13 @@ public partial class City
                 switch (amenity.Building.EducationLevel)
                 {
                     case EducationSubtype.Kindergarten:
-                        coverage.KindergartenCapacity += amenity.TotalMaxCoverage;
+                        coverage.KindergartenCapacity += amenity.TotalCurCoverage;
                         break;
                     case EducationSubtype.School:
-                        coverage.SchoolCapacity += amenity.TotalMaxCoverage;
+                        coverage.SchoolCapacity += amenity.TotalCurCoverage;
                         break;
                     case EducationSubtype.University:
-                        coverage.UniversityCapacity += amenity.TotalMaxCoverage;
+                        coverage.UniversityCapacity += amenity.TotalCurCoverage;
                         break;
                         // UniversityDorm doesn't count - it's housing, not essential service
                 }

@@ -28,10 +28,12 @@ public class SavedCity
         public string BuildingName { get; set; }
         public int Count { get; set; }
     }
-    public List<SavedAmenityInstance> savedAmenityBuildings { get; set; }
+    public List<SavedAmenityInstance> savedCityAmenityBuildings { get; set; }
     public class SavedAmenityInstance
     {
+        public string Name { get; set; }
         public string BuildingName { get; set; }
+        public int CurNumEmp {  get; set; }
         public int Count { get; set; }
     }
     public List<SavedResourceInstance> savedConstructionMaterials { get; set; }

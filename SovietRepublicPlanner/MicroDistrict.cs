@@ -143,8 +143,8 @@ public partial class MicroDistrict
             AmenityBuildings = microDistrict.AmenityBuildings
                                         .Select(ab => new SavedMicroDistrict.SavedAmenityInstance
                                         {
-                                            BuildingName = ab.Building.Name,
-                                            CurNumEmp = ab.Building.CurNumEmp,
+                                            Name = ab.Name,
+                                            CurNumEmp = ab.CurNumEmp,
                                             Count = ab.Count,
                                         }).ToList(),
             SupportBuildings = microDistrict.SupportBuildings
@@ -185,12 +185,13 @@ public partial class MicroDistrict
                                     .Select(sai =>
                                     {
                                         var building = GameData.AllAmenityBuildings
-                                            .FirstOrDefault(ab => ab.Name == sai.BuildingName);
-                                        building.CurNumEmp = sai.CurNumEmp;
+                                            .FirstOrDefault(ab => ab.Name == sai.Name);
 
                                         return new AmenityInstance
                                         {
+                                            Name = sai.Name,
                                             Building = building,
+                                            CurNumEmp = sai.CurNumEmp,
                                             Count = sai.Count
                                         };
                                     }).ToList(),

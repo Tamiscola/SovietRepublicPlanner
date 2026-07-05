@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 public class UtilityInstance
 {
     public UtilityBuilding Building { get; set; }
+    public string Name { get; set; }
     public int Count { get; set; } = 0;
 }

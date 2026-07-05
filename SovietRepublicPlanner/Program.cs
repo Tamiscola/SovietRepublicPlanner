@@ -1726,7 +1726,7 @@ namespace SovietRepublicPlanner
                     City currentCity = allCities.FirstOrDefault(c => c.Name == city.Name);
                     if (currentCity == null)
                     {
-                        Console.WriteLine($"There's no a City chosen.");
+                        Console.WriteLine($"There's no City chosen.");
                         continue;
                     }
 
@@ -1756,31 +1756,11 @@ namespace SovietRepublicPlanner
                                 {
                                     Console.WriteLine($"[{i2}]: {microDistrict.AmenityBuildings[i2].Count} x {microDistrict.AmenityBuildings[i2].Building.Name}");
                                 }
-                                Console.WriteLine("Choose an action [d (delete) / b (back) / a (add)]: ");
+                                Console.WriteLine("Choose an action [d (delete) / m (modify) / b (back) / a (add)]: ");
 
-                                // Amenity Deletion
-                                char aChoice;
-                                if (char.TryParse(Console.ReadLine(), out aChoice) && (aChoice == 'd' || aChoice == 'b' || aChoice == 'a'))
-                                {
-                                    if (aChoice == 'd')
-                                    {
-                                        Console.Write("Choose the Instance to delete: ");
-                                        int delChoice;
-                                        if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < microDistrict.AmenityBuildings.Count)
-                                        {
-                                            Console.WriteLine($"{microDistrict.AmenityBuildings[delChoice].Count} x {microDistrict.AmenityBuildings[delChoice].Building.Name} " +
-                                                $"has been deleted from the District {microDistrict.Name} of City {microDistrict.ParentCity.Name}");
-                                            microDistrict.AmenityBuildings.RemoveAt(delChoice);
-                                            continue;
-                                        }
-                                        else Console.WriteLine("Invalid action input. Going back to Command Loop."); continue;
-                                    }
-                                    else if (aChoice == 'b') { Console.WriteLine("Going back to Command Loop."); continue; }
-                                    else if (aChoice == 'a') { AddAmenityInstance(currentCity, dChoice); continue; }
-                                }
-                                else { Console.WriteLine("Invalid action input. Going back to Command Loop."); continue; }
+                                InstanceActionChoices(currentCity, microDistrict.AmenityBuildings, dChoice);
                             }
-                            // No AmenityInstances created.
+                            // No AmenityInstances exist.
                             else 
                             { 
                                 Console.WriteLine($"· None");
@@ -1789,10 +1769,30 @@ namespace SovietRepublicPlanner
                                 continue;
                             }
                         }
-                        // Create Amenity on City Level
+                        // Amenities on City Level
                         else if (dChoice == -1)
                         {
-                            AddAmenityInstance(currentCity, dChoice);
+                            // Display existing City Amenities
+                            Console.WriteLine($"Current City : {currentCity.Name}");
+                            Console.WriteLine($"Amenities: ");
+
+                            // Display existing Amenities
+                            if (currentCity.CityAmenityBuildings.Count > 0)
+                            {
+                                for (int i2 = 0; i2 < currentCity.CityAmenityBuildings.Count; i2++)
+                                {
+                                    Console.WriteLine($"[{i2}]: {currentCity.CityAmenityBuildings[i2].Count} x {currentCity.CityAmenityBuildings[i2].Building.Name}");
+                                }
+                                Console.WriteLine("Choose an action [d (delete) / m (modify) / b (back) / a (add)]: ");
+
+                                InstanceActionChoices(currentCity, currentCity.CityAmenityBuildings, -1);
+                            }
+                            // No AmenityInstances exist.
+                            else
+                            {
+                                Console.WriteLine("No City Amenity exists.");
+                                AddAmenityInstance(currentCity, dChoice);
+                            }
                         }
                         else { Console.WriteLine("Invalid Input. Going back to Command Loop."); continue; }
                     }
@@ -2473,6 +2473,7 @@ namespace SovietRepublicPlanner
             if (index == -1) { }
             else { md = c.microDistricts[index]; }
 
+            AmenityInstance amenityInstance = new AmenityInstance();
 
             // Flat selection menu
             Console.WriteLine("Select Amenity Type:");
@@ -2530,94 +2531,21 @@ namespace SovietRepublicPlanner
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine($"City Population: {cityPopulationDesc}");
-                    Console.WriteLine($"District Maximum Population: {md.TotalHousingCapacity}");
+                    if (index != -1) Console.WriteLine($"District Maximum Population: {md.TotalHousingCapacity}");
+                    else { };
                     Console.ResetColor();
 
                     // Special handling for Education
                     if (selectedType == AmenityType.Education)
                     {
-                        int kindergartenNeeded = (int)Math.Ceiling(c.totalCitizen * CalculationSettings.KindergartenAgePercent / 100);
-                        int schoolNeeded = (int)Math.Ceiling(c.totalCitizen * CalculationSettings.SchoolAgePercent / 100);
-
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}");
-
-                        if (coverage.KindergartenCapacity < kindergartenNeeded)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($"   Deficit: {kindergartenNeeded - coverage.KindergartenCapacity}");
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine($"   Surplus: {coverage.KindergartenCapacity - kindergartenNeeded}");
-                        }
-
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"School: {coverage.SchoolCapacity}/{schoolNeeded}");
-
-                        if (coverage.SchoolCapacity < schoolNeeded)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($"   Deficit: {schoolNeeded - coverage.SchoolCapacity}");
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine($"   Surplus: {coverage.SchoolCapacity - schoolNeeded}");
-                        }
-
-                        Console.ResetColor();
+                        if (index != -1) EduAmenCapacityDisplay(c, coverage);
+                        else EduAmenCapacityDisplay(c, cityCoverage);
                     }
+                    // Standard capacity display
                     else
                     {
-                        // Standard capacity display
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        if (index != -1)
-                        {
-                            Console.WriteLine($"Current capacity: {currentCapacity}");
-                            Console.WriteLine($"Needed capacity: {md.TotalHousingCapacity}");
-
-                            int difference = currentCapacity - md.TotalHousingCapacity;
-                            if (difference < 0)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine($" Deficit: {-difference}");
-                            }
-                            else if (difference > 0)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine($" Surplus: {difference}");
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine(" Perfect match!");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Current capacity: {cityCurrentCapacity}");
-                            Console.WriteLine($"Needed capacity: {neededCapacity}");
-
-                            int difference = currentCapacity - neededCapacity;
-                            if (difference < 0)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine($" Deficit: {-difference}");
-                            }
-                            else if (difference > 0)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine($" Surplus: {difference}");
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine(" Perfect match!");
-                            }
-                        }
-                        Console.ResetColor();
+                        if (index != -1) AmenCapacityDisplay(currentCapacity, md.TotalHousingCapacity);
+                        else AmenCapacityDisplay(cityCurrentCapacity, neededCapacity);
                     }
                     Console.WriteLine();
                 }
@@ -2627,7 +2555,7 @@ namespace SovietRepublicPlanner
 
                 // Display buildings
                 for (int i = 0; i < buildingsOfType.Count; i++)
-                    Console.WriteLine($"[{i + 1}] (Coverage: {buildingsOfType[i].MaxCoverage}) {buildingsOfType[i].Name}");
+                    Console.WriteLine($"[{i + 1}] (Max Coverage: {buildingsOfType[i].MaxCoverage}) {buildingsOfType[i].Name}");
                 Console.Write("[0] Back\n: ");
                 int buildChoice;
 
@@ -2662,32 +2590,51 @@ namespace SovietRepublicPlanner
                     int curNumEmp;
                     if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= buildingsOfType[buildChoice - 1].MaxWorkers)
                     {
-                        buildingsOfType[buildChoice - 1].CurNumEmp = curNumEmp;
-                        Console.WriteLine($"Current Number of Employees : {buildingsOfType[buildChoice - 1].CurNumEmp} [Capacity: {buildingsOfType[buildChoice - 1].CurCustomCapacity} / Coverage: {buildingsOfType[buildChoice - 1].CurCoverage}]");
+                        amenityInstance.Building = buildingsOfType[buildChoice - 1];
+                        amenityInstance.CurNumEmp = curNumEmp;
+                        Console.WriteLine($"Current Number of Employees : {amenityInstance.CurNumEmp} [Capacity: {amenityInstance.CurCustomCapacity} / Coverage: {amenityInstance.CurCoverage}]");
                     } else { Console.WriteLine($"The number of Workers should be within the range Max workers of the building.");}
 
                     Console.Write("How many?: ");
                     int count;
 
                     // Decide amount of the Building
-                    if (int.TryParse(Console.ReadLine(), out count) && count >= 0)
+                    if (int.TryParse(Console.ReadLine(), out count) && count > 0)
                     {
-                        AmenityInstance amenityInstance = new AmenityInstance();
-                        amenityInstance.Building = buildingsOfType[buildChoice - 1];
                         amenityInstance.Count = count;
+
+                        // Add AmenityInstance to District Level
                         if (index >= 0)
                         {
+                            // (Auto) Name the Instance
+                            if (md.AmenityBuildings.Any(ins => ins.Name == amenityInstance.Name))
+                            {
+                                int number = 1;
+                                int sameBuildingCount = md.AmenityBuildings.Select(ins2 => ins2.Name == amenityInstance.Name).Count();
+                                amenityInstance.Name = amenityInstance.Building.Name + $" ({number + sameBuildingCount})";
+                            }
+                            else amenityInstance.Name = amenityInstance.Building.Name;
+
                             md.AmenityBuildings.Add(amenityInstance);
-                            Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to District {md.Name} of City {md.ParentCity.Name}!");
-                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].CurCoverage * count} / {buildingsOfType[buildChoice - 1].MaxCoverage * count}");
-                            Console.WriteLine($"Optimized Max Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
+                            Console.WriteLine($"{amenityInstance.Building.Name} x {count} has been added to District {md.Name} of City {md.ParentCity.Name}!");
+                            Console.WriteLine($"Population Coverage: {amenityInstance.CurCoverage * count} / {amenityInstance.Building.MaxCoverage * count}");
+                            Console.WriteLine($"Optimized Max Workers: {amenityInstance.Building.EffectiveWorkersPerShift}");
                         }
                         // Add AmenityInstance to City Level
                         else
                         {
-                            c.AmenityBuildings.Add(amenityInstance);
-                            Console.WriteLine($"{buildingsOfType[buildChoice - 1].Name} x {count} has been added to City {c.Name} directly!");
-                            Console.WriteLine($"Population Coverage: {buildingsOfType[buildChoice - 1].CurCoverage * count} / {buildingsOfType[buildChoice - 1].MaxCoverage * count}");
+                            // (Auto) Name the Instance
+                            if (c.CityAmenityBuildings.Any(ins => ins.Building.Name == amenityInstance.Building.Name))
+                            {
+                                int number = 0;
+                                int sameBuildingCount = c.CityAmenityBuildings.Select(ins2 => ins2.Name == amenityInstance.Name).Count();
+                                amenityInstance.Name = amenityInstance.Building.Name + $" ({number + sameBuildingCount})";
+                            }
+                            else amenityInstance.Name = amenityInstance.Building.Name;
+
+                            c.CityAmenityBuildings.Add(amenityInstance);
+                            Console.WriteLine($"{amenityInstance.Building.Name} x {count} has been added to City {c.Name} directly!");
+                            Console.WriteLine($"Population Coverage: {amenityInstance.CurCoverage * count} / {amenityInstance.Building.MaxCoverage * count}");
                             Console.WriteLine($"Optimized Max Workers: {buildingsOfType[buildChoice - 1].EffectiveWorkersPerShift}");
                         }
                     }
@@ -2791,6 +2738,116 @@ namespace SovietRepublicPlanner
                 else { Console.WriteLine("Invalid index. Going back to the command loop."); return; }
             }
             else { Console.WriteLine("Invalid index. Going back to the command loop."); return; }
+        }
+        static void InstanceActionChoices(City c, List<AmenityInstance> amenityInstances, int districtChoice)
+        {
+            // Amenity Deletion
+            char aChoice;
+            if (char.TryParse(Console.ReadLine(), out aChoice) && (aChoice == 'd' || aChoice == 'm' ||aChoice == 'b' || aChoice == 'a'))
+            {
+                if (aChoice == 'd')
+                {
+                    Console.Write("Choose the Instance to delete: ");
+                    int delChoice;
+                    if (int.TryParse(Console.ReadLine(), out delChoice) && delChoice >= 0 && delChoice < amenityInstances.Count)
+                    {
+                        Console.WriteLine($"{amenityInstances[delChoice].Count} x {amenityInstances[delChoice].Building.Name} " +
+                            $"has been deleted from the City {c.Name}");
+                        amenityInstances.RemoveAt(delChoice);
+                        
+                    }
+                    else Console.WriteLine("Invalid action input. Going back to Command Loop."); 
+                }
+                else if (aChoice == 'm')
+                {
+                    Console.Write("Choose the Instance to modify: ");
+                    int modChoice;
+                    if (int.TryParse(Console.ReadLine(), out modChoice) && modChoice >= 0 && modChoice < amenityInstances.Count)
+                    {
+                        Console.WriteLine($"{amenityInstances[modChoice].Count} x {amenityInstances[modChoice].Building.Name}" +
+                            $"[Coverage: {amenityInstances[modChoice].TotalCurCoverage} / {amenityInstances[modChoice].TotalMaxCoverage} " +
+                            $"| Workers: {amenityInstances[modChoice].Building.CurNumEmp * amenityInstances[modChoice].Count}/{amenityInstances[modChoice].Building.MaxWorkers * amenityInstances[modChoice].Count}]");
+                        Console.Write("\nHow many current number of employees?: ");
+                        int curNumEmp;
+                        if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= amenityInstances[modChoice].Building.MaxWorkers)
+                        {
+                            amenityInstances[modChoice].Building.CurNumEmp = curNumEmp;
+                            Console.WriteLine("Current Number of Employees is updated.");
+                            Console.WriteLine($"{amenityInstances[modChoice].Count} x {amenityInstances[modChoice].Building.Name}" +
+                                $"[Coverage: {amenityInstances[modChoice].TotalCurCoverage} / {amenityInstances[modChoice].TotalMaxCoverage} " +
+                                $"| Workers: {amenityInstances[modChoice].Building.CurNumEmp * amenityInstances[modChoice].Count}/{amenityInstances[modChoice].Building.MaxWorkers * amenityInstances[modChoice].Count}]");
+                        }
+                        else { Console.WriteLine("The number of Employees should be within range of 0 - MaxWorkers.");  }
+                    }
+                    else { Console.WriteLine("Instance Index is out of range.");  }
+                }
+                // back
+                else if (aChoice == 'b') { Console.WriteLine("Going back to Command Loop.");  }
+                // Add new Amenity
+                else if (aChoice == 'a') { AddAmenityInstance(c, districtChoice);  }
+            }
+            else { Console.WriteLine("Invalid action input. Going back to Command Loop.");  }
+        }
+        static void EduAmenCapacityDisplay(City c, MicroDistrict.AmenityCoverage amenityCoverage)
+        {
+            int kindergartenNeeded = (int)Math.Ceiling(c.totalCitizen * CalculationSettings.KindergartenAgePercent / 100);
+            int schoolNeeded = (int)Math.Ceiling(c.totalCitizen * CalculationSettings.SchoolAgePercent / 100);
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Kindergarten: {amenityCoverage.KindergartenCapacity}/{kindergartenNeeded}");
+
+            if (amenityCoverage.KindergartenCapacity < kindergartenNeeded)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"   Deficit: {kindergartenNeeded - amenityCoverage.KindergartenCapacity}");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"   Surplus: {amenityCoverage.KindergartenCapacity - kindergartenNeeded}");
+            }
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"School: {amenityCoverage.SchoolCapacity}/{schoolNeeded}");
+
+            if (amenityCoverage.SchoolCapacity < schoolNeeded)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"   Deficit: {schoolNeeded - amenityCoverage.SchoolCapacity}");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"   Surplus: {amenityCoverage.SchoolCapacity - schoolNeeded}");
+            }
+
+            Console.ResetColor();
+        }
+        static void AmenCapacityDisplay(int currentCapacity, int neededCapacity)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            Console.WriteLine($"Current capacity: {currentCapacity}");
+            Console.WriteLine($"Needed capacity: {neededCapacity}");
+
+            int difference = currentCapacity - neededCapacity;
+            if (difference < 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($" Deficit: {-difference}");
+            }
+            else if (difference > 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($" Surplus: {difference}");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(" Perfect match!");
+            }
+
+            Console.ResetColor();
         }
         static string ReadLineWithCompletion(List<string> availableCommands)
         {

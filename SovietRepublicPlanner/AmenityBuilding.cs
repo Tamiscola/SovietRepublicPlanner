@@ -35,27 +35,6 @@ public class AmenityBuilding : Building
     public int MaxWorkers { get; set; }
     public int CurNumEmp {  get; set; }
     public int MaxVisitors { get; set; }
-    public int CurCoverage => Type switch
-    {
-        AmenityType.Education => EducationLevel switch
-        {
-            EducationSubtype.Kindergarten => (int)(CurCustomCapacity * 15),
-            EducationSubtype.School => (int)(CurCustomCapacity * 20),
-            EducationSubtype.University => (int)(CurCustomCapacity * 20),
-            EducationSubtype.UniversityDorm => CurCustomCapacity,  // Direct housing
-            _ => CurCustomCapacity  // Fallback: no multiplier
-        },
-        AmenityType.Shopping => (int)(CurCustomCapacity * 15),    
-        AmenityType.Pub => (int)(CurCustomCapacity * 100),
-        AmenityType.Healthcare => (int)(CurCustomCapacity * 100),
-        AmenityType.Culture => (int)(CurCustomCapacity * 80),
-        AmenityType.Sports => (int)(CurCustomCapacity * 80),
-        AmenityType.CrimeJustice => (int)(CurCustomCapacity * 100),
-        AmenityType.Fireservice => 0,
-        AmenityType.CityService => 0,
-        AmenityType.Fountain => 0,
-        _ => (int)(CurCustomCapacity * 30)  // Fallback
-    };
     public int MaxCoverage => Type switch
     {
         AmenityType.Education => EducationLevel switch
@@ -77,10 +56,7 @@ public class AmenityBuilding : Building
         AmenityType.Fountain => 0,
         _ => (int)(MaxVisitors * 30)  // Fallback
     };
-    public int CurCustomCapacity => (CurNumEmp * CustomersPerWorker) > MaxVisitors
-        ? MaxVisitors
-        : CurNumEmp * CustomersPerWorker;
-    public int CustomersPerWorker => (int)Math.Floor((double)MaxVisitors / EffectiveWorkersPerShift); // default 100% Productivity of Worker
+    public double CustomersPerWorker => ((double)MaxVisitors / (MaxWorkers / CalculationSettings.ProductivityMultiplier)); // default 100% Productivity of Worker
     public int EffectiveWorkersPerShift => (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier) > MaxWorkers
         ? MaxWorkers
         : (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier); // Practical Number of workers that can reach 100% production
