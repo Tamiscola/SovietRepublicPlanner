@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 
 namespace SovietRepublicPlanner
 {
@@ -2711,8 +2712,8 @@ namespace SovietRepublicPlanner
                     string inputs = string.Join("\n\t", utilityBuildings[utilchoice][i].Inputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
                     string outputs = string.Join("\n\t", utilityBuildings[utilchoice][i].Outputs.Select(ra => $"{ra.Amount} x {ra.Resource.Name}"));
                     Console.WriteLine($"[{i}]: {utilityBuildings[utilchoice][i].Name} " +
-                        $"\n- input: {inputs}" +
-                        $"\n- output: {outputs}\n");
+                        $"\n- Max input: {inputs}" +
+                        $"\n- Max output: {outputs}\n");
                 }
 
                 // Display : util building choice
@@ -2721,8 +2722,16 @@ namespace SovietRepublicPlanner
                 if (int.TryParse(Console.ReadLine(), out bldgchoice) && bldgchoice >= 0 && bldgchoice < utilityBuildings[utilchoice].Count)
                 {
                     ui.Building = utilityBuildings[utilchoice][bldgchoice];
-                    Console.Write($"{utilityBuildings[utilchoice][bldgchoice].Name} has been selected.\nHow many buildings?: ");
 
+                    Console.Write($"{utilityBuildings[utilchoice][bldgchoice].Name} has been selected.\nHow many workers? [0 - {ui.Building.MaxWorkers}]: ");
+                    int curNumEmp;
+
+                    if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= utilityBuildings[utilchoice][bldgchoice].MaxWorkers)
+                    {
+                        ui.CurNumEmp = curNumEmp;
+                    } else { Console.WriteLine($"Invalid Employee number."); return; }
+
+                    Console.Write($"How many buildings?: ");
                     int amount;
 
                     if (int.TryParse(Console.ReadLine(), out amount) && amount > 0)

@@ -21,7 +21,7 @@ public class UtilityPlan
             int r = 0;
             foreach (UtilityInstance instance in Buildings)
             {
-                r += instance.Building.TotalWorkers * instance.Count;
+                r += instance.CurNumEmp * instance.Count;
             }
             return r;
         }

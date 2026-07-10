@@ -20,14 +20,10 @@ public class UtilityBuilding : Building
 
     // Resources & Workers
     public int MaxWorkers;
-    public int CurNumEmp { get; set; }
     public int TotalWorkers => MaxWorkers * 3;
     public List<ResourceAmount> Inputs { get; set; } = new List<ResourceAmount>();
     public List<ResourceAmount> Outputs { get; set; } = new List<ResourceAmount>();
     public double ProdPerWorker => (double)100 / EffectiveWorkersPerShift;
-    public double CurProductivity => (CurNumEmp * ProdPerWorker) > 100
-        ? 100
-        : CurNumEmp * ProdPerWorker;
     public int EffectiveWorkersPerShift => (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier) > MaxWorkers
     ? MaxWorkers
     : (int)Math.Ceiling(MaxWorkers / CalculationSettings.ProductivityMultiplier); // Practical Number of workers that can reach 100% production

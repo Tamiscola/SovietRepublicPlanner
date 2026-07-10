@@ -178,7 +178,7 @@ public partial class City
                         Console.WriteLine($"│ [ {kv.Key} ]");
                         foreach (var ui in kv.Value)
                         {
-                            Console.WriteLine($"│ · {ui.Count} x {ui.Building.Name}");
+                            Console.WriteLine($"│ · {ui.Count} x {ui.Building.Name} [ Workers: {ui.CurNumEmp * ui.Count} / {ui.Building.MaxWorkers * ui.Count}]");
                         }
                     }
                 }
