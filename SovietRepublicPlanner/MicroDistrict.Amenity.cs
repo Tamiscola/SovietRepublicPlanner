@@ -80,16 +80,16 @@ public partial class MicroDistrict
         }
         return coverage;
     }
-    private int CalculateWorkersForPercentageAmenity(AmenityBuilding building, int totalWorkers, int totalCitizens)
+    private int CalculateWorkersForPercentageAmenity(AmenityInstance amenityInstance, int totalWorkers, int totalCitizens)
     {
-        if (!building.UsesPercentageBasedDemand)
+        if (!amenityInstance.Building.UsesPercentageBasedDemand)
         {
             // Should not be called, but fallback
-            return building.EffectiveWorkersPerShift * 3;
+            return amenityInstance.CurNumEmp * 3;
         }
 
         // Determine population served based on building type
-        int populationServed = building.ServesPopulationType switch
+        int populationServed = amenityInstance.Building.ServesPopulationType switch
         {
             PopulationType.Workers => totalWorkers,
             PopulationType.Citizen => totalCitizens,
@@ -100,13 +100,13 @@ public partial class MicroDistrict
         };
 
         // Calculate actual demand
-        double actualDemand = populationServed * building.PopulationPercentageServed;
+        double actualDemand = populationServed * amenityInstance.Building.PopulationPercentageServed;
 
         // How many buildings needed to serve this demand?
-        double buildingsNeeded = actualDemand / (building.MaxVisitors > 0 ? building.MaxVisitors : 1);
+        double buildingsNeeded = actualDemand / (amenityInstance.Building.MaxVisitors > 0 ? amenityInstance.Building.MaxVisitors : 1);
 
         // Workers needed = buildings needed × workers per building × 3 shifts
-        int workersPerBuilding = building.EffectiveWorkersPerShift * 3;
+        int workersPerBuilding = amenityInstance.CurNumEmp * 3;
 
         return (int)Math.Ceiling(buildingsNeeded * workersPerBuilding);
     }

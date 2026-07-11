@@ -36,17 +36,13 @@ public partial class MicroDistrict
             // Add full-capacity amenity workers (non-percentage-based)
             int fullCapacityAmenityWorkers = AmenityBuildings
                 .Where(a => !a.Building.UsesPercentageBasedDemand)
-                .Sum(a => a.Building.CurNumEmp * 3 * a.Count);
+                .Sum(a => a.CurNumEmp * 3 * a.Count);
 
             // Add percentage-based amenity workers
             int percentageBasedWorkers = 0;
             foreach (var amenity in AmenityBuildings.Where(a => a.Building.UsesPercentageBasedDemand))
             {
-                percentageBasedWorkers += CalculateWorkersForPercentageAmenity(
-                    amenity.Building,
-                    baseProductionWorkers,
-                    baseCitizens
-                ) * amenity.Count;
+                percentageBasedWorkers += amenity.CurNumEmp * amenity.Count;
             }
 
             return fullCapacityAmenityWorkers + percentageBasedWorkers;

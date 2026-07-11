@@ -31,6 +31,10 @@ public partial class City
             {
                 foreach (var m in microDistricts) total += m.AmenityWorkers;
             }
+            if (CityAmenityBuildings.Count > 0)
+            {
+                foreach (var a in CityAmenityBuildings) total += a.TotalWorkers;
+            }
             if (UtilityPlans.Count > 0)
             {
                 foreach (var p in UtilityPlans) total += p.TotalWorkers;

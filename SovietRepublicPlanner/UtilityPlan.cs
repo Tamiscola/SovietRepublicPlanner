@@ -21,7 +21,7 @@ public class UtilityPlan
             int r = 0;
             foreach (UtilityInstance instance in Buildings)
             {
-                r += instance.CurNumEmp * instance.Count;
+                r += instance.CurNumEmp * instance.Count * 3;
             }
             return r;
         }

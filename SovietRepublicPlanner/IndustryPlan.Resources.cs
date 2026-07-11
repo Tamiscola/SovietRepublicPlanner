@@ -156,8 +156,8 @@ public partial class IndustryPlan
                 // If the resource is expanded (automatically calculate the right amount)
                 if (expandedResources.Contains(r)) { continue; }
                 // Add the resource to import if it's non-expanded or not locally sourced
-                if (!DictImport.ContainsKey(r)) { DictImport.Add(r, ChosenBuilding.RequiredResources[r]); }
-                else { DictImport[r] += ChosenBuilding.RequiredResources[r]; }
+                if (!DictImport.ContainsKey(r)) { DictImport.Add(r, ChosenBuilding.RequiredResources[r] * ChosenBuilding.Building.CurProductivity / 100); }
+                else { DictImport[r] += ChosenBuilding.RequiredResources[r] * ChosenBuilding.Building.CurProductivity / 100; }
             }
         }
 
@@ -215,8 +215,8 @@ public partial class IndustryPlan
     {
         foreach (var kv in cr.ChosenBuilding.ExpectedOutput)
         {
-            if (!result.ContainsKey(kv.Key)) result.Add(kv.Key, kv.Value);
-            else result[kv.Key] += kv.Value;
+            if (!result.ContainsKey(kv.Key)) result.Add(kv.Key, kv.Value * cr.ChosenBuilding.Building.CurProductivity / 100);
+            else result[kv.Key] += kv.Value * cr.ChosenBuilding.Building.CurProductivity / 100;
         }
         foreach (var sub in cr.SubChains)
             CalculateTotalOutput(result, sub);
