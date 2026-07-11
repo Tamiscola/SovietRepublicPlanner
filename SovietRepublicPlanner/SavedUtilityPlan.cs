@@ -22,6 +22,7 @@ public class SavedUtilityPlan
     public class SavedUtilityInstance
     {
         public string BuildingName { get; set; }
+        public int CurNumEmp { get; set; }
         public int Count { get; set; }
     }
     public class SavedResourceInstance
@@ -38,6 +39,7 @@ public class SavedUtilityPlan
             Buildings = plan.Buildings.Select(su => new UtilityInstance()
             {
                 Building = GameData.AllUtilityBuildings.FirstOrDefault(u => u.Name == su.BuildingName),
+                CurNumEmp = su.CurNumEmp,
                 Count = su.Count
             }).ToList(),
             SupportBuildings = plan.SavedSupportBuildings.Select(ssb => new SupportInstance()

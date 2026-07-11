@@ -177,6 +177,7 @@ public class UtilityPlan
             Buildings = plan.Buildings.Select(b => new SavedUtilityPlan.SavedUtilityInstance()
             {
                 BuildingName = b.Building.Name,
+                CurNumEmp = b.CurNumEmp,
                 Count = b.Count,
             }).ToList(),
             SavedSupportBuildings = plan.SupportBuildings.Select(s => new SavedIndustryPlan.SavedSupportInstance()
@@ -184,7 +185,6 @@ public class UtilityPlan
                 BuildingName = s.Building.Name,
                 Count = s.Count,
             }).ToList(),
-            TotalWorkers = plan.TotalWorkers,
             PowerConsumption = plan.TotalPowerConsumptionMWh,
             WaterConsumption = plan.TotalWaterConsumptionM3,
             SewageProduction = plan.TotalSewageProductionM3,

@@ -92,7 +92,7 @@ public partial class City
 
                             foreach (var kv in categoryGroup.OrderBy(x => x.Building.Name))
                             {
-                                Console.WriteLine($"│   \t· {kv.Count} × {kv.Building.Name} [Coverage: {kv.TotalCurCoverage} / {kv.TotalMaxCoverage} | Workers: {kv.Building.CurNumEmp * kv.Count}/{kv.Building.MaxWorkers * kv.Count}]");
+                                Console.WriteLine($"│   \t· {kv.Count} × {kv.Building.Name} [Coverage: {kv.TotalCurCoverage} / {kv.TotalMaxCoverage} | Workers: {kv.CurNumEmp * kv.Count}/{kv.Building.MaxWorkers * kv.Count}]");
                             }
 
                             // Add warnings for this category
