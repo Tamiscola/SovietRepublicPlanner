@@ -35,8 +35,8 @@ public class UtilityPlan
             {
                 foreach (var o in instance.Building.Inputs)
                 {
-                    if (result.ContainsKey(o.Resource)) result[o.Resource] += o.Amount;
-                    else result.Add(o.Resource, o.Amount);
+                    if (result.ContainsKey(o.Resource)) result[o.Resource] += o.Amount * (instance.CurProductivity / 100);
+                    else result.Add(o.Resource, o.Amount * (instance.CurProductivity / 100));
                 }
             }
             return result;
@@ -51,8 +51,8 @@ public class UtilityPlan
             {
                 foreach (var o in instance.Building.Outputs)
                 {
-                    if (result.ContainsKey(o.Resource)) result[o.Resource] += o.Amount;
-                    else result.Add(o.Resource, o.Amount);
+                    if (result.ContainsKey(o.Resource)) result[o.Resource] += o.Amount * (instance.CurProductivity / 100);
+                    else result.Add(o.Resource, o.Amount * (instance.CurProductivity / 100));
                 }
             }
             return result;
