@@ -78,7 +78,7 @@ public partial class City
                 foreach (var ri in m.ResidentialBuildings)
                 {
                     Console.WriteLine($"│ · {ri.Count} × {ri.Building.Name}");
-                    if (m.AmenityBuildings.Count > 0)
+                    if (m.AmenityBuildings.Count > 0 && m.ResidentialBuildings.IndexOf(ri) == 0)
                     {
                         // Group amenities by AmenityType enum
                         var amenitiesByCategory = m.AmenityBuildings
