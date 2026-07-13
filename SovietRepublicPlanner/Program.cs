@@ -817,6 +817,16 @@ namespace SovietRepublicPlanner
                                 : rootResult.TotalCitizenConsumption[resourcesToExpand[j]];
                         }
                         expandedResult = CalculationEngine.Calculate(expandedResult.TargetResource.Name, expandedResult.TargetAmount);
+
+                        // Set Current Number of Employee
+                        //Console.Write($"How many employees? [0 - {expandedResult.ChosenBuilding.Building.MaxWorkers}]: ");
+                        //int curNumEmp;
+                        //if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= expandedResult.ChosenBuilding.Building.MaxWorkers)
+                        //{
+                        //    expandedResult.ChosenBuilding.Building.CurNumEmp = curNumEmp;
+                        //}
+                        //else { Console.WriteLine("Invalid number of employees."); break; }
+
                         currentResult.SubChains.Add(expandedResult);
                         Console.WriteLine($"{expandedResult.TargetResource.Name} {expandedResult.TargetAmount} has been expanded.");
                         for (int i = 0; i < expandedResult.Buildings.Count; i++)
@@ -912,6 +922,14 @@ namespace SovietRepublicPlanner
                                             {
                                                 expandedResult.ChosenBuilding.UseVehicles = false;
                                                 Console.WriteLine("Workers chosen.");
+
+                                                Console.Write("How many employees?: ");
+                                                int curNumEmp2;
+                                                if (int.TryParse(Console.ReadLine(), out curNumEmp2) && curNumEmp2 >= 0 && curNumEmp2 <= expandedResult.ChosenBuilding.Building.MaxWorkers)
+                                                {
+                                                    expandedResult.ChosenBuilding.Building.CurNumEmp = curNumEmp2;
+                                                }
+                                                else { Console.WriteLine("Invalid number of employees."); break; }
                                             }
                                             break;  // Exit the loop after valid choice
                                         }
@@ -920,6 +938,16 @@ namespace SovietRepublicPlanner
                                             Console.WriteLine("Invalid input. Choose 1 or 2:");
                                             continue;  // Ask again
                                         }
+                                    }
+                                    // Set Current Number of Employees
+                                    else
+                                    {
+                                        Console.Write($"How many employees? [0 - {expandedResult.ChosenBuilding.Building.MaxWorkers}]: ");
+                                        int curNumEmp2;
+                                        if (int.TryParse(Console.ReadLine(), out curNumEmp2) && curNumEmp2 >= 0 && curNumEmp2 <= expandedResult.ChosenBuilding.Building.MaxWorkers)
+                                        {
+                                            expandedResult.ChosenBuilding.Building.CurNumEmp = curNumEmp2;
+                                        } else { Console.WriteLine("Invalid number of employees."); break; }
                                     }
                                     break;
                                 }
@@ -942,6 +970,16 @@ namespace SovietRepublicPlanner
                                 {
                                     expandedResult.ChosenBuilding = expandedResult.Buildings[choiceIndex];
 
+                                    // Set Current Number of Employee
+                                    Console.Write($"How many employees? [0 - {expandedResult.ChosenBuilding.Building.MaxWorkers}]: ");
+                                    int curNumEmp;
+                                    if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= expandedResult.ChosenBuilding.Building.MaxWorkers)
+                                    {
+                                        expandedResult.ChosenBuilding.Building.CurNumEmp = curNumEmp;
+                                    }
+                                    else { Console.WriteLine("Invalid number of employees."); break; }
+
+
                                     // Check if building can use vehicles
                                     if (expandedResult.ChosenBuilding.Building.CanUseVehicles)
                                     {
@@ -963,7 +1001,20 @@ namespace SovietRepublicPlanner
                                                 expandedResult.ChosenBuilding.Building.MaxWorkers = 0;
                                                 Console.WriteLine("Vehicles choosed.");
                                             }
-                                            else { break; Console.WriteLine("Workers choosed."); }
+                                            else { 
+                                                Console.WriteLine("Workers choosed.");
+
+                                                // Set Current Number of Employee
+                                                Console.Write($"How many employees? [0 - {expandedResult.ChosenBuilding.Building.MaxWorkers}]: ");
+                                                int curNumEmp2;
+                                                if (int.TryParse(Console.ReadLine(), out curNumEmp2) && curNumEmp2 >= 0 && curNumEmp2 <= expandedResult.ChosenBuilding.Building.MaxWorkers)
+                                                {
+                                                    expandedResult.ChosenBuilding.Building.CurNumEmp = curNumEmp2;
+                                                }
+                                                else { Console.WriteLine("Invalid number of employees."); break; }
+
+                                                break;
+                                            }
                                         }
                                         else { continue; }
                                     }
@@ -1231,10 +1282,10 @@ namespace SovietRepublicPlanner
                     {
                         string marker = "← ACTIVE";
                         Console.WriteLine($"{i}. {currentCity.industryPlans[i].TargetResource.Name} ({currentCity.industryPlans[i].TargetAmount} t/day) " +
-                            $"{(currentCity.industryPlans[i] == rootResult ? marker : null)}");
+                            $"{(currentCity.industryPlans[i] == currentResult ? marker : null)}");
                     }
                     Console.WriteLine();
-                    Console.Write("[d] Delete a plan  [m] Modify plan  [Index] Display District Info  [Enter] Return to commands\n> ");
+                    Console.Write("[d] Delete a plan  [m] Modify plan  [a] Add IndustryPlan [Index] Display District Info  [Enter] Return to commands\n> ");
                     string input = Console.ReadLine()?.Trim().ToLower();
                     int dChoice;
 
@@ -1328,6 +1379,17 @@ namespace SovietRepublicPlanner
                             else { Console.WriteLine("Invalid input"); continue; }
                         }
                         else { Console.WriteLine("Invalid input"); continue; }
+                    }
+                    else if (input == "a")
+                    {
+                        Console.WriteLine("  'newplan'   - Resource-target mode (Default City)");
+                        Console.WriteLine("  'buildplan' - Building-count mode (Default City)");
+                        List<string> planInputs = new List<string> { "createcity", "switchcity", "newplan", "buildplan", "navigate", "view", "done" };
+                        string planInput = ReadLineWithCompletion(planInputs).ToLower().Trim();
+
+                        if (planInput == "newplan") { CreateNewPlan(); }
+                        else if (planInput == "buildplan") { CreateBuildPlan(); }
+                        else { Console.WriteLine("Invalid command. Try 'newplan' or 'buildplan'"); }
                     }
                     else { Console.WriteLine("invalid input."); continue; } // Return to commands
 
