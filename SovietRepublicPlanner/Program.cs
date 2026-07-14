@@ -1162,13 +1162,13 @@ namespace SovietRepublicPlanner
                                 // Modification
                                 else
                                 {
-                                    for (int i2 = 0; i2 < currentCity.UtilityPlans[pc].Buildings.Count; i2++) 
+                                    for (int i2 = 0; i2 < currentCity.UtilityPlans[pc].Buildings.Count; i2++)
                                     {
-                                        Console.WriteLine($"[{i2}]: {currentCity.UtilityPlans[pc].Buildings[i2].Building.Name}"); 
+                                        Console.WriteLine($"[{i2}]: {currentCity.UtilityPlans[pc].Buildings[i2].Building.Name}");
                                     }
-                                    Console.Write($"Which action do you want to do on these instances? (a : add | d : delete): ");
+                                    Console.Write($"Which action do you want to do on these instances? (a : add | m : change number of employees | d : delete): ");
 
-                                    if (char.TryParse(Console.ReadLine(), out actionChoice) && (actionChoice == 'a' || actionChoice == 'd'))
+                                    if (char.TryParse(Console.ReadLine(), out actionChoice) && (actionChoice == 'a' || actionChoice == 'd' || actionChoice == 'm'))
                                     {
                                         // Addition
                                         if (actionChoice == 'a')
@@ -1190,6 +1190,28 @@ namespace SovietRepublicPlanner
                                                 Console.WriteLine("Invalid input. Going back to Command Loop");
                                                 continue;
                                             }
+                                        }
+                                        else if (actionChoice == 'm')
+                                        {
+                                            int insChoice;
+                                            int curNumEmp;
+                                            UtilityInstance chosenIns = new UtilityInstance();
+
+                                            // Choose Instance
+                                            Console.Write($"Choose the instance : ");
+                                            if (int.TryParse(Console.ReadLine(), out insChoice) && insChoice >= 0 && insChoice <= currentCity.UtilityPlans[pc].Buildings.Count )
+                                            {
+                                                chosenIns = currentCity.UtilityPlans[pc].Buildings[insChoice];
+                                                Console.WriteLine($"Chosen Instance : {chosenIns.Building.Name} ({chosenIns.CurNumEmp} / {chosenIns.Building.MaxWorkers})");
+                                            } else { Console.WriteLine("Invalid UtilityInstance number."); continue; }
+
+                                            Console.Write($"How many employees for {chosenIns.Building.Name}?: ");
+                                            if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= chosenIns.Building.MaxWorkers)
+                                            {
+                                                chosenIns.CurNumEmp = curNumEmp;
+                                                Console.WriteLine($"{chosenIns.Building.Name} : {chosenIns.CurNumEmp} / {chosenIns.Building.MaxWorkers} set!");
+                                            }
+                                            else { Console.WriteLine("Invalid input"); continue; }
                                         }
                                     } else { Console.WriteLine("Invalid action choice. Going back to Command Loop"); continue; }
                                 }
