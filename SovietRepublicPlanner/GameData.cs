@@ -4232,6 +4232,7 @@ class GameData
             WaterPerDay = 2.16,
             HeatTankM3 = 3,
             Quality = 80,
+            Area = 115.5,
             WorkDays = 500,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4249,6 +4250,7 @@ class GameData
             WaterPerDay = 1.62,
             HeatTankM3 = 2.52,
             Quality = 85,
+            Area = 132,
             WorkDays = 535,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4266,6 +4268,7 @@ class GameData
             WaterPerDay = 0.45,
             HeatTankM3 = 0.7,
             Quality = 85,
+            Area = 66,
             WorkDays = 158,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4283,6 +4286,7 @@ class GameData
             WaterPerDay = 0.81,
             HeatTankM3 = 1.26,
             Quality = 80,
+            Area = 66,
             WorkDays = 235,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4300,6 +4304,7 @@ class GameData
             WaterPerDay = 0.90,
             HeatTankM3 = 1.4,
             Quality = 85,
+            Area = 115.5,
             WorkDays = 305,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4317,6 +4322,7 @@ class GameData
             WaterPerDay = 2.16,
             HeatTankM3 = 3,
             Quality = 80,
+            Area = 115.5,
             WorkDays = 478,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4334,6 +4340,7 @@ class GameData
             WaterPerDay = 0.90,
             HeatTankM3 = 1.4,
             Quality = 60,
+            Area = 148.5,
             WorkDays = 106,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4351,6 +4358,7 @@ class GameData
             WaterPerDay = 1.44,
             HeatTankM3 = 2.24,
             Quality = 80,
+            Area = 88,
             WorkDays = 324,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4368,6 +4376,7 @@ class GameData
             WaterPerDay = 1.80,
             HeatTankM3 = 2.80,
             Quality = 85,
+            Area = 115.5,
             WorkDays = 341,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4385,6 +4394,7 @@ class GameData
             WaterPerDay = 1.31,
             HeatTankM3 = 2.03,
             Quality = 80,
+            Area = 132,
             WorkDays = 246,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4403,6 +4413,7 @@ class GameData
             WaterPerDay = 1.35,
             HeatTankM3 = 2.10,
             Quality = 63,
+            Area = 115.5,
             WorkDays = 227,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4421,6 +4432,7 @@ class GameData
             WaterPerDay = 1.89,
             HeatTankM3 = 2.94,
             Quality = 83,
+            Area = 132,
             WorkDays = 364,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4438,6 +4450,7 @@ class GameData
             WaterPerDay = 2.16,
             HeatTankM3 = 3,
             Quality = 82,
+            Area = 110,
             WorkDays = 320,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4455,6 +4468,7 @@ class GameData
             WaterPerDay = 0.90,
             HeatTankM3 = 1.40,
             Quality = 55,
+            Area = 88,
             WorkDays = 129,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4473,6 +4487,7 @@ class GameData
             WaterPerDay = 1.94,
             HeatTankM3 = 3,
             Quality = 80,
+            Area = 132,
             WorkDays = 424,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4491,6 +4506,7 @@ class GameData
             WaterPerDay = 0.90,
             HeatTankM3 = 1.40,
             Quality = 55,
+            Area = 99,
             WorkDays = 137,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4509,6 +4525,7 @@ class GameData
             WaterPerDay = 1.31,
             HeatTankM3 = 2.03,
             Quality = 84,
+            Area = 88,
             WorkDays = 262,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4528,6 +4545,7 @@ class GameData
             WaterPerDay = 2.16,
             HeatTankM3 = 3,
             Quality = 84,
+            Area = 110,
             WorkDays = 376,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4547,6 +4565,7 @@ class GameData
             WaterPerDay = 1.94,
             HeatTankM3 = 3,
             Quality = 83,
+            Area = 165,
             WorkDays = 374,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4564,6 +4583,7 @@ class GameData
             WaterPerDay = 1.89,
             HeatTankM3 = 2.94,
             Quality = 83,
+            Area = 132,
             WorkDays = 404,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4581,6 +4601,7 @@ class GameData
             WaterPerDay = 1.80,
             HeatTankM3 = 2.80,
             Quality = 84,
+            Area = 110,
             WorkDays = 336,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4600,6 +4621,7 @@ class GameData
             WaterPerDay = 1.35,
             HeatTankM3 = 2.10,
             Quality = 84,
+            Area = 88,
             WorkDays = 266,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4619,6 +4641,7 @@ class GameData
             WaterPerDay = 0.90,
             HeatTankM3 = 1.40,
             Quality = 85,
+            Area = 115.5,
             WorkDays = 322,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4636,6 +4659,7 @@ class GameData
             WaterPerDay = 1.80,
             HeatTankM3 = 2.80,
             Quality = 84,
+            Area = 110,
             WorkDays = 413,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4655,6 +4679,7 @@ class GameData
             WaterPerDay = 0.45,
             HeatTankM3 = 0.70,
             Quality = 89,
+            Area = 49.5,
             WorkDays = 191,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4673,6 +4698,7 @@ class GameData
             WaterPerDay = 1.22,
             HeatTankM3 = 1.89,
             Quality = 91,
+            Area = 110,
             WorkDays = 271,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4684,12 +4710,13 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (30w, 1.35m³/d, 77%)",
-            WorkerCapacity = 30,
+            Name = "Flats - brick (40w, 1.35m³/d, 75%)",
+            WorkerCapacity = 40,
             PowerConsumptionMWh = 3.0,
-            WaterPerDay = 1.35,
-            HeatTankM3 = 0,
-            Quality = 77,
+            WaterPerDay = 1.80,
+            HeatTankM3 = 2.80,
+            Quality = 75,
+            Area = 148.5,
             WorkDays = 302,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4708,6 +4735,7 @@ class GameData
             WaterPerDay = 1.35,
             HeatTankM3 = 2.10,
             Quality = 80,
+            Area = 110,
             WorkDays = 326,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4731,6 +4759,7 @@ class GameData
             WaterPerDay = 4.05,
             HeatTankM3 = 6,
             Quality = 80,
+            Area = 181.5,
             WorkDays = 845,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4748,6 +4777,7 @@ class GameData
             WaterPerDay = 2.70,
             HeatTankM3 = 4,
             Quality = 80,
+            Area = 115.5,
             WorkDays = 613,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4765,6 +4795,7 @@ class GameData
             WaterPerDay = 5.18,
             HeatTankM3 = 8,
             Quality = 80,
+            Area = 286,
             WorkDays = 1069,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4782,6 +4813,7 @@ class GameData
             WaterPerDay = 2.52,
             HeatTankM3 = 3,
             Quality = 85,
+            Area = 165,
             WorkDays = 769,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4799,6 +4831,7 @@ class GameData
             WaterPerDay = 2.93,
             HeatTankM3 = 4,
             Quality = 80,
+            Area = 165,
             WorkDays = 714,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4816,6 +4849,7 @@ class GameData
             WaterPerDay = 3.24,
             HeatTankM3 = 5,
             Quality = 80,
+            Area = 165,
             WorkDays = 695,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4827,12 +4861,13 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (50w, 2.25m³/d, 85%)",
+            Name = "Flats - 'L shape' brick (50w, 2.25m³/d, 85%)",
             WorkerCapacity = 50,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.25,
             HeatTankM3 = 3,
             Quality = 85,
+            Area = 269.5,
             WorkDays = 673,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4851,6 +4886,7 @@ class GameData
             WaterPerDay = 2.25,
             HeatTankM3 = 3,
             Quality = 85,
+            Area = 220,
             WorkDays = 713,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4868,6 +4904,7 @@ class GameData
             WaterPerDay = 2.93,
             HeatTankM3 = 4,
             Quality = 80,
+            Area = 181.5,
             WorkDays = 728,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4885,6 +4922,7 @@ class GameData
             WaterPerDay = 2.70,
             HeatTankM3 = 4,
             Quality = 80,
+            Area = 181.5,
             WorkDays = 691,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4902,6 +4940,7 @@ class GameData
             WaterPerDay = 5.31,
             HeatTankM3 = 8,
             Quality = 70,
+            Area = 231,
             WorkDays = 635,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4921,6 +4960,7 @@ class GameData
             WaterPerDay = 2.48,
             HeatTankM3 = 3,
             Quality = 80,
+            Area = 220,
             WorkDays = 569,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4938,6 +4978,7 @@ class GameData
             WaterPerDay = 4.05,
             HeatTankM3 = 6,
             Quality = 80,
+            Area = 231,
             WorkDays = 942,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4955,6 +4996,7 @@ class GameData
             WaterPerDay = 3.60,
             HeatTankM3 = 5,
             Quality = 85,
+            Area = 220,
             WorkDays = 862,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4972,6 +5014,7 @@ class GameData
             WaterPerDay = 3.38,
             HeatTankM3 = 5,
             Quality = 80,
+            Area = 302.5,
             WorkDays = 862,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -4989,6 +5032,7 @@ class GameData
             WaterPerDay = 2.79,
             HeatTankM3 = 4,
             Quality = 86,
+            Area = 154,
             WorkDays = 469,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5006,6 +5050,7 @@ class GameData
             WaterPerDay = 2.84,
             HeatTankM3 = 4,
             Quality = 86,
+            Area = 132,
             WorkDays = 535,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5026,6 +5071,7 @@ class GameData
             WaterPerDay = 3.06,
             HeatTankM3 = 4,
             Quality = 85,
+            Area = 198,
             WorkDays = 569,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5043,6 +5089,7 @@ class GameData
             WaterPerDay = 3.24,
             HeatTankM3 = 5,
             Quality = 75,
+            Area = 165,
             WorkDays = 515,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5060,6 +5107,7 @@ class GameData
             WaterPerDay = 3.69,
             HeatTankM3 = 5,
             Quality = 87,
+            Area = 242,
             WorkDays = 642,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5077,6 +5125,7 @@ class GameData
             WaterPerDay = 3.60,
             HeatTankM3 = 5,
             Quality = 87,
+            Area = 242,
             WorkDays = 617,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5094,6 +5143,7 @@ class GameData
             WaterPerDay = 3.83,
             HeatTankM3 = 5,
             Quality = 80,
+            Area = 330,
             WorkDays = 603,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5112,6 +5162,7 @@ class GameData
             WaterPerDay = 2.93,
             HeatTankM3 = 4,
             Quality = 87,
+            Area = 198,
             WorkDays = 529,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5129,6 +5180,7 @@ class GameData
             WaterPerDay = 2.61,
             HeatTankM3 = 4,
             Quality = 80,
+            Area = 220,
             WorkDays = 361,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5147,6 +5199,7 @@ class GameData
             WaterPerDay = 4.86,
             HeatTankM3 = 7,
             Quality = 84,
+            Area = 165,
             WorkDays = 909,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5167,6 +5220,7 @@ class GameData
             WaterPerDay = 3.65,
             HeatTankM3 = 5,
             Quality = 84,
+            Area = 264,
             WorkDays = 676,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5186,6 +5240,7 @@ class GameData
             WaterPerDay = 3.60,
             HeatTankM3 = 5,
             Quality = 70,
+            Area = 165,
             WorkDays = 464,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5205,6 +5260,7 @@ class GameData
             WaterPerDay = 2.48,
             HeatTankM3 = 3,
             Quality = 70,
+            Area = 115.5,
             WorkDays = 329,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5224,6 +5280,7 @@ class GameData
             WaterPerDay = 3.33,
             HeatTankM3 = 5,
             Quality = 80,
+            Area = 110,
             WorkDays = 483,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5244,6 +5301,7 @@ class GameData
             WaterPerDay = 3.02,
             HeatTankM3 = 4,
             Quality = 84,
+            Area = 110,
             WorkDays = 557,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5264,6 +5322,7 @@ class GameData
             WaterPerDay = 3.83,
             HeatTankM3 = 5,
             Quality = 80,
+            Area = 132,
             WorkDays = 556,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5284,6 +5343,7 @@ class GameData
             WaterPerDay = 3.33,
             HeatTankM3 = 5,
             Quality = 84,
+            Area = 220,
             WorkDays = 589,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5297,12 +5357,13 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (50w, 2.25m³/d, 70%)",
+            Name = "Flats - brick (50w, 2.25m³/d, 78%)",
             WorkerCapacity = 50,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.25,
             HeatTankM3 = 3,
             Quality = 78,
+            Area = 192.5,
             WorkDays = 432,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5321,6 +5382,7 @@ class GameData
             WaterPerDay = 5.18,
             HeatTankM3 = 8,
             Quality = 60,
+            Area = 330,
             WorkDays = 510,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5338,6 +5400,7 @@ class GameData
             WaterPerDay = 2.34,
             HeatTankM3 = 3,
             Quality = 84,
+            Area = 154,
             WorkDays = 430,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5351,12 +5414,13 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (110w, 4.95m³/d, 87%)",
+            Name = "Flats - brick (110w, 4.95m³/d, 82%)",
             WorkerCapacity = 110,
             PowerConsumptionMWh = 6.6,
             WaterPerDay = 4.95,
             HeatTankM3 = 7,
-            Quality = 87,
+            Quality = 82,
+            Area = 429,
             WorkDays = 1200,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5375,6 +5439,7 @@ class GameData
             WaterPerDay = 4.32,
             HeatTankM3 = 6,
             Quality = 84,
+            Area = 165,
             WorkDays = 769,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5395,6 +5460,7 @@ class GameData
             WaterPerDay = 2.84,
             HeatTankM3 = 4,
             Quality = 84,
+            Area = 132,
             WorkDays = 532,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5415,6 +5481,7 @@ class GameData
             WaterPerDay = 3.92,
             HeatTankM3 = 6,
             Quality = 94,
+            Area = 110,
             WorkDays = 658,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5432,6 +5499,7 @@ class GameData
             WaterPerDay = 4.73,
             HeatTankM3 = 7,
             Quality = 91,
+            Area = 220,
             WorkDays = 799,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5449,6 +5517,7 @@ class GameData
             WaterPerDay = 2.88,
             HeatTankM3 = 4,
             Quality = 84,
+            Area = 110,
             WorkDays = 504,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5469,6 +5538,7 @@ class GameData
             WaterPerDay = 2.48,
             HeatTankM3 = 3,
             Quality = 84,
+            Area = 154,
             WorkDays = 470,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
