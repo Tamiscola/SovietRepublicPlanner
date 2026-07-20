@@ -14,6 +14,12 @@
     public double PerCapitalConsumption { get; set; } = 0;  // t/citizen/day
     public bool IsConsumable { get; set; } = false;
 
+    // Price
+    public double ImportPriceRUB { get; set; }
+    public double ExportPriceRUB { get; set; }
+    public double ImportPriceUSD { get; set; }
+    public double ExportPriceUSD { get; set; }
+
     // Infrastructure Requirements
     public bool RequiresLiquidInfrastructure { get; set; } = false;
     public bool RequiresBulkHandling { get; set; } = false;

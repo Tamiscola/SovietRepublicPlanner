@@ -67,7 +67,7 @@ class GameData
     // Bulk Raw Materials
     public static Resource CoalResource = new Resource("Coal", 1, true, false) { RequiresBulkHandling = true };
     public static Resource CoalOreResource = new Resource("Coal Ore", 1, true, false) { RequiresBulkHandling = true };
-    public static Resource GravelResource = new Resource("Gravel", 1, true, false) { RequiresBulkHandling = true };
+    public static Resource GravelResource = new Resource("Gravel", 1, true, false) { RequiresBulkHandling = true, ExportPriceRUB = 6.93, ImportPriceRUB = 7.66, ExportPriceUSD = 8.67, ImportPriceUSD = 9.58};
     public static Resource QuarriedStoneResource = new Resource("Quarried Stone", 1, true, false) { RequiresBulkHandling = true };
     public static Resource IronResource = new Resource("Iron", 1, true, false) { RequiresBulkHandling = true };
     public static Resource IronOreResource = new Resource("Iron Ore", 1, true, false) { RequiresBulkHandling = true };
@@ -75,14 +75,14 @@ class GameData
     public static Resource BauxiteResource = new Resource("Bauxite", 2, true, false) { RequiresBulkHandling = true };
 
     // Industrial Materials
-    public static Resource CementResource = new Resource("Cement", 0, false, false) { RequiresDryBulkHandling = true };
+    public static Resource CementResource = new Resource("Cement", 0, false, false) { RequiresDryBulkHandling = true, ExportPriceRUB = 25.17, ImportPriceRUB = 27.82, ExportPriceUSD = 31.24, ImportPriceUSD = 34.53 };
     public static Resource AluminumOxideResource = new Resource("Aluminum Oxide", 3, false, false) { RequiresDryBulkHandling = true };
-    public static Resource ConcreteResource = new Resource("Concrete", 0, false, false) {};
-    public static Resource BricksResource = new Resource("Bricks", 0, false, false) { RequiresSolidHandling = true };
-    public static Resource AsphaltResource = new Resource("Asphalt", 0, false, false) {};
-    public static Resource PrefabPanelsResource = new Resource("Prefab Panels", 0, false, false) { RequiresSolidHandling = true };
-    public static Resource BoardsResource = new Resource("Boards", 1, false, false) { RequiresSolidHandling = true };
-    public static Resource SteelResource = new Resource("Steel", 1, true, false) { RequiresSolidHandling = true };
+    public static Resource ConcreteResource = new Resource("Concrete", 0, false, false) { ExportPriceRUB = 14.25, ImportPriceRUB = 15.75, ExportPriceUSD = 18.17, ImportPriceUSD = 20.08 };
+    public static Resource BricksResource = new Resource("Bricks", 0, false, false) { RequiresSolidHandling = true, ExportPriceRUB = 21.57, ImportPriceRUB = 23.84, ExportPriceUSD = 26.81, ImportPriceUSD = 29.63 };
+    public static Resource AsphaltResource = new Resource("Asphalt", 0, false, false) {RequiresSolidHandling = true, ExportPriceRUB = 31.93, ImportPriceRUB = 35.29, ExportPriceUSD = 36.23, ImportPriceUSD = 40.04};
+    public static Resource PrefabPanelsResource = new Resource("Prefab Panels", 0, false, false) { RequiresSolidHandling = true, ExportPriceRUB = 17.52, ImportPriceRUB = 19.37, ExportPriceUSD = 22.53, ImportPriceUSD = 24.90 };
+    public static Resource BoardsResource = new Resource("Boards", 1, false, false) { RequiresSolidHandling = true, ExportPriceRUB = 12.22, ImportPriceRUB = 13.50, ExportPriceUSD = 13.23, ImportPriceUSD = 14.62 };
+    public static Resource SteelResource = new Resource("Steel", 1, true, false) { RequiresSolidHandling = true, ExportPriceRUB = 288.55, ImportPriceRUB = 318.92, ExportPriceUSD = 344.69, ImportPriceUSD = 380.98 };
     public static Resource AluminumResource = new Resource("Aluminum", 4, true, false) { RequiresSolidHandling = true }; 
 
     // Utility resources (dual nature: input + service)
@@ -5563,6 +5563,7 @@ class GameData
             WaterPerDay = 9.00,
             HeatTankM3 = 14, // Not shown in screenshot
             Quality = 75,
+            Area = 330,
             WorkDays = 1908,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5580,6 +5581,7 @@ class GameData
             WaterPerDay = 6.75,
             HeatTankM3 = 10,
             Quality = 75,
+            Area = 247.5,
             WorkDays = 1481,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5597,6 +5599,7 @@ class GameData
             WaterPerDay = 7.07,
             HeatTankM3 = 10.00,
             Quality = 80,
+            Area = 495,
             WorkDays = 1382,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5615,6 +5618,7 @@ class GameData
             WaterPerDay = 6.53,
             HeatTankM3 = 10,
             Quality = 80,
+            Area = 462,
             WorkDays = 1600,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5632,6 +5636,7 @@ class GameData
             WaterPerDay = 5.63,
             HeatTankM3 = 8,
             Quality = 80,
+            Area = 264,
             WorkDays = 1257,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5649,6 +5654,7 @@ class GameData
             WaterPerDay = 5.40,
             HeatTankM3 = 8,
             Quality = 80,
+            Area = 231,
             WorkDays = 1077,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5666,6 +5672,7 @@ class GameData
             WaterPerDay = 5.63,
             HeatTankM3 = 8,
             Quality = 80,
+            Area = 181.5,
             WorkDays = 1233,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5683,6 +5690,7 @@ class GameData
             WaterPerDay = 26.69,
             HeatTankM3 = 41,
             Quality = 90,
+            Area = 352,
             WorkDays = 4323,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5700,6 +5708,7 @@ class GameData
             WaterPerDay = 6.53,
             HeatTankM3 = 10,
             Quality = 72,
+            Area = 137.5,
             WorkDays = 723,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5717,6 +5726,7 @@ class GameData
             WaterPerDay = 6.75,
             HeatTankM3 = 10,
             Quality = 80,
+            Area = 396,
             WorkDays = 1307,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5735,6 +5745,7 @@ class GameData
             WaterPerDay = 9.45,
             HeatTankM3 = 14,
             Quality = 80,
+            Area = 462,
             WorkDays = 2005,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5752,6 +5763,7 @@ class GameData
             WaterPerDay = 7.20,
             HeatTankM3 = 11,
             Quality = 76,
+            Area = 165,
             WorkDays = 877,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5769,6 +5781,7 @@ class GameData
             WaterPerDay = 5.40,
             HeatTankM3 = 8,
             Quality = 86,
+            Area = 330,
             WorkDays = 901,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5786,6 +5799,7 @@ class GameData
             WaterPerDay = 7.43,
             HeatTankM3 = 11,
             Quality = 78,
+            Area = 165,
             WorkDays = 895,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5803,6 +5817,7 @@ class GameData
             WaterPerDay = 9.45,
             HeatTankM3 = 14,
             Quality = 70,
+            Area = 231,
             WorkDays = 1110,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5821,6 +5836,7 @@ class GameData
             WaterPerDay = 8.10,
             HeatTankM3 = 12,
             Quality = 75,
+            Area = 220,
             WorkDays = 962,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5838,6 +5854,7 @@ class GameData
             WaterPerDay = 7.20,
             HeatTankM3 = 11,
             Quality = 70,
+            Area = 330,
             WorkDays = 921,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5857,6 +5874,7 @@ class GameData
             WaterPerDay = 12.92,
             HeatTankM3 = 20,
             Quality = 80,
+            Area = 528,
             WorkDays = 2029,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5877,6 +5895,7 @@ class GameData
             WaterPerDay = 6.30,
             HeatTankM3 = 9,
             Quality = 70,
+            Area = 148.5,
             WorkDays = 719,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5896,6 +5915,7 @@ class GameData
             WaterPerDay = 6.62,
             HeatTankM3 = 10,
             Quality = 80,
+            Area = 110,
             WorkDays = 1059,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5916,6 +5936,7 @@ class GameData
             WaterPerDay = 11.03,
             HeatTankM3 = 17,
             Quality = 80,
+            Area = 550,
             WorkDays = 1650,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5936,6 +5957,7 @@ class GameData
             WaterPerDay = 7.52,
             HeatTankM3 = 11,
             Quality = 70,
+            Area = 181.5,
             WorkDays = 914,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
@@ -5958,6 +5980,7 @@ class GameData
             Name = "Shopping center",
             Type = AmenityType.Shopping,
             MaxWorkers = 45,
+            Area = 654.5,
             PowerConsumptionMWh = 5.6,
             WaterConsumptionM3 = 0.90,
             HotWaterTankM3 = 22,
@@ -5987,6 +6010,7 @@ class GameData
             Name = "Small shopping center (180 visitors)",
             Type = AmenityType.Shopping,
             MaxWorkers = 30,
+            Area = 396,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.60,
             HotWaterTankM3 = 10,
@@ -6016,6 +6040,7 @@ class GameData
             Name = "Small shopping center (150 visitors, 829 WorkDays)",
             Type = AmenityType.Shopping,
             MaxWorkers = 25,
+            Area = 385,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
@@ -6045,6 +6070,7 @@ class GameData
             Name = "Small shopping center (150 visitors, 579 WorkDays)",
             Type = AmenityType.Shopping,
             MaxWorkers = 25,
+            Area = 264,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 9,
@@ -6074,6 +6100,7 @@ class GameData
             Name = "Grocery store",
             Type = AmenityType.Shopping,
             MaxWorkers = 15,
+            Area = 137.5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
@@ -6084,18 +6111,18 @@ class GameData
             AttractionScore = null,
             ProductsOffered =
             {
-              FoodResource, ClothesResource, ElectronicsResource, MeatResource
+              FoodResource, MeatResource
             },
             ServesPopulationType = PopulationType.Workers,
-            WorkDays = 189,  
+            WorkDays = 321,  
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
-                {GravelResource, 6.6 },
-                {BricksResource, 6.6 },
-                {SteelResource, 1.5 },
-                {ConcreteResource, 11 },
-                {AsphaltResource, 5.2 },
-                {BoardsResource, 2.2 },
+                {GravelResource, 9.4 },
+                {BricksResource, 13 },
+                {SteelResource, 3.0 },
+                {ConcreteResource, 18 },
+                {AsphaltResource, 7.5 },
+                {BoardsResource, 4.4 },
             }
         },
         new AmenityBuilding
@@ -6103,6 +6130,7 @@ class GameData
             Name = "Small store",
             Type = AmenityType.Shopping,
             MaxWorkers = 15,
+            Area = 137.5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
             HotWaterTankM3 = 6,
@@ -6119,12 +6147,12 @@ class GameData
             WorkDays = 320,
             ConstructionMaterials = new Dictionary<Resource, double>()
             {
-                {ConcreteResource, 11},
-                {GravelResource, 6.6},
-                {AsphaltResource, 5.2},
-                {BricksResource, 6.6},
-                {BoardsResource, 2.2},
-                {SteelResource, 1.5},
+                {ConcreteResource, 18},
+                {GravelResource, 9.3},
+                {AsphaltResource, 7.5},
+                {BricksResource, 13},
+                {BoardsResource, 4.4},
+                {SteelResource, 3.0},
             }
         },
         new AmenityBuilding
@@ -6132,6 +6160,7 @@ class GameData
             Name = "Grocery kiosk",
             Type = AmenityType.Shopping,
             MaxWorkers = 1,
+            Area = 22,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.02,
             HotWaterTankM3 = 0.56,
@@ -6145,14 +6174,21 @@ class GameData
               FoodResource, MeatResource
             },
             ServesPopulationType = PopulationType.Workers,
-            WorkDays = 0,  // Buy with rubles only
+            WorkDays = 17,  // Buy with rubles only
             ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 0.47 },
+                {GravelResource, 0.36 },
+                {AsphaltResource, 0.29 },
+                {SteelResource, 1.0 }
+            }
         },
         new AmenityBuilding
         {
             Name = "\"Panorama\" (restaurant)",
             Type = AmenityType.Shopping,
             MaxWorkers = 25,
+            Area = 423.5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
             HotWaterTankM3 = 4,
@@ -8756,4 +8792,12 @@ class GameData
         SmallWaterTreatment, BigWaterTreatment, BigWaterWell, SmallWaterWell, SurfaceWaterIntake,
         SmallSewageTreatment, BigSewageTreatment,HeatingPlant, SmallHeatingPlant,
     };
+
+    // Precomputed Properties
+    public static double MaxResPower = AllResidentialBuildings.Select(b => b.PowerConsumptionMWh).Max();
+    public static double MinResPower = AllResidentialBuildings.Select(b => b.PowerConsumptionMWh).Min();
+    public static double MaxResWater = AllResidentialBuildings.Select(b => b.WaterPerDay).Max();
+    public static double MinResWater = AllResidentialBuildings.Select(b => b.WaterPerDay).Max();
+    public static double MaxResHeat = AllResidentialBuildings.Select(b => b.HeatTankM3).Max();
+    public static double MinResHeat = AllResidentialBuildings.Select(b => b.HeatTankM3).Max();
 }
