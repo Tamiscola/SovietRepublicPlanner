@@ -2551,8 +2551,17 @@ namespace SovietRepublicPlanner
                     // [3]: Pareto-Front Algorithm(Optimization)
                     else
                     {
-                        List<ResidentialBuilding> optimized = CalculationEngine.GetParetoFrontResidential(GameData.AllResidentialBuildings);
+                        List<ResidentialBuilding> paretoFront = CalculationEngine.GetParetoFrontResidential(GameData.AllResidentialBuildings);
 
+                        // Greedy Allocation
+                        Dictionary<ResidentialBuilding, int> allocated = CalculationEngine.AllocateHousing(neededHousing, paretoFront);
+                        Console.WriteLine($"\nOptimized Residential: ");
+                        foreach (var b in  allocated)
+                        {
+                            Console.WriteLine($"[{b.Key.Name}]: {b.Value}");
+                        }
+
+                        allValid = true;
                     }
                 }
                 else { Console.Write("Invalid Input. "); continue; }

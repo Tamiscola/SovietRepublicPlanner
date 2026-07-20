@@ -293,4 +293,29 @@
 
         return result;
     }
+    public static Dictionary<ResidentialBuilding, int> AllocateHousing(int neededCapacity, List<ResidentialBuilding> paretoFront)
+    {
+        List<ResidentialBuilding> sorted = paretoFront.OrderByDescending(b => b.WorkersPerArea).ToList();
+        Dictionary<ResidentialBuilding, int> result = new Dictionary<ResidentialBuilding, int>();
+        int remaining = neededCapacity;
+
+        foreach (var b in sorted)
+        {
+            if (remaining <= 0) break;
+            int maxUseful = remaining / b.WorkerCapacity;
+            if (maxUseful > 0)
+            {
+                result[b] = maxUseful;
+                remaining -= maxUseful * b.WorkerCapacity;
+            }
+        }
+
+        if (remaining > 0)
+        {
+            var smallest = sorted.MinBy(b => b.WorkerCapacity);
+            result[smallest] += (int)Math.Ceiling((double)remaining / smallest.WorkerCapacity);
+        }
+
+        return result;
+    }
 }
