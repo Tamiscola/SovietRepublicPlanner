@@ -2551,10 +2551,40 @@ namespace SovietRepublicPlanner
                     // [3]: Pareto-Front Algorithm(Optimization)
                     else
                     {
+                        // Display
+                        Func<ResidentialBuilding, double> priorityKey = null;
+                        int priorChoice;
+                        Console.WriteLine("\nChoose the priority to optimize: \n[0]: Balanced (utility cost)" +
+                            "\n[1]: Density (WorkersPerArea)\n[2]: Quality\n[3]: Heat-economic (for Siberia-type maps)\n[4]: Construction Cost\n[5]: Construction Period");
+                        if (int.TryParse(Console.ReadLine(), out priorChoice) && priorChoice >= 0 && priorChoice <= 5)
+                        {
+                            switch (priorChoice)
+                            {
+                                case 0:
+                                    priorityKey = b => -CalculationEngine.CalculateUtilityCost(b);
+                                    break;
+                                case 1:
+                                    priorityKey = b => b.WorkersPerArea;
+                                    break;
+                                case 2:
+                                    priorityKey = b => b.Quality;
+                                    break;
+                                case 3:
+                                    priorityKey = b => -b.HeatTankM3;
+                                    break;
+                                case 4:
+                                    priorityKey = b => -b.ConstructionCostRUB;
+                                    break;
+                                case 5:
+                                    priorityKey = b => -b.WorkDays;
+                                    break;
+                            }
+                        } else { Console.WriteLine("Invalid Priority option."); continue; }
+
                         List<ResidentialBuilding> paretoFront = CalculationEngine.GetParetoFrontResidential(GameData.AllResidentialBuildings);
 
                         // Greedy Allocation
-                        Dictionary<ResidentialBuilding, int> allocated = CalculationEngine.AllocateHousing(neededHousing, paretoFront);
+                        Dictionary<ResidentialBuilding, int> allocated = CalculationEngine.AllocateHousing(neededHousing, paretoFront, priorityKey);
                         Console.WriteLine($"\nOptimized Residential: ");
                         foreach (var b in  allocated)
                         {

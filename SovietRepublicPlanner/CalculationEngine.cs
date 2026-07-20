@@ -277,6 +277,28 @@
         }
         return result;
     }
+    static public double CalculateUtilityCost(ResidentialBuilding building)
+    {
+        // Power
+        double Denom = GameData.MaxResPower - GameData.MinResPower;
+        double powerNorm;
+        if (Denom == 0) powerNorm = 0;
+        else powerNorm = (building.PowerConsumptionMWh - GameData.MinResPower) / Denom;
+
+        // Water
+        Denom = GameData.MaxResWater - GameData.MinResWater;
+        double waterNorm;
+        if (Denom == 0) waterNorm = 0;
+        else waterNorm = (building.WaterPerDay - GameData.MinResWater) / Denom;
+
+        // Heat
+        Denom = GameData.MaxResHeat - GameData.MinResHeat;
+        double heatNorm;
+        if (Denom == 0) heatNorm = 0;
+        else heatNorm = (building.HeatTankM3 - GameData.MinResHeat) / Denom;
+
+        return powerNorm + waterNorm + heatNorm;
+    }
     public static List<ResidentialBuilding> GetParetoFrontResidential(List<ResidentialBuilding> allBuildings)
     {
         List<ResidentialBuilding> result = new List<ResidentialBuilding>();
@@ -293,9 +315,9 @@
 
         return result;
     }
-    public static Dictionary<ResidentialBuilding, int> AllocateHousing(int neededCapacity, List<ResidentialBuilding> paretoFront)
+    public static Dictionary<ResidentialBuilding, int> AllocateHousing(int neededCapacity, List<ResidentialBuilding> paretoFront, Func<ResidentialBuilding, double> priorityKey)
     {
-        List<ResidentialBuilding> sorted = paretoFront.OrderByDescending(b => b.WorkersPerArea).ToList();
+        List<ResidentialBuilding> sorted = paretoFront.OrderByDescending(priorityKey).ToList();
         Dictionary<ResidentialBuilding, int> result = new Dictionary<ResidentialBuilding, int>();
         int remaining = neededCapacity;
 
