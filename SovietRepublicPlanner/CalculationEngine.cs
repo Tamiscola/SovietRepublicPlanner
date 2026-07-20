@@ -277,4 +277,20 @@
         }
         return result;
     }
+    public static List<ResidentialBuilding> GetParetoFrontResidential(List<ResidentialBuilding> allBuildings)
+    {
+        List<ResidentialBuilding> result = new List<ResidentialBuilding>();
+        foreach (ResidentialBuilding candidate in allBuildings)
+        {
+            bool isDominated = false;
+            foreach (ResidentialBuilding challenger in allBuildings)
+            {
+                if (challenger == candidate) continue;
+                if (candidate.IsDominatedBy(challenger)) { isDominated = true; break; }
+            }
+            if (!isDominated) result.Add(candidate);
+        }
+
+        return result;
+    }
 }

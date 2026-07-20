@@ -14,12 +14,14 @@
             other.WorkersPerArea >= this.WorkersPerArea &&
             other.Quality >= this.Quality &&
             other.ConstructionCostRUB <= this.ConstructionCostRUB &&
+            other.WorkDays <= this.WorkDays &&
             CalculateUtilityCost(other) <= CalculateUtilityCost(this);
 
         bool strictlyBetterOnOne =
             other.WorkersPerArea > this.WorkersPerArea ||
             other.Quality > this.Quality ||
             other.ConstructionCostRUB < this.ConstructionCostRUB ||
+            other.WorkDays < this.WorkDays ||
             CalculateUtilityCost(other) < CalculateUtilityCost(this);
 
         return atLeastAsGoodOnAll && strictlyBetterOnOne;

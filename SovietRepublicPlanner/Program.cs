@@ -2371,14 +2371,15 @@ namespace SovietRepublicPlanner
             // Calculate total citizens from ALL plans
             int totalWorkers = c.totalWorkers;
             int totalHousingCapacity = c.microDistricts.Sum(m => m.TotalHousingCapacity);
-            Console.WriteLine($"\nYou need extra housing for {totalWorkers - totalHousingCapacity} workers.");
+            int neededHousing = totalWorkers - totalHousingCapacity;
+            Console.WriteLine($"\nYou need extra housing for {neededHousing} workers.");
             bool allValid = false;
             while (!allValid)
             {
                 // User choose Residential Size
                 int sizeChoice;
-                Console.Write($"\nChoose the Size of Residential:\n[0]: Small\n[1]: Medium\n[2]: Large\n: ");
-                if (int.TryParse(Console.ReadLine(), out sizeChoice) && sizeChoice >= 0 && sizeChoice <= 2)
+                Console.Write($"\nChoose the Size of Residential ([3]: Optimization):\n[0]: Small\n[1]: Medium\n[2]: Large\n: ");
+                if (int.TryParse(Console.ReadLine(), out sizeChoice) && sizeChoice >= 0 && sizeChoice <= 3)
                 {
                     // Small
                     int userChoice;
@@ -2493,7 +2494,7 @@ namespace SovietRepublicPlanner
                         allValid = true;
                     }
                     // Large
-                    else
+                    else if (sizeChoice == 2)
                     {
                         Dictionary<int, ResidentialBuilding> resList = new Dictionary<int, ResidentialBuilding>();
 
@@ -2546,6 +2547,12 @@ namespace SovietRepublicPlanner
                             : c.totalWorkers - c.totalHousingCapacity)}");
 
                         allValid = true;
+                    }
+                    // [3]: Pareto-Front Algorithm(Optimization)
+                    else
+                    {
+                        List<ResidentialBuilding> optimized = CalculationEngine.GetParetoFrontResidential(GameData.AllResidentialBuildings);
+
                     }
                 }
                 else { Console.Write("Invalid Input. "); continue; }
