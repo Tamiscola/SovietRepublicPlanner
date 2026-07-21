@@ -340,4 +340,17 @@
 
         return result;
     }
+    public static bool CanResearch(TechNode node, HashSet<string> unlockedTech, int currentYear)
+    {
+        if (currentYear < node.UnlockYear) return false;
+        return node.Prerequisites.All(prereq => unlockedTech.Contains(prereq));
+    }
+    public static TechNode GetTechNodeByName(string name)
+    {
+        return GameData.AllTechNodes.FirstOrDefault(t => t.Name == name);
+    }
+    public static List<TechNode> GetPrerequisiteNodes(TechNode node)
+    {
+        return node.Prerequisites.Select(GetTechNodeByName).ToList();
+    }
 }

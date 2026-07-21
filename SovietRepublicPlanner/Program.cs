@@ -104,6 +104,14 @@ namespace SovietRepublicPlanner
                 // If there are Cities -> Command Loop
                 if (allCities.Count() > 0) { CommandLoop(); }
 
+                // Set the CurrentYear
+                int currentYear;
+                Console.WriteLine("Type the current year: ");
+                if (int.TryParse(Console.ReadLine(), out currentYear) && currentYear >= 1920 && currentYear <= 2500)
+                {
+                    CalculationSettings.CurrentYear = currentYear;
+                } else { Console.WriteLine("Invalid Year figure."); continue; }
+
                 // Creation menu
                 Console.WriteLine("\n────────────────────────────────────────");
                 Console.WriteLine("  'createcity'- Create a new city");
@@ -2581,7 +2589,9 @@ namespace SovietRepublicPlanner
                             }
                         } else { Console.WriteLine("Invalid Priority option."); continue; }
 
-                        List<ResidentialBuilding> paretoFront = CalculationEngine.GetParetoFrontResidential(GameData.AllResidentialBuildings);
+                        List<ResidentialBuilding> availableBuildings = GameData.AllResidentialBuildings.Where(b => (b.UnlockYear == null || CalculationSettings.CurrentYear >= b.UnlockYear)
+                                                                && (b.RequiresResearch == null || CalculationSettings.UnlockedTech.Contains(b.RequiresResearch))).ToList();
+                        List<ResidentialBuilding> paretoFront = CalculationEngine.GetParetoFrontResidential(availableBuildings);
 
                         // Greedy Allocation
                         Dictionary<ResidentialBuilding, int> allocated = CalculationEngine.AllocateHousing(neededHousing, paretoFront, priorityKey);

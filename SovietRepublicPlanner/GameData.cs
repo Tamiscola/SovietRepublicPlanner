@@ -8793,6 +8793,23 @@ class GameData
         SmallSewageTreatment, BigSewageTreatment,HeatingPlant, SmallHeatingPlant,
     };
 
+    // Tech
+    public static class TechNames
+    {
+        public const string ConcreteUtilizing = "Concrete Utilizing";
+        public const string PrefabPanelConstruction = "Prefab Panel Construction";
+        public const string DurablePrefab = "Durable Prefab";
+        public const string HighQualityLiving = "High Quality Living";
+    }
+
+    public static List<TechNode> AllTechNodes = new List<TechNode>
+    {
+        new TechNode { Name = TechNames.ConcreteUtilizing, UnlockYear = 1920, Prerequisites = new List<string>(), UnlocksBuildings = new List<string>() },
+        new TechNode { Name = TechNames.PrefabPanelConstruction, UnlockYear = 1941, Prerequisites = new List<string>{TechNames.ConcreteUtilizing}, UnlocksBuildings = new List<string>{"Flats - prefab", "Flats - prefab (1Lg-600A)"} },
+        new TechNode { Name = TechNames.DurablePrefab, UnlockYear = 1955, Prerequisites = new List<string>{TechNames.PrefabPanelConstruction}, UnlocksBuildings = new List<string>{"..."} },
+        new TechNode { Name = TechNames.HighQualityLiving, UnlockYear = 1965, Prerequisites = new List<string>{TechNames.DurablePrefab}, UnlocksBuildings = new List<string>{"..."} },
+    };
+
     // Precomputed Properties
     public static double MaxResPower = AllResidentialBuildings.Select(b => b.PowerConsumptionMWh).Max();
     public static double MinResPower = AllResidentialBuildings.Select(b => b.PowerConsumptionMWh).Min();

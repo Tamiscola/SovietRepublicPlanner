@@ -8,6 +8,8 @@
     public double WorkersPerArea => WorkerCapacity / Area;
     public double GarbagePerCitizen { get; set; } = 0.0003;
     public double GarbageProduction => WorkerCapacity * GarbagePerCitizen;
+    public int? UnlockYear { get; set; }    // null = always available
+    public string RequiresResearch { get; set; }    // null = no research needed
     public bool IsDominatedBy(ResidentialBuilding other)
     {
         bool atLeastAsGoodOnAll =

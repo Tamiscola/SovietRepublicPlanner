@@ -1,8 +1,10 @@
 ﻿class CalculationSettings
 {
     public static double WorkersProductivity { get; set; } = 100.0;
-    public bool AccountForSeasons { get; set; } = true;
-    public TimePeriod DisplayUnit { get; set; } = TimePeriod.Day;
+    public static bool AccountForSeasons { get; set; } = true;
+    public static TimePeriod DisplayUnit { get; set; } = TimePeriod.Day;
+    public static int CurrentYear { get; set; } = 1960;
+    public static HashSet<string> UnlockedTech { get; set; } = new HashSet<string>();
 
     // Import/Expand decisions
     public Dictionary<Resource, bool> ImportFlags { get; set; }
