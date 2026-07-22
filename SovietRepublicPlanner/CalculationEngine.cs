@@ -335,7 +335,8 @@
         if (remaining > 0)
         {
             var smallest = sorted.MinBy(b => b.WorkerCapacity);
-            result[smallest] += (int)Math.Ceiling((double)remaining / smallest.WorkerCapacity);
+            if (result.ContainsKey(smallest)) result[smallest] += (int)Math.Ceiling((double)remaining / smallest.WorkerCapacity);
+            else result.Add(smallest, (int)Math.Ceiling((double)remaining / smallest.WorkerCapacity));
         }
 
         return result;
@@ -352,5 +353,17 @@
     public static List<TechNode> GetPrerequisiteNodes(TechNode node)
     {
         return node.Prerequisites.Select(GetTechNodeByName).ToList();
+    }
+    public static bool CanBuildResidential(ResidentialBuilding residentialBuilding)
+    {
+        bool r = false;
+        if (residentialBuilding != null && 
+            (residentialBuilding.UnlockYear <= CalculationSettings.CurrentYear || residentialBuilding.UnlockYear == null) && 
+            (residentialBuilding.RequiresResearch.All(r => CalculationSettings.UnlockedTech.Contains(r)) || residentialBuilding.RequiresResearch == null || residentialBuilding.RequiresResearch.Count == 0))
+        {
+            r = true;
+        } else { return false; }
+
+        return r;
     }
 }

@@ -4,7 +4,7 @@
     public static bool AccountForSeasons { get; set; } = true;
     public static TimePeriod DisplayUnit { get; set; } = TimePeriod.Day;
     public static int CurrentYear { get; set; } = 1960;
-    public static HashSet<string> UnlockedTech { get; set; } = new HashSet<string>();
+    public static HashSet<string> UnlockedTech { get; set; } = new HashSet<string>() { };
 
     // Import/Expand decisions
     public Dictionary<Resource, bool> ImportFlags { get; set; }

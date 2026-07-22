@@ -104,14 +104,6 @@ namespace SovietRepublicPlanner
                 // If there are Cities -> Command Loop
                 if (allCities.Count() > 0) { CommandLoop(); }
 
-                // Set the CurrentYear
-                int currentYear;
-                Console.WriteLine("Type the current year: ");
-                if (int.TryParse(Console.ReadLine(), out currentYear) && currentYear >= 1920 && currentYear <= 2500)
-                {
-                    CalculationSettings.CurrentYear = currentYear;
-                } else { Console.WriteLine("Invalid Year figure."); continue; }
-
                 // Creation menu
                 Console.WriteLine("\n────────────────────────────────────────");
                 Console.WriteLine("  'createcity'- Create a new city");
@@ -233,7 +225,9 @@ namespace SovietRepublicPlanner
                 SavedFile savedFile = new SavedFile()
                 {
                     Name = filename,
-                    Cities = cities.Select(c => City.ConvertToSavedCity(c)).ToList()
+                    Cities = cities.Select(c => City.ConvertToSavedCity(c)).ToList(),
+                    CurrentYear = CalculationSettings.CurrentYear,
+                    UnlockedTech = CalculationSettings.UnlockedTech
                 };
 
                 var options = new JsonSerializerOptions { WriteIndented = true };
@@ -252,6 +246,8 @@ namespace SovietRepublicPlanner
             {
                 string jsonString = File.ReadAllText(filename);
                 var saveFile = JsonSerializer.Deserialize<SavedFile>(jsonString);
+                CalculationSettings.CurrentYear = saveFile.CurrentYear;
+                CalculationSettings.UnlockedTech = saveFile.UnlockedTech ?? new HashSet<string>();
                 var cities = saveFile.Cities
                     .Select(c => City.ConvertFromSavedCity(c))
                     .ToList();
@@ -677,7 +673,7 @@ namespace SovietRepublicPlanner
 
                 Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/utility/support/cancel/back/dive/summary/housing/amenity/transportation/research/done): ");
                 List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "utility","support", "cancel", "back", "dive", "summary",
-                    "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", "research" };
+                    "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", "research", "year" };
                 string command = ReadLineWithCompletion(commands).ToLower().Trim();
                 if (command == "expand")
                 {
@@ -2139,6 +2135,47 @@ namespace SovietRepublicPlanner
                     else continue;
                     continue;
                 }
+                else if (command == "research")
+                {
+                    Console.Write("Have you unlocked a new tech?: ");
+                    List<string> techs = new List<string>() 
+                    {
+                        GameData.TechNames.ConcreteUtilizing,
+                        GameData.TechNames.PrefabPanelConstruction,
+                        GameData.TechNames.DurablePrefab,
+                        GameData.TechNames.HighQualityLiving
+                    };
+                    string unlockedTech = ReadLineWithCompletion(techs);
+                    TechNode matchedTech = GameData.AllTechNodes.FirstOrDefault(t => t.Name ==  unlockedTech);
+
+                    if (matchedTech == null) { Console.WriteLine("No such Research Name exists in the AllTechNodes."); continue; }
+                    else if (CalculationEngine.CanResearch(matchedTech, CalculationSettings.UnlockedTech, CalculationSettings.CurrentYear))
+                    {
+                        CalculationSettings.UnlockedTech.Add(matchedTech.Name);
+                        Console.WriteLine($"Tech Unlocked! : {matchedTech.Name}");
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Cannot research this yet. Check year and prerequisites.");
+                        if (CalculationSettings.CurrentYear < matchedTech.UnlockYear)
+                            Console.WriteLine($"  Requires year {matchedTech.UnlockYear} (current: {CalculationSettings.CurrentYear})");
+                        var missing = matchedTech.Prerequisites.Where(p => !CalculationSettings.UnlockedTech.Contains(p));
+                        if (missing.Any())
+                            Console.WriteLine($"  Missing prerequisites: {string.Join(", ", missing)}");
+                        continue;
+                    }
+                }
+                else if (command == "year")
+                {
+                    Console.Write("Type the year to change: ");
+                    int year;
+
+                    if (int.TryParse(Console.ReadLine(), out year) && year >= 1920 && year <= 2500)
+                    {
+                        CalculationSettings.CurrentYear = year;
+                        Console.WriteLine($"Current year Updated! : {year}");
+                    } else { Console.WriteLine("Invalid Year figure. (1920 ~ 2500)"); continue; }
+                }
                 else if (command == "done")
                 {
                     //allPlans.Clear();
@@ -2398,10 +2435,11 @@ namespace SovietRepublicPlanner
 
                         // Display Buildings
                         Console.WriteLine($"Small Residentials:");
-                        for (int i = 0; i < GameData.SmallResidentialBuildings.Count(); i++)
+                        List<ResidentialBuilding> availableBuildings = GameData.SmallResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).OrderBy(b => b.Name).ToList();
+                        for (int i = 0; i < availableBuildings.Count(); i++)
                         {
-                            Console.WriteLine($"[{i + 1}]: {GameData.SmallResidentialBuildings[i].WorkerCapacity}, {GameData.SmallResidentialBuildings[i].Name}");
-                            resList.Add(i + 1, GameData.SmallResidentialBuildings[i]);
+                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].WorkerCapacity}, {availableBuildings[i].Name}");
+                            resList.Add(i + 1, availableBuildings[i]);
                         }
 
                         // Select Building type
@@ -2453,10 +2491,11 @@ namespace SovietRepublicPlanner
 
                         // Display Buildings
                         Console.WriteLine($"Medium Residentials:");
-                        for (int i = 0; i < GameData.MediumResidentialBuildings.Count(); i++)
+                        List<ResidentialBuilding> availableBuildings = GameData.MediumResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).OrderBy(b => b.Name).ToList();
+                        for (int i = 0; i < availableBuildings.Count(); i++)
                         {
-                            Console.WriteLine($"[{i + 1}]: {GameData.MediumResidentialBuildings[i].WorkerCapacity}, {GameData.MediumResidentialBuildings[i].Name}");
-                            resList.Add(i + 1, GameData.MediumResidentialBuildings[i]);
+                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].WorkerCapacity}, {availableBuildings[i].Name}");
+                            resList.Add(i + 1, availableBuildings[i]);
                         }
 
                         // Select Building type
@@ -2508,10 +2547,11 @@ namespace SovietRepublicPlanner
 
                         // Display Buildings
                         Console.WriteLine($"Large Residentials:");
-                        for (int i = 0; i < GameData.LargeResidentialBuildings.Count(); i++)
+                        List<ResidentialBuilding> availableBuildings = GameData.LargeResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).OrderBy(b => b.Name).ToList();
+                        for (int i = 0; i < availableBuildings.Count(); i++)
                         {
-                            Console.WriteLine($"[{i + 1}]: {GameData.LargeResidentialBuildings[i].WorkerCapacity}, {GameData.LargeResidentialBuildings[i].Name}");
-                            resList.Add(i + 1, GameData.LargeResidentialBuildings[i]);
+                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].WorkerCapacity}, {availableBuildings[i].Name}");
+                            resList.Add(i + 1, availableBuildings[i]);
                         }
 
                         // Select Building type
@@ -2589,8 +2629,7 @@ namespace SovietRepublicPlanner
                             }
                         } else { Console.WriteLine("Invalid Priority option."); continue; }
 
-                        List<ResidentialBuilding> availableBuildings = GameData.AllResidentialBuildings.Where(b => (b.UnlockYear == null || CalculationSettings.CurrentYear >= b.UnlockYear)
-                                                                && (b.RequiresResearch == null || b.RequiresResearch.Count == 0 || b.RequiresResearch.All(r => CalculationSettings.UnlockedTech.Contains(r)))).ToList();
+                        List<ResidentialBuilding> availableBuildings = GameData.AllResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).ToList();
                         List<ResidentialBuilding> paretoFront = CalculationEngine.GetParetoFrontResidential(availableBuildings);
 
                         // Greedy Allocation
