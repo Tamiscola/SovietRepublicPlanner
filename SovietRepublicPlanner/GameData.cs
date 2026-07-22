@@ -5992,7 +5992,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (145w, 6.53m³/d, 96%)",
             WorkerCapacity = 145,
-            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.HighQualityLiving},
             PowerConsumptionMWh = 8.7,
             WaterPerDay = 6.53,
             HeatTankM3 = 10,
@@ -6011,7 +6011,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (157w, 7.07m³/d, 93%)",
             WorkerCapacity = 157,
-            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.HighQualityLiving},
             PowerConsumptionMWh = 9.4,
             WaterPerDay = 7.07,
             HeatTankM3 = 10,
@@ -6030,7 +6030,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (180w, 8.10m³/d, 85%)",
             WorkerCapacity = 180,
-            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 10,
             WaterPerDay = 8.10,
             HeatTankM3 = 12,
@@ -6049,7 +6049,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (220w, 9.90m³/d, 85%)",
             WorkerCapacity = 220,
-            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 13,
             WaterPerDay = 9.90,
             HeatTankM3 = 15,
