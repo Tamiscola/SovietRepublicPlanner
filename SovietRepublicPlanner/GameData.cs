@@ -4226,7 +4226,7 @@ class GameData
     public static List<ResidentialBuilding> SmallResidentialBuildings = new List<ResidentialBuilding>
     {
         new ResidentialBuilding {
-            Name = "Flats - brick (48w, 2.16m³/d, 80%)",
+            Name = "Flats - brick (48w, 2.16m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 48,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
@@ -4244,7 +4244,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (36w, 1.62m³/d, 85%)",
+            Name = "Flats - brick (36w, 1.62m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 36,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.62,
@@ -4262,7 +4262,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (10w, 0.45m³/d, 85%)",
+            Name = "Flats - brick (10w, 0.45m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 10,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.45,
@@ -4280,7 +4280,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (18w, 0.81m³/d, 80%)",
+            Name = "Flats - brick (18w, 0.81m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 18,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.81,
@@ -4298,7 +4298,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (20w, 0.90m³/d, 85%)",
+            Name = "Flats - brick (20w, 0.90m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 20,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
@@ -4316,7 +4316,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (48w, 2.16m³/d, 80%)",
+            Name = "Flats - brick (48w, 2.16m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 48,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
@@ -4334,7 +4334,39 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Low-quality rural flats (20w, 0.90m³/d, 60%)",
+            Name = "Low-quality rural flats (20w, 149wd, 60%) (Early Start DLC)",
+            WorkerCapacity = 20,
+            PowerConsumptionMWh = 3.0,
+            WaterPerDay = 0.90,
+            HeatTankM3 = 1.4,
+            Quality = 60,
+            Area = 176,
+            WorkDays = 149,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 2.1},
+                {GravelResource, 1.6},
+                {BoardsResource, 13},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Wooden house (5w, 0.23m³/d, 85%) (Early Start DLC)",
+            WorkerCapacity = 5,
+            PowerConsumptionMWh = 3.0,
+            WaterPerDay = 0.23,
+            HeatTankM3 = 0.35,
+            Quality = 85,
+            Area = 49.5,
+            WorkDays = 73,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 1.4},
+                {GravelResource, 1.1},
+                {BoardsResource, 6.4}
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Low-quality rural flats (20w, 0.90m³/d, 60%) (Early Start DLC)",
             WorkerCapacity = 20,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
@@ -4352,7 +4384,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (32w, 1.44m³/d, 80%)",
+            Name = "Flats - brick (32w, 1.44m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 32,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.44,
@@ -4370,8 +4402,9 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - prefab (40w, 1.80m³/d, 85%)",
+            Name = "Flats - prefab (40w, 1.80m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 40,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.80,
             HeatTankM3 = 2.80,
@@ -4390,6 +4423,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (29w, 1.31m³/d, 80%)",
             WorkerCapacity = 29,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.31,
             HeatTankM3 = 2.03,
@@ -4428,6 +4462,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (42w, 1.89m³/d, 83%)",
             WorkerCapacity = 42,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.89,
             HeatTankM3 = 2.94,
@@ -4446,6 +4481,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (48w, 2.16m³/d, 82%)",
             WorkerCapacity = 48,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
             HeatTankM3 = 3,
@@ -4483,6 +4519,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (43w, 1.94m³/d, 80%)",
             WorkerCapacity = 43,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.94,
             HeatTankM3 = 3,
@@ -4521,6 +4558,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (29w, 1.31m³/d, 84%)",
             WorkerCapacity = 29,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.31,
             HeatTankM3 = 2.03,
@@ -4541,6 +4579,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (48w, 2.16m³/d, 84%)",
             WorkerCapacity = 48,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.16,
             HeatTankM3 = 3,
@@ -4561,6 +4600,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (43w, 1.94m³/d, 83%)",
             WorkerCapacity = 43,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.94,
             HeatTankM3 = 3,
@@ -4579,6 +4619,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (42w, 1.89m³/d, 83%)",
             WorkerCapacity = 42,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.89,
             HeatTankM3 = 2.94,
@@ -4597,6 +4638,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (40w, 1.80m³/d, 84%)",
             WorkerCapacity = 40,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.80,
             HeatTankM3 = 2.80,
@@ -4617,6 +4659,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (30w, 1.35m³/d, 84%)",
             WorkerCapacity = 30,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.35,
             HeatTankM3 = 2.10,
@@ -4635,12 +4678,12 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (20w, 0.90m³/d, 85%)",
+            Name = "Flats - brick (20w, 0.90m³/d, 87%)",
             WorkerCapacity = 20,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 0.90,
             HeatTankM3 = 1.40,
-            Quality = 85,
+            Quality = 87,
             Area = 115.5,
             WorkDays = 322,
             ConstructionMaterials = new Dictionary<Resource, double>()
@@ -4655,6 +4698,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (40w, 1.80m³/d, 84%)",
             WorkerCapacity = 40,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.80,
             HeatTankM3 = 2.80,
@@ -4694,6 +4738,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (27w, 1.22m³/d, 91%)",
             WorkerCapacity = 27,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.22,
             HeatTankM3 = 1.89,
@@ -4729,12 +4774,12 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (30w, 1.35m³/d, 80%)",
+            Name = "Flats - brick (30w, 1.35m³/d, 82%)",
             WorkerCapacity = 30,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 1.35,
             HeatTankM3 = 2.10,
-            Quality = 80,
+            Quality = 82,
             Area = 110,
             WorkDays = 326,
             ConstructionMaterials = new Dictionary<Resource, double>()
@@ -4753,7 +4798,7 @@ class GameData
     public static List<ResidentialBuilding> MediumResidentialBuildings = new List<ResidentialBuilding>
     {
         new ResidentialBuilding {
-            Name = "Flats - brick (90w, 4.05m³/d, 80%)",
+            Name = "Flats - brick (90w, 4.05m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 90,
             PowerConsumptionMWh = 5.4,
             WaterPerDay = 4.05,
@@ -4771,7 +4816,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (60w, 2.70m³/d, 80%)",
+            Name = "Flats - brick (60w, 2.70m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 60,
             PowerConsumptionMWh = 3.6,
             WaterPerDay = 2.70,
@@ -4789,7 +4834,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (115w, 5.18m³/d, 80%) [large-dup]",
+            Name = "Flats - brick (115w, 5.18m³/d, 80%) [large-dup] (Early Start DLC)",
             WorkerCapacity = 115,
             PowerConsumptionMWh = 6.9,
             WaterPerDay = 5.18,
@@ -4807,7 +4852,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (56w, 2.52m³/d, 85%)",
+            Name = "Flats - brick (56w, 2.52m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 56,
             PowerConsumptionMWh = 3.4,
             WaterPerDay = 2.52,
@@ -4825,7 +4870,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (65w, 2.93m³/d, 80%)",
+            Name = "Flats - brick (65w, 2.93m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 65,
             PowerConsumptionMWh = 3.9,
             WaterPerDay = 2.93,
@@ -4843,7 +4888,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (72w, 3.24m³/d, 80%)",
+            Name = "Flats - brick (72w, 3.24m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 72,
             PowerConsumptionMWh = 4.3,
             WaterPerDay = 3.24,
@@ -4861,7 +4906,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - 'L shape' brick (50w, 2.25m³/d, 85%)",
+            Name = "Flats - 'L shape' brick (50w, 2.25m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 50,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.25,
@@ -4880,7 +4925,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (50w, 2.25m³/d, 85%) [dup]",
+            Name = "Flats - brick (50w, 2.25m³/d, 85%) [dup] (Early Start DLC)",
             WorkerCapacity = 50,
             PowerConsumptionMWh = 3.0,
             WaterPerDay = 2.25,
@@ -4898,7 +4943,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (65w, 2.93m³/d, 80%) [dup]",
+            Name = "Flats - brick (65w, 2.93m³/d, 80%) [dup] (Early Start DLC)",
             WorkerCapacity = 65,
             PowerConsumptionMWh = 3.9,
             WaterPerDay = 2.93,
@@ -4916,7 +4961,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (60w, 2.70m³/d, 80%) [dup]",
+            Name = "Flats - brick (60w, 2.70m³/d, 80%) [dup] (Early Start DLC)",
             WorkerCapacity = 60,
             PowerConsumptionMWh = 3.6,
             WaterPerDay = 2.70,
@@ -4936,6 +4981,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (118w, 5.31m³/d, 70%)",
             WorkerCapacity = 118,
+            RequiresResearch = { TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 7.1,
             WaterPerDay = 5.31,
             HeatTankM3 = 8,
@@ -4954,7 +5000,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (55w, 2.48m³/d, 80%) [dup]",
+            Name = "Flats - brick (55w, 2.48m³/d, 80%) [dup] (Early Start DLC)",
             WorkerCapacity = 55,
             PowerConsumptionMWh = 3.3,
             WaterPerDay = 2.48,
@@ -4972,7 +5018,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (90w, 4.05m³/d, 80%) [dup]",
+            Name = "Flats - brick (90w, 4.05m³/d, 80%) [dup] (Early Start DLC)",
             WorkerCapacity = 90,
             PowerConsumptionMWh = 5.4,
             WaterPerDay = 4.05,
@@ -4990,7 +5036,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (80w, 3.60m³/d, 85%)",
+            Name = "Flats - brick (80w, 3.60m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 80,
             PowerConsumptionMWh = 4.8,
             WaterPerDay = 3.60,
@@ -5008,7 +5054,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (75w, 3.38m³/d, 80%)",
+            Name = "Flats - brick (75w, 3.38m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 75,
             PowerConsumptionMWh = 4.5,
             WaterPerDay = 3.38,
@@ -5028,6 +5074,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (62w, 2.79m³/d, 86%)",
             WorkerCapacity = 62,
+            RequiresResearch = {TechNames.PrefabPanelConstruction },
             PowerConsumptionMWh = 3.7,
             WaterPerDay = 2.79,
             HeatTankM3 = 4,
@@ -5046,6 +5093,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 86%)",
             WorkerCapacity = 63,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab },
             PowerConsumptionMWh = 3.8,
             WaterPerDay = 2.84,
             HeatTankM3 = 4,
@@ -5065,8 +5113,9 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - prefab (68w, 3.06m³/d, 85%)",
+            Name = "Flats - prefab (68w, 3.06m³/d, 85%) (Early Start DLC)",
             WorkerCapacity = 68,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.1,
             WaterPerDay = 3.06,
             HeatTankM3 = 4,
@@ -5083,8 +5132,9 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - prefab (72w, 3.24m³/d, 75%)",
+            Name = "Flats - prefab (72w, 3.24m³/d, 75%) (Early Start DLC)",
             WorkerCapacity = 72,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.3,
             WaterPerDay = 3.24,
             HeatTankM3 = 5,
@@ -5103,6 +5153,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (82w, 3.69m³/d, 87%)",
             WorkerCapacity = 82,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.9,
             WaterPerDay = 3.69,
             HeatTankM3 = 5,
@@ -5121,6 +5172,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (80w, 3.60m³/d, 87%)",
             WorkerCapacity = 80,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.8,
             WaterPerDay = 3.60,
             HeatTankM3 = 5,
@@ -5139,6 +5191,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%)",
             WorkerCapacity = 85,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 5.1,
             WaterPerDay = 3.83,
             HeatTankM3 = 5,
@@ -5158,6 +5211,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (65w, 2.93m³/d, 87%)",
             WorkerCapacity = 65,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 3.9,
             WaterPerDay = 2.93,
             HeatTankM3 = 4,
@@ -5176,6 +5230,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (58w, 2.61m³/d, 80%)",
             WorkerCapacity = 58,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 3.5,
             WaterPerDay = 2.61,
             HeatTankM3 = 4,
@@ -5195,6 +5250,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (108w, 4.86m³/d, 84%)",
             WorkerCapacity = 108,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 6.5,
             WaterPerDay = 4.86,
             HeatTankM3 = 7,
@@ -5216,6 +5272,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (81w, 3.65m³/d, 84%)",
             WorkerCapacity = 81,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.9,
             WaterPerDay = 3.65,
             HeatTankM3 = 5,
@@ -5236,6 +5293,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (80w, 3.60m³/d, 70%)",
             WorkerCapacity = 80,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.8,
             WaterPerDay = 3.60,
             HeatTankM3 = 5,
@@ -5256,6 +5314,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (55w, 2.48m³/d, 70%)",
             WorkerCapacity = 55,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 3.3,
             WaterPerDay = 2.48,
             HeatTankM3 = 3,
@@ -5276,6 +5335,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (74w, 3.33m³/d, 80%)",
             WorkerCapacity = 74,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.4,
             WaterPerDay = 3.33,
             HeatTankM3 = 5,
@@ -5297,6 +5357,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (67w, 3.02m³/d, 84%)",
             WorkerCapacity = 67,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 4.0,
             WaterPerDay = 3.02,
             HeatTankM3 = 4,
@@ -5318,6 +5379,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (85w, 3.83m³/d, 80%) [dup]",
             WorkerCapacity = 85,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 5.1,
             WaterPerDay = 3.83,
             HeatTankM3 = 5,
@@ -5339,6 +5401,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (74w, 3.33m³/d, 84%)",
             WorkerCapacity = 74,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 4.4,
             WaterPerDay = 3.33,
             HeatTankM3 = 5,
@@ -5378,6 +5441,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 464) (115w, 5.18m³/d, 60%)",
             WorkerCapacity = 115,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 6.9,
             WaterPerDay = 5.18,
             HeatTankM3 = 8,
@@ -5396,6 +5460,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (52w, 2.34m³/d, 84%)",
             WorkerCapacity = 52,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 3.1,
             WaterPerDay = 2.34,
             HeatTankM3 = 3,
@@ -5435,6 +5500,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (96w, 4.32m³/d, 84%)",
             WorkerCapacity = 96,
+            RequiresResearch = { TechNames.PrefabPanelConstruction, TechNames.DurablePrefab },
             PowerConsumptionMWh = 5.8,
             WaterPerDay = 4.32,
             HeatTankM3 = 6,
@@ -5456,6 +5522,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (63w, 2.84m³/d, 84%) [dup]",
             WorkerCapacity = 63,
+            RequiresResearch = { TechNames.PrefabPanelConstruction, TechNames.DurablePrefab },
             PowerConsumptionMWh = 3.8,
             WaterPerDay = 2.84,
             HeatTankM3 = 4,
@@ -5477,6 +5544,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (87w, 3.92m³/d, 94%)",
             WorkerCapacity = 87,
+            RequiresResearch = { TechNames.PrefabPanelConstruction, TechNames.DurablePrefab, TechNames.HighQualityLiving },
             PowerConsumptionMWh = 5.2,
             WaterPerDay = 3.92,
             HeatTankM3 = 6,
@@ -5495,6 +5563,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (105w, 4.73m³/d, 91%)",
             WorkerCapacity = 105,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.HighQualityLiving},
             PowerConsumptionMWh = 6.3,
             WaterPerDay = 4.73,
             HeatTankM3 = 7,
@@ -5513,6 +5582,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (64w, 2.88m³/d, 84%)",
             WorkerCapacity = 64,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 3.8,
             WaterPerDay = 2.88,
             HeatTankM3 = 4,
@@ -5534,6 +5604,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (type 75) (55w, 2.48m³/d, 84%)",
             WorkerCapacity = 55,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 3.3,
             WaterPerDay = 2.48,
             HeatTankM3 = 3,
@@ -5557,7 +5628,7 @@ class GameData
     public static List<ResidentialBuilding> LargeResidentialBuildings = new List<ResidentialBuilding>
     {
         new ResidentialBuilding {
-            Name = "Flats - brick (200w, 9.00m³/d, 75%)",
+            Name = "Flats - brick (200w, 9.00m³/d, 75%) (Early Start DLC)",
             WorkerCapacity = 200,
             PowerConsumptionMWh = 12,
             WaterPerDay = 9.00,
@@ -5575,7 +5646,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (150w, 6.75m³/d, 75%)",
+            Name = "Flats - brick (150w, 6.75m³/d, 75%) (Early Start DLC)",
             WorkerCapacity = 150,
             PowerConsumptionMWh = 9,
             WaterPerDay = 6.75,
@@ -5612,7 +5683,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (145w, 6.53m³/d, 80%)",
+            Name = "Flats - brick (145w, 6.53m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 145,
             PowerConsumptionMWh = 8.7,
             WaterPerDay = 6.53,
@@ -5630,7 +5701,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (125w, 5.63m³/d, 80%)",
+            Name = "Flats - brick (125w, 5.63m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 125,
             PowerConsumptionMWh = 7.5,
             WaterPerDay = 5.63,
@@ -5648,7 +5719,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (120w, 5.40m³/d, 80%)",
+            Name = "Flats - brick (120w, 5.40m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 120,
             PowerConsumptionMWh = 7.2,
             WaterPerDay = 5.40,
@@ -5666,7 +5737,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (125w, 5.63m³/d, 80%) [v2]", // Added v2 to distinguish from previous 125w
+            Name = "Flats - brick (125w, 5.63m³/d, 80%) [v2] (Early Start DLC)", // Added v2 to distinguish from previous 125w
             WorkerCapacity = 125,
             PowerConsumptionMWh = 7.5,
             WaterPerDay = 5.63,
@@ -5686,6 +5757,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Dnipro Flats (593w, 26.69m³/d, 90%)",
             WorkerCapacity = 593,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab, TechNames.HighQualityLiving},
             PowerConsumptionMWh = 35,
             WaterPerDay = 26.69,
             HeatTankM3 = 41,
@@ -5704,6 +5776,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (145w, 6.53m³/d, 72%)",
             WorkerCapacity = 145,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 8.7,
             WaterPerDay = 6.53,
             HeatTankM3 = 10,
@@ -5720,7 +5793,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (150w, 6.75m³/d, 80%)",
+            Name = "Flats - brick (150w, 6.75m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 150,
             PowerConsumptionMWh = 9,
             WaterPerDay = 6.75,
@@ -5739,7 +5812,7 @@ class GameData
             }
         },
         new ResidentialBuilding {
-            Name = "Flats - brick (210w, 9.45m³/d, 80%)",
+            Name = "Flats - brick (210w, 9.45m³/d, 80%) (Early Start DLC)",
             WorkerCapacity = 210,
             PowerConsumptionMWh = 12,
             WaterPerDay = 9.45,
@@ -5759,6 +5832,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (160w, 7.20m³/d, 76%)",
             WorkerCapacity = 160,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 9.6,
             WaterPerDay = 7.20,
             HeatTankM3 = 11,
@@ -5777,6 +5851,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (120w, 5.40m³/d, 86%)",
             WorkerCapacity = 120,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 7.2,
             WaterPerDay = 5.40,
             HeatTankM3 = 8,
@@ -5795,6 +5870,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (165w, 7.43m³/d, 78%)",
             WorkerCapacity = 165,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 9.9,
             WaterPerDay = 7.43,
             HeatTankM3 = 11,
@@ -5813,6 +5889,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (210w, 9.45m³/d, 70%)",
             WorkerCapacity = 210,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 12,
             WaterPerDay = 9.45,
             HeatTankM3 = 14,
@@ -5832,6 +5909,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (180w, 8.10m³/d, 75%)",
             WorkerCapacity = 180,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 10,
             WaterPerDay = 8.10,
             HeatTankM3 = 12,
@@ -5850,6 +5928,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (160w, 7.20m³/d, 70%)",
             WorkerCapacity = 160,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 9.6,
             WaterPerDay = 7.20,
             HeatTankM3 = 11,
@@ -5870,6 +5949,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (287w, 12.92m³/d, 80%)",
             WorkerCapacity = 287,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 17,
             WaterPerDay = 12.92,
             HeatTankM3 = 20,
@@ -5891,6 +5971,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (140w, 6.30m³/d, 70%)",
             WorkerCapacity = 140,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 8.4,
             WaterPerDay = 6.30,
             HeatTankM3 = 9,
@@ -5909,8 +5990,85 @@ class GameData
             }
         },
         new ResidentialBuilding {
+            Name = "Flats - prefab (145w, 6.53m³/d, 96%)",
+            WorkerCapacity = 145,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            PowerConsumptionMWh = 8.7,
+            WaterPerDay = 6.53,
+            HeatTankM3 = 10,
+            Quality = 96,
+            Area = 302.5,
+            WorkDays = 1138,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 33},
+                {GravelResource, 25},
+                {AsphaltResource, 20},
+                {PrefabPanelsResource, 115},
+                {SteelResource, 11}
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (157w, 7.07m³/d, 93%)",
+            WorkerCapacity = 157,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            PowerConsumptionMWh = 9.4,
+            WaterPerDay = 7.07,
+            HeatTankM3 = 10,
+            Quality = 93,
+            Area = 302.5,
+            WorkDays = 1251,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 36},
+                {GravelResource, 28},
+                {AsphaltResource, 22},
+                {PrefabPanelsResource, 127},
+                {SteelResource, 12}
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (180w, 8.10m³/d, 85%)",
+            WorkerCapacity = 180,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            PowerConsumptionMWh = 10,
+            WaterPerDay = 8.10,
+            HeatTankM3 = 12,
+            Quality = 85,
+            Area = 165,
+            WorkDays = 1165,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 26},
+                {GravelResource, 20},
+                {AsphaltResource, 16},
+                {PrefabPanelsResource, 132},
+                {SteelResource, 13}
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (220w, 9.90m³/d, 85%)",
+            WorkerCapacity = 220,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            PowerConsumptionMWh = 13,
+            WaterPerDay = 9.90,
+            HeatTankM3 = 15,
+            Quality = 85,
+            Area = 275,
+            WorkDays = 1718,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 36},
+                {GravelResource, 28},
+                {AsphaltResource, 22},
+                {PrefabPanelsResource, 199},
+                {SteelResource, 19}
+            }
+        },
+        new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (147w, 6.62m³/d, 80%)",
             WorkerCapacity = 147,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
             PowerConsumptionMWh = 8.8,
             WaterPerDay = 6.62,
             HeatTankM3 = 10,
@@ -5932,6 +6090,7 @@ class GameData
         new ResidentialBuilding {
             Name = "Flats - prefab (1Lg-600A) (245w, 11.03m³/d, 80%)",
             WorkerCapacity = 245,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 14,
             WaterPerDay = 11.03,
             HeatTankM3 = 17,
@@ -5951,8 +6110,31 @@ class GameData
             }
         },
         new ResidentialBuilding {
+            Name = "Flats - prefab (1Lg-600A) (210w, 9,45m³/d, 80%)",
+            WorkerCapacity = 210,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
+            PowerConsumptionMWh = 12,
+            WaterPerDay = 9.45,
+            HeatTankM3 = 14,
+            Quality = 80,
+            Area = 330,
+            WorkDays = 1394,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 122},
+                {GravelResource, 10},
+                {BricksResource, 0.30},
+                {BoardsResource, 42},
+                {PrefabPanelsResource, 95},
+                {ElectroComponentsResource, 0.15},
+                {MechanicComponentsResource, 0.22},
+                {SteelResource, 3.8},
+            }
+        },
+        new ResidentialBuilding {
             Name = "Flats - prefab (167w, 7.52m³/d, 70%)",
             WorkerCapacity = 167,
+            RequiresResearch = {TechNames.PrefabPanelConstruction},
             PowerConsumptionMWh = 10,
             WaterPerDay = 7.52,
             HeatTankM3 = 11,
@@ -5968,6 +6150,138 @@ class GameData
                 {BoardsResource, 20},
                 {PrefabPanelsResource, 16},
                 {SteelResource, 10},
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (270w, 12.15m³/d, 84%)",
+            WorkerCapacity = 270,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
+            PowerConsumptionMWh = 16,
+            WaterPerDay = 12.15,
+            HeatTankM3 = 18,
+            Quality = 84,
+            Area = 440,
+            WorkDays = 2132,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 30},
+                {GravelResource, 23},
+                {AsphaltResource, 18},
+                {BricksResource, 3.9},
+                {BoardsResource, 102},
+                {PrefabPanelsResource, 119},
+                {SteelResource, 14},
+                {MechanicComponentsResource, 0.59 }
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (198w, 8.91m³/d, 84%)",
+            WorkerCapacity = 198,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
+            PowerConsumptionMWh = 11,
+            WaterPerDay = 8.91,
+            HeatTankM3 = 13,
+            Quality = 84,
+            Area = 330,
+            WorkDays = 1579,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 15},
+                {GravelResource, 11},
+                {AsphaltResource, 9.5},
+                {BricksResource, 1.8},
+                {BoardsResource, 81},
+                {PrefabPanelsResource, 93},
+                {SteelResource, 11},
+                {MechanicComponentsResource, 0.44 }
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (144w, 6.48m³/d, 84%)",
+            WorkerCapacity = 144,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
+            PowerConsumptionMWh = 8.6,
+            WaterPerDay = 6.48,
+            HeatTankM3 = 10,
+            Quality = 84,
+            Area = 242,
+            WorkDays = 1098,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 11},
+                {GravelResource, 8.6},
+                {AsphaltResource, 6.9},
+                {BricksResource, 1.3},
+                {BoardsResource, 53},
+                {PrefabPanelsResource, 69},
+                {SteelResource, 8.4},
+                {MechanicComponentsResource, 0.31}
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (126w, 5.67m³/d, 84%)",
+            WorkerCapacity = 126,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
+            PowerConsumptionMWh = 7.6,
+            WaterPerDay = 5.67,
+            HeatTankM3 = 8,
+            Quality = 84,
+            Area = 220,
+            WorkDays = 1030,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 11},
+                {GravelResource, 8.8},
+                {AsphaltResource, 7.0},
+                {BricksResource, 0.64},
+                {BoardsResource, 46},
+                {PrefabPanelsResource, 67},
+                {SteelResource, 8.2},
+                {MechanicComponentsResource, 0.31 }
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (252w, 11.34m³/d, 87%)",
+            WorkerCapacity = 252,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
+            PowerConsumptionMWh = 15,
+            WaterPerDay = 11.34,
+            HeatTankM3 = 17,
+            Quality = 87,
+            Area = 462,
+            WorkDays = 2184,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 31},
+                {GravelResource, 24},
+                {AsphaltResource, 19},
+                {BricksResource, 4.2},
+                {BoardsResource, 100},
+                {PrefabPanelsResource, 128},
+                {SteelResource, 15},
+                {MechanicComponentsResource, 0.62 }
+            }
+        },
+        new ResidentialBuilding {
+            Name = "Flats - prefab (type 75) (126w, 5.67m³/d, 87%)",
+            WorkerCapacity = 126,
+            RequiresResearch = {TechNames.PrefabPanelConstruction, TechNames.DurablePrefab},
+            PowerConsumptionMWh = 7.6,
+            WaterPerDay = 5.67,
+            HeatTankM3 = 8,
+            Quality = 87,
+            Area = 242,
+            WorkDays = 1030,
+            ConstructionMaterials = new Dictionary<Resource, double>()
+            {
+                {ConcreteResource, 11},
+                {GravelResource, 8.6},
+                {AsphaltResource, 6.9},
+                {BricksResource, 1.1},
+                {BoardsResource, 45},
+                {PrefabPanelsResource, 69},
+                {SteelResource, 8.4},
+                {MechanicComponentsResource, 0.32 }
             }
         },
     };

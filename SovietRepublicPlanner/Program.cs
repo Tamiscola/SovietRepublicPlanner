@@ -675,9 +675,9 @@ namespace SovietRepublicPlanner
                     break;  // Exit CommandLoop, returns to main menu
                 }
 
-                Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/utility/support/cancel/back/dive/summary/housing/amenity/transportation/done): ");
+                Console.Write("\nCommand (listcities/listplans/listdistrict/masterplan/switchcity/switchplan/switchdistrict/newcity/expand/utility/support/cancel/back/dive/summary/housing/amenity/transportation/research/done): ");
                 List<string> commands = new List<string> { "listcities", "listplans", "masterplan", "switchplan", "expand", "utility","support", "cancel", "back", "dive", "summary",
-                    "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", };
+                    "housing", "amenity", "transportation", "done", "newcity", "switchcity", "listdistrict", "switchdistrict", "research" };
                 string command = ReadLineWithCompletion(commands).ToLower().Trim();
                 if (command == "expand")
                 {
@@ -2590,7 +2590,7 @@ namespace SovietRepublicPlanner
                         } else { Console.WriteLine("Invalid Priority option."); continue; }
 
                         List<ResidentialBuilding> availableBuildings = GameData.AllResidentialBuildings.Where(b => (b.UnlockYear == null || CalculationSettings.CurrentYear >= b.UnlockYear)
-                                                                && (b.RequiresResearch == null || CalculationSettings.UnlockedTech.Contains(b.RequiresResearch))).ToList();
+                                                                && (b.RequiresResearch == null || b.RequiresResearch.Count == 0 || b.RequiresResearch.All(r => CalculationSettings.UnlockedTech.Contains(r)))).ToList();
                         List<ResidentialBuilding> paretoFront = CalculationEngine.GetParetoFrontResidential(availableBuildings);
 
                         // Greedy Allocation
