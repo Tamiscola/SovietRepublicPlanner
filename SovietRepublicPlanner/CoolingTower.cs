@@ -4,31 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class SupportBuilding : Building
+public class CoolingTower : Building
 {
     // Identification
     public override BuildingCategory Category => BuildingCategory.Support;
     public SupportCategory SupportCategory { get; set; } = SupportCategory.None;
 
-    // Utilities
-    //public double EnvironmentPollution { get; set; } = 0;   // For CoolingTowers
+    // Utility
+    public double EnvironmentPollution { get; set; }
     public override IEnumerable<UtilityType> GetActiveUtilities()
     {
         return new[] { UtilityType.Power };
     }
 }
-public enum SupportCategory
-{
-    None,
-    LiquidHandling,
-    BulkHandling,
-    DryBulkHandling,
-    SolidHandling,
-    GeneralDistribution, // Always available
-    Refrigeration,
-    PowerHandling,
-    WaterHandling,
-    HeatHandling,
-    SewageHandling,
-}
-

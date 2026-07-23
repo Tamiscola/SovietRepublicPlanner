@@ -38,16 +38,6 @@ public partial class IndustryPlan
             return thisLevel + subChainTotal + supportTotal;
         }
     }
-    public double TotalHeatNeeded
-    {
-        get
-        {
-            double thisLevel = ChosenBuilding.TotalHeatNeeded;
-            double subChainTotal = SubChains.Sum(sc => sc.TotalHeatNeeded);
-            double supportTotal = SupportBuildings.Sum(kv => kv.Building.PowerConsumptionMWh * kv.Count);
-            return thisLevel + subChainTotal + supportTotal;
-        }
-    }
     public double TotalGarbageProduced
     {
         get

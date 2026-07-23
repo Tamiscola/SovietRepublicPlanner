@@ -3,12 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+public enum BuildingCategory
+{
+    Residential,
+    Production,
+    Amenity,
+    Utility,
+    Recycling,
+    Support,
+    Transport
+}
+public enum UtilityType
+{
+    Power,
+    Water,
+    Sewage,
+    Heat,
+    Garbage
+}
 public abstract class Building
 {
+    // Identification
+    public abstract BuildingCategory Category { get; }
     public string Name { get; set; }
-    public int WorkDays {  get; set; }
+
+    // Area
     public double Area { get; set; }   // Distance between dots : 5.5m
+
+    // Construction
+    public int WorkDays {  get; set; }
     public Dictionary<Resource, double> ConstructionMaterials { get; set; }
     public double ConstructionCostRUB 
     { 
@@ -34,6 +57,8 @@ public abstract class Building
             return sum;
         }
     }
+
+    // Utility
     public double PowerConsumptionMWh {  get; set; }
     public double ConsumptionWattageMW 
     {  
@@ -42,5 +67,14 @@ public abstract class Building
             return PowerConsumptionMWh / 60;
         } 
     }
+    public virtual double GetUtilityValue(UtilityType type)
+    {
+        return type switch
+        {
+            UtilityType.Power => this.PowerConsumptionMWh,
+            _ => 0
+        };
+    }
+    public abstract IEnumerable<UtilityType> GetActiveUtilities();
 }
 

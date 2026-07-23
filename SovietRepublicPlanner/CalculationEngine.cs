@@ -277,27 +277,37 @@
         }
         return result;
     }
-    static public double CalculateUtilityCost(ResidentialBuilding building)
+
+    // Utility Calculation
+    public static class UtilityCalculator
     {
-        // Power
-        double Denom = GameData.MaxResPower - GameData.MinResPower;
-        double powerNorm;
-        if (Denom == 0) powerNorm = 0;
-        else powerNorm = (building.PowerConsumptionMWh - GameData.MinResPower) / Denom;
+        public static double Normalize(double current, double min, double max)
+        {
+            double denom = max - min;
+            if (denom == 0) return 0;
 
-        // Water
-        Denom = GameData.MaxResWater - GameData.MinResWater;
-        double waterNorm;
-        if (Denom == 0) waterNorm = 0;
-        else waterNorm = (building.WaterPerDay - GameData.MinResWater) / Denom;
+            return (current - min) / denom;
+        }
 
-        // Heat
-        Denom = GameData.MaxResHeat - GameData.MinResHeat;
-        double heatNorm;
-        if (Denom == 0) heatNorm = 0;
-        else heatNorm = (building.HeatTankM3 - GameData.MinResHeat) / Denom;
+        public static double CalculateTotalUtilityCost(Building building)
+        {
+            double totalCost = 0;
+            BuildingCategory category = building.Category;
+            if (!GameData.BoundsCache.TryGetValue(category, out var categoryBounds)) return 0;
 
-        return powerNorm + waterNorm + heatNorm;
+            // 건물이 활성화한 유틸리티 목록만 돌면서 계산
+            foreach (UtilityType type in building.GetActiveUtilities())
+            {
+                double currentValue = building.GetUtilityValue(type);
+
+                if (categoryBounds.TryGetValue(type, out var bounds))
+                {
+                    totalCost += Normalize(currentValue, bounds.Min, bounds.Max);
+                }
+            }
+
+            return totalCost;
+        }
     }
     public static List<ResidentialBuilding> GetParetoFrontResidential(List<ResidentialBuilding> allBuildings)
     {

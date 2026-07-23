@@ -4,17 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum UtilityType
-{
-    Power,
-    Water,
-    Sewage,
-    Heat,
-    Garbage
-}
 public class UtilityBuilding : Building
 {
     // Identification
+    public override BuildingCategory Category => BuildingCategory.Utility;
     public UtilityType Type;
     public SupportCategory SupportCategory;
 
@@ -32,11 +25,23 @@ public class UtilityBuilding : Building
     public double WaterConsumptionM3;
     public double SewageProductionM3 => WaterConsumptionM3;
     public double SewageDisposalCapacity { get; set; } = 0;
-    public double HeatConsumptionM3;
     public double GarbagePerWorker;
     public double BaseGarbageProduction { get; set; } = 0;
     public double EnvironmentPollution;
     public double GarbageProduction => BaseGarbageProduction + (MaxWorkers * GarbagePerWorker);  // tons/day
+    public override IEnumerable<UtilityType> GetActiveUtilities()
+    {
+        return new[] { UtilityType.Power, UtilityType.Water, UtilityType.Sewage, UtilityType.Garbage };
+    }
+    public override double GetUtilityValue(UtilityType type)
+    {
+        return type switch 
+        {
+            UtilityType.Water => this.WaterConsumptionM3,
+            UtilityType.Sewage => this.SewageProductionM3,
+            _ => base.GetUtilityValue(type)
+        };
+    }
 
     // Transport-specific
     public int? ParkingSpots;  // nullable - not all have this

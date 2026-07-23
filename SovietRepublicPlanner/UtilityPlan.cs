@@ -123,18 +123,6 @@ public class UtilityPlan
             return r;
         }
     }
-    public double TotalHeatConsumptionM3
-    {
-        get
-        {
-            double r = 0;
-            foreach (UtilityInstance instance in Buildings)
-            {
-                r += instance.Building.HeatConsumptionM3 * instance.Count;
-            }
-            return r;
-        }
-    }
     public double TotalEnvironmentPollution
     {
         get
@@ -189,7 +177,6 @@ public class UtilityPlan
             WaterConsumption = plan.TotalWaterConsumptionM3,
             SewageProduction = plan.TotalSewageProductionM3,
             SewageDisposalCapacity = plan.TotalSewageDisposalCapacity,
-            HeatConsumption = plan.TotalHeatConsumptionM3,
             GarbageProduction = plan.TotalGarbageProduction,
             ConstructionMaterials = plan.ConstructionMaterials.Select(c =>  new SavedUtilityPlan.SavedResourceInstance()
             {

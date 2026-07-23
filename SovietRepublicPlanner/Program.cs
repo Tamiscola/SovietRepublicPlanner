@@ -209,7 +209,6 @@ namespace SovietRepublicPlanner
                 }
                 Console.WriteLine($"Power consumption: {result.Buildings[i].TotalPowerNeeded:F2}");
                 Console.WriteLine($"Water consumption: {result.Buildings[i].TotalWaterNeeded:F2}");
-                Console.WriteLine($"Heat consumption: {result.Buildings[i].TotalHeatNeeded:F2}");
                 Console.WriteLine($"Sewage produced: {result.Buildings[i].TotalSewageProduced:F2}");
                 Console.WriteLine($"Garbage produced: {result.Buildings[i].TotalGarbageProduced:F6}");
                 Console.WriteLine($"Pollution emitted: {result.Buildings[i].TotalEnvironmentPollution:F6}");
@@ -355,7 +354,6 @@ namespace SovietRepublicPlanner
                         Console.WriteLine($"- {key.Key.Name} {key.Value}");
                     Console.WriteLine($"\nPower consumption: {result.Buildings[i].TotalPowerNeeded}");
                     Console.WriteLine($"Water consumption: {result.Buildings[i].TotalWaterNeeded}");
-                    Console.WriteLine($"Heat consumption: {result.Buildings[i].TotalHeatNeeded}");
                     Console.WriteLine($"Sewage produced: {result.Buildings[i].TotalSewageProduced}");
                     foreach (var bi in result.Buildings[i].BuildingInstances)
                         totalGarbage += bi.Building.GarbageProduction;
@@ -613,7 +611,6 @@ namespace SovietRepublicPlanner
             }
             Console.WriteLine($"Power consumption: {result.ChosenBuilding.TotalPowerNeeded:F2}");
             Console.WriteLine($"Water consumption: {result.ChosenBuilding.TotalWaterNeeded:F2}");
-            Console.WriteLine($"Heat consumption: {result.ChosenBuilding.TotalHeatNeeded:F2}");
             Console.WriteLine($"Sewage produced: {result.ChosenBuilding.TotalSewageProduced:F2}");
             Console.WriteLine($"Garbage produced: {result.ChosenBuilding.TotalGarbageProduced:F6}");
             Console.WriteLine($"Pollution emitted: {result.ChosenBuilding.TotalEnvironmentPollution:F6}");
@@ -875,7 +872,6 @@ namespace SovietRepublicPlanner
                                     Console.WriteLine($"- {key.Key.Name} {key.Value}");
                                 Console.WriteLine($"\nPower consumption: {expandedResult.Buildings[i].TotalPowerNeeded}");
                                 Console.WriteLine($"Water consumption: {expandedResult.Buildings[i].TotalWaterNeeded}");
-                                Console.WriteLine($"Heat consumption: {expandedResult.Buildings[i].TotalHeatNeeded}");
                                 Console.WriteLine($"Sewage produced: {expandedResult.Buildings[i].TotalSewageProduced}");
                                 foreach (var bi in expandedResult.Buildings[i].BuildingInstances)
                                     totalGarbage += bi.Building.GarbageProduction;
@@ -1080,7 +1076,7 @@ namespace SovietRepublicPlanner
                             produced = currentCity.UtilityPlans[pc].TotalOutputs.Any(o => o.Key == GameData.HeatResource)
                                 ? currentCity.UtilityPlans[pc].TotalOutputs[GameData.HeatResource]
                                 : 0;
-                            Console.WriteLine($"│ Heat (MW):{currentCity.UtilityPlans[pc].TotalHeatConsumptionM3,17:F2}{produced,17:F2}{produced - currentCity.UtilityPlans[pc].TotalHeatConsumptionM3,10}");
+                            Console.WriteLine($"│ Heat (MW):{0:F2}{produced,17:F2}{produced,10}");
                             // Sewage
                             produced = currentCity.UtilityPlans[pc].TotalSewageDisposalCapacity;
                             Console.WriteLine($"│ Sewage (t/day):{currentCity.UtilityPlans[pc].TotalWaterConsumptionM3,12:F2}{produced,17:F2}{0,10}");
@@ -1594,15 +1590,15 @@ namespace SovietRepublicPlanner
                     //  Detect needed infrastructure types
                     //      Collect all resources that need infrastructure
                     HashSet<Resource> allIOResources = new HashSet<Resource>();
-                    List<SupportBuilding> liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
-                    List<SupportBuilding> bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
-                    List<SupportBuilding> dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
-                    List<SupportBuilding> solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
-                    List<SupportBuilding> generalInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
-                    List<SupportBuilding> waterInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
-                    List<SupportBuilding> powerInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
-                    List<SupportBuilding> sewageInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
-                    List<SupportBuilding> heatInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
+                    List<SupportBuilding> liquidInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
+                    List<SupportBuilding> bulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
+                    List<SupportBuilding> dryBulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
+                    List<SupportBuilding> solidHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
+                    List<SupportBuilding> generalInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
+                    List<SupportBuilding> waterInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
+                    List<SupportBuilding> powerInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
+                    List<SupportBuilding> sewageInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
+                    List<SupportBuilding> heatInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
                     Dictionary<int, List<SupportBuilding>> categoryBuildings = new Dictionary<int, List<SupportBuilding>>();
                     int catIndex = 0;
 
@@ -1615,24 +1611,24 @@ namespace SovietRepublicPlanner
                     foreach (Resource r in allIOResources)
                     {
                         if (r.RequiresLiquidInfrastructure)
-                            liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
+                            liquidInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
                         if (r.RequiresBulkHandling)
-                            bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
+                            bulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
                         if (r.RequiresDryBulkHandling)
-                            dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
+                            dryBulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
                         if (r.RequiresSolidHandling)
-                            solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
+                            solidHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            powerInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
+                            powerInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            waterInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
+                            waterInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            sewageInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
+                            sewageInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            heatInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
+                            heatInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
                     }
                     //      GeneralDistribution is ALWAYS available (outside loop)
-                    generalInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
+                    generalInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
 
                     //      Display grouped by category
                     if (liquidInfra.Count() > 0 && allIOResources.Any(r => r.RequiresLiquidInfrastructure))
@@ -2000,7 +1996,6 @@ namespace SovietRepublicPlanner
                                     }
                                     Console.WriteLine($"Power consumption: {currentResult.ChosenBuilding.TotalPowerNeeded}");
                                     Console.WriteLine($"Water consumption: {currentResult.ChosenBuilding.TotalWaterNeeded}");
-                                    Console.WriteLine($"Heat consumption: {currentResult.ChosenBuilding.TotalHeatNeeded}");
                                     Console.WriteLine($"Sewage produced: {currentResult.ChosenBuilding.TotalSewageProduced}");
                                     Console.WriteLine($"Garbage produced: {currentResult.ChosenBuilding.TotalGarbageProduced}");
                                     Console.WriteLine($"Pollution emitted: {currentResult.ChosenBuilding.TotalEnvironmentPollution}");
@@ -2206,7 +2201,6 @@ namespace SovietRepublicPlanner
                     }
                     Console.WriteLine($"Power consumption: {currentResult.ChosenBuilding.TotalPowerNeeded}");
                     Console.WriteLine($"Water consumption: {currentResult.ChosenBuilding.TotalWaterNeeded}");
-                    Console.WriteLine($"Heat consumption: {currentResult.ChosenBuilding.TotalHeatNeeded}");
                     Console.WriteLine($"Sewage produced: {currentResult.ChosenBuilding.TotalSewageProduced}");
                     Console.WriteLine($"Garbage produced: {currentResult.ChosenBuilding.TotalGarbageProduced}");
                     Console.WriteLine($"Pollution emitted: {currentResult.ChosenBuilding.TotalEnvironmentPollution}");
@@ -2609,7 +2603,7 @@ namespace SovietRepublicPlanner
                             switch (priorChoice)
                             {
                                 case 0:
-                                    priorityKey = b => -CalculationEngine.CalculateUtilityCost(b);
+                                    priorityKey = b => -(CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(b) / b.WorkerCapacity);
                                     break;
                                 case 1:
                                     priorityKey = b => b.WorkersPerArea;

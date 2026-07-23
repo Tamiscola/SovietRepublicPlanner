@@ -29,6 +29,8 @@ public enum PopulationType
 }
 public class AmenityBuilding : Building
 {
+    // Identification
+    public override BuildingCategory Category => BuildingCategory.Amenity;
     public AmenityType Type { get; set; }
 
     // Worker & Visitor info
@@ -73,8 +75,6 @@ public class AmenityBuilding : Building
     public double WaterConsumptionM3 { get; set; }
     public double HotWaterTankM3 { get; set; }
     public double HeatConsumptionMW { get; set; }
-
-    // Waste
     public double GarbagePerWorker { get; set; }
     public double GarbagePerCustomer { get; set; }
     public double GarbageProduction
@@ -85,6 +85,20 @@ public class AmenityBuilding : Building
             result = GarbagePerWorker * MaxWorkers + GarbagePerCustomer * MaxVisitors;
             return result;
         }
+    }
+    public override IEnumerable<UtilityType> GetActiveUtilities()
+    {
+        return new[] { UtilityType.Power, UtilityType.Water, UtilityType.Sewage, UtilityType.Heat, UtilityType.Garbage };
+    }
+    public override double GetUtilityValue(UtilityType type)
+    {
+        return type switch 
+        { 
+            UtilityType.Water => this.WaterConsumptionM3,
+            UtilityType.Sewage => this.WaterConsumptionM3,
+            UtilityType.Heat => this.HeatConsumptionMW,
+            _ => base.GetUtilityValue(type)
+        };
     }
 
     // Optional properties

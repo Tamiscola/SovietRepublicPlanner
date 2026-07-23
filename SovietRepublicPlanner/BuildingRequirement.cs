@@ -34,7 +34,6 @@ public class BuildingRequirement
     public double TotalWaterNeeded => Count * Building.WaterConsumption;
     public double TotalSewageProduced => Count * Building.SewageProduction;
     public double TotalSewageDisposalCapacity => Count * Building.SewageDisposalCapacity;
-    public double TotalHeatNeeded => Count * Building.HeatConsumption;
     public double TotalGarbageProduced => Count * Building.GarbageProduction;
     public double TotalEnvironmentPollution => Count * Building.EnvironmentPollution;
 

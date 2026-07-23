@@ -116,7 +116,7 @@ class GameData
         result.MaxWorkers = 170;
         result.PowerConsumptionMWh = 7.6;
         result.WaterConsumption = 3.4;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 11.9;     // Resource + daily water consumption
         result.BaseGarbageProduction = 1.53;
         result.GarbagePerWorker = 0.0006;
@@ -155,7 +155,7 @@ class GameData
         result.MaxWorkers = 100;
         result.PowerConsumptionMWh = 13.0;
         result.WaterConsumption = 2.0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 13.0 + result.WaterConsumption;     // Resource + daily water consumption
         result.BaseGarbageProduction = 2.39;
         result.GarbagePerWorker = 0.0006;
@@ -192,7 +192,7 @@ class GameData
         result.MaxWorkers = 80;
         result.PowerConsumptionMWh = 3.6;
         result.WaterConsumption = 1.60;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 1.60;
         result.BaseGarbageProduction = 0.03;
         result.GarbagePerWorker = 0.0006;
@@ -232,7 +232,7 @@ class GameData
         result.MaxWorkers = 100;
         result.PowerConsumptionMWh = 19;
         result.WaterConsumption = 2.0;      // building water consumption (drinkable)
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 13.0;     // Resource + daily water consumption
         result.BaseGarbageProduction = 1.87;
         result.GarbagePerWorker = 0.006;
@@ -271,7 +271,7 @@ class GameData
         result.MaxWorkers = 500;
         result.PowerConsumptionMWh = 36.0;
         result.WaterConsumption = 10.00;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 34.20;
@@ -311,7 +311,7 @@ class GameData
         result.MaxWorkers = 60;
         result.PowerConsumptionMWh = 25;
         result.WaterConsumption = 1.2;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 11.2;       // Resource + daily water consumption
         result.BaseGarbageProduction = 1.37;
         result.GarbagePerWorker = 0.006;
@@ -354,7 +354,7 @@ class GameData
         result.MaxWorkers = 200;
         result.PowerConsumptionMWh = 60;
         result.WaterConsumption = 4;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = result.WaterConsumption + 34;       // Resource + daily water consumption
         result.BaseGarbageProduction = 4.41;
         result.GarbagePerWorker = 0.006;
@@ -396,7 +396,7 @@ class GameData
         result.MaxWorkers = 700;
         result.PowerConsumptionMWh = 197;
         result.WaterConsumption = 14;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 133;       // Resource + daily water consumption
         result.BaseGarbageProduction = 15.94;
         result.GarbagePerWorker = 0.006;
@@ -436,7 +436,7 @@ class GameData
         result.MaxWorkers = 60;
         result.PowerConsumptionMWh = 20;
         result.WaterConsumption = 1.20;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 1.20;
         result.BaseGarbageProduction = 1.95;
         result.GarbagePerWorker = 0.0006;
@@ -475,7 +475,7 @@ class GameData
         result.MaxWorkers = 25;
         result.PowerConsumptionMWh = 3.0; // 3.0 MWh/day
         result.WaterConsumption = 0.5;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.5;
         result.GarbagePerWorker = 0.00060;
         result.EnvironmentPollution = 12.00 / 365.0; // 12.00 tons/year
@@ -512,7 +512,7 @@ class GameData
         result.MaxWorkers = 25;
         result.PowerConsumptionMWh = 9.8; // 9.8 MWh/day
         result.WaterConsumption = 15.0; // 15m³/day
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 15.0; // 15m³/day
         result.GarbagePerWorker = 0.00060;
         result.EnvironmentPollution = 16.40 / 365.0; // 16.40 tons/year
@@ -549,7 +549,7 @@ class GameData
         result.MaxWorkers = 150;
         result.PowerConsumptionMWh = 8.1; // 8.1 MWh/day
         result.WaterConsumption = 3.0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 3.0;
         result.GarbagePerWorker = 0.00060;
         result.EnvironmentPollution = 7.80 / 365.0; // 7.80 tons/year
@@ -590,7 +590,7 @@ class GameData
         result.MaxWorkers = 500;
         result.PowerConsumptionMWh = 48;
         result.WaterConsumption = 10;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 10;       // Resource + daily water consumption
         result.BaseGarbageProduction = 11.67;
         result.GarbagePerWorker = 0.006;
@@ -629,7 +629,7 @@ class GameData
         result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 17;
         result.WaterConsumption = 0.3;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.3;       // Resource + daily water consumption
         result.BaseGarbageProduction = 6.84;
         result.GarbagePerWorker = 0.006;
@@ -666,7 +666,7 @@ class GameData
         result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 15;
         result.WaterConsumption = 0.3;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.3;       // Resource + daily water consumption
         result.BaseGarbageProduction = 5.25;
         result.GarbagePerWorker = 0.006;
@@ -699,7 +699,7 @@ class GameData
         result.MaxWorkers = 220;
         result.PowerConsumptionMWh = 9.2;
         result.WaterConsumption = 4.4;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 4.4;       // Resource + daily water consumption
         result.BaseGarbageProduction = 16.17;
         result.GarbagePerWorker = 0.0043;
@@ -735,7 +735,7 @@ class GameData
         result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 7.2;
         result.WaterConsumption = 0.2;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.2;       // Resource + daily water consumption
         result.BaseGarbageProduction = 10;
         result.GarbagePerWorker = 0.0043;
@@ -772,7 +772,7 @@ class GameData
         result.MaxWorkers = 20;
         result.PowerConsumptionMWh = 6.7; // 6.7 MWh/day
         result.WaterConsumption = 0.4;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.4;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 1.20 / 365.0; // 1.20 tons/year
@@ -811,7 +811,7 @@ class GameData
         result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 9.2;
         result.WaterConsumption = 0.1;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.1;       // Resource + daily water consumption
         result.BaseGarbageProduction = 1.08;
         result.GarbagePerWorker = 0.006;
@@ -848,7 +848,7 @@ class GameData
         result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 24;
         result.WaterConsumption = 0.3;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.1;       // Resource + daily water consumption
         result.BaseGarbageProduction = 3.08;
         result.GarbagePerWorker = 0.006;
@@ -881,7 +881,7 @@ class GameData
         result.MaxWorkers = 100;
         result.PowerConsumptionMWh = 23;
         result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;       // Resource + daily water consumption
         result.BaseGarbageProduction = 6.13;
         result.GarbagePerWorker = 0.0043;       // Include max workers
@@ -917,7 +917,7 @@ class GameData
         result.MaxWorkers = 40;
         result.PowerConsumptionMWh = 9.8;
         result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;            // Resource + daily water consumption
         result.BaseGarbageProduction = 2.45;     // Include max workers
         result.GarbagePerWorker = 0.0043;
@@ -956,7 +956,7 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.9;
         result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;       // Resource + daily water consumption
         result.EnvironmentPollution = 4 / 365;
         result.IsSeasonDependent = false;
@@ -988,7 +988,7 @@ class GameData
         result.MaxWorkers = 45;
         result.PowerConsumptionMWh = 4.3;
         result.WaterConsumption = 0.9;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.9;       // Resource + daily water consumption
         result.BaseGarbageProduction = 0.39;       // Include max workers
         result.GarbagePerWorker = 0.0043;
@@ -1025,7 +1025,7 @@ class GameData
         result.MaxWorkers = 25;
         result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 0.50;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 4.20;
@@ -1060,7 +1060,7 @@ class GameData
         result.MaxWorkers = 350;
         result.PowerConsumptionMWh = 151.0;
         result.WaterConsumption = 7.0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 20.90;
@@ -1097,7 +1097,7 @@ class GameData
         result.MaxWorkers = 370;
         result.PowerConsumptionMWh = 17.0;
         result.WaterConsumption = 7.40;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 24.30;
@@ -1217,7 +1217,7 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
@@ -1248,7 +1248,7 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
@@ -1279,7 +1279,7 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
@@ -1317,7 +1317,7 @@ class GameData
         result.MaxWorkers = 50;
         result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 2.30;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 3.60;
@@ -1353,7 +1353,7 @@ class GameData
         result.MaxWorkers = 50;
         result.PowerConsumptionMWh = 3.4;
         result.WaterConsumption = 1.56;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 6.90;
@@ -1393,7 +1393,7 @@ class GameData
         result.MaxWorkers = 65;
         result.PowerConsumptionMWh = 8.0;
         result.WaterConsumption = 1.30;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 6.20;
@@ -1431,7 +1431,7 @@ class GameData
         result.MaxWorkers = 50;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 1.00;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0;
         result.GarbagePerWorker = 0.60;
         result.EnvironmentPollution = 6.60;
@@ -1470,7 +1470,7 @@ class GameData
         result.MaxWorkers = 40;
         result.PowerConsumptionMWh = 6.3;
         result.WaterConsumption = 0.80;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.80;
         result.BaseGarbageProduction = 7.48;
         result.GarbagePerWorker = 0.0006;
@@ -1508,7 +1508,7 @@ class GameData
         result.MaxWorkers = 30;
         result.PowerConsumptionMWh = 6.0;
         result.WaterConsumption = 0.69;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.69;
         result.BaseGarbageProduction = 7.19;
         result.GarbagePerWorker = 0.0006;
@@ -1548,7 +1548,7 @@ class GameData
         result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 15;
         result.WaterConsumption = 0.10;      // building water consumption
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 85.10;     // Input water + building consumption
         result.BaseGarbageProduction = 4.35;
         result.GarbagePerWorker = 0.0006;
@@ -1588,7 +1588,7 @@ class GameData
         result.MaxWorkers = 75;
         result.PowerConsumptionMWh = 3.0;
         result.WaterConsumption = 1.50;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 1.50;
         result.BaseGarbageProduction = 0.004;
         result.GarbagePerWorker = 0.0006;
@@ -1628,7 +1628,7 @@ class GameData
         result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 18;
         result.WaterConsumption = 0.10;
-        result.HeatConsumption = 0;
+
         result.SewageProduction = 0.10;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 7.00 / 365;
@@ -1665,7 +1665,6 @@ class GameData
         result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 0.30;
         result.WaterConsumptionM3 = 0.20;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 22.00;
         result.Type = UtilityType.Power;
@@ -1701,7 +1700,6 @@ class GameData
         result.MaxWorkers = 20;
         result.PowerConsumptionMWh = 0.6;
         result.WaterConsumptionM3 = 0.4;
-        result.HeatConsumptionM3 = 0;
         result.BaseGarbageProduction =0.03;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 39.5 / 365;
@@ -1735,7 +1733,6 @@ class GameData
         result.MaxWorkers = 15;
         result.PowerConsumptionMWh = 3.4;
         result.WaterConsumptionM3 = 0.3;
-        result.HeatConsumptionM3 = 0;
         result.BaseGarbageProduction = 0.11;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 35.8 / 365;
@@ -1769,7 +1766,6 @@ class GameData
         result.MaxWorkers = 60;
         result.PowerConsumptionMWh = 7.8;
         result.WaterConsumptionM3 = 1.2;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 9 / 365;
         result.WorkDays = 12561;
@@ -1805,7 +1801,6 @@ class GameData
         result.MaxWorkers = 40;
         result.PowerConsumptionMWh = 7.8;
         result.WaterConsumptionM3 = 1.20;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 3.00;
         result.SupportCategory = SupportCategory.PowerHandling;
@@ -1842,7 +1837,6 @@ class GameData
         result.MaxWorkers = 120;
         result.PowerConsumptionMWh = 9.6;
         result.WaterConsumptionM3 = 2.4;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 14.2 / 365;
         result.WorkDays = 20418;
@@ -1878,7 +1872,6 @@ class GameData
         result.MaxWorkers = 45;
         result.PowerConsumptionMWh = 8.0;
         result.WaterConsumptionM3 = 1.36;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 4.20;
         result.SupportCategory = SupportCategory.PowerHandling;
@@ -1910,7 +1903,6 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 0;
         result.WaterConsumptionM3 = 0;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
@@ -1940,7 +1932,6 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 0;
         result.WaterConsumptionM3 = 0;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
@@ -1970,7 +1961,6 @@ class GameData
         result.MaxWorkers = 8;
         result.PowerConsumptionMWh = 0.24;
         result.WaterConsumptionM3 = 0.16;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.33;
         result.EnvironmentPollution = 0;
         result.SupportCategory = SupportCategory.PowerHandling;
@@ -2001,7 +1991,6 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 2.1;
         result.WaterConsumptionM3 = 0;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
         result.SupportCategory = SupportCategory.WaterHandling;
@@ -2033,7 +2022,6 @@ class GameData
         result.MaxWorkers = 7;
         result.PowerConsumptionMWh = 5.7;
         result.WaterConsumptionM3 = 0;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.20;
         result.EnvironmentPollution = 0;
         result.SupportCategory = SupportCategory.WaterHandling;
@@ -2065,7 +2053,6 @@ class GameData
         result.MaxWorkers = 0;
         result.PowerConsumptionMWh = 0;
         result.WaterConsumptionM3 = 0;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0;
         result.EnvironmentPollution = 0;
         result.SupportCategory = SupportCategory.WaterHandling;
@@ -2099,7 +2086,6 @@ class GameData
         result.MaxWorkers = 5;
         result.PowerConsumptionMWh = 10;
         result.WaterConsumptionM3 = 0.1;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2134,7 +2120,6 @@ class GameData
         result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 13;
         result.WaterConsumptionM3 = 0.2;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2169,7 +2154,6 @@ class GameData
         result.MaxWorkers = 10;
         result.PowerConsumptionMWh = 11;
         result.WaterConsumptionM3 = 0.2;
-        result.HeatConsumptionM3 = 0;
         result.SewageDisposalCapacity = 80;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
@@ -2204,7 +2188,6 @@ class GameData
         result.MaxWorkers = 20;
         result.PowerConsumptionMWh = 15;
         result.WaterConsumptionM3 = 0.4;
-        result.HeatConsumptionM3 = 0;
         result.SewageDisposalCapacity = 220;
         result.GarbagePerWorker = 0.0006;
         result.EnvironmentPollution = 0;
@@ -2239,7 +2222,6 @@ class GameData
         result.MaxWorkers = 7;
         result.PowerConsumptionMWh = 27;
         result.WaterConsumptionM3 = 0;
-        result.HeatConsumptionM3 = 0;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 7.0 / 365;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2272,7 +2254,6 @@ class GameData
         result.MaxWorkers = 30;
         result.PowerConsumptionMWh = 63;
         result.WaterConsumptionM3 = 0.60;
-        result.HeatConsumptionM3 = 0;
         result.BaseGarbageProduction = 0.01;
         result.GarbagePerWorker = 0.00033;
         result.EnvironmentPollution = 26.50 / 365;
@@ -2430,13 +2411,13 @@ class GameData
         };
         return result;
     }
-    public static SupportBuilding LivestockHall { get; } = CreateLivestockHall();
-    public static SupportBuilding CreateLivestockHall()
+    public static LiveStockHall LivestockHall { get; } = CreateLivestockHall();
+    public static LiveStockHall CreateLivestockHall()
     {
-        SupportBuilding result = new SupportBuilding();
+        LiveStockHall result = new LiveStockHall();
         result.Name = "Livestock Hall";
         result.PowerConsumptionMWh = 3.0;
-        result.WaterConsumption = 11.10;
+        result.WaterConsumptionM3 = 11.10;
         result.SupportCategory = SupportCategory.GeneralDistribution;
         result.WorkDays = 487;
         result.ConstructionMaterials = new Dictionary<Resource, double>()
@@ -2504,10 +2485,10 @@ class GameData
     };
         return result;
     }
-    public static SupportBuilding ZaporozieVeza { get; } = CreateZaporozieVeza();
-    public static SupportBuilding CreateZaporozieVeza()
+    public static ZaporozieVeza ZaporozieVeza { get; } = CreateZaporozieVeza();
+    public static ZaporozieVeza CreateZaporozieVeza()
     {
-        SupportBuilding result = new SupportBuilding();
+        ZaporozieVeza result = new ZaporozieVeza();
         result.Name = "Zaporozie Veza";
         result.PowerConsumptionMWh = 3.0;
         result.EnvironmentPollution = 12.00;
@@ -2523,10 +2504,10 @@ class GameData
     };
         return result;
     }
-    public static SupportBuilding CoolingTower { get; } = CreateCoolingTower();
-    public static SupportBuilding CreateCoolingTower()
+    public static CoolingTower CoolingTower { get; } = CreateCoolingTower();
+    public static CoolingTower CreateCoolingTower()
     {
-        SupportBuilding result = new SupportBuilding();
+        CoolingTower result = new CoolingTower();
         result.Name = "Cooling Tower";
         result.PowerConsumptionMWh = 3.0;
         result.EnvironmentPollution = 12.00;
@@ -8422,8 +8403,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 18,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 200,
@@ -8442,8 +8421,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 110,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 230,
@@ -8461,8 +8438,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 280,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 500,
@@ -8480,8 +8455,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 365,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 400,
@@ -8499,8 +8472,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 519,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 600,
@@ -8518,8 +8489,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 686,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 800,
@@ -8537,8 +8506,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 785,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 1500,
@@ -8556,8 +8523,6 @@ class GameData
             Type = TransportationType.Bus,
             WorkDays = 926,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 2000,
@@ -8572,49 +8537,6 @@ class GameData
             }
         },
 
-        // Labour Pickup Halls
-        new TransportationBuilding
-        {
-            Name = "Labour pickup hall (200 workers)",
-            Type = TransportationType.Bus,
-            WorkDays = 682,
-            PowerConsumptionMWh = 6.0,
-            WaterConsumptionM3 = 4.0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 200,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 24.0 },
-                { GameData.AsphaltResource, 34.0 },
-                { GameData.GravelResource, 18.0 },
-                { GameData.SteelResource, 4.3 },
-                { GameData.BoardsResource, 11.0 }
-            }
-        },
-        new TransportationBuilding
-        {
-            Name = "Labour pickup hall (300 workers)",
-            Type = TransportationType.Bus,
-            WorkDays = 809,
-            PowerConsumptionMWh = 9.0,
-            WaterConsumptionM3 = 6.0,
-            HeatConsumptionMW = 0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 300,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 36.0 },
-                { GameData.AsphaltResource, 22.0 },
-                { GameData.GravelResource, 27.0 },
-                { GameData.SteelResource, 7.1 },
-                { GameData.BricksResource, 23.0 },
-                { GameData.BoardsResource, 14.0 }
-            }
-        },
-
         // Tram Stops
         new TransportationBuilding
         {
@@ -8622,8 +8544,6 @@ class GameData
             Type = TransportationType.Tram,
             WorkDays = 117,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 250,
@@ -8642,8 +8562,6 @@ class GameData
             Type = TransportationType.Tram,
             WorkDays = 170,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 400,
@@ -8664,8 +8582,6 @@ class GameData
             Type = TransportationType.Station,
             WorkDays = 33,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 3,
             FuelStorageCapacity = 35, // tons
             PassengerCapacity = 100,
@@ -8685,8 +8601,6 @@ class GameData
             Type = TransportationType.Station,
             WorkDays = 279,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 2,
             FuelStorageCapacity = 35, // tons
             PassengerCapacity = 100,
@@ -8706,8 +8620,6 @@ class GameData
             Type = TransportationType.Station,
             WorkDays = 373,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 4,
             FuelStorageCapacity = 45, // tons
             PassengerCapacity = 100,
@@ -8727,8 +8639,6 @@ class GameData
             Type = TransportationType.Station,
             WorkDays = 99,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 7,
             FuelStorageCapacity = 35, // tons
             PassengerCapacity = 100,
@@ -8748,8 +8658,6 @@ class GameData
             Type = TransportationType.Trolley,
             WorkDays = 42,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = null,
             PassengerCapacity = 200,
@@ -8770,8 +8678,6 @@ class GameData
             Type = TransportationType.Depot,
             WorkDays = 448,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 5,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
@@ -8791,8 +8697,6 @@ class GameData
             Type = TransportationType.Depot,
             WorkDays = 517,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 8,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
@@ -8815,8 +8719,6 @@ class GameData
             Type = TransportationType.Station,
             WorkDays = 143,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 7,
             FuelStorageCapacity = null,
             PassengerCapacity = 100,
@@ -8837,8 +8739,6 @@ class GameData
             Type = TransportationType.Station,
             WorkDays = 489,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 6,
             FuelStorageCapacity = null,
             PassengerCapacity = 150,
@@ -8859,8 +8759,6 @@ class GameData
             Type = TransportationType.Depot,
             WorkDays = 918,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 4,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
@@ -8881,8 +8779,6 @@ class GameData
             Type = TransportationType.Depot,
             WorkDays = 1815,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 8,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
@@ -8905,8 +8801,6 @@ class GameData
             Type = TransportationType.Refueling,
             WorkDays = 98,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = 30,
             PassengerCapacity = null,
@@ -8926,8 +8820,6 @@ class GameData
             Type = TransportationType.Refueling,
             WorkDays = 159,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = 60,
             PassengerCapacity = null,
@@ -8947,8 +8839,6 @@ class GameData
             Type = TransportationType.Refueling,
             WorkDays = 281,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = null,
             FuelStorageCapacity = 120,
             PassengerCapacity = null,
@@ -8970,8 +8860,6 @@ class GameData
             Type = TransportationType.Depot,
             WorkDays = 448,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 6,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
@@ -8991,8 +8879,6 @@ class GameData
             Type = TransportationType.Depot,
             WorkDays = 785,
             PowerConsumptionMWh = 3.0,
-            WaterConsumptionM3 = 0,
-            HeatConsumptionMW = 0,
             ParkingSpots = 13,
             FuelStorageCapacity = null,
             PassengerCapacity = null,
@@ -9006,6 +8892,50 @@ class GameData
                 { GameData.BoardsResource, 13.0 }
             }
         } 
+    };
+
+    // TransportationBuilding : LabourPickupHall
+    public static List<LabourPickupHall> AllLabourPickupHalls = new List<LabourPickupHall>()
+    {
+        new LabourPickupHall
+        {
+            Name = "Labour pickup hall (200 workers)",
+            Type = TransportationType.Bus,
+            WorkDays = 682,
+            PowerConsumptionMWh = 6.0,
+            WaterConsumptionM3 = 4.0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 200,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 24.0 },
+                { GameData.AsphaltResource, 34.0 },
+                { GameData.GravelResource, 18.0 },
+                { GameData.SteelResource, 4.3 },
+                { GameData.BoardsResource, 11.0 }
+            }
+        },
+        new LabourPickupHall
+        {
+            Name = "Labour pickup hall (300 workers)",
+            Type = TransportationType.Bus,
+            WorkDays = 809,
+            PowerConsumptionMWh = 9.0,
+            WaterConsumptionM3 = 6.0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 300,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 36.0 },
+                { GameData.AsphaltResource, 22.0 },
+                { GameData.GravelResource, 27.0 },
+                { GameData.SteelResource, 7.1 },
+                { GameData.BricksResource, 23.0 },
+                { GameData.BoardsResource, 14.0 }
+            }
+        },
     };
 
     // All Buildings & Resources
@@ -9060,7 +8990,7 @@ class GameData
     };
     public static List<SupportBuilding> AllSupportBuildings { get; } = new List<SupportBuilding>()
     {
-        LivestockHall, LiquidPumpingStation, OilLoadingUnloading, BigOilStorage, UndergroundPumpingStation, MediumOilStorage, SmallOilStorage,
+        LiquidPumpingStation, OilLoadingUnloading, BigOilStorage, UndergroundPumpingStation, MediumOilStorage, SmallOilStorage,
         ConveyorEngineTransfer, ConveyorOverpass,
         SmallDistributionOffice1,HorseDistributionOffice, MediumDistributionOffice1, MediumDistributionOffice2, SmallDistributionOffice2,
         TrainDistributionOffice1, TrainDistributionOffice2,
@@ -9075,7 +9005,7 @@ class GameData
         CargoHarborMedium, CargoHarborSmall1, CargoHarborSmall2, CargoTrainStation1, CargoTrainStation2, CargoTrainStation3, CargoTrainStation4,CargoTrainStation5, CargoTrainStation6, CargoTrainStation7,
         AirportCargoTerminal, HeliportCargoPlatform1, HeliportCargoPlatform3, RoadCargoStation1, RoadCargoStation2, RoadCargoStation3, RoadCargoStation4, RoadCargoStation5, RoadCargoStation6,
         DryBulkStorage1000,DryBulkStorage1150,DryBulkStorage150,DryBulkStorage2300,DryBulkStorage2615,DryBulkStorage300,CementSilo500,CementSilo500Alt, DryBulkConveyorEngineTransfer, DryBulkConveyorOverpass,
-        SewageDischarge,SewageLoadingUnloadingStation,SewagePump10m,SewagePump15m,SewagePump5m,SewageTank,
+        SewageDischarge,SewageLoadingUnloadingStation,SewagePump10m,SewagePump15m,SewagePump5m,SewageTank
     };
     public static List<AmenityBuilding> AllAmenityBuildings
     {
@@ -9125,10 +9055,26 @@ class GameData
     };
 
     // Precomputed Properties
-    public static double MaxResPower = AllResidentialBuildings.Select(b => b.PowerConsumptionMWh).Max();
-    public static double MinResPower = AllResidentialBuildings.Select(b => b.PowerConsumptionMWh).Min();
-    public static double MaxResWater = AllResidentialBuildings.Select(b => b.WaterPerDay).Max();
-    public static double MinResWater = AllResidentialBuildings.Select(b => b.WaterPerDay).Max();
-    public static double MaxResHeat = AllResidentialBuildings.Select(b => b.HeatTankM3).Max();
-    public static double MinResHeat = AllResidentialBuildings.Select(b => b.HeatTankM3).Max();
+    public static Dictionary<BuildingCategory, Dictionary<UtilityType, (double Min, double Max)>> BoundsCache = new Dictionary<BuildingCategory, Dictionary<UtilityType, (double Min, double Max)>>();
+    public static void InitializeBounds(List<Building> allBuildings)
+    {
+        BoundsCache.Clear();
+
+        var groupedByCategory = allBuildings.GroupBy(b => b.Category);
+        foreach (var categoryGroup in groupedByCategory)
+        {
+            BuildingCategory category = categoryGroup.Key;
+            BoundsCache[category] = new Dictionary<UtilityType, (double Min, double Max)>();
+
+            // Collect Utilities that each buildings activated
+            var activeTypes = categoryGroup.SelectMany(b => b.GetActiveUtilities()).Distinct();
+
+            foreach (var type in activeTypes)
+            {
+                // Collect final values that went through runtime formula(ex: GarbageProduction)
+                var values = categoryGroup.Select(b => b.GetUtilityValue(type)).ToList();
+                BoundsCache[category][type] = (values.Min(), values.Max());
+            }
+        }
+    }
 }

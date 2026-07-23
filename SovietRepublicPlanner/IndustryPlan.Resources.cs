@@ -201,8 +201,6 @@ public partial class IndustryPlan
                 residue -= this.TotalPowerNeeded;
             else if (kv.Key.Name == "Water")
                 residue -= (this.TotalUtilityNeeds.ContainsKey(kv.Key)) ? this.TotalUtilityNeeds[kv.Key] : this.TotalWaterNeeded;
-            else if (kv.Key.Name == "Heat")
-                residue -= this.TotalHeatNeeded;
             // Subtract citizen consumption
             if (TotalCitizenConsumption.ContainsKey(kv.Key))
                 residue -= TotalCitizenConsumption[kv.Key];

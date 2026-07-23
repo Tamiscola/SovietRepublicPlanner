@@ -10,11 +10,14 @@
 public class TransportationBuilding : Building
 {
     // Identification
+    public override BuildingCategory Category => BuildingCategory.Transport;
     public TransportationType Type;  // enum: Bus, Trolley, Tram, Depot, Station, Refueling, Maintenance
 
     // Utilities (same as other buildings)
-    public double WaterConsumptionM3;
-    public double HeatConsumptionMW;
+    public override IEnumerable<UtilityType> GetActiveUtilities()
+    {
+        return new[] { UtilityType.Power };
+    }
 
     // Transport-specific
     public int? ParkingSpots;  // nullable - not all have this

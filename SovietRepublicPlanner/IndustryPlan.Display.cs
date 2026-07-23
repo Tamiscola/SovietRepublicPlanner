@@ -35,11 +35,6 @@ public partial class IndustryPlan
                 ? "-"
                 : "";
             Console.WriteLine($"│ Water (t/day):{waterLabel,13}{minusBalance + waterLabel,27}");
-            // Heat
-            minusBalance = TotalHeatNeeded < 0
-                ? "-"
-                : "";
-            Console.WriteLine($"│ Heat (MW):{TotalHeatNeeded,17:F2}{minusBalance + TotalHeatNeeded,27}");
             // Sewage
             string sewageProduced = TotalSewageProduced > 0 ? $"{TotalSewageProduced,12:F2}" : "         —";
             Console.WriteLine($"│ Sewage (t/day):{sewageProduced}{sewageProduced,27}");

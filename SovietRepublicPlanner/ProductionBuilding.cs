@@ -1,6 +1,10 @@
 ﻿public class ProductionBuilding : Building
 {
+    // Identification
+    public override BuildingCategory Category => BuildingCategory.Production;
     public ProductionBuilding() { }
+
+    // Workers & Resources
     public List<ResourceAmount> Inputs { get; set; } = new List<ResourceAmount>();
     public List<ResourceAmount> Outputs { get; set; } = new List<ResourceAmount>();
     public int MaxWorkers { get; set; }
@@ -17,11 +21,23 @@
     public double WaterConsumption { get; set; }        // ㎥/day
     public double SewageProduction { get; set; }        // ㎥/day
     public double SewageDisposalCapacity { get; set; } = 0;  // ㎥/day
-    public double HeatConsumption { get; set; }         // Gcal/day
     public double BaseGarbageProduction { get; set; } = 0;  // Building's base garbage (without workers)
     public double GarbagePerWorker { get; set; }        // Garbage production per worker
     public double GarbageProduction => BaseGarbageProduction + (MaxWorkers * GarbagePerWorker);  // tons/day
     public double EnvironmentPollution { get; set; }    // tons/day
+    public override IEnumerable<UtilityType> GetActiveUtilities()
+    {
+        return new[] { UtilityType.Power, UtilityType.Water, UtilityType.Sewage, UtilityType.Garbage };
+    }
+    public override double GetUtilityValue(UtilityType type)
+    {
+        return type switch 
+        {
+            UtilityType.Water => this.WaterConsumption,
+            UtilityType.Sewage => this.SewageProduction,
+            _ => base.GetUtilityValue(type)
+        };
+    }
 
     // Variability
     public bool IsSeasonDependent { get; set; }

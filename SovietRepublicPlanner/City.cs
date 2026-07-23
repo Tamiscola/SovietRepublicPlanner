@@ -99,17 +99,9 @@ public partial class City
         get
         {
             double total = 0;
-            if (industryPlans.Count > 0)
-            {
-                foreach (var plan in industryPlans) total += plan.TotalHeatNeeded;
-            }
             if (microDistricts.Count > 0)
             {
                 foreach (var m in microDistricts) total += m.HeatConsumption;
-            }
-            if (UtilityPlans.Count > 0)
-            {
-                foreach (var p in UtilityPlans) total += p.TotalHeatConsumptionM3;
             }
             return total;
         }
