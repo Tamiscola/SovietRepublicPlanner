@@ -11,10 +11,26 @@ public class SupportBuilding : Building
     public SupportCategory SupportCategory { get; set; } = SupportCategory.None;
 
     // Utilities
-    //public double EnvironmentPollution { get; set; } = 0;   // For CoolingTowers
+    public double WaterConsumptionM3 { get; set; } = 0;     // For LiveStockHall
+    public double EnvironmentPollution { get; set; } = 0;   // For CoolingTowers
     public override IEnumerable<UtilityType> GetActiveUtilities()
     {
-        return new[] { UtilityType.Power };
+        var utilities = new List<UtilityType> { UtilityType.Power };
+        if (this.WaterConsumptionM3 > 0) 
+        { 
+            utilities.Add(UtilityType.Water); 
+            utilities.Add(UtilityType.Sewage);
+        }
+        return utilities;
+    }
+    public override double GetUtilityValue(UtilityType type)
+    {
+        return type switch
+        {
+            UtilityType.Water => WaterConsumptionM3,
+            UtilityType.Sewage => WaterConsumptionM3,
+            _ => base.GetUtilityValue(type)
+        };
     }
 }
 public enum SupportCategory

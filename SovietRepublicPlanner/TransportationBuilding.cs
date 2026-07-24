@@ -14,9 +14,25 @@ public class TransportationBuilding : Building
     public TransportationType Type;  // enum: Bus, Trolley, Tram, Depot, Station, Refueling, Maintenance
 
     // Utilities (same as other buildings)
+    public double WaterConsumptionM3 { get; set; } = 0;     // LabourPickupHall
     public override IEnumerable<UtilityType> GetActiveUtilities()
     {
-        return new[] { UtilityType.Power };
+        var utilities = new List<UtilityType>() { UtilityType.Power };
+        if (WaterConsumptionM3 > 0)
+        {
+            utilities.Add(UtilityType.Water);
+            utilities.Add(UtilityType.Sewage);
+        }
+        return utilities;
+    }
+    public override double GetUtilityValue(UtilityType type)
+    {
+        return type switch
+        {
+            UtilityType.Water => WaterConsumptionM3,
+            UtilityType.Sewage => WaterConsumptionM3,
+            _ => base.GetUtilityValue(type)
+        };
     }
 
     // Transport-specific

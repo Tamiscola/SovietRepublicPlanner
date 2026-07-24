@@ -1590,15 +1590,15 @@ namespace SovietRepublicPlanner
                     //  Detect needed infrastructure types
                     //      Collect all resources that need infrastructure
                     HashSet<Resource> allIOResources = new HashSet<Resource>();
-                    List<SupportBuilding> liquidInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
-                    List<SupportBuilding> bulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
-                    List<SupportBuilding> dryBulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
-                    List<SupportBuilding> solidHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
-                    List<SupportBuilding> generalInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
-                    List<SupportBuilding> waterInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
-                    List<SupportBuilding> powerInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
-                    List<SupportBuilding> sewageInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
-                    List<SupportBuilding> heatInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
+                    List<SupportBuilding> liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
+                    List<SupportBuilding> bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
+                    List<SupportBuilding> dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
+                    List<SupportBuilding> solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
+                    List<SupportBuilding> generalInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
+                    List<SupportBuilding> waterInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
+                    List<SupportBuilding> powerInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
+                    List<SupportBuilding> sewageInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
+                    List<SupportBuilding> heatInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
                     Dictionary<int, List<SupportBuilding>> categoryBuildings = new Dictionary<int, List<SupportBuilding>>();
                     int catIndex = 0;
 
@@ -1611,24 +1611,24 @@ namespace SovietRepublicPlanner
                     foreach (Resource r in allIOResources)
                     {
                         if (r.RequiresLiquidInfrastructure)
-                            liquidInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
+                            liquidInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.LiquidHandling).ToList();
                         if (r.RequiresBulkHandling)
-                            bulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
+                            bulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.BulkHandling).ToList();
                         if (r.RequiresDryBulkHandling)
-                            dryBulkHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
+                            dryBulkHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.DryBulkHandling).ToList();
                         if (r.RequiresSolidHandling)
-                            solidHandlingInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
+                            solidHandlingInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SolidHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            powerInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
+                            powerInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.PowerHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            waterInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
+                            waterInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.WaterHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            sewageInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
+                            sewageInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.SewageHandling).ToList();
                         if (r.RequiresWaterInfrastructure)
-                            heatInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
+                            heatInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.HeatHandling).ToList();
                     }
                     //      GeneralDistribution is ALWAYS available (outside loop)
-                    generalInfra = GameData.AllSupportBuildings.OfType<SupportBuilding>().Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
+                    generalInfra = GameData.AllSupportBuildings.Where(sb => sb.SupportCategory == SupportCategory.GeneralDistribution).ToList();
 
                     //      Display grouped by category
                     if (liquidInfra.Count() > 0 && allIOResources.Any(r => r.RequiresLiquidInfrastructure))

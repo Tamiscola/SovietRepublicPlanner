@@ -2411,10 +2411,10 @@ class GameData
         };
         return result;
     }
-    public static LiveStockHall LivestockHall { get; } = CreateLivestockHall();
-    public static LiveStockHall CreateLivestockHall()
+    public static SupportBuilding LivestockHall { get; } = CreateLivestockHall();
+    public static SupportBuilding CreateLivestockHall()
     {
-        LiveStockHall result = new LiveStockHall();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Livestock Hall";
         result.PowerConsumptionMWh = 3.0;
         result.WaterConsumptionM3 = 11.10;
@@ -2485,10 +2485,10 @@ class GameData
     };
         return result;
     }
-    public static ZaporozieVeza ZaporozieVeza { get; } = CreateZaporozieVeza();
-    public static ZaporozieVeza CreateZaporozieVeza()
+    public static SupportBuilding ZaporozieVeza { get; } = CreateZaporozieVeza();
+    public static SupportBuilding CreateZaporozieVeza()
     {
-        ZaporozieVeza result = new ZaporozieVeza();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Zaporozie Veza";
         result.PowerConsumptionMWh = 3.0;
         result.EnvironmentPollution = 12.00;
@@ -2504,10 +2504,10 @@ class GameData
     };
         return result;
     }
-    public static CoolingTower CoolingTower { get; } = CreateCoolingTower();
-    public static CoolingTower CreateCoolingTower()
+    public static SupportBuilding CoolingTower { get; } = CreateCoolingTower();
+    public static SupportBuilding CreateCoolingTower()
     {
-        CoolingTower result = new CoolingTower();
+        SupportBuilding result = new SupportBuilding();
         result.Name = "Cooling Tower";
         result.PowerConsumptionMWh = 3.0;
         result.EnvironmentPollution = 12.00;
@@ -8650,7 +8650,47 @@ class GameData
                 { GameData.SteelResource, 5.4 }
             }
         },
-        
+            // TransportationBuilding : LabourPickupHall
+        new TransportationBuilding
+        {
+            Name = "Labour pickup hall (200 workers)",
+            Type = TransportationType.Bus,
+            WorkDays = 682,
+            PowerConsumptionMWh = 6.0,
+            WaterConsumptionM3 = 4.0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 200,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 24.0 },
+                { GameData.AsphaltResource, 34.0 },
+                { GameData.GravelResource, 18.0 },
+                { GameData.SteelResource, 4.3 },
+                { GameData.BoardsResource, 11.0 }
+            }
+        },
+        new TransportationBuilding
+        {
+            Name = "Labour pickup hall (300 workers)",
+            Type = TransportationType.Bus,
+            WorkDays = 809,
+            PowerConsumptionMWh = 9.0,
+            WaterConsumptionM3 = 6.0,
+            ParkingSpots = null,
+            FuelStorageCapacity = null,
+            PassengerCapacity = 300,
+            ConstructionMaterials = new Dictionary<Resource, double>
+            {
+                { GameData.ConcreteResource, 36.0 },
+                { GameData.AsphaltResource, 22.0 },
+                { GameData.GravelResource, 27.0 },
+                { GameData.SteelResource, 7.1 },
+                { GameData.BricksResource, 23.0 },
+                { GameData.BoardsResource, 14.0 }
+            }
+        },
+
         // Trolleybus Stop 
         new TransportationBuilding
         {
@@ -8894,50 +8934,6 @@ class GameData
         } 
     };
 
-    // TransportationBuilding : LabourPickupHall
-    public static List<LabourPickupHall> AllLabourPickupHalls = new List<LabourPickupHall>()
-    {
-        new LabourPickupHall
-        {
-            Name = "Labour pickup hall (200 workers)",
-            Type = TransportationType.Bus,
-            WorkDays = 682,
-            PowerConsumptionMWh = 6.0,
-            WaterConsumptionM3 = 4.0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 200,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 24.0 },
-                { GameData.AsphaltResource, 34.0 },
-                { GameData.GravelResource, 18.0 },
-                { GameData.SteelResource, 4.3 },
-                { GameData.BoardsResource, 11.0 }
-            }
-        },
-        new LabourPickupHall
-        {
-            Name = "Labour pickup hall (300 workers)",
-            Type = TransportationType.Bus,
-            WorkDays = 809,
-            PowerConsumptionMWh = 9.0,
-            WaterConsumptionM3 = 6.0,
-            ParkingSpots = null,
-            FuelStorageCapacity = null,
-            PassengerCapacity = 300,
-            ConstructionMaterials = new Dictionary<Resource, double>
-            {
-                { GameData.ConcreteResource, 36.0 },
-                { GameData.AsphaltResource, 22.0 },
-                { GameData.GravelResource, 27.0 },
-                { GameData.SteelResource, 7.1 },
-                { GameData.BricksResource, 23.0 },
-                { GameData.BoardsResource, 14.0 }
-            }
-        },
-    };
-
     // All Buildings & Resources
     public static List<Resource> AllResources { get; } = new List<Resource>()
     {
@@ -8990,7 +8986,7 @@ class GameData
     };
     public static List<SupportBuilding> AllSupportBuildings { get; } = new List<SupportBuilding>()
     {
-        LiquidPumpingStation, OilLoadingUnloading, BigOilStorage, UndergroundPumpingStation, MediumOilStorage, SmallOilStorage,
+        LivestockHall, LiquidPumpingStation, OilLoadingUnloading, BigOilStorage, UndergroundPumpingStation, MediumOilStorage, SmallOilStorage,
         ConveyorEngineTransfer, ConveyorOverpass,
         SmallDistributionOffice1,HorseDistributionOffice, MediumDistributionOffice1, MediumDistributionOffice2, SmallDistributionOffice2,
         TrainDistributionOffice1, TrainDistributionOffice2,
@@ -9005,7 +9001,7 @@ class GameData
         CargoHarborMedium, CargoHarborSmall1, CargoHarborSmall2, CargoTrainStation1, CargoTrainStation2, CargoTrainStation3, CargoTrainStation4,CargoTrainStation5, CargoTrainStation6, CargoTrainStation7,
         AirportCargoTerminal, HeliportCargoPlatform1, HeliportCargoPlatform3, RoadCargoStation1, RoadCargoStation2, RoadCargoStation3, RoadCargoStation4, RoadCargoStation5, RoadCargoStation6,
         DryBulkStorage1000,DryBulkStorage1150,DryBulkStorage150,DryBulkStorage2300,DryBulkStorage2615,DryBulkStorage300,CementSilo500,CementSilo500Alt, DryBulkConveyorEngineTransfer, DryBulkConveyorOverpass,
-        SewageDischarge,SewageLoadingUnloadingStation,SewagePump10m,SewagePump15m,SewagePump5m,SewageTank
+        SewageDischarge,SewageLoadingUnloadingStation,SewagePump10m,SewagePump15m,SewagePump5m,SewageTank, CoolingTower, ZaporozieVeza
     };
     public static List<AmenityBuilding> AllAmenityBuildings
     {
