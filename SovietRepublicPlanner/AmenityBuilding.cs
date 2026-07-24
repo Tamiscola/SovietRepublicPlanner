@@ -73,7 +73,6 @@ public class AmenityBuilding : Building
 
     // Utilities
     public double WaterConsumptionM3 { get; set; }
-    public double HotWaterTankM3 { get; set; }
     public double HeatConsumptionMW { get; set; }
     public double GarbagePerWorker { get; set; }
     public double GarbagePerCustomer { get; set; }

@@ -6278,8 +6278,7 @@ class GameData
             Area = 654.5,
             PowerConsumptionMWh = 5.6,
             WaterConsumptionM3 = 0.90,
-            HotWaterTankM3 = 22,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 22,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 405,
@@ -6308,8 +6307,7 @@ class GameData
             Area = 396,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.60,
-            HotWaterTankM3 = 10,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 10,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 180,
@@ -6338,8 +6336,7 @@ class GameData
             Area = 385,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
-            HotWaterTankM3 = 9,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 9,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 150,
@@ -6368,8 +6365,7 @@ class GameData
             Area = 264,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
-            HotWaterTankM3 = 9,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 9,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 150,
@@ -6398,8 +6394,7 @@ class GameData
             Area = 137.5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
-            HotWaterTankM3 = 6,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 6,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
@@ -6428,8 +6423,7 @@ class GameData
             Area = 137.5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
-            HotWaterTankM3 = 6,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 6,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
@@ -6458,8 +6452,7 @@ class GameData
             Area = 22,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.02,
-            HotWaterTankM3 = 0.56,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0.56,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 10,
@@ -6486,8 +6479,7 @@ class GameData
             Area = 423.5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
-            HotWaterTankM3 = 4,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 4,
             GarbagePerWorker = 0.00031,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 50,
@@ -6517,8 +6509,7 @@ class GameData
             MaxWorkers = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown
-            HotWaterTankM3 = 0,  // Not shown
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0,  // Not shown
             GarbagePerWorker = 0,  // Not shown
             GarbagePerCustomer = 0,  // N/A for city services
             MaxVisitors = 0,  // N/A for city services
@@ -6543,8 +6534,7 @@ class GameData
             MaxWorkers = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown
-            HotWaterTankM3 = 0,  // Not shown
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0,  // Not shown
             GarbagePerWorker = 0,  // Not shown
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
@@ -6569,8 +6559,7 @@ class GameData
             MaxWorkers = 25,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
-            HotWaterTankM3 = 1.75,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 1.75,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
@@ -6595,8 +6584,7 @@ class GameData
             MaxWorkers = 0,  // Not shown on card
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown
-            HotWaterTankM3 = 0,  // Not shown
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0,  // Not shown
             GarbagePerWorker = 0,  // Not shown
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
@@ -6624,8 +6612,7 @@ class GameData
             MaxWorkers = 60,  // 30 workers + 30 nurses
             PowerConsumptionMWh = 5.9,
             WaterConsumptionM3 = 1.20,
-            HotWaterTankM3 = 8,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 8,
             GarbagePerWorker = 0.00062,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 90,  // Max patients
@@ -6653,8 +6640,7 @@ class GameData
             MaxWorkers = 180,  // 90 workers + 90 nurses
             PowerConsumptionMWh = 13,
             WaterConsumptionM3 = 3.60,
-            HotWaterTankM3 = 34,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 34,
             GarbagePerWorker = 0.00062,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 450,  // Max patients
@@ -6680,8 +6666,7 @@ class GameData
             MaxWorkers = 10,  // 5 workers + 5 nurses
             PowerConsumptionMWh = 3.5,
             WaterConsumptionM3 = 0.20,
-            HotWaterTankM3 = 1.44,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 1.44,
             GarbagePerWorker = 0.00062,
             GarbagePerCustomer = 1.10,  // Per patient
             MaxVisitors = 15,  // Max patients
@@ -6709,8 +6694,7 @@ class GameData
             MaxWorkers = 40,
             PowerConsumptionMWh = 4.2,
             WaterConsumptionM3 = 0.80,
-            HotWaterTankM3 = 2.80,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 2.80,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0,  // N/A for fire stations
             MaxVisitors = 0,  // N/A
@@ -6735,8 +6719,7 @@ class GameData
             MaxWorkers = 50,
             PowerConsumptionMWh = 4.5,
             WaterConsumptionM3 = 1.00,
-            HotWaterTankM3 = 3,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 3,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
@@ -6761,8 +6744,7 @@ class GameData
             MaxWorkers = 30,
             PowerConsumptionMWh = 3.9,
             WaterConsumptionM3 = 0.60,
-            HotWaterTankM3 = 0,  // Not shown on card
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0,  // Not shown on card
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,
@@ -6790,8 +6772,7 @@ class GameData
             MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
-            HotWaterTankM3 = 5,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 5,
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
@@ -6814,8 +6795,7 @@ class GameData
             MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.40,
-            HotWaterTankM3 = 5,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 5,
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 80,
@@ -6838,8 +6818,7 @@ class GameData
             MaxWorkers = 6,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.12,
-            HotWaterTankM3 = 7,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 7,
             GarbagePerWorker = 0.00050,
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 150,
@@ -6862,8 +6841,7 @@ class GameData
             MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.40,
-            HotWaterTankM3 = 6,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 6,
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 100,
@@ -6886,8 +6864,7 @@ class GameData
             MaxWorkers = 8,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.16,
-            HotWaterTankM3 = 2.52,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 2.52,
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 40,
@@ -6910,8 +6887,7 @@ class GameData
             MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.40,
-            HotWaterTankM3 = 6,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 6,
             GarbagePerWorker = 0.00050,
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 100,
@@ -6934,8 +6910,7 @@ class GameData
             MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
-            HotWaterTankM3 = 3,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 3,
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 60,
@@ -6960,8 +6935,7 @@ class GameData
             MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.10,
-            HotWaterTankM3 = 1.82,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 1.82,
             GarbagePerWorker = 0.00050,
             GarbagePerCustomer = 0.00067,
             MaxVisitors = 30,
@@ -6985,8 +6959,7 @@ class GameData
             MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not shown on card
-            HotWaterTankM3 = 0,  // Not shown on card
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0,  // Not shown on card
             GarbagePerWorker = 0,  // Not shown on card
             GarbagePerCustomer = 0,  // Not shown on card
             MaxVisitors = 150,
@@ -7013,8 +6986,7 @@ class GameData
             MaxWorkers = 26,  // 13 + 13
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.52,
-            HotWaterTankM3 = 9,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 9,
             GarbagePerWorker = 0.00035,
             GarbagePerCustomer = 0.00060,  // Per student
             MaxVisitors = 156,  // Max students
@@ -7039,8 +7011,7 @@ class GameData
             MaxWorkers = 14,  // 7 + 7
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.28,
-            HotWaterTankM3 = 5,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 5,
             GarbagePerWorker = 0.00035,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 84,
@@ -7066,8 +7037,7 @@ class GameData
             MaxWorkers = 90,  // 45 + 45
             PowerConsumptionMWh = 9.2,
             WaterConsumptionM3 = 1.80,
-            HotWaterTankM3 = 32,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 32,
             GarbagePerWorker = 0.00035,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 540,
@@ -7092,8 +7062,7 @@ class GameData
             MaxWorkers = 60,  // 30 + 30
             PowerConsumptionMWh = 6.1,
             WaterConsumptionM3 = 1.20,
-            HotWaterTankM3 = 21,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 21,
             GarbagePerWorker = 0.00035,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 360,
@@ -7120,8 +7089,7 @@ class GameData
             MaxWorkers = 27,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.54,
-            HotWaterTankM3 = 15,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 15,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.00062,  // Per child
             MaxVisitors = 270,  // Max children
@@ -7146,8 +7114,7 @@ class GameData
             MaxWorkers = 18,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.36,
-            HotWaterTankM3 = 10,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 10,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.00062,
             MaxVisitors = 180,
@@ -7172,8 +7139,7 @@ class GameData
             MaxWorkers = 12,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.24,
-            HotWaterTankM3 = 6,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 6,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.00062,
             MaxVisitors = 120,
@@ -7201,8 +7167,7 @@ class GameData
             MaxWorkers = 80,  // 40 + 40
             PowerConsumptionMWh = 3.4,
             WaterConsumptionM3 = 1.60,
-            HotWaterTankM3 = 9,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 9,
             GarbagePerWorker = 0.00040,
             GarbagePerCustomer = 0.00048,  // Per student
             MaxVisitors = 80,  // Max students
@@ -7231,8 +7196,7 @@ class GameData
             MaxWorkers = 140,  // 70 + 70
             PowerConsumptionMWh = 9.2,
             WaterConsumptionM3 = 2.80,
-            HotWaterTankM3 = 30,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 30,
             GarbagePerWorker = 0.00040,
             GarbagePerCustomer = 0.00048,
             MaxVisitors = 420,  // Max students
@@ -7261,8 +7225,7 @@ class GameData
             MaxWorkers = 100,  // 50 + 50
             PowerConsumptionMWh = 6.6,
             WaterConsumptionM3 = 2.00,
-            HotWaterTankM3 = 21,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 21,
             GarbagePerWorker = 0.00040,
             GarbagePerCustomer = 0.00048,
             MaxVisitors = 300,  // Max students
@@ -7291,8 +7254,7 @@ class GameData
             MaxWorkers = 60,  // 30 + 30
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 1.20,
-            HotWaterTankM3 = 7,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 7,
             GarbagePerWorker = 0.00040,
             GarbagePerCustomer = 0.00048,
             MaxVisitors = 60,  // Max students
@@ -7320,8 +7282,7 @@ class GameData
             MaxWorkers = 150,  // 75 + 75
             PowerConsumptionMWh = 7.2,
             WaterConsumptionM3 = 3.00,
-            HotWaterTankM3 = 21,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 21,
             GarbagePerWorker = 0.00040,
             GarbagePerCustomer = 0.00048,
             MaxVisitors = 225,  // Max students
@@ -7352,8 +7313,7 @@ class GameData
             MaxWorkers = 0,  // No workers, it's a dorm
             PowerConsumptionMWh = 10,
             WaterConsumptionM3 = 3.83,
-            HotWaterTankM3 = 5,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 5,
             GarbagePerWorker = 0,  // N/A
             GarbagePerCustomer = 0,  // N/A
             MaxVisitors = 85,  // Passenger capacity (students living here)
@@ -7379,8 +7339,7 @@ class GameData
             MaxWorkers = 0,  // No workers
             PowerConsumptionMWh = 10,
             WaterConsumptionM3 = 3.83,
-            HotWaterTankM3 = 5,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 5,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
             MaxVisitors = 85,  // Passenger capacity
@@ -7410,8 +7369,7 @@ class GameData
             MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
-            HotWaterTankM3 = 6,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 6,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 105,
@@ -7436,8 +7394,7 @@ class GameData
             MaxWorkers = 25,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
-            HotWaterTankM3 = 10,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 10,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.0002,
             MaxVisitors = 175,
@@ -7464,8 +7421,7 @@ class GameData
             MaxWorkers = 18,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.36,
-            HotWaterTankM3 = 5,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 5,
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
@@ -7490,8 +7446,7 @@ class GameData
             MaxWorkers = 15,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.30,
-            HotWaterTankM3 = 0,  // No hot water tank listed
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0,  // No hot water tank listed
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 105,
@@ -7517,8 +7472,7 @@ class GameData
             MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.10,
-            HotWaterTankM3 = 0,  // No hot water tank listed
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0,  // No hot water tank listed
             GarbagePerWorker = 0.00032,
             GarbagePerCustomer = 0.0003,
             MaxVisitors = 90,
@@ -7546,7 +7500,6 @@ class GameData
             MaxWorkers = 15,
             PowerConsumptionMWh = 3.2,
             WaterConsumptionM3 = 0,  // Not listed
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,  // Not listed
             GarbagePerCustomer = 0,  // Not listed
@@ -7572,7 +7525,6 @@ class GameData
             MaxWorkers = 3,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.0002,
@@ -7596,7 +7548,6 @@ class GameData
             MaxWorkers = 1,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,  // Not listed
             GarbagePerCustomer = 0,  // Not listed
@@ -7619,7 +7570,6 @@ class GameData
             MaxWorkers = 6,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.0002,
@@ -7643,7 +7593,6 @@ class GameData
             MaxWorkers = 3,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.0002,
@@ -7669,7 +7618,6 @@ class GameData
             MaxWorkers = 4,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0.00020,
             GarbagePerCustomer = 0.0002,
@@ -7692,7 +7640,6 @@ class GameData
             MaxWorkers = 1,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0,  // Not listed
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,  // Not listed
             GarbagePerCustomer = 0,  // Not listed
@@ -7719,8 +7666,7 @@ class GameData
             MaxWorkers = 1,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.02,
-            HotWaterTankM3 = 0.66,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 0.66,
             GarbagePerWorker = 0.00053,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 12,
@@ -7750,8 +7696,7 @@ class GameData
             MaxWorkers = 5,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.10,
-            HotWaterTankM3 = 3,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 3,
             GarbagePerWorker = 0.00053,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 60,
@@ -7782,8 +7727,7 @@ class GameData
             MaxWorkers = 10,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.20,
-            HotWaterTankM3 = 6,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 6,
             GarbagePerWorker = 0.00053,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 120,
@@ -7816,8 +7760,7 @@ class GameData
             MaxWorkers = 8,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.16,
-            HotWaterTankM3 = 3,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 3,
             GarbagePerWorker = 0.00053,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 56,
@@ -7848,8 +7791,7 @@ class GameData
             MaxWorkers = 7,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.14,
-            HotWaterTankM3 = 3,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 3,
             GarbagePerWorker = 0.00053,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 70,
@@ -7881,8 +7823,7 @@ class GameData
             MaxWorkers = 10,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.20,
-            HotWaterTankM3 = 4,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 4,
             GarbagePerWorker = 0.00053,
             GarbagePerCustomer = 0.00060,
             MaxVisitors = 70,
@@ -7917,7 +7858,6 @@ class GameData
             MaxWorkers = 0,  // Cosmetic, no workers
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.06,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -7942,7 +7882,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.03,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -7967,7 +7906,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.02,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -7991,7 +7929,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 3.6,
             WaterConsumptionM3 = 0.09,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -8016,7 +7953,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.04,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -8041,7 +7977,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.01,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -8066,7 +8001,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.04,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -8091,7 +8025,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 4.6,
             WaterConsumptionM3 = 0.13,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -8116,7 +8049,6 @@ class GameData
             MaxWorkers = 0,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.03,
-            HotWaterTankM3 = 0,
             HeatConsumptionMW = 0,
             GarbagePerWorker = 0,
             GarbagePerCustomer = 0,
@@ -8143,8 +8075,7 @@ class GameData
             MaxWorkers = 70,
             PowerConsumptionMWh = 4.0,
             WaterConsumptionM3 = 10.85,
-            HotWaterTankM3 = 15,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 15,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,  // Visitors don't produce garbage in this context
             MaxVisitors = 210,
@@ -8182,8 +8113,7 @@ class GameData
             MaxWorkers = 20,
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 3.10,
-            HotWaterTankM3 = 4,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 4,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 60,
@@ -8223,8 +8153,7 @@ class GameData
             MaxWorkers = 50,  // Max workers
             PowerConsumptionMWh = 4.0,
             WaterConsumptionM3 = 1.60,
-            HotWaterTankM3 = 5,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 5,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 30,  // Listed as separate icon
@@ -8251,8 +8180,7 @@ class GameData
             MaxWorkers = 15,  // Max workers
             PowerConsumptionMWh = 3.0,
             WaterConsumptionM3 = 0.50,
-            HotWaterTankM3 = 1.75,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 1.75,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 10,  // Listed as separate icon
@@ -8280,8 +8208,7 @@ class GameData
             MaxWorkers = 20,  // Max workers
             PowerConsumptionMWh = 4.8,
             WaterConsumptionM3 = 1.20,
-            HotWaterTankM3 = 4,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 4,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 40,  // Listed as separate icon
@@ -8309,8 +8236,7 @@ class GameData
             MaxWorkers = 8,  // Max workers
             PowerConsumptionMWh = 3.5,
             WaterConsumptionM3 = 0.36,
-            HotWaterTankM3 = 1.26,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 1.26,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 10,  // Listed as separate icon
@@ -8342,8 +8268,7 @@ class GameData
             MaxWorkers = 30,
             PowerConsumptionMWh = 4.8,
             WaterConsumptionM3 = 0.60,
-            HotWaterTankM3 = 2.10,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 2.10,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,  // No visitors listed
@@ -8370,8 +8295,7 @@ class GameData
             MaxWorkers = 18,
             PowerConsumptionMWh = 3.5,
             WaterConsumptionM3 = 0.36,
-            HotWaterTankM3 = 1.26,
-            HeatConsumptionMW = 0,
+            HeatConsumptionMW = 1.26,
             GarbagePerWorker = 0.00045,
             GarbagePerCustomer = 0,
             MaxVisitors = 0,  // No visitors listed
