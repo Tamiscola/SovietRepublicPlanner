@@ -1,5 +1,6 @@
 ﻿class CalculationEngine
 {
+    // Greedy Allocation(ProductionBuilding)
     public static IndustryPlan Calculate(string resourceName, double targetAmount)
     {
         // Search TargetResource
@@ -278,22 +279,63 @@
         return result;
     }
 
+    // Normalization
+    public static double Normalize(double current, double min, double max)
+    {
+        double denom = max - min;
+        if (denom == 0) return 0;
+
+        return (current - min) / denom;
+    }
+    public static double NormalizedWorkersPerArea(ResidentialBuilding building)
+    {
+        double r = 0;
+        var category = building.Category;
+        var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.WorkersPerArea)];
+        r = Normalize(building.WorkersPerArea, bounds.Min, bounds.Max);
+        return r;
+    }
+    public static double NormalizedConstructionCostRUB(Building building)
+    {
+        double r = 0;
+        var category = building.Category;
+        var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.ConstructionCost)];
+        r = Normalize(building.ConstructionCostRUB, bounds.Min, bounds.Max);
+        return r;
+    }
+    public static double NormalizedWorkDays(Building building)
+    {
+        double r = 0;
+        var category = building.Category;
+        var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.WorkDays)];
+        r = Normalize(building.WorkDays, bounds.Min, bounds.Max);
+        return r;
+    }
+
     // Utility Calculation
     public static class UtilityCalculator
     {
-        public static double Normalize(double current, double min, double max)
-        {
-            double denom = max - min;
-            if (denom == 0) return 0;
 
-            return (current - min) / denom;
+        public static double CalculateUtilityCost(Building building, UtilityType type)
+        {
+            double cost = 0;
+            BuildingCategory category = building.Category;
+            if (!GameData.UtilBoundsCache.TryGetValue(category, out var categoryBounds)) return 0;
+
+            double currentValue = building.GetUtilityValue(type);
+            if (categoryBounds.TryGetValue(type, out var bounds))
+            {
+                cost += Normalize(currentValue, bounds.Min, bounds.Max);
+            }
+
+            return cost;
         }
 
         public static double CalculateTotalUtilityCost(Building building)
         {
             double totalCost = 0;
             BuildingCategory category = building.Category;
-            if (!GameData.BoundsCache.TryGetValue(category, out var categoryBounds)) return 0;
+            if (!GameData.UtilBoundsCache.TryGetValue(category, out var categoryBounds)) return 0;
 
             // 건물이 활성화한 유틸리티 목록만 돌면서 계산
             foreach (UtilityType type in building.GetActiveUtilities())
@@ -309,6 +351,8 @@
             return totalCost;
         }
     }
+
+    // Residential
     public static List<ResidentialBuilding> GetParetoFrontResidential(List<ResidentialBuilding> allBuildings)
     {
         List<ResidentialBuilding> result = new List<ResidentialBuilding>();

@@ -13,6 +13,12 @@ public enum BuildingCategory
     Support,
     Transport
 }
+public enum GeneralMetricType
+{
+    ConstructionCost,
+    WorkDays,
+    WorkersPerArea,
+}
 public enum UtilityType
 {
     Power,
@@ -32,7 +38,7 @@ public abstract class Building
 
     // Construction
     public int WorkDays {  get; set; }
-    public Dictionary<Resource, double> ConstructionMaterials { get; set; }
+    public Dictionary<Resource, double> ConstructionMaterials { get; set; } = new Dictionary<Resource, double>();
     public double ConstructionCostRUB 
     { 
         get
@@ -56,6 +62,15 @@ public abstract class Building
             }
             return sum;
         }
+    }
+    public virtual double GetGeneralValue(GeneralMetricType metricType)
+    {
+        return metricType switch
+        {
+            GeneralMetricType.ConstructionCost => this.ConstructionCostRUB,
+            GeneralMetricType.WorkDays => this.WorkDays,
+            _ => 0
+        };
     }
 
     // Utility

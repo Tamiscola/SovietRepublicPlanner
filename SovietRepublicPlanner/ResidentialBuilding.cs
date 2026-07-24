@@ -7,6 +7,14 @@
     public double WorkersPerArea => WorkerCapacity / Area;
     public int CurNumRes { get; set; }
     public int Quality { get; set; }  // Percentage (affects happiness)
+    public override double GetGeneralValue(GeneralMetricType metricType)
+    {
+        return metricType switch
+        {
+            GeneralMetricType.WorkersPerArea => WorkersPerArea,
+            _ => base.GetGeneralValue(metricType)
+        };
+    }
 
     // Utility
     public double WaterPerDay { get; set; }  // m³/day

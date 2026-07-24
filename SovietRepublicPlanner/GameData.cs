@@ -8956,6 +8956,13 @@ class GameData
         SmallWaterTreatment, BigWaterTreatment, BigWaterWell, SmallWaterWell, SurfaceWaterIntake,
         SmallSewageTreatment, BigSewageTreatment,HeatingPlant, SmallHeatingPlant,
     };
+    public static List<Building> AllBuildings { get; } = new List<Building>()
+        .Concat(AllProductionBuildings)
+        .Concat(AllSupportBuildings)
+        .Concat(AllAmenityBuildings)
+        .Concat(AllResidentialBuildings)
+        .Concat(AllTransportationBuildings)
+        .Concat(AllUtilityBuildings).ToList();
 
     // Tech
     public static class TechNames
@@ -8975,16 +8982,16 @@ class GameData
     };
 
     // Precomputed Properties
-    public static Dictionary<BuildingCategory, Dictionary<UtilityType, (double Min, double Max)>> BoundsCache = new Dictionary<BuildingCategory, Dictionary<UtilityType, (double Min, double Max)>>();
-    public static void InitializeBounds(List<Building> allBuildings)
+    public static Dictionary<BuildingCategory, Dictionary<UtilityType, (double Min, double Max)>> UtilBoundsCache = new Dictionary<BuildingCategory, Dictionary<UtilityType, (double Min, double Max)>>();
+    public static void InitializeUtilBounds(List<Building> allBuildings)
     {
-        BoundsCache.Clear();
+        UtilBoundsCache.Clear();
 
         var groupedByCategory = allBuildings.GroupBy(b => b.Category);
         foreach (var categoryGroup in groupedByCategory)
         {
             BuildingCategory category = categoryGroup.Key;
-            BoundsCache[category] = new Dictionary<UtilityType, (double Min, double Max)>();
+            UtilBoundsCache[category] = new Dictionary<UtilityType, (double Min, double Max)>();
 
             // Collect Utilities that each buildings activated
             var activeTypes = categoryGroup.SelectMany(b => b.GetActiveUtilities()).Distinct();
@@ -8993,8 +9000,19 @@ class GameData
             {
                 // Collect final values that went through runtime formula(ex: GarbageProduction)
                 var values = categoryGroup.Select(b => b.GetUtilityValue(type)).ToList();
-                BoundsCache[category][type] = (values.Min(), values.Max());
+                UtilBoundsCache[category][type] = (values.Min(), values.Max());
             }
+        }
+    }
+    public static Dictionary<(BuildingCategory, GeneralMetricType), (double Min, double Max)> GeneralBoundsCache = new Dictionary<(BuildingCategory, GeneralMetricType), (double Min, double Max)>();
+    public static void InitializeGeneralBounds(List<Building> allBuildings, GeneralMetricType metricType)
+    {
+        var groupedByCategory = allBuildings.GroupBy(b => b.Category);
+        foreach (var categoryGroup in groupedByCategory)
+        {
+            var values = categoryGroup.Select(b => b.GetGeneralValue(metricType)).ToList();
+            GeneralBoundsCache[(categoryGroup.Key, metricType)] = (values.Min(), values.Max());
+
         }
     }
 }

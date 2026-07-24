@@ -97,6 +97,16 @@ namespace SovietRepublicPlanner
                 }
             }
             Console.WriteLine("\n");
+            // Initialize BoundsCaches
+            GameData.InitializeUtilBounds(GameData.AllBuildings);
+            Console.WriteLine("All Buildings Utilities Bounds cache have been Initialized");
+            GameData.GeneralBoundsCache.Clear();
+            GameData.InitializeGeneralBounds(GameData.AllBuildings, GeneralMetricType.ConstructionCost);
+            Console.WriteLine("All Buildings ConstructionCost Bounds cache have been Initialized");
+            GameData.InitializeGeneralBounds(GameData.AllBuildings, GeneralMetricType.WorkDays);
+            Console.WriteLine("All Buildings WorkDays Bounds cache have been Initialized");
+            GameData.InitializeGeneralBounds(GameData.AllBuildings, GeneralMetricType.WorkersPerArea);
+            Console.WriteLine("All Buildings Density(WorkersPerArea) Bounds cache have been Initialized");
 
             // Main program loop
             while (true)
@@ -2603,22 +2613,22 @@ namespace SovietRepublicPlanner
                             switch (priorChoice)
                             {
                                 case 0:
-                                    priorityKey = b => -(CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(b) / b.WorkerCapacity);
+                                    priorityKey = b => CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(b) / b.WorkerCapacity;
                                     break;
                                 case 1:
-                                    priorityKey = b => b.WorkersPerArea;
+                                    priorityKey = b => CalculationEngine.NormalizedWorkersPerArea(b);
                                     break;
                                 case 2:
-                                    priorityKey = b => b.Quality;
+                                    priorityKey = b => b.Quality / 100;
                                     break;
                                 case 3:
-                                    priorityKey = b => -b.HeatTankM3;
+                                    priorityKey = b => CalculationEngine.UtilityCalculator.CalculateUtilityCost(b, UtilityType.Heat) / b.WorkerCapacity;
                                     break;
                                 case 4:
-                                    priorityKey = b => -b.ConstructionCostRUB;
+                                    priorityKey = b => 1 - (CalculationEngine.NormalizedConstructionCostRUB(b));
                                     break;
                                 case 5:
-                                    priorityKey = b => -b.WorkDays;
+                                    priorityKey = b => 1 - (CalculationEngine.NormalizedWorkDays(b));
                                     break;
                             }
                         } else { Console.WriteLine("Invalid Priority option."); continue; }
