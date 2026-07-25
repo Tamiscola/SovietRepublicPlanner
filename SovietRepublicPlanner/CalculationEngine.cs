@@ -295,20 +295,20 @@
         r = Normalize(building.WorkersPerArea, bounds.Min, bounds.Max);
         return r;
     }
-    public static double NormalizedConstructionCostRUB(Building building)
+    public static double NormalizedCostPerWorker(ResidentialBuilding building)
     {
         double r = 0;
         var category = building.Category;
-        var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.ConstructionCost)];
-        r = Normalize(building.ConstructionCostRUB, bounds.Min, bounds.Max);
+        var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.CostPerWorker)];
+        r = Normalize(building.ConstructionCostRUB / building.WorkerCapacity, bounds.Min, bounds.Max);
         return r;
     }
-    public static double NormalizedWorkDays(Building building)
+    public static double NormalizedWorkDaysPerWorker(ResidentialBuilding building)
     {
         double r = 0;
         var category = building.Category;
-        var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.WorkDays)];
-        r = Normalize(building.WorkDays, bounds.Min, bounds.Max);
+        var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.WorkDaysPerWorker)];
+        r = Normalize(building.WorkDays / building.WorkerCapacity, bounds.Min, bounds.Max);
         return r;
     }
 
@@ -481,10 +481,10 @@
             ("Quality", b => b.Quality / 100.0);
 
         public static (string Name, Func<ResidentialBuilding, double> Key) Cost =
-            ("Cost", b => 1 - CalculationEngine.NormalizedConstructionCostRUB(b));
+            ("Cost", b => 1 - CalculationEngine.NormalizedCostPerWorker(b));
 
         public static (string Name, Func<ResidentialBuilding, double> Key) Speed =
-            ("Speed", b => 1 - CalculationEngine.NormalizedWorkDays(b));
+            ("Speed", b => 1 - CalculationEngine.NormalizedWorkDaysPerWorker(b));
 
         public static (string Name, Func<ResidentialBuilding, double> Key) TotalUtility =
             ("Utility (Total)", b => 1 - CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(b));

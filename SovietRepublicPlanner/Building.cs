@@ -18,6 +18,8 @@ public enum GeneralMetricType
     ConstructionCost,
     WorkDays,
     WorkersPerArea,
+    CostPerWorker,
+    WorkDaysPerWorker
 }
 public enum UtilityType
 {

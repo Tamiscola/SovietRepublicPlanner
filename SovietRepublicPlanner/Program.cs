@@ -110,6 +110,10 @@ namespace SovietRepublicPlanner
             Console.WriteLine("All Buildings WorkDays Bounds cache have been Initialized");
             GameData.InitializeGeneralBounds(GameData.AllBuildings, GeneralMetricType.WorkersPerArea);
             Console.WriteLine("All Buildings Density(WorkersPerArea) Bounds cache have been Initialized");
+            GameData.InitializeGeneralBounds(GameData.AllBuildings, GeneralMetricType.CostPerWorker);
+            Console.WriteLine("All Buildings CostPerWorker Bounds cache have been Initialized");
+            GameData.InitializeGeneralBounds(GameData.AllBuildings, GeneralMetricType.WorkDaysPerWorker);
+            Console.WriteLine("All Buildings WorkDaysPerWorker Bounds cache have been Initialized");
 
             // Main program loop
             while (true)
@@ -2647,10 +2651,10 @@ namespace SovietRepublicPlanner
                                     }
                                     break;
                                 case 4:
-                                    priorityKey = b => 1 - (CalculationEngine.NormalizedConstructionCostRUB(b));
+                                    priorityKey = b => 1 - (CalculationEngine.NormalizedCostPerWorker(b));
                                     break;
                                 case 5:
-                                    priorityKey = b => 1 - (CalculationEngine.NormalizedWorkDays(b));
+                                    priorityKey = b => 1 - (CalculationEngine.NormalizedWorkDaysPerWorker(b));
                                     break;
                                 case 6: // Custom Composite
                                     Console.WriteLine("\nAvailable priority keys:");
@@ -2688,7 +2692,7 @@ namespace SovietRepublicPlanner
                         foreach (var b in paretoFront)
                         {
                             double d = CalculationEngine.NormalizedWorkersPerArea(b);
-                            double co = 1 - CalculationEngine.NormalizedConstructionCostRUB(b);
+                            double co = 1 - CalculationEngine.NormalizedCostPerWorker(b);
                             double u = 1 - CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(b);
                             Console.WriteLine($"{b.Name}: Density={d:0.00}, Cost={co:0.00}, Utility={u:0.00}");
                         }

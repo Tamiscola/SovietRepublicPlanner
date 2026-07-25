@@ -12,6 +12,8 @@
         return metricType switch
         {
             GeneralMetricType.WorkersPerArea => WorkersPerArea,
+            GeneralMetricType.CostPerWorker => ConstructionCostRUB / WorkerCapacity,
+            GeneralMetricType.WorkDaysPerWorker => WorkDays / WorkerCapacity,
             _ => base.GetGeneralValue(metricType)
         };
     }
@@ -48,14 +50,14 @@
             other.Quality >= this.Quality &&
             other.ConstructionCostRUB <= this.ConstructionCostRUB &&
             other.WorkDays <= this.WorkDays &&
-            CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(other) <= CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(this);
+            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) <= CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
 
         bool strictlyBetterOnOne =
             other.WorkersPerArea > this.WorkersPerArea ||
             other.Quality > this.Quality ||
             other.ConstructionCostRUB < this.ConstructionCostRUB ||
             other.WorkDays < this.WorkDays ||
-            CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(other) < CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(this);
+            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) < CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
 
         return atLeastAsGoodOnAll && strictlyBetterOnOne;
     }
