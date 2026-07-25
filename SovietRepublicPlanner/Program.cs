@@ -2609,7 +2609,7 @@ namespace SovietRepublicPlanner
                         Func<ResidentialBuilding, double> priorityKey = null;
                         int priorChoice;
                         Console.WriteLine("\nChoose the priority to optimize: \n[0]: Balanced (utility cost)" +
-                            "\n[1]: Density (WorkersPerArea)\n[2]: Quality\n[3]: Heat-economic (for Siberia-type maps)\n[4]: Construction Cost\n[5]: Construction Period");
+                            "\n[1]: Density (WorkersPerArea)\n[2]: Quality\n[3]: Utility Per Worker\n[4]: Construction Cost\n[5]: Construction Period");
                         if (int.TryParse(Console.ReadLine(), out priorChoice) && priorChoice >= 0 && priorChoice <= 5)
                         {
                             switch (priorChoice)
@@ -2624,7 +2624,26 @@ namespace SovietRepublicPlanner
                                     priorityKey = b => b.Quality / 100;
                                     break;
                                 case 3:
-                                    priorityKey = b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Heat);
+                                    Console.WriteLine($"\nChoose the Utility to optimize: \n[0]: Power\n[1]: Water\n[2]: Heat\n[3]: Garbage");
+                                    int utilChoice;
+                                    if (int.TryParse(Console.ReadLine(), out utilChoice) && utilChoice >= 0 && utilChoice <= 3)
+                                    {
+                                        switch (utilChoice)
+                                        {
+                                            case 0:
+                                                priorityKey = b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Power);
+                                                break;
+                                            case 1:
+                                                priorityKey = b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Water);
+                                                break;
+                                            case 2:
+                                                priorityKey = b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Heat);
+                                                break;
+                                            case 3:
+                                                priorityKey = b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Garbage);
+                                                break;
+                                        }
+                                    }
                                     break;
                                 case 4:
                                     priorityKey = b => 1 - (CalculationEngine.NormalizedConstructionCostRUB(b));
