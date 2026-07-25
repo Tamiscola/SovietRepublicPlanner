@@ -100,6 +100,8 @@ namespace SovietRepublicPlanner
             // Initialize BoundsCaches
             GameData.InitializeUtilBounds(GameData.AllBuildings);
             Console.WriteLine("All Buildings Utilities Bounds cache have been Initialized");
+            GameData.InitializeUtilPerWorkerBounds(GameData.AllBuildings);
+            Console.WriteLine("All Buildings Utilities Bounds Per Worker cache have been Initialized");
             GameData.GeneralBoundsCache.Clear();
             GameData.InitializeGeneralBounds(GameData.AllBuildings, GeneralMetricType.ConstructionCost);
             Console.WriteLine("All Buildings ConstructionCost Bounds cache have been Initialized");
@@ -2613,7 +2615,7 @@ namespace SovietRepublicPlanner
                             switch (priorChoice)
                             {
                                 case 0:
-                                    priorityKey = b => CalculationEngine.UtilityCalculator.CalculateTotalUtilityCost(b) / b.WorkerCapacity;
+                                    priorityKey = b => 1 - CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(b);
                                     break;
                                 case 1:
                                     priorityKey = b => CalculationEngine.NormalizedWorkersPerArea(b);
@@ -2622,7 +2624,7 @@ namespace SovietRepublicPlanner
                                     priorityKey = b => b.Quality / 100;
                                     break;
                                 case 3:
-                                    priorityKey = b => CalculationEngine.UtilityCalculator.CalculateUtilityCost(b, UtilityType.Heat) / b.WorkerCapacity;
+                                    priorityKey = b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Heat);
                                     break;
                                 case 4:
                                     priorityKey = b => 1 - (CalculationEngine.NormalizedConstructionCostRUB(b));

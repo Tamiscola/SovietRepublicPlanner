@@ -315,6 +315,27 @@
     // Utility Calculation
     public static class UtilityCalculator
     {
+        public static double RawUtilityCostPerWorker(ResidentialBuilding building, UtilityType type)
+        {
+            if (building.WorkerCapacity <= 0) return 0;
+            return building.GetUtilityValue(type) / building.WorkerCapacity;
+        }
+
+        public static double NormalizedUtilityCostPerWorker(ResidentialBuilding building, UtilityType type)
+        {
+            if (!GameData.UtilPerWorkerBoundsCache.TryGetValue((building.Category, type), out var bounds)) return 0;
+            return Normalize(RawUtilityCostPerWorker(building, type), bounds.Min, bounds.Max);
+        }
+
+        public static double NormalizedTotalUtilityCostPerWorker(ResidentialBuilding building)
+        {
+            double total = 0;
+            foreach (UtilityType type in building.GetActiveUtilities())
+            {
+                total += NormalizedUtilityCostPerWorker(building, type);
+            }
+            return total / building.GetActiveUtilities().Count();  // average, not raw sum, to stay bounded
+        }
 
         public static double CalculateUtilityCost(Building building, UtilityType type)
         {

@@ -9004,6 +9004,25 @@ class GameData
             }
         }
     }
+    public static Dictionary<(BuildingCategory, UtilityType), (double Min, double Max)> UtilPerWorkerBoundsCache = new Dictionary<(BuildingCategory, UtilityType), (double Min, double Max)>();
+    public static void InitializeUtilPerWorkerBounds(List<Building> allBuildings)
+    {
+        UtilPerWorkerBoundsCache.Clear();
+
+        var groupedByCategory = allBuildings.OfType<ResidentialBuilding>().GroupBy(b => b.Category);
+        foreach (var categoryGroup in groupedByCategory)
+        {
+            foreach (UtilityType type in Enum.GetValues(typeof(UtilityType)))
+            {
+                var values = categoryGroup
+                    .Where(b => b.WorkerCapacity > 0)
+                    .Select(b => b.GetUtilityValue(type) / b.WorkerCapacity)
+                    .ToList();
+                if (values.Count == 0) continue;
+                UtilPerWorkerBoundsCache[(categoryGroup.Key, type)] = (values.Min(), values.Max());
+            }
+        }
+    }
     public static Dictionary<(BuildingCategory, GeneralMetricType), (double Min, double Max)> GeneralBoundsCache = new Dictionary<(BuildingCategory, GeneralMetricType), (double Min, double Max)>();
     public static void InitializeGeneralBounds(List<Building> allBuildings, GeneralMetricType metricType)
     {
