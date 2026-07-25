@@ -409,13 +409,48 @@
 
         if (remaining > 0)
         {
-            var smallest = sorted.MinBy(b => b.WorkerCapacity);
-            if (result.ContainsKey(smallest)) result[smallest] += (int)Math.Ceiling((double)remaining / smallest.WorkerCapacity);
-            else result.Add(smallest, (int)Math.Ceiling((double)remaining / smallest.WorkerCapacity));
+            var candidates = sorted.Where(b => b.WorkerCapacity >= remaining).ToList();
+
+            ResidentialBuilding chosen;
+            if (candidates.Any())
+            {
+                // Among buildings that fully cover the remainder, pick the best-scoring one
+                chosen = candidates.OrderByDescending(b => priorityKey(b)).First();
+            }
+            else
+            {
+                // Nothing fully covers it (remainder bigger than any single building) —
+                // fall back to the largest available, still respecting priority as tiebreaker
+                chosen = sorted.OrderByDescending(b => b.WorkerCapacity)
+                                .ThenByDescending(b => priorityKey(b))
+                                .First();
+            }
+
+            int neededUnits = (int)Math.Ceiling((double)remaining / chosen.WorkerCapacity);
+            if (result.ContainsKey(chosen))
+                result[chosen] += neededUnits;
+            else
+                result[chosen] = neededUnits;
+
+            remaining -= neededUnits * chosen.WorkerCapacity;
         }
 
         return result;
     }
+    public static bool CanBuildResidential(ResidentialBuilding residentialBuilding)
+    {
+        bool r = false;
+        if (residentialBuilding != null && 
+            (residentialBuilding.UnlockYear <= CalculationSettings.CurrentYear || residentialBuilding.UnlockYear == null) && 
+            (residentialBuilding.RequiresResearch.All(r => CalculationSettings.UnlockedTech.Contains(r)) || residentialBuilding.RequiresResearch == null || residentialBuilding.RequiresResearch.Count == 0))
+        {
+            r = true;
+        } else { return false; }
+
+        return r;
+    }
+
+    // Tech
     public static bool CanResearch(TechNode node, HashSet<string> unlockedTech, int currentYear)
     {
         if (currentYear < node.UnlockYear) return false;
@@ -429,16 +464,41 @@
     {
         return node.Prerequisites.Select(GetTechNodeByName).ToList();
     }
-    public static bool CanBuildResidential(ResidentialBuilding residentialBuilding)
-    {
-        bool r = false;
-        if (residentialBuilding != null && 
-            (residentialBuilding.UnlockYear <= CalculationSettings.CurrentYear || residentialBuilding.UnlockYear == null) && 
-            (residentialBuilding.RequiresResearch.All(r => CalculationSettings.UnlockedTech.Contains(r)) || residentialBuilding.RequiresResearch == null || residentialBuilding.RequiresResearch.Count == 0))
-        {
-            r = true;
-        } else { return false; }
 
-        return r;
+    public static Func<ResidentialBuilding, double> ComposeWeighted(params (Func<ResidentialBuilding, double> Key, double Weight)[] components)
+    {
+        double totalWeight = components.Sum(c => c.Weight);
+        if (totalWeight == 0) return b => 0;
+        return b => components.Sum(c => c.Key(b) * (c.Weight / totalWeight));
+    }
+
+    public static class PriorityKeys
+    {
+        public static (string Name, Func<ResidentialBuilding, double> Key) Density =
+            ("Density", b => CalculationEngine.NormalizedWorkersPerArea(b));
+
+        public static (string Name, Func<ResidentialBuilding, double> Key) Quality =
+            ("Quality", b => b.Quality / 100.0);
+
+        public static (string Name, Func<ResidentialBuilding, double> Key) Cost =
+            ("Cost", b => 1 - CalculationEngine.NormalizedConstructionCostRUB(b));
+
+        public static (string Name, Func<ResidentialBuilding, double> Key) Speed =
+            ("Speed", b => 1 - CalculationEngine.NormalizedWorkDays(b));
+
+        public static (string Name, Func<ResidentialBuilding, double> Key) TotalUtility =
+            ("Utility (Total)", b => 1 - CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(b));
+
+        public static (string Name, Func<ResidentialBuilding, double> Key) Heat =
+            ("Heat-economic", b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Heat));
+        public static (string Name, Func<ResidentialBuilding, double> Key) Power =
+            ("Power-economic", b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Power));
+        public static (string Name, Func<ResidentialBuilding, double> Key) Water =
+            ("Water-economic", b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Water));
+        public static (string Name, Func<ResidentialBuilding, double> Key) Garbage =
+            ("Garbage-economic", b => 1 - CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(b, UtilityType.Garbage));
+
+        public static List<(string Name, Func<ResidentialBuilding, double> Key)> All =
+            new List<(string Name, Func<ResidentialBuilding, double> Key)> { Density, Quality, Cost, Speed, TotalUtility, Heat, Power, Water, Garbage };
     }
 }

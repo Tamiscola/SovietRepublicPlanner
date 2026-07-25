@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
-using System.ComponentModel.Design;
-using System.Reflection.Metadata.Ecma335;
+using System.Threading.Tasks;
+using static CalculationEngine;
 
 namespace SovietRepublicPlanner
 {
@@ -2609,8 +2610,8 @@ namespace SovietRepublicPlanner
                         Func<ResidentialBuilding, double> priorityKey = null;
                         int priorChoice;
                         Console.WriteLine("\nChoose the priority to optimize: \n[0]: Balanced (utility cost)" +
-                            "\n[1]: Density (WorkersPerArea)\n[2]: Quality\n[3]: Utility Per Worker\n[4]: Construction Cost\n[5]: Construction Period");
-                        if (int.TryParse(Console.ReadLine(), out priorChoice) && priorChoice >= 0 && priorChoice <= 5)
+                            "\n[1]: Density (WorkersPerArea)\n[2]: Quality\n[3]: Utility Per Worker\n[4]: Construction Cost\n[5]: Construction Period\n[6]: Composed Weights");
+                        if (int.TryParse(Console.ReadLine(), out priorChoice) && priorChoice >= 0 && priorChoice <= 6)
                         {
                             switch (priorChoice)
                             {
@@ -2651,11 +2652,46 @@ namespace SovietRepublicPlanner
                                 case 5:
                                     priorityKey = b => 1 - (CalculationEngine.NormalizedWorkDays(b));
                                     break;
+                                case 6: // Custom Composite
+                                    Console.WriteLine("\nAvailable priority keys:");
+                                    for (int i = 0; i < PriorityKeys.All.Count; i++)
+                                        Console.WriteLine($"[{i}]: {PriorityKeys.All[i].Name}");
+
+                                    Console.Write("\nSelect keys to combine (comma-separated indices): ");
+                                    var selectedIndices = Console.ReadLine().Split(',').Select(s => int.Parse(s.Trim())).ToList();
+
+                                    var components = new List<(Func<ResidentialBuilding, double> Key, double Weight)>();
+                                    foreach (int idx in selectedIndices)
+                                    {
+                                        var (name, key) = PriorityKeys.All[idx];
+                                        Console.Write($"Weight for {name} [default {1.0 / selectedIndices.Count:0.00}]: ");
+                                        string input = Console.ReadLine();
+                                        double weight = string.IsNullOrWhiteSpace(input)
+                                            ? 1.0 / selectedIndices.Count
+                                            : double.Parse(input);
+                                        components.Add((key, weight));
+                                    }
+
+                                    priorityKey = CalculationEngine.ComposeWeighted(components.ToArray());
+                                    break;
                             }
                         } else { Console.WriteLine("Invalid Priority option."); continue; }
 
                         List<ResidentialBuilding> availableBuildings = GameData.AllResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).ToList();
                         List<ResidentialBuilding> paretoFront = CalculationEngine.GetParetoFrontResidential(availableBuildings);
+
+                        // Debug
+                        Console.WriteLine($"Pareto front size: {paretoFront.Count}");
+                        foreach (var b in paretoFront)
+                            Console.WriteLine($"  {b.Name}");
+
+                        foreach (var b in paretoFront)
+                        {
+                            double d = CalculationEngine.NormalizedWorkersPerArea(b);
+                            double co = 1 - CalculationEngine.NormalizedConstructionCostRUB(b);
+                            double u = 1 - CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(b);
+                            Console.WriteLine($"{b.Name}: Density={d:0.00}, Cost={co:0.00}, Utility={u:0.00}");
+                        }
 
                         // Greedy Allocation
                         Dictionary<ResidentialBuilding, int> allocated = CalculationEngine.AllocateHousing(neededHousing, paretoFront, priorityKey);
