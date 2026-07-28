@@ -24,7 +24,9 @@
         { AmenityType.CityService, 0.0 },
         { AmenityType.Fountain, 0.0 }
     };
+    public static double WorkerToPopulationRatio { get; set; } = 0.70;     // 70% are workers
     public static double KindergartenAgePercent { get; set; } = 18.0;
     public static double SchoolAgePercent { get; set; } = 32.0;
+    public static double YoungAdultAgePercent { get; set; }
     public static double UniversityDemandPercent { get; set; } = 0;
 }

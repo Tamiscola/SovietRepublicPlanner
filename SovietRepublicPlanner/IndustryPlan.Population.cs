@@ -18,6 +18,5 @@ public partial class IndustryPlan
             return baseProductionWorkers;
         }
     }
-    public double WorkerToPopulationRatio { get; set; } = 0.70;     // 70% are workers
-    public int TotalPopulationNeeded => (int)Math.Ceiling(TotalWorkers / WorkerToPopulationRatio);
+    public int TotalPopulationNeeded => (int)Math.Ceiling(TotalWorkers / CalculationSettings.WorkerToPopulationRatio);
 }

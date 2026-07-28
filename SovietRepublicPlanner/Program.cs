@@ -2713,7 +2713,7 @@ namespace SovietRepublicPlanner
         }
         static void AddAmenityInstance(City c, int index)
         {
-            MicroDistrict md = new MicroDistrict();
+            MicroDistrict md = null;
 
             if (index == -1) { }
             else { md = c.microDistricts[index]; }
@@ -2760,8 +2760,12 @@ namespace SovietRepublicPlanner
                 Console.WriteLine("└─────────────────────────────────────────");
 
                 // Get current district coverage
-                var coverage = md.GetAmenityCoverage();
-                int currentCapacity = coverage.ServiceCoverage[selectedType];
+                var coverage = md != null
+                    ? md.GetAmenityCoverage()
+                    : null;
+                int currentCapacity = md != null
+                    ? coverage.ServiceCoverage[selectedType]
+                    : 0;
 
                 // Get current city coverage
                 var cityCoverage = c.GetAmenityCoverage();
@@ -2810,24 +2814,53 @@ namespace SovietRepublicPlanner
                     if (buildChoice == 0) { return; }
                     if (selectedType == AmenityType.Education)
                     {
-                        int kindergartenNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.KindergartenAgePercent / 100);
-                        int schoolNeeded = (int)Math.Ceiling(rootResult.TotalPopulationNeeded * CalculationSettings.SchoolAgePercent / 100);
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}");
-                        Console.WriteLine($"School: {coverage.SchoolCapacity}/{schoolNeeded}");
+                        if (index == -1)
+                        {
+                            int kindergartenNeeded = (int)Math.Ceiling(city.totalCitizen * CalculationSettings.KindergartenAgePercent / 100);
+                            int schoolNeeded = (int)Math.Ceiling(city.totalCitizen * CalculationSettings.SchoolAgePercent / 100);
+                            Console.WriteLine($"Kindergarten: {cityCoverage.KindergartenCapacity}/{kindergartenNeeded}");
+                            Console.WriteLine($"School: {cityCoverage.SchoolCapacity}/{schoolNeeded}");
+                        }
+                        // This needs to be parceled out according to the District numbers.
+                        else
+                        {
+                            int kindergartenNeeded = (int)Math.Ceiling(md.TotalCitizen * CalculationSettings.KindergartenAgePercent / 100);
+                            int schoolNeeded = (int)Math.Ceiling(md.TotalCitizen * CalculationSettings.SchoolAgePercent / 100);
+                            Console.WriteLine($"Kindergarten: {coverage.KindergartenCapacity}/{kindergartenNeeded}");
+                            Console.WriteLine($"School: {coverage.SchoolCapacity}/{schoolNeeded}");
+                        }
                         Console.ResetColor();
                     }
                     else if (selectedType == AmenityType.Healthcare)
                     {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"{city.totalCitizen} citizens need to be served.");
-                        Console.ResetColor();
+                        if (index == -1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{city.totalCitizen} citizens need to be served.");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{md.TotalCitizen} citizens need to be served.");
+                            Console.ResetColor();
+                        }
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"{city.totalWorkers} workers need to be served.");
-                        Console.ResetColor();
+                        if (index == -1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{city.totalWorkers} workers need to be served.");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{md.AmenityWorkers} workers need to be served.");
+                            Console.ResetColor();
+                        }
                     }
 
                     // Decide Current Number of Employees
@@ -2871,8 +2904,8 @@ namespace SovietRepublicPlanner
                             // (Auto) Name the Instance
                             if (c.CityAmenityBuildings.Any(ins => ins.Building.Name == amenityInstance.Building.Name))
                             {
-                                int number = 0;
-                                int sameBuildingCount = c.CityAmenityBuildings.Select(ins2 => ins2.Name == amenityInstance.Name).Count();
+                                int number = 1;
+                                int sameBuildingCount = c.CityAmenityBuildings.Where(ins2 => ins2.Name == amenityInstance.Name).Count();
                                 amenityInstance.Name = amenityInstance.Building.Name + $" ({number + sameBuildingCount})";
                             }
                             else amenityInstance.Name = amenityInstance.Building.Name;

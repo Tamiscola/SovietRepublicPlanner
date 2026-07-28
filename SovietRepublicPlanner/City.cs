@@ -45,12 +45,7 @@ public partial class City
     public int totalCitizen {
         get
         {
-            int total = 0;
-            if (industryPlans.Count > 0)
-            {
-                foreach (var plan in industryPlans) total += plan.TotalPopulationNeeded;
-            }
-            return total;
+            return (int)Math.Ceiling(totalWorkers * CalculationSettings.WorkerToPopulationRatio);
         }
     }
     public double totalPower

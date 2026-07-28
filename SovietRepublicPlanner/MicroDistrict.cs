@@ -12,6 +12,8 @@ public partial class MicroDistrict
     public List<AmenityInstance> AmenityBuildings { get; set; } = new List<AmenityInstance>();
     public List<TransportationInstance> TransportBuildings { get; set; } = new List<TransportationInstance>();
     public List<SupportInstance> SupportBuildings { get; set; } = new List<SupportInstance>();
+
+    // Population & Consumption
     public int TotalHousingCapacity
     {
         get
@@ -22,6 +24,7 @@ public partial class MicroDistrict
             return r;
         }
     }
+    public int TotalCitizen { get; set; }
     public int AmenityWorkers
     {
         get 
