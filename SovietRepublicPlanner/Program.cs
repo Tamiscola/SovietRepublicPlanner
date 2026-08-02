@@ -276,126 +276,67 @@ namespace SovietRepublicPlanner
                 return new List<City>();
             }
         }
-        static void CreateNewPlan()
+        static IndustryPlan CreateIndustryPlan(string plantype)
         {
             IndustryPlan result = new IndustryPlan();
-            double workerProductivity = 100.0;
-            int choiceIndex;
 
-            // Worker Productivity Choice : User Interaction
-            while (true)
-            {
-                Console.Write("Type the Productivity of workers (30-150 default: 100 (100% productivity)\n: ");
-                if (double.TryParse(Console.ReadLine(), out workerProductivity) && workerProductivity >= 30 && workerProductivity <= 150)
-                {
-                    CalculationSettings.WorkersProductivity = workerProductivity;
-                    result.WorkersProductivity = workerProductivity;
-                }
-                else { Console.Write("Invalid input. "); continue; }
-                break;
-            }
+            if (plantype == "buildplan") {
+                double workerProductivity = 100;
+                int choiceIndex;
 
-            // Resource Choice : User Interaction
-            List<Resource> allResources = GameData.AllResources;
-            int userInput = 0;
-            double inputAmount = 0;
-            Console.WriteLine("Resources:\n");
-            for (int i = 0; i < allResources.Count; i++) { Console.WriteLine($"{i}: {allResources[i].Name}"); }
-            while (true)
-            {
-                Console.Write("Choose a Resource: ");
-                if (!int.TryParse(Console.ReadLine(), out userInput) || userInput < 0 || userInput >= allResources.Count)
-                {
-                    Console.WriteLine("Invalid input");
-                    continue;
-                }
-                break;
-            }
-            while (true)
-            {
-                Console.Write("Choose the Amount (t/day): ");
-                if (!double.TryParse(Console.ReadLine(), out inputAmount) || inputAmount < 0)
-                {
-                    Console.WriteLine("Invalid input");
-                    continue;
-                }
-                break;
-            }
-
-            // Calculate
-            result = CalculationEngine.Calculate(allResources[userInput].Name, inputAmount);
-            // Display
-            Console.WriteLine($"\nTarget Resource: {result.TargetResource.Name} {result.TargetAmount}t/day");
-            for (int i = 0; i < result.Buildings.Count; i++)
-            {
-                if (result.TargetResource.Name == "Crops")
-                {
-                    Dictionary<ProductionBuilding, int> fieldsNeeded = new Dictionary<ProductionBuilding, int>();
-                    Dictionary<ProductionBuilding, int> farmsNeeded = new Dictionary<ProductionBuilding, int>();
-                    double expectedOutput = 0;
-                    Dictionary<Resource, double> fertilizers = new Dictionary<Resource, double>();
-                    double totalGarbage = 0;
-                    foreach (var bi in result.Buildings[i].BuildingInstances)
-                    {
-                        if (bi.Building.Name.Contains("Field"))
-                        {
-                            if (fieldsNeeded.ContainsKey(bi.Building))
-                                fieldsNeeded[bi.Building]++;
-                            else
-                                fieldsNeeded.Add(bi.Building, 1);
-                        }
-                        else if (bi.Building.Name.Contains("Farm"))
-                        {
-                            if (farmsNeeded.ContainsKey(bi.Building)) farmsNeeded[bi.Building]++;
-                            else farmsNeeded.Add(bi.Building, 1);
-                        }
-                    }
-                    Console.WriteLine("\n====================================================================");
-                    Console.Write($"Required number of fields: ");
-                    foreach (var key in fieldsNeeded.Keys)
-                        Console.Write($"{fieldsNeeded[key]} x {key.Name} ");
-                    Console.Write($"\nRequired number of farms: ");
-                    foreach (var key in farmsNeeded.Keys)
-                        Console.Write($"{farmsNeeded[key]} x {key.Name}");
-                    Console.Write("\nExpected Output: ");
-                    foreach (var key in result.Buildings[i].BuildingInstances)
-                        foreach (var val in key.ExpectedOutput.Values)
-                            expectedOutput += val;
-                    Console.WriteLine($"{expectedOutput:F2}t/year");
-                    Console.WriteLine("\nRequired Input Resources: ");
-                    foreach (var key in result.Buildings[i].BuildingInstances)
-                        foreach (var fer in key.Building.Inputs)
-                            if (fertilizers.ContainsKey(fer.Resource)) fertilizers[fer.Resource] += fer.Amount;
-                            else fertilizers.Add(fer.Resource, fer.Amount);
-                    foreach (var key in fertilizers)
-                        Console.WriteLine($"- {key.Key.Name} {key.Value}");
-                    Console.WriteLine($"\nPower consumption: {result.Buildings[i].TotalPowerNeeded}");
-                    Console.WriteLine($"Water consumption: {result.Buildings[i].TotalWaterNeeded}");
-                    Console.WriteLine($"Sewage produced: {result.Buildings[i].TotalSewageProduced}");
-                    foreach (var bi in result.Buildings[i].BuildingInstances)
-                        totalGarbage += bi.Building.GarbageProduction;
-                    Console.WriteLine($"Garbage produced: {totalGarbage}");
-                    Console.WriteLine($"Pollution emitted: {result.Buildings[i].TotalEnvironmentPollution}");
-                }
-            }
-            // Default Industries
-            if (result.TargetResource != GameData.CropsResource)
-                DisplayOptions(result); 
-
-            // User chooses a BuildingRequirement (if there's more than one option)
-            if (result.Buildings.Count > 1)
-            {
-                Console.Write($"Choose the Option plan(number): ");
+                // Worker Productivity Choice : User Interaction
                 while (true)
                 {
-                    if (!int.TryParse(Console.ReadLine(), out choiceIndex))
+                    Console.Write("Type the Productivity of workers (30-150 default: 100 (100% productivity)\n: ");
+                    if (double.TryParse(Console.ReadLine(), out workerProductivity) && workerProductivity >= 30 && workerProductivity <= 150)
+                        result.WorkersProductivity = workerProductivity;
+                    else { Console.Write("Invalid input. "); continue; }
+                    break;
+                }
+
+                // Building Choice : User Interaction
+                List<ProductionBuilding> allBuildings = GameData.AllProductionBuildings;
+                List<ProductionBuilding> allExtractions = allBuildings.Where(b => b.IsQualityDependent).ToList();
+                List<ProductionBuilding> allProcessing = allBuildings.Where(b => !b.IsQualityDependent && !b.IsSeasonDependent).ToList();
+                List<ProductionBuilding> selectedCategory = new List<ProductionBuilding>();
+                int userInput = 0;
+                double inputAmount = 0;
+                string[] inputStrings;
+                Console.WriteLine("Select a building category:\n");
+                Console.WriteLine("1. Extraction (mines, quarries, pumpjacks, woodcutters)");
+                Console.WriteLine("2. Processing (factories, plants)");
+                Console.Write("Type number:\n> ");
+
+                //    1) Display Category/building Option
+                while (true)
+                {
+                    if (int.TryParse(Console.ReadLine(), out userInput) && userInput > 0 && userInput <= 2)
                     {
-                        Console.WriteLine("Invalid input. Choose the Option plan(number).");
+                        if (userInput == 1)
+                        {
+                            selectedCategory = allExtractions;
+                            for (int i = 0; i < selectedCategory.Count(); i++)
+                                Console.WriteLine($"[{i}]: {selectedCategory[i].Name}");
+                        }
+                        else if (userInput == 2)
+                        {
+                            selectedCategory = allProcessing;
+                            for (int i = 0; i < selectedCategory.Count(); i++)
+                                Console.WriteLine($"[{i}]: {selectedCategory[i].Name}");
+                        }
                     }
-                    else
+                    else { Console.Write("invalid input:"); continue; }
+                    break;
+                }
+
+                //    2) User selects building
+                while (true)
+                {
+                    Console.Write("Select building:\n> ");
+                    if (int.TryParse(Console.ReadLine(), out userInput) && userInput >= 0 && userInput < selectedCategory.Count())
                     {
-                        choiceIndex--;
-                        result.ChosenBuilding = result.Buildings[choiceIndex];
+                        BuildingRequirement br = new BuildingRequirement(selectedCategory[userInput]);
+                        result.ChosenBuilding = br;
                         // if the building can use vehicles instead of workers
                         if (result.ChosenBuilding.Building.CanUseVehicles)
                         {
@@ -404,10 +345,8 @@ namespace SovietRepublicPlanner
                             Console.WriteLine();
 
                             if (vehicleChoice == 'y')
-                            {
-                                result.ChosenBuilding.Building.MaxWorkers = 0;  // Override to vehicles
-                            }
-                            // else keep the default 100 workers
+                                result.ChosenBuilding.UseVehicles = true;  // Override to vehicles
+                                                                           // else keep the default 100 workers
                         }
                         // Set the Current Number of Employees
                         else
@@ -421,49 +360,279 @@ namespace SovietRepublicPlanner
                             }
                             else { Console.WriteLine("The number of workers should be within the range of 0 ~ Max number of workers"); continue; }
                         }
-                        break;
                     }
+                    else { Console.Write("invalid input: "); continue; }
+                    break;
                 }
-            }
-            // When there's only one option
-            else
-            {
-                choiceIndex = 0;
-                Console.Write("Do you want to add this plan? (y/n): ");
-                char addInput;
+
+                //      3) Amount of buildings
+                bool fieldProcessed = false;
                 while (true)
                 {
-                    if (!char.TryParse(Console.ReadLine(), out addInput))
+                    Console.Write($"How many {result.ChosenBuilding.Building.Name}?\n> ");
+                    if (int.TryParse(Console.ReadLine(), out userInput) && userInput >= 0)
                     {
-                        Console.Write("Invalid input. Do you want to add this plan? (y/n):");
-                        break;
-                    }
-                    else if (addInput == 'y')
-                    {
-                        result.ChosenBuilding = result.Buildings[choiceIndex];
-                        // if the building can use vehicles instead of workers
-                        if (result.ChosenBuilding.Building.CanUseVehicles)
+                        // Extraction
+                        if (result.ChosenBuilding.Building.IsQualityDependent)
                         {
-                            Console.Write("Use vehicles instead of workers? (y/n, default: n): ");
-                            char vehicleChoice = Console.ReadKey().KeyChar;
-                            Console.WriteLine();
-
-                            if (vehicleChoice == 'y')
+                            result.ChosenBuilding.Count = userInput;
+                            List<double> qualities = new List<double>();
+                            while (true)
                             {
-                                result.ChosenBuilding.Building.MaxWorkers = 0;  // Override to vehicles
+                                qualities.Clear();
+                                Console.Write("Enter qualities for each spot (comma-separated, e.g. 80,75,90):\r\n>");
+                                inputStrings = Console.ReadLine()?.ToLower().Trim().Split(',');
+                                foreach (string qualityInput in inputStrings)
+                                {
+                                    int quality;
+                                    if (int.TryParse(qualityInput.Trim(), out quality))
+                                    {
+                                        double percentageQuality = Math.Round((double)quality / 100, 2);
+                                        qualities.Add(percentageQuality);
+                                    }
+                                    else { Console.Write("Wrong input. Try again."); break; }
+                                }
+                                if (qualities.Count() != userInput) { continue; }
+                                break;
                             }
-                            // else keep the default 100 workers
+                            for (int i = 0; i < userInput; i++)
+                            {
+                                BuildingInstance buildingInstance = new BuildingInstance();
+                                buildingInstance.Building = result.ChosenBuilding.Building;
+                                buildingInstance.ResourceAbundanceMultiplier = qualities[i];
+                                result.ChosenBuilding.BuildingInstances.Add(buildingInstance);
+                            }
+                            break;
                         }
+                        // Factories, Plants
+                        else result.ChosenBuilding.Count = userInput;
                         break;
                     }
-                    else if (addInput == 'n') { break; }
-                    else
+                    else { Console.Write("invalid input: "); continue; }
+                }
+
+                // Calculate & Display Output
+                Console.WriteLine("\n====================================================================");
+                Console.WriteLine($"Required number of building: {result.ChosenBuilding.Count} {result.ChosenBuilding.Building.Name}\n" +
+                    $"Total Workers: {result.ChosenBuilding.TotalWorkers}");
+                //      1) If Mines/Pumpjacks/Woodcutting Posts
+                if (result.ChosenBuilding.Building.IsQualityDependent)
+                {
+                    Console.Write($"Qualities: ");
+                    for (int i = 0; i < result.ChosenBuilding.BuildingInstances.Count; i++)
+                        Console.Write($"{result.ChosenBuilding.BuildingInstances[i].ResourceAbundanceMultiplier * 100}% ");
+                }
+                Console.Write("\nExpected Output: ");
+                foreach (Resource r in result.ChosenBuilding.ExpectedOutput.Keys)
+                {
+                    Console.Write($"{result.ChosenBuilding.ExpectedOutput[r]:F2}t/day {r.Name} ");
+                }
+                Console.WriteLine("\n\nRequired Input Resources: ");
+                foreach (Resource r in result.ChosenBuilding.RequiredResources.Keys)
+                {
+                    Console.WriteLine($"· {result.ChosenBuilding.RequiredResources[r]:F2} {r.Name}");
+                }
+                Console.WriteLine($"Power consumption: {result.ChosenBuilding.TotalPowerNeeded:F2}");
+                Console.WriteLine($"Water consumption: {result.ChosenBuilding.TotalWaterNeeded:F2}");
+                Console.WriteLine($"Sewage produced: {result.ChosenBuilding.TotalSewageProduced:F2}");
+                Console.WriteLine($"Garbage produced: {result.ChosenBuilding.TotalGarbageProduced:F6}");
+                Console.WriteLine($"Pollution emitted: {result.ChosenBuilding.TotalEnvironmentPollution:F6}");
+
+                return result; 
+            }
+            else if (plantype == "newplan")
+            {
+                double workerProductivity = 100.0;
+                int choiceIndex;
+
+                // Worker Productivity Choice : User Interaction
+                while (true)
+                {
+                    Console.Write("Type the Productivity of workers (30-150 default: 100 (100% productivity)\n: ");
+                    if (double.TryParse(Console.ReadLine(), out workerProductivity) && workerProductivity >= 30 && workerProductivity <= 150)
                     {
-                        Console.Write("Invalid input. Do you want to add this plan? (y/n):");
+                        CalculationSettings.WorkersProductivity = workerProductivity;
+                        result.WorkersProductivity = workerProductivity;
+                    }
+                    else { Console.Write("Invalid input. "); continue; }
+                    break;
+                }
+
+                // Resource Choice : User Interaction
+                List<Resource> allResources = GameData.AllResources;
+                int userInput = 0;
+                double inputAmount = 0;
+                Console.WriteLine("Resources:\n");
+                for (int i = 0; i < allResources.Count; i++) { Console.WriteLine($"{i}: {allResources[i].Name}"); }
+                while (true)
+                {
+                    Console.Write("Choose a Resource: ");
+                    if (!int.TryParse(Console.ReadLine(), out userInput) || userInput < 0 || userInput >= allResources.Count)
+                    {
+                        Console.WriteLine("Invalid input");
                         continue;
+                    }
+                    break;
+                }
+                while (true)
+                {
+                    Console.Write("Choose the Amount (t/day): ");
+                    if (!double.TryParse(Console.ReadLine(), out inputAmount) || inputAmount < 0)
+                    {
+                        Console.WriteLine("Invalid input");
+                        continue;
+                    }
+                    break;
+                }
+
+                // Calculate
+                result = CalculationEngine.Calculate(allResources[userInput].Name, inputAmount);
+                // Display
+                Console.WriteLine($"\nTarget Resource: {result.TargetResource.Name} {result.TargetAmount}t/day");
+                for (int i = 0; i < result.Buildings.Count; i++)
+                {
+                    if (result.TargetResource.Name == "Crops")
+                    {
+                        Dictionary<ProductionBuilding, int> fieldsNeeded = new Dictionary<ProductionBuilding, int>();
+                        Dictionary<ProductionBuilding, int> farmsNeeded = new Dictionary<ProductionBuilding, int>();
+                        double expectedOutput = 0;
+                        Dictionary<Resource, double> fertilizers = new Dictionary<Resource, double>();
+                        double totalGarbage = 0;
+                        foreach (var bi in result.Buildings[i].BuildingInstances)
+                        {
+                            if (bi.Building.Name.Contains("Field"))
+                            {
+                                if (fieldsNeeded.ContainsKey(bi.Building))
+                                    fieldsNeeded[bi.Building]++;
+                                else
+                                    fieldsNeeded.Add(bi.Building, 1);
+                            }
+                            else if (bi.Building.Name.Contains("Farm"))
+                            {
+                                if (farmsNeeded.ContainsKey(bi.Building)) farmsNeeded[bi.Building]++;
+                                else farmsNeeded.Add(bi.Building, 1);
+                            }
+                        }
+                        Console.WriteLine("\n====================================================================");
+                        Console.Write($"Required number of fields: ");
+                        foreach (var key in fieldsNeeded.Keys)
+                            Console.Write($"{fieldsNeeded[key]} x {key.Name} ");
+                        Console.Write($"\nRequired number of farms: ");
+                        foreach (var key in farmsNeeded.Keys)
+                            Console.Write($"{farmsNeeded[key]} x {key.Name}");
+                        Console.Write("\nExpected Output: ");
+                        foreach (var key in result.Buildings[i].BuildingInstances)
+                            foreach (var val in key.ExpectedOutput.Values)
+                                expectedOutput += val;
+                        Console.WriteLine($"{expectedOutput:F2}t/year");
+                        Console.WriteLine("\nRequired Input Resources: ");
+                        foreach (var key in result.Buildings[i].BuildingInstances)
+                            foreach (var fer in key.Building.Inputs)
+                                if (fertilizers.ContainsKey(fer.Resource)) fertilizers[fer.Resource] += fer.Amount;
+                                else fertilizers.Add(fer.Resource, fer.Amount);
+                        foreach (var key in fertilizers)
+                            Console.WriteLine($"- {key.Key.Name} {key.Value}");
+                        Console.WriteLine($"\nPower consumption: {result.Buildings[i].TotalPowerNeeded}");
+                        Console.WriteLine($"Water consumption: {result.Buildings[i].TotalWaterNeeded}");
+                        Console.WriteLine($"Sewage produced: {result.Buildings[i].TotalSewageProduced}");
+                        foreach (var bi in result.Buildings[i].BuildingInstances)
+                            totalGarbage += bi.Building.GarbageProduction;
+                        Console.WriteLine($"Garbage produced: {totalGarbage}");
+                        Console.WriteLine($"Pollution emitted: {result.Buildings[i].TotalEnvironmentPollution}");
+                    }
+                }
+                // Default Industries
+                if (result.TargetResource != GameData.CropsResource)
+                    DisplayOptions(result);
+
+                // User chooses a BuildingRequirement (if there's more than one option)
+                if (result.Buildings.Count > 1)
+                {
+                    Console.Write($"Choose the Option plan(number): ");
+                    while (true)
+                    {
+                        if (!int.TryParse(Console.ReadLine(), out choiceIndex))
+                        {
+                            Console.WriteLine("Invalid input. Choose the Option plan(number).");
+                        }
+                        else
+                        {
+                            choiceIndex--;
+                            result.ChosenBuilding = result.Buildings[choiceIndex];
+                            // if the building can use vehicles instead of workers
+                            if (result.ChosenBuilding.Building.CanUseVehicles)
+                            {
+                                Console.Write("Use vehicles instead of workers? (y/n, default: n): ");
+                                char vehicleChoice = Console.ReadKey().KeyChar;
+                                Console.WriteLine();
+
+                                if (vehicleChoice == 'y')
+                                {
+                                    result.ChosenBuilding.Building.MaxWorkers = 0;  // Override to vehicles
+                                }
+                                // else keep the default 100 workers
+                            }
+                            // Set the Current Number of Employees
+                            else
+                            {
+                                Console.Write($"How many workers? [0 - {result.ChosenBuilding.Building.MaxWorkers}]: ");
+                                int curNumEmp;
+                                if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= result.ChosenBuilding.Building.MaxWorkers)
+                                {
+                                    result.ChosenBuilding.Building.CurNumEmp = curNumEmp;
+                                    Console.WriteLine($"The number of workers for {result.ChosenBuilding.Building.Name}: {result.ChosenBuilding.Building.CurNumEmp}");
+                                }
+                                else { Console.WriteLine("The number of workers should be within the range of 0 ~ Max number of workers"); continue; }
+                            }
+                            break;
+                        }
+                    }
+                }
+                // When there's only one option
+                else
+                {
+                    choiceIndex = 0;
+                    Console.Write("Do you want to add this plan? (y/n): ");
+                    char addInput;
+                    while (true)
+                    {
+                        if (!char.TryParse(Console.ReadLine(), out addInput))
+                        {
+                            Console.Write("Invalid input. Do you want to add this plan? (y/n):");
+                            break;
+                        }
+                        else if (addInput == 'y')
+                        {
+                            result.ChosenBuilding = result.Buildings[choiceIndex];
+                            // if the building can use vehicles instead of workers
+                            if (result.ChosenBuilding.Building.CanUseVehicles)
+                            {
+                                Console.Write("Use vehicles instead of workers? (y/n, default: n): ");
+                                char vehicleChoice = Console.ReadKey().KeyChar;
+                                Console.WriteLine();
+
+                                if (vehicleChoice == 'y')
+                                {
+                                    result.ChosenBuilding.Building.MaxWorkers = 0;  // Override to vehicles
+                                }
+                                // else keep the default 100 workers
+                            }
+                            break;
+                        }
+                        else if (addInput == 'n') { break; }
+                        else
+                        {
+                            Console.Write("Invalid input. Do you want to add this plan? (y/n):");
+                            continue;
+                        }
                     }
                 }
             }
+            return result;
+        }
+        static void CreateNewPlan()
+        {
+            IndustryPlan result = CreateIndustryPlan("newplan");
 
             // Add to list and set as current
             allPlans.Add(result);
@@ -475,162 +644,7 @@ namespace SovietRepublicPlanner
         }
         static void CreateBuildPlan()
         {
-            double workerProductivity = 100;
-            int choiceIndex;
-            IndustryPlan result = new IndustryPlan();
-
-            // Worker Productivity Choice : User Interaction
-            while (true)
-            {
-                Console.Write("Type the Productivity of workers (30-150 default: 100 (100% productivity)\n: ");
-                if (double.TryParse(Console.ReadLine(), out workerProductivity) && workerProductivity >= 30 && workerProductivity <= 150)
-                    result.WorkersProductivity = workerProductivity;
-                else { Console.Write("Invalid input. "); continue; }
-                break;
-            }
-
-            // Building Choice : User Interaction
-            List<ProductionBuilding> allBuildings = GameData.AllProductionBuildings;
-            List<ProductionBuilding> allExtractions = allBuildings.Where(b => b.IsQualityDependent).ToList();
-            List<ProductionBuilding> allProcessing = allBuildings.Where(b => !b.IsQualityDependent && !b.IsSeasonDependent).ToList();
-            List<ProductionBuilding> selectedCategory = new List<ProductionBuilding>();
-            int userInput = 0;
-            double inputAmount = 0;
-            string[] inputStrings;
-            Console.WriteLine("Select a building category:\n");
-            Console.WriteLine("1. Extraction (mines, quarries, pumpjacks, woodcutters)");
-            Console.WriteLine("2. Processing (factories, plants)");
-            Console.Write("Type number:\n> ");
-            
-            //    1) Display Category/building Option
-            while (true)
-            {
-                if (int.TryParse(Console.ReadLine(), out userInput) && userInput > 0 && userInput <= 2)
-                {
-                    if (userInput == 1)
-                    {
-                        selectedCategory = allExtractions;
-                        for (int i = 0; i < selectedCategory.Count(); i++)
-                            Console.WriteLine($"[{i}]: {selectedCategory[i].Name}");
-                    }
-                    else if (userInput == 2)
-                    {
-                        selectedCategory = allProcessing;
-                        for (int i = 0; i < selectedCategory.Count(); i++)
-                            Console.WriteLine($"[{i}]: {selectedCategory[i].Name}");
-                    }
-                }
-                else { Console.Write("invalid input:"); continue; }
-                break;
-            }
-
-            //    2) User selects building
-            while (true)
-            {
-                Console.Write("Select building:\n> ");
-                if (int.TryParse(Console.ReadLine(), out userInput) && userInput >= 0 && userInput < selectedCategory.Count())
-                {
-                    BuildingRequirement br = new BuildingRequirement(selectedCategory[userInput]);
-                    result.ChosenBuilding = br;
-                    // if the building can use vehicles instead of workers
-                    if (result.ChosenBuilding.Building.CanUseVehicles)
-                    {
-                        Console.Write("Use vehicles instead of workers? (y/n, default: n): ");
-                        char vehicleChoice = Console.ReadKey().KeyChar;
-                        Console.WriteLine();
-
-                        if (vehicleChoice == 'y')
-                            result.ChosenBuilding.UseVehicles = true;  // Override to vehicles
-                        // else keep the default 100 workers
-                    }
-                    // Set the Current Number of Employees
-                    else
-                    {
-                        Console.Write($"How many workers? [0 - {result.ChosenBuilding.Building.MaxWorkers}]: ");
-                        int curNumEmp;
-                        if (int.TryParse(Console.ReadLine(), out curNumEmp) && curNumEmp >= 0 && curNumEmp <= result.ChosenBuilding.Building.MaxWorkers)
-                        {
-                            result.ChosenBuilding.Building.CurNumEmp = curNumEmp;
-                            Console.WriteLine($"The number of workers for {result.ChosenBuilding.Building.Name}: {result.ChosenBuilding.Building.CurNumEmp}");
-                        } else { Console.WriteLine("The number of workers should be within the range of 0 ~ Max number of workers"); continue; }
-                    }
-                }
-                else { Console.Write("invalid input: "); continue; }
-                break;
-            }
-
-            //      3) Amount of buildings
-            bool fieldProcessed = false;
-            while (true)
-            {
-                Console.Write($"How many {result.ChosenBuilding.Building.Name}?\n> ");
-                if (int.TryParse(Console.ReadLine(), out userInput) && userInput >= 0)
-                {
-                    // Extraction
-                    if (result.ChosenBuilding.Building.IsQualityDependent)
-                    {
-                        result.ChosenBuilding.Count = userInput;
-                        List<double> qualities = new List<double>();
-                        while (true)
-                        {
-                            qualities.Clear();
-                            Console.Write("Enter qualities for each spot (comma-separated, e.g. 80,75,90):\r\n>");
-                            inputStrings = Console.ReadLine()?.ToLower().Trim().Split(',');
-                            foreach (string qualityInput in inputStrings)
-                            {
-                                int quality;
-                                if (int.TryParse(qualityInput.Trim(), out quality))
-                                {
-                                    double percentageQuality = Math.Round((double)quality / 100, 2);
-                                    qualities.Add(percentageQuality);
-                                }
-                                else {Console.Write("Wrong input. Try again.");break;}
-                            }
-                            if (qualities.Count() != userInput) { continue; }
-                            break;
-                        }
-                        for (int i = 0; i < userInput; i++)
-                        {
-                            BuildingInstance buildingInstance = new BuildingInstance();
-                            buildingInstance.Building = result.ChosenBuilding.Building;
-                            buildingInstance.ResourceAbundanceMultiplier = qualities[i];
-                            result.ChosenBuilding.BuildingInstances.Add(buildingInstance);
-                        }
-                        break;
-                    }
-                    // Factories, Plants
-                    else result.ChosenBuilding.Count = userInput;
-                    break;
-                }
-                else { Console.Write("invalid input: "); continue; }
-            }
-
-            // Calculate & Display Output
-            Console.WriteLine("\n====================================================================");
-            Console.WriteLine($"Required number of building: {result.ChosenBuilding.Count} {result.ChosenBuilding.Building.Name}\n" +
-                $"Total Workers: {result.ChosenBuilding.TotalWorkers}");
-            //      1) If Mines/Pumpjacks/Woodcutting Posts
-            if (result.ChosenBuilding.Building.IsQualityDependent)
-            {
-                Console.Write($"Qualities: ");
-                for (int i = 0; i <  result.ChosenBuilding.BuildingInstances.Count; i ++)
-                    Console.Write($"{result.ChosenBuilding.BuildingInstances[i].ResourceAbundanceMultiplier * 100}% ");
-            }
-            Console.Write("\nExpected Output: ");
-            foreach (Resource r in result.ChosenBuilding.ExpectedOutput.Keys)
-            {
-                Console.Write($"{result.ChosenBuilding.ExpectedOutput[r]:F2}t/day {r.Name} ");
-            }
-            Console.WriteLine("\n\nRequired Input Resources: ");
-            foreach (Resource r in result.ChosenBuilding.RequiredResources.Keys)
-            {
-                Console.WriteLine($"· {result.ChosenBuilding.RequiredResources[r]:F2} {r.Name}");
-            }
-            Console.WriteLine($"Power consumption: {result.ChosenBuilding.TotalPowerNeeded:F2}");
-            Console.WriteLine($"Water consumption: {result.ChosenBuilding.TotalWaterNeeded:F2}");
-            Console.WriteLine($"Sewage produced: {result.ChosenBuilding.TotalSewageProduced:F2}");
-            Console.WriteLine($"Garbage produced: {result.ChosenBuilding.TotalGarbageProduced:F6}");
-            Console.WriteLine($"Pollution emitted: {result.ChosenBuilding.TotalEnvironmentPollution:F6}");
+            IndustryPlan result = CreateIndustryPlan("buildplan");
 
             // User chooses a BuildingRequirement
             Console.Write("Do you want to add this plan? (y/n): ");
@@ -3421,6 +3435,77 @@ namespace SovietRepublicPlanner
                     ((int)Math.Ceiling((double)citizens), $"{citizens} citizens (low priority)", true),
                 _ => (0, "Unknown", false)
             };
+        }
+        static bool ConfirmContinue()
+        {
+            bool r = false;
+            Console.Write($"Continue? [y/n]: ");
+            char input = Console.ReadKey().KeyChar;
+
+            if (input == 'y')
+            {
+                r = true;
+            }
+            return r;
+        }
+        static void CreateCity()
+        {
+            // Create IndustryPlan 
+            Console.WriteLine("\n────────────────────────────────────────");
+            Console.WriteLine("  'newplan'   - Resource-target mode");
+            Console.WriteLine("  'buildplan' - Building-count mode");
+            Console.WriteLine("  'done'      - Exit program");
+            Console.Write("> ");
+            List<string> planInputs = new List<string> {"newplan", "buildplan", "done" };
+            string planInput = ReadLineWithCompletion(planInputs).ToLower().Trim();
+
+            IndustryPlan ip = CreateIndustryPlan(planInput);
+
+            // Step 1: Gate
+            int industryWorkers = ip.TotalWorkers;
+            if (!ConfirmContinue()) return;
+
+            bool converged = false;
+            List<AmenityInstance> cityAmenities = null;
+            Dictionary<ResidentialBuilding, int> optimizedResidential = null;
+            List<MicroDistrict> proposedDistricts = null;
+            int loopPass = 0;
+
+            while (!converged)
+            {
+                // Step 2: Inform
+                cityAmenities = RunCityAmenityPass(industryWorkers);
+                Console.WriteLine($"City amenity worker delta: {cityAmenities.Sum(a => a.CurNumEmp)}");
+
+                // Step 3: Gate (only first pass), Inform (subsequent passes)
+                optimizedResidential = RunHousingOptimization(industryWorkers, cityAmenities);
+                DisplayOptimizedResidential(optimizedResidential);
+                if (loopPass == 0 && !ConfirmContinue())
+                {
+                    optimizedResidential = ReenterWeightsAndRetry(); // loops back into weight prompt
+                }
+
+                // Step 4: Gate (only first pass)
+                proposedDistricts = AllocateDistricts(optimizedResidential); // area-budget bin-packing
+                DisplayDistrictPreview(proposedDistricts);
+                if (loopPass == 0 && !ConfirmContinue()) return; // discard run entirely
+
+                // Step 5: Inform
+                int districtAmenityDelta = RunDistrictAmenityPass(proposedDistricts);
+                Console.WriteLine($"District amenity worker delta: {districtAmenityDelta}");
+
+                // Step 6: Inform / loop condition
+                converged = CheckConvergence(districtAmenityDelta);
+                loopPass++;
+            }
+
+            // Step 7: Gate — final commit
+            Console.WriteLine("Final city plan ready. Commit? [y/n]");
+            if (Console.ReadLine()?.ToLower() == "y")
+            {
+                CommitCity(proposedDistricts, cityAmenities);
+            }
+            // else: discard, nothing written
         }
     }
 }
