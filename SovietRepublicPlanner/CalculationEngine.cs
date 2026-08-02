@@ -450,6 +450,16 @@
         return r;
     }
 
+    // Amenity
+    public static List<AmenityBuilding> GetParetoFrontAmenity(List<AmenityBuilding> allBuildings)
+    {
+
+    }
+    public static Dictionary<AmenityBuilding, int> AllocateAmenity(int neededCapacity, List<AmenityBuilding> paretoFront, Func<AmenityBuilding, double> priorityKey)
+    {
+
+    }
+
     // Tech
     public static bool CanResearch(TechNode node, HashSet<string> unlockedTech, int currentYear)
     {

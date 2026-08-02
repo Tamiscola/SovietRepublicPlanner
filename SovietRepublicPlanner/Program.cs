@@ -3448,6 +3448,13 @@ namespace SovietRepublicPlanner
             }
             return r;
         }
+        static List<AmenityInstance> RunCityAmenityPass(int industryWorkers)
+        {
+            List<AmenityInstance> result = new List<AmenityInstance>();
+            
+
+            return result;
+        }
         static void CreateCity()
         {
             // Create IndustryPlan 

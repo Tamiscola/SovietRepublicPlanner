@@ -119,5 +119,26 @@ public class AmenityBuilding : Building
 
     // Weather requirement (for beach cafe)
     public double? MinTemperature { get; set; }
+
+    // Method
+    public bool IsDominatedBy(AmenityBuilding other)
+    {
+        bool atLeastAsGoodOnAll =
+            other.WorkersPerArea >= this.WorkersPerArea &&
+            other.Quality >= this.Quality &&
+            other.ConstructionCostRUB <= this.ConstructionCostRUB &&
+            other.WorkDays <= this.WorkDays &&
+            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) <= CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
+
+        bool strictlyBetterOnOne =
+            other.WorkersPerArea > this.WorkersPerArea ||
+            other.Quality > this.Quality ||
+            other.ConstructionCostRUB < this.ConstructionCostRUB ||
+            other.WorkDays < this.WorkDays ||
+            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) < CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
+
+        return atLeastAsGoodOnAll && strictlyBetterOnOne;
+    }
+
 }
 
