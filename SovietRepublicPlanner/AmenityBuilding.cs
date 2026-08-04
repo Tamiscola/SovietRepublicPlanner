@@ -27,7 +27,7 @@ public enum PopulationType
     YoungAdults,
     Citizen
 }
-public class AmenityBuilding : Building
+public class AmenityBuilding : Building, IHasWorkers
 {
     // Identification
     public override BuildingCategory Category => BuildingCategory.Amenity;
@@ -124,21 +124,20 @@ public class AmenityBuilding : Building
     public bool IsDominatedBy(AmenityBuilding other)
     {
         bool atLeastAsGoodOnAll =
-            other.WorkersPerArea >= this.WorkersPerArea &&
-            other.Quality >= this.Quality &&
             other.ConstructionCostRUB <= this.ConstructionCostRUB &&
+            other.EffectiveWorkersPerShift <= this.EffectiveWorkersPerShift &&
             other.WorkDays <= this.WorkDays &&
+            other.MaxCoverage >= this.MaxCoverage &&
             CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) <= CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
 
         bool strictlyBetterOnOne =
-            other.WorkersPerArea > this.WorkersPerArea ||
-            other.Quality > this.Quality ||
-            other.ConstructionCostRUB < this.ConstructionCostRUB ||
+            other.ConstructionCostRUB > this.ConstructionCostRUB ||
+            other.EffectiveWorkersPerShift > this.EffectiveWorkersPerShift ||
             other.WorkDays < this.WorkDays ||
+            other.MaxCoverage < this.MaxCoverage ||
             CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) < CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
 
         return atLeastAsGoodOnAll && strictlyBetterOnOne;
     }
-
 }
 

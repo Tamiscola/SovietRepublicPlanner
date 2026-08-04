@@ -300,7 +300,7 @@
         double r = 0;
         var category = building.Category;
         var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.CostPerWorker)];
-        r = Normalize(building.ConstructionCostRUB / building.WorkerCapacity, bounds.Min, bounds.Max);
+        r = Normalize(building.ConstructionCostRUB / building.MaxWorkers, bounds.Min, bounds.Max);
         return r;
     }
     public static double NormalizedWorkDaysPerWorker(ResidentialBuilding building)
@@ -308,26 +308,26 @@
         double r = 0;
         var category = building.Category;
         var bounds = GameData.GeneralBoundsCache[(category, GeneralMetricType.WorkDaysPerWorker)];
-        r = Normalize(building.WorkDays / building.WorkerCapacity, bounds.Min, bounds.Max);
+        r = Normalize(building.WorkDays / building.MaxWorkers, bounds.Min, bounds.Max);
         return r;
     }
 
     // Utility Calculation
     public static class UtilityCalculator
     {
-        public static double RawUtilityCostPerWorker(ResidentialBuilding building, UtilityType type)
+        public static double RawUtilityCostPerWorker<T>(T building, UtilityType type) where T : Building, IHasWorkers
         {
-            if (building.WorkerCapacity <= 0) return 0;
-            return building.GetUtilityValue(type) / building.WorkerCapacity;
+            if (building.MaxWorkers <= 0) return 0;
+            return building.GetUtilityValue(type) / building.MaxWorkers;
         }
 
-        public static double NormalizedUtilityCostPerWorker(ResidentialBuilding building, UtilityType type)
+        public static double NormalizedUtilityCostPerWorker<T>(T building, UtilityType type) where T : Building, IHasWorkers
         {
             if (!GameData.UtilPerWorkerBoundsCache.TryGetValue((building.Category, type), out var bounds)) return 0;
             return Normalize(RawUtilityCostPerWorker(building, type), bounds.Min, bounds.Max);
         }
 
-        public static double NormalizedTotalUtilityCostPerWorker(ResidentialBuilding building)
+        public static double NormalizedTotalUtilityCostPerWorker<T>(T building) where T : Building, IHasWorkers
         {
             double total = 0;
             foreach (UtilityType type in building.GetActiveUtilities())
@@ -399,17 +399,17 @@
         foreach (var b in sorted)
         {
             if (remaining <= 0) break;
-            int maxUseful = remaining / b.WorkerCapacity;
+            int maxUseful = remaining / b.MaxWorkers;
             if (maxUseful > 0)
             {
                 result[b] = maxUseful;
-                remaining -= maxUseful * b.WorkerCapacity;
+                remaining -= maxUseful * b.MaxWorkers;
             }
         }
 
         if (remaining > 0)
         {
-            var candidates = sorted.Where(b => b.WorkerCapacity >= remaining).ToList();
+            var candidates = sorted.Where(b => b.MaxWorkers >= remaining).ToList();
 
             ResidentialBuilding chosen;
             if (candidates.Any())
@@ -421,18 +421,18 @@
             {
                 // Nothing fully covers it (remainder bigger than any single building) —
                 // fall back to the largest available, still respecting priority as tiebreaker
-                chosen = sorted.OrderByDescending(b => b.WorkerCapacity)
+                chosen = sorted.OrderByDescending(b => b.MaxWorkers)
                                 .ThenByDescending(b => priorityKey(b))
                                 .First();
             }
 
-            int neededUnits = (int)Math.Ceiling((double)remaining / chosen.WorkerCapacity);
+            int neededUnits = (int)Math.Ceiling((double)remaining / chosen.MaxWorkers);
             if (result.ContainsKey(chosen))
                 result[chosen] += neededUnits;
             else
                 result[chosen] = neededUnits;
 
-            remaining -= neededUnits * chosen.WorkerCapacity;
+            remaining -= neededUnits * chosen.MaxWorkers;
         }
 
         return result;

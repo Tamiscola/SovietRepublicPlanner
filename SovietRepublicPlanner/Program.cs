@@ -2463,7 +2463,7 @@ namespace SovietRepublicPlanner
                         List<ResidentialBuilding> availableBuildings = GameData.SmallResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).OrderBy(b => b.Name).ToList();
                         for (int i = 0; i < availableBuildings.Count(); i++)
                         {
-                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].WorkerCapacity}, {availableBuildings[i].Name}");
+                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].MaxWorkers}, {availableBuildings[i].Name}");
                             resList.Add(i + 1, availableBuildings[i]);
                         }
 
@@ -2519,7 +2519,7 @@ namespace SovietRepublicPlanner
                         List<ResidentialBuilding> availableBuildings = GameData.MediumResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).OrderBy(b => b.Name).ToList();
                         for (int i = 0; i < availableBuildings.Count(); i++)
                         {
-                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].WorkerCapacity}, {availableBuildings[i].Name}");
+                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].MaxWorkers}, {availableBuildings[i].Name}");
                             resList.Add(i + 1, availableBuildings[i]);
                         }
 
@@ -2575,7 +2575,7 @@ namespace SovietRepublicPlanner
                         List<ResidentialBuilding> availableBuildings = GameData.LargeResidentialBuildings.Where(b => CalculationEngine.CanBuildResidential(b)).OrderBy(b => b.Name).ToList();
                         for (int i = 0; i < availableBuildings.Count(); i++)
                         {
-                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].WorkerCapacity}, {availableBuildings[i].Name}");
+                            Console.WriteLine($"[{i + 1}]: {availableBuildings[i].MaxWorkers}, {availableBuildings[i].Name}");
                             resList.Add(i + 1, availableBuildings[i]);
                         }
 

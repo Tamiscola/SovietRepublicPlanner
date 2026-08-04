@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class UtilityBuilding : Building
+public class UtilityBuilding : Building, IHasWorkers
 {
     // Identification
     public override BuildingCategory Category => BuildingCategory.Utility;
@@ -12,7 +12,7 @@ public class UtilityBuilding : Building
     public SupportCategory SupportCategory;
 
     // Resources & Workers
-    public int MaxWorkers;
+    public int MaxWorkers {get; set;}
     public int TotalWorkers => MaxWorkers * 3;
     public List<ResourceAmount> Inputs { get; set; } = new List<ResourceAmount>();
     public List<ResourceAmount> Outputs { get; set; } = new List<ResourceAmount>();

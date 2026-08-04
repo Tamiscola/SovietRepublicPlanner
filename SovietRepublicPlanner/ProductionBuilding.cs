@@ -1,4 +1,4 @@
-﻿public class ProductionBuilding : Building
+﻿public class ProductionBuilding : Building, IHasWorkers
 {
     // Identification
     public override BuildingCategory Category => BuildingCategory.Production;

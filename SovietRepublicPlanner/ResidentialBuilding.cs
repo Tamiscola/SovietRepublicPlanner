@@ -1,10 +1,10 @@
-﻿public class ResidentialBuilding : Building
+﻿public class ResidentialBuilding : Building, IHasWorkers
 {
     // Identification
     public override BuildingCategory Category => BuildingCategory.Residential;
 
-    public int WorkerCapacity { get; set; }
-    public double WorkersPerArea => WorkerCapacity / Area;
+    public int MaxWorkers { get; set; }
+    public double WorkersPerArea => MaxWorkers / Area;
     public int CurNumRes { get; set; }
     public int Quality { get; set; }  // Percentage (affects happiness)
     public override double GetGeneralValue(GeneralMetricType metricType)
@@ -12,8 +12,8 @@
         return metricType switch
         {
             GeneralMetricType.WorkersPerArea => WorkersPerArea,
-            GeneralMetricType.CostPerWorker => ConstructionCostRUB / WorkerCapacity,
-            GeneralMetricType.WorkDaysPerWorker => WorkDays / WorkerCapacity,
+            GeneralMetricType.CostPerWorker => ConstructionCostRUB / MaxWorkers,
+            GeneralMetricType.WorkDaysPerWorker => WorkDays / MaxWorkers,
             _ => base.GetGeneralValue(metricType)
         };
     }
@@ -22,7 +22,7 @@
     public double WaterPerDay { get; set; }  // m³/day
     public double HeatTankM3 { get; set; }  // m³ (hot water tank capacity)
     public double GarbagePerCitizen { get; set; } = 0.0003;
-    public double GarbageProduction => WorkerCapacity * GarbagePerCitizen;
+    public double GarbageProduction => MaxWorkers * GarbagePerCitizen;
     public override IEnumerable<UtilityType> GetActiveUtilities()
     {
         return new[] { UtilityType.Power, UtilityType.Water, UtilityType.Heat, UtilityType.Sewage, UtilityType.Garbage };
