@@ -45,19 +45,21 @@
     // Method
     public bool IsDominatedBy(ResidentialBuilding other)
     {
+        IEnumerable<UtilityType> activeType = GetActiveUtilities();
+
         bool atLeastAsGoodOnAll =
             other.WorkersPerArea >= this.WorkersPerArea &&
             other.Quality >= this.Quality &&
-            other.ConstructionCostRUB <= this.ConstructionCostRUB &&
-            other.WorkDays <= this.WorkDays &&
-            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) <= CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
+            (other.ConstructionCostRUB / other.MaxWorkers) <= (this.ConstructionCostRUB / this.MaxWorkers) &&
+            (other.WorkDays / other.MaxWorkers) <= (this.WorkDays / this.MaxWorkers) &&
+            activeType.All(type => CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, type) <= CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, type));
 
         bool strictlyBetterOnOne =
             other.WorkersPerArea > this.WorkersPerArea ||
             other.Quality > this.Quality ||
-            other.ConstructionCostRUB < this.ConstructionCostRUB ||
-            other.WorkDays < this.WorkDays ||
-            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) < CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
+            (other.ConstructionCostRUB / other.MaxWorkers) < (this.ConstructionCostRUB / this.MaxWorkers) ||
+            (other.WorkDays / other.MaxWorkers) < (this.WorkDays / this.MaxWorkers) ||
+            activeType.Any(type => CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, type) <= CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, type));
 
         return atLeastAsGoodOnAll && strictlyBetterOnOne;
     }

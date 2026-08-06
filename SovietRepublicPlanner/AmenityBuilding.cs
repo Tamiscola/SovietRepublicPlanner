@@ -124,18 +124,22 @@ public class AmenityBuilding : Building, IHasWorkers
     public bool IsDominatedBy(AmenityBuilding other)
     {
         bool atLeastAsGoodOnAll =
-            other.ConstructionCostRUB <= this.ConstructionCostRUB &&
+            (other.ConstructionCostRUB / other.MaxCoverage) <= (this.ConstructionCostRUB / this.MaxCoverage) &&
             other.EffectiveWorkersPerShift <= this.EffectiveWorkersPerShift &&
-            other.WorkDays <= this.WorkDays &&
+            (other.WorkDays / other.MaxCoverage) <= (this.WorkDays / this.MaxCoverage) &&
             other.MaxCoverage >= this.MaxCoverage &&
-            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) <= CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
+            CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, UtilityType.Power) <= CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, UtilityType.Power) &&
+            CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, UtilityType.Water) <= CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, UtilityType.Water) &&
+            CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, UtilityType.Heat) <= CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, UtilityType.Heat);
 
         bool strictlyBetterOnOne =
-            other.ConstructionCostRUB > this.ConstructionCostRUB ||
+            (other.ConstructionCostRUB / other.MaxCoverage) > (this.ConstructionCostRUB / this.MaxCoverage) ||
             other.EffectiveWorkersPerShift > this.EffectiveWorkersPerShift ||
-            other.WorkDays < this.WorkDays ||
+            (other.WorkDays / other.MaxCoverage) < (this.WorkDays / this.MaxCoverage) ||
             other.MaxCoverage < this.MaxCoverage ||
-            CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(other) < CalculationEngine.UtilityCalculator.NormalizedTotalUtilityCostPerWorker(this);
+            CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, UtilityType.Power) < CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, UtilityType.Power) ||
+            CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, UtilityType.Water) < CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, UtilityType.Water) ||
+            CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(other, UtilityType.Heat) < CalculationEngine.UtilityCalculator.NormalizedUtilityCostPerWorker(this, UtilityType.Heat);
 
         return atLeastAsGoodOnAll && strictlyBetterOnOne;
     }
